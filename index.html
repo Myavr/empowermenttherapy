@@ -4,16 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.0/examples/jsm/"
-    }
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -49,38 +41,25 @@
         <a href="#team">Team</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact Us</a>
+        <a href="mailto:empowermenttherapyinstitute@gmail.com?cc=myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com&subject=Registration%20Inquiry" class="nav-register">Register</a>
       </nav>
     </div>
   </header>
 
   <div class="page-spacer" id="home"></div>
 
-  <!-- Hero: Live Clouds -->
+  <!-- Hero: Background Video -->
   <section class="hero-clouds-section" id="heroCloudsSection">
-    <canvas id="cloudCanvas"></canvas>
+    <video class="hero-video" autoplay muted loop playsinline poster="images/hero-home.png">
+      <source src="images/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
       <div class="hero-emblem" id="heroEmblem">
-        <!-- Frosted glass circle behind everything -->
-        <div class="hero-frost-circle" id="heroFrostCircle"></div>
-        <svg class="hero-curved-text" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <!-- Arcs close to logo (6px gap feel), top tighter for its larger font -->
-            <path id="curveTop" d="M 95,220 A 125,125 0 0,1 345,220" fill="none"/>
-            <path id="curveBottom" d="M 80,220 A 140,140 0 0,0 360,220" fill="none"/>
-          </defs>
-          <!-- Thin decorative ring on the outer edge of the frost circle -->
-          <circle cx="220" cy="220" r="195" fill="none" stroke="rgba(255,253,247,0.18)" stroke-width="0.75" stroke-dasharray="3 8" class="hero-ring-outer"/>
-          <!-- Curved text on the inner rim -->
-          <text class="hero-svg-text hero-svg-top">
-            <textPath href="#curveTop" startOffset="50%" text-anchor="middle">EMPOWERMENT</textPath>
-          </text>
-          <text class="hero-svg-text hero-svg-bottom">
-            <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">THERAPY INSTITUTE</textPath>
-          </text>
-        </svg>
-        <img src="images/logo-body.png" alt="Empowerment Therapy Logo" class="hero-logo" id="heroLogo">
+        <div class="hero-frost-oval" id="heroFrostCircle"></div>
+        <img src="images/logo-large-transparent.png" alt="Empowerment Therapy Institute" class="hero-logo-full" id="heroLogo">
       </div>
-      <p class="hero-tagline">Training empowerment practitioners around the world.</p>
+      <p class="hero-tagline">training empathy and empowerment practitioners around the world</p>
     </div>
   </section>
   <div class="container hero-text-content">
@@ -188,8 +167,7 @@
   <!-- Program details with 3D Diorama -->
   <section class="fade-in" id="programDetailsSection">
     <div class="container">
-      <div class="program-details-layout">
-        <div class="program-details-text">
+      <div class="program-details-single">
           <h3 class="program-details-heading">Who is this for?</h3>
           <p>Empowerment Therapy is for <strong>therapists, coaches, and anyone</strong> who wants to do Empowerment work &mdash; help others create more satisfying relationships and build more fulfilling lives.</p>
           <p class="program-details-note">Empowerment practitioners don't need a mental health background. Yet, while the work is therapeutic, it's not a substitute for professional psychotherapy.</p>
@@ -199,17 +177,11 @@
 
           <div class="program-details-callout">
             <p>Throughout the program, we foster the personal development of the participants in the safety of a <strong>close-knit learning community.</strong> We engage in processes that bring about healing and growth.</p>
-            <p class="program-details-highlight">Participants often report deeper self-connection, increased self-acceptance, and self-confidence.</p>
+            <p class="program-details-highlight">At the end of the course, participants often report deeper self-connection, and increased self-acceptance and self-confidence.</p>
           </div>
 
           <h3 class="program-details-heading">Weekly practice</h3>
-          <p>In addition to the regular sessions, we invite group members to attend a weekly session where they practice <strong>empathic listening</strong> and apply ET therapeutic interventions and processes. This is a space for learning, connection, and community.</p>
-        </div>
-        <div class="diorama-wrapper">
-          <div id="diorama-loader">Loading 3D scene...</div>
-          <canvas id="dioramaCanvas"></canvas>
-          <p class="diorama-caption">Click and drag to explore the space</p>
-        </div>
+          <p>In addition to the regular sessions, we invite group members to attend a weekly session where they practice <strong>empathic listening</strong> and apply ET therapeutic interventions and processes. This is a space for learning, connection and community.</p>
       </div>
       <div class="highlight-box">
         <p>To register, please request an orientation session at <a href="mailto:empowermenttherapyinstitute@gmail.com">empowermenttherapyinstitute@gmail.com</a></p>
@@ -689,7 +661,7 @@
         <!-- Internal Processes -->
         <div class="resource-card" tabindex="0">
           <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:hsla(42,60%,92%,1);color:var(--gold);">&#10047;</span>
+            <span class="resource-card-icon" style="background:rgba(138,188,94,0.15);color:var(--gold);">&#10047;</span>
             <div>
               <h3 class="resource-card-title">Internal Processes</h3>
               <p class="resource-card-count">3 practices</p>
@@ -714,7 +686,7 @@
         <!-- Interpersonal Processes -->
         <div class="resource-card" tabindex="0">
           <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:hsla(350,45%,93%,1);color:var(--blush);">&#10084;</span>
+            <span class="resource-card-icon" style="background:rgba(133,207,174,0.15);color:var(--blush);">&#10084;</span>
             <div>
               <h3 class="resource-card-title">Interpersonal Processes</h3>
               <p class="resource-card-count">2 practices</p>
@@ -975,12 +947,22 @@
     }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
     document.querySelectorAll('.fade-in, .fade-in-group, .slide-left, .slide-right, .scale-in').forEach(el => observer.observe(el));
 
-    // Header scroll + progress bar
+    // Header scroll: transparent on hero, fade in white bg + dark text
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
-      if (window.scrollY > 10) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); }
+      const scrollY = window.scrollY;
+      const threshold = 80;
+      if (scrollY > threshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      // Smooth opacity interpolation for the transition zone
+      const t = Math.min(scrollY / threshold, 1);
+      header.style.setProperty('--header-opacity', t);
+      // Progress bar
       const bar = document.getElementById('scrollProgress');
-      if (bar) { const h = document.documentElement.scrollHeight - window.innerHeight; bar.style.width = (window.scrollY / h * 100) + '%'; }
+      if (bar) { const h = document.documentElement.scrollHeight - window.innerHeight; bar.style.width = (scrollY / h * 100) + '%'; }
     });
 
     // Before/After slider
@@ -1105,313 +1087,7 @@
 
   </script>
 
-  <!-- Three.js: Cloud Hero + 3D Diorama -->
-  <script type="module">
-  // ===== CLOUD HERO =====
-  import * as THREE from 'three';
-  import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
-  (function(){
-    var canvas=document.getElementById('cloudCanvas');
-    if(!canvas) return;
-    var section=document.getElementById('heroCloudsSection');
-
-    // CSS cloud fallback for when WebGL is unavailable
-    function addCSSClouds(){
-      section.classList.add('no-webgl');
-      for(var i=0;i<5;i++){
-        var cloud=document.createElement('div');
-        cloud.className='css-cloud';
-        section.insertBefore(cloud,section.firstChild);
-      }
-    }
-
-    // Test WebGL availability on a disposable canvas FIRST
-    var testCanvas=document.createElement('canvas');
-    var testGL=testCanvas.getContext('webgl2')||testCanvas.getContext('webgl')||testCanvas.getContext('experimental-webgl');
-    if(!testGL){
-      console.warn('WebGL not supported, using CSS cloud fallback');
-      addCSSClouds();
-      return;
-    }
-    // Clean up test canvas
-    testCanvas=null; testGL=null;
-
-    // Soft sky blue fog
-    var fogColor=new THREE.Color(0x8abcd4);
-
-    // Renderer — opaque, fog-colored background (like original mrdoob demo)
-    var renderer;
-    try {
-      renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:false});
-    } catch(e) {
-      console.warn('WebGL renderer failed, using CSS cloud fallback');
-      addCSSClouds();
-      return;
-    }
-    // Verify the renderer actually got a working GL context
-    var gl=null;
-    try { gl=renderer.getContext(); } catch(e){}
-    if(!gl){
-      console.warn('WebGL context unavailable, using CSS cloud fallback');
-      addCSSClouds();
-      return;
-    }
-    var isMobile=window.innerWidth<768;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
-    renderer.setClearColor(fogColor);
-
-    var scene=new THREE.Scene();
-    var fov=isMobile?50:30;
-    var camera=new THREE.PerspectiveCamera(fov,section.clientWidth/section.clientHeight,1,3000);
-    camera.position.z=6000;
-
-    // Shaders — exact match of the original mrdoob clouds
-    var vertexShader=`
-      varying vec2 vUv;
-      void main(){
-        vUv=uv;
-        gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
-      }
-    `;
-    var fragmentShader=`
-      uniform sampler2D map;
-      uniform vec3 fogColor;
-      uniform float fogNear;
-      uniform float fogFar;
-      varying vec2 vUv;
-      void main(){
-        float depth=gl_FragCoord.z/gl_FragCoord.w;
-        float fogFactor=smoothstep(fogNear,fogFar,depth);
-        gl_FragColor=texture2D(map,vUv);
-        gl_FragColor.w*=pow(gl_FragCoord.z,20.0);
-        gl_FragColor=mix(gl_FragColor,vec4(fogColor,gl_FragColor.w),fogFactor);
-      }
-    `;
-
-    // Generate a fallback cloud texture in case external load fails
-    function makeFallbackTexture(){
-      var c=document.createElement('canvas');
-      c.width=256; c.height=256;
-      var ctx=c.getContext('2d');
-      var g=ctx.createRadialGradient(128,128,0,128,128,128);
-      g.addColorStop(0,'rgba(255,255,255,0.8)');
-      g.addColorStop(0.4,'rgba(255,255,255,0.4)');
-      g.addColorStop(1,'rgba(255,255,255,0)');
-      ctx.fillStyle=g;
-      ctx.fillRect(0,0,256,256);
-      var t=new THREE.CanvasTexture(c);
-      t.needsUpdate=true;
-      return t;
-    }
-
-    function initClouds(cloudTexture){
-      cloudTexture.magFilter=THREE.LinearFilter;
-      cloudTexture.minFilter=THREE.LinearFilter;
-
-      var material=new THREE.ShaderMaterial({
-        uniforms:{
-          map:{value:cloudTexture},
-          fogColor:{value:fogColor},
-          fogNear:{value:-100},
-          fogFar:{value:3000}
-        },
-        vertexShader:vertexShader,
-        fragmentShader:fragmentShader,
-        depthWrite:false,
-        depthTest:false,
-        transparent:true
-      });
-
-      // Build cloud geometry — fewer clouds on mobile, but SAME z-depth coverage
-      var CLOUD_COUNT=isMobile?2000:8000;
-      var Z_DEPTH=8000; // Must match animation loop range
-      var ySpread=isMobile?80:200;
-      var xSpread=isMobile?600:1000;
-      var geometries=[];
-      var planeGeo=new THREE.PlaneGeometry(64,64);
-
-      for(var i=0;i<CLOUD_COUNT;i++){
-        var g=planeGeo.clone();
-        var matrix=new THREE.Matrix4();
-        // Z position: spread evenly across full depth range (not tied to cloud index)
-        var zPos=i*(Z_DEPTH/CLOUD_COUNT);
-        matrix.compose(
-          new THREE.Vector3(Math.random()*xSpread-xSpread/2,-Math.random()*Math.random()*ySpread-15,zPos),
-          new THREE.Quaternion().setFromEuler(new THREE.Euler(0,0,Math.random()*Math.PI)),
-          new THREE.Vector3(1,1,1).multiplyScalar(Math.random()*Math.random()*1.5+0.5)
-        );
-        g.applyMatrix4(matrix);
-        geometries.push(g);
-      }
-
-      var mergedGeo=mergeGeometries(geometries);
-      var mesh1=new THREE.Mesh(mergedGeo,material);
-      scene.add(mesh1);
-      var mesh2=new THREE.Mesh(mergedGeo,material);
-      mesh2.position.z=-8000;
-      scene.add(mesh2);
-
-      // Start animating once texture is loaded
-      startAnimate();
-    }
-
-    // Use generated texture immediately for reliable mobile support,
-    // then upgrade to HD texture if it loads
-    try {
-      var fallbackTex=makeFallbackTexture();
-      initClouds(fallbackTex);
-    } catch(e) {
-      console.warn('Cloud init failed, using CSS fallback:',e);
-      addCSSClouds();
-      return;
-    }
-
-    // Try loading HD texture — upgrade if successful
-    var textureLoader=new THREE.TextureLoader();
-    textureLoader.crossOrigin='anonymous';
-    textureLoader.load(
-      'https://mrdoob.com/lab/javascript/webgl/clouds/cloud10.png',
-      function(tex){
-        scene.children.forEach(function(child){
-          if(child.material&&child.material.uniforms&&child.material.uniforms.map){
-            child.material.uniforms.map.value=tex;
-            child.material.needsUpdate=true;
-          }
-        });
-      },
-      undefined,
-      function(){ /* HD texture failed — fallback texture is already in use */ }
-    );
-
-    // Resize — also adjust FOV for mobile
-    function onResize(){
-      var w=section.clientWidth;
-      var h=section.clientHeight;
-      if(!w||!h) return;
-      camera.aspect=w/h;
-      camera.fov=window.innerWidth<768?50:30;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w,h);
-    }
-    window.addEventListener('resize',onResize);
-    onResize();
-
-    // Animation — NO camera rotation, just position movement (matching original)
-    var animId;
-    var startTime=Date.now();
-    function startAnimate(){
-      function animate(){
-        animId=requestAnimationFrame(animate);
-        var position=((Date.now()-startTime)*0.03)%8000;
-        camera.position.x+=(0-camera.position.x)*0.01;
-        camera.position.y+=(0-camera.position.y)*0.01;
-        camera.position.z=-position+8000;
-        renderer.render(scene,camera);
-      }
-      // Visibility-based pause
-      document.addEventListener('visibilitychange',function(){
-        if(document.hidden){ cancelAnimationFrame(animId); }
-        else { animate(); }
-      });
-      animate();
-    }
-  })();
-
-  // ===== 3D DIORAMA =====
-  (function(){
-    var canvas=document.getElementById('dioramaCanvas');
-    if(!canvas) return;
-
-    // Lazy-load: only initialize when near viewport
-    var initObserver=new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){
-        initObserver.disconnect();
-        initDiorama();
-      }
-    },{rootMargin:'300px'});
-    initObserver.observe(canvas);
-
-    function initDiorama(){
-      Promise.all([
-        import('three/addons/loaders/GLTFLoader.js'),
-        import('three/addons/controls/OrbitControls.js')
-      ]).then(function(modules){
-        var GLTFLoader=modules[0].GLTFLoader;
-        var OrbitControls=modules[1].OrbitControls;
-
-        var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-        renderer.outputColorSpace=THREE.SRGBColorSpace;
-
-        var scene=new THREE.Scene();
-        var camera=new THREE.PerspectiveCamera(10,canvas.clientWidth/canvas.clientHeight,0.1,100);
-        camera.position.set(8,4,15);
-
-        var controls=new OrbitControls(camera,canvas);
-        controls.enableDamping=true;
-        controls.dampingFactor=0.05;
-        controls.minDistance=21;
-        controls.maxDistance=50;
-        controls.minPolarAngle=Math.PI/5;
-        controls.maxPolarAngle=Math.PI/2;
-        controls.enablePan=false;
-
-        // Load baked texture
-        var textureLoader=new THREE.TextureLoader();
-        var bakedTexture=textureLoader.load(
-          'https://raw.githubusercontent.com/ricardoolivaalonso/ThreeJS-Room13/main/static/baked.jpg'
-        );
-        bakedTexture.flipY=false;
-        bakedTexture.colorSpace=THREE.SRGBColorSpace;
-        var bakedMaterial=new THREE.MeshBasicMaterial({map:bakedTexture});
-
-        // Load GLTF model
-        var gltfLoader=new GLTFLoader();
-        gltfLoader.load(
-          'https://raw.githubusercontent.com/ricardoolivaalonso/ThreeJS-Room13/main/static/model.glb',
-          function(gltf){
-            var model=gltf.scene;
-            model.traverse(function(child){
-              if(child.isMesh) child.material=bakedMaterial;
-            });
-            scene.add(model);
-            // Hide loader
-            var loader=document.getElementById('diorama-loader');
-            if(loader){ loader.style.opacity='0'; setTimeout(function(){ loader.style.display='none'; },500); }
-          }
-        );
-
-        // Resize
-        function resize(){
-          var w=canvas.clientWidth;
-          var h=canvas.clientHeight;
-          if(canvas.width!==w||canvas.height!==h){
-            renderer.setSize(w,h,false);
-            camera.aspect=w/h;
-            camera.updateProjectionMatrix();
-          }
-        }
-
-        // Visibility-based rendering
-        var isVisible=false;
-        var visObserver=new IntersectionObserver(function(entries){
-          isVisible=entries[0].isIntersecting;
-        },{threshold:0.1});
-        visObserver.observe(canvas);
-
-        function animate(){
-          requestAnimationFrame(animate);
-          if(!isVisible) return;
-          controls.update();
-          resize();
-          renderer.render(scene,camera);
-        }
-        animate();
-      });
-    }
-  })();
-  </script>
 
 </body>
 </html>
