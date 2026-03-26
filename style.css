@@ -134,6 +134,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -145,6 +146,7 @@ html {
   background: var(--teal);
   color: var(--white);
 }
+
 
 body {
   font-family: var(--font-body);
@@ -287,6 +289,7 @@ header .container {
   justify-content: space-between;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
+  max-width: 100%;
 }
 
 .logo {
@@ -320,10 +323,10 @@ nav {
 }
 
 nav a {
-  font-size: 0.92rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
   font-weight: 400;
   color: rgba(255,255,255,0.85);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem clamp(0.5rem, 1vw, 1.25rem);
   text-decoration: none;
   transition: color 0.5s ease;
   letter-spacing: 0.02em;
@@ -449,13 +452,14 @@ header.scrolled .menu-toggle span {
   width: 100%;
   height: 100vh;
   min-height: 500px;
-  overflow: hidden;
-  background: var(--navy);
+  overflow: visible;
+  background: transparent;
+  z-index: 0;
 }
 
-/* Hero background video */
+/* Hero background video — fixed for parallax */
 .hero-video {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   min-width: 100%;
@@ -464,15 +468,15 @@ header.scrolled .menu-toggle span {
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  z-index: 1;
+  z-index: -2;
 }
 
 /* Dark overlay on video for readability */
 .hero-video-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(20, 8, 14, 0.45);
-  z-index: 2;
+  z-index: -1;
 }
 
 /* God rays — subtle */
@@ -565,28 +569,25 @@ header.scrolled .menu-toggle span {
   z-index: 3;
 }
 
-.hero-tagline {
-  position: relative;
-  color: rgba(255,255,255,0.9);
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.3rem);
+/* Hero headline — Kobold-style large statement text */
+.hero-headline {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 300;
-  letter-spacing: 0.06em;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   text-align: center;
-  padding: 0.8rem 2rem;
+  max-width: 900px;
   margin: 0;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3);
 }
 
-.hero-tagline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(20, 8, 14, 0.3);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.08);
-  z-index: -1;
+/* Main content wrapper — sits above fixed hero video */
+.main-content-wrapper {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
 }
 
 /* Hero text below clouds */
@@ -654,6 +655,10 @@ section {
 .section-separator {
   height: 0;
   border: none;
+}
+
+#resources {
+  padding-top: 0;
 }
 
 /* ===== SECTION DIVIDERS ===== */
@@ -745,10 +750,58 @@ h2 {
   color: var(--text-muted);
 }
 
+.living-bg .subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 p {
   margin-bottom: 0.85rem;
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+/* ===== VENN CLOUD SECTION ===== */
+.venn-cloud-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  clip-path: inset(0);
+}
+
+.venn-cloud-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.venn-cloud-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 8, 14, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.venn-cloud-content {
+  position: relative;
+  z-index: 3;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.venn-cloud-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--white);
+  margin-bottom: 0.5rem;
 }
 
 /* ===== VENN DIAGRAM ===== */
@@ -757,8 +810,9 @@ p {
   grid-template-columns: 1fr auto 1fr;
   align-items: stretch;
   gap: 0;
-  margin: 3rem auto 2.5rem;
-  max-width: 900px;
+  margin: 3rem auto 0;
+  max-width: 100%;
+  position: relative;
 }
 
 .venn-side {
@@ -766,8 +820,23 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 1.5rem 2rem;
-  background: var(--white);
+  padding: 2.5rem 2rem 2rem;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.venn-side-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 8, 14, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.venn-side > *:not(.venn-side-overlay) {
+  position: relative;
+  z-index: 2;
 }
 
 .venn-side-left {
@@ -783,8 +852,8 @@ p {
 }
 
 .venn-photo {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   padding: 3px;
   margin-bottom: 1rem;
@@ -811,13 +880,13 @@ p {
 .venn-side h4 {
   font-family: var(--font-heading);
   font-size: 1.05rem;
-  color: var(--navy);
+  color: var(--white);
   margin-bottom: 0.2rem;
 }
 
 .venn-subtitle {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8);
   font-style: italic;
   margin-bottom: 1rem;
 }
@@ -831,7 +900,7 @@ p {
 
 .venn-points li {
   font-size: 0.92rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
   padding: 0.15rem 0;
   display: flex;
@@ -858,6 +927,7 @@ p {
   align-items: center;
   justify-content: center;
   z-index: 2;
+  padding: 0 1.5rem;
 }
 
 .venn-connector {
@@ -877,19 +947,22 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: var(--navy);
-  border: 3px solid var(--teal);
+  width: 140px;
+  padding: 1.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(133, 207, 174, 0.5);
   text-align: center;
   padding: 0.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
 }
 
 .venn-badge-title {
   font-family: var(--font-heading);
   font-size: 0.85rem;
-  color: var(--white);
+  color: var(--navy);
   line-height: 1.2;
   margin-bottom: 0.25rem;
 }
@@ -898,9 +971,9 @@ p {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--teal);
+  color: var(--teal-dark);
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Active state for scroll animation */
@@ -929,7 +1002,7 @@ p {
 
 /* ===== ET DESCRIPTION ===== */
 .et-description {
-  max-width: 860px;
+  max-width: 1200px;
   margin: 2rem auto 0;
 }
 
@@ -983,9 +1056,6 @@ p {
   border-color: rgba(255,255,255,0.15);
 }
 
-.schedule-card:hover {
-  border-color: var(--teal);
-}
 
 .schedule-card h3 {
   font-size: 1.15rem;
@@ -1009,26 +1079,32 @@ p {
 }
 
 /* ===== PROGRAM DETAILS ===== */
-.program-details-single {
-  max-width: 860px;
+.program-details-hero {
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.program-details-lead {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.program-details-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
   margin: 0 auto 2rem;
 }
 
-.program-details-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: start;
-  margin-bottom: 2rem;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.program-details-text p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
+.program-details-card {
+  background: var(--white);
+  border: 1px solid rgba(20, 8, 14, 0.06);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(20, 8, 14, 0.04);
 }
 
 .program-details-heading {
@@ -1036,11 +1112,7 @@ p {
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--navy);
-  margin: 2rem 0 0.5rem;
-}
-
-.program-details-heading:first-child {
-  margin-top: 0;
+  margin: 0 0 0.75rem;
 }
 
 .program-details-note {
@@ -1054,9 +1126,10 @@ p {
 .program-details-callout {
   background: var(--cream);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin: 1rem 0;
+  padding: 2rem;
+  margin: 0 auto 2rem;
   border-left: 3px solid var(--teal);
+  max-width: 1100px;
 }
 
 .program-details-callout p {
@@ -1079,6 +1152,11 @@ p {
   background: var(--cream);
   border-radius: var(--radius-md);
   margin-top: 1rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .highlight-box a {
@@ -1379,10 +1457,6 @@ p {
   background: rgba(255,255,255,0.04);
 }
 
-.testimonial-card:hover {
-  border-color: rgba(255,255,255,0.2);
-}
-
 .testimonial-card img {
   width: 72px;
   height: 72px;
@@ -1654,11 +1728,11 @@ p {
 /* ===== TEAM ===== */
 .team-member {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
   align-items: start;
   margin-bottom: 4rem;
-  max-width: 850px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1855,10 +1929,6 @@ p {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-md);
   transition: border-color var(--transition-smooth);
-}
-
-.contact-info-card:hover {
-  border-color: var(--teal);
 }
 
 .contact-info-icon {
@@ -2130,6 +2200,9 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
+  .program-details-cards {
+    grid-template-columns: 1fr;
+  }
   .program-details-layout {
     grid-template-columns: 1fr;
   }
@@ -2158,7 +2231,14 @@ footer {
 
   .menu-toggle {
     display: block;
+    position: relative;
     z-index: 10;
+    flex-shrink: 0;
+    margin-right: 0.25rem;
+  }
+
+  .menu-toggle span {
+    background: var(--navy) !important;
   }
 
   nav {
@@ -2210,14 +2290,9 @@ footer {
     min-height: 380px;
   }
 
-  .hero-emblem {
-    width: clamp(150px, 42vw, 200px);
-    margin-bottom: 1rem;
-  }
-
-  .hero-tagline {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
+  .hero-headline {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    padding: 0 1rem;
   }
 
   .venn-diagram {
@@ -2225,6 +2300,12 @@ footer {
     gap: 0;
     max-width: 380px;
   }
+
+  .venn-photo {
+    width: 90px;
+    height: 90px;
+  }
+
 
   .venn-side-left {
     border-radius: var(--radius-md) var(--radius-md) 0 0;
@@ -2310,11 +2391,6 @@ footer {
   .hero-clouds-section {
     height: 100vh;
     min-height: 320px;
-  }
-
-  .hero-emblem {
-    width: clamp(207px, 67vw, 276px);
-    margin-bottom: 1rem;
   }
 
   .schedule-cards {

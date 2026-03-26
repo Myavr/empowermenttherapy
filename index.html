@@ -36,7 +36,6 @@
         <span></span><span></span><span></span>
       </button>
       <nav>
-        <a href="#home">Home</a>
         <a href="#values">Our Values</a>
         <a href="#team">Team</a>
         <a href="#resources">Resources</a>
@@ -55,25 +54,31 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
-      <div class="hero-emblem" id="heroEmblem">
-        <div class="hero-frost-oval" id="heroFrostCircle"></div>
-        <img src="images/logo-large-transparent.png" alt="Empowerment Therapy Institute" class="hero-logo-full" id="heroLogo">
-      </div>
-      <p class="hero-tagline">training empathy and empowerment practitioners around the world</p>
+      <h1 class="hero-headline" id="heroHeadline">training empathy and empowerment practitioners around the world</h1>
     </div>
   </section>
-  <div class="container hero-text-content">
-    <div class="section-divider"><span class="ornament"></span></div>
-    <p style="max-width:800px;margin-left:auto;margin-right:auto;text-align:center;">Empowerment Therapy is for those of us who want to accompany others on the journey towards equilibrium, wholeness, and connection with their authentic self. It supports us in helping our clients identify, trust, and endeavor to meet their needs because when our needs are met, we thrive!</p>
+  <!-- Main content wrapper — covers fixed hero video -->
+  <div class="main-content-wrapper">
+
+  <div class="hero-text-content">
+    <div class="container">
+      <div class="section-divider"><span class="ornament"></span></div>
+      <p style="max-width:1100px;margin-left:auto;margin-right:auto;text-align:center;">Empowerment Therapy is for those of us who want to accompany others on the journey towards equilibrium, wholeness, and connection with their authentic self. It supports us in helping our clients identify, trust, and endeavor to meet their needs because when our needs are met, we thrive!</p>
+    </div>
   </div>
 
-  <!-- What is ET -->
-  <section class="fade-in corner-flourish" id="whatIsEtSection">
-    <div class="container">
-      <h2>What is Empowerment Therapy?</h2>
+  <!-- Venn / Founders -->
+  <section class="venn-cloud-section" id="whatIsEtSection">
+    <video class="venn-cloud-video" autoplay muted loop playsinline>
+      <source src="images/clouds-loop.mp4" type="video/mp4">
+    </video>
+    <div class="venn-cloud-overlay"></div>
+    <div class="venn-cloud-content fade-in">
+      <h2 class="venn-cloud-heading">What is Empowerment Therapy?</h2>
       <div class="section-divider divider-leaf"><span class="ornament"></span></div>
       <div class="venn-diagram" id="vennDiagram">
         <div class="venn-side venn-side-left">
+          <div class="venn-side-overlay"></div>
           <div class="venn-photo">
             <img src="images/marshall-rosenberg.png" alt="Marshall Rosenberg">
           </div>
@@ -96,6 +101,7 @@
           </div>
         </div>
         <div class="venn-side venn-side-right">
+          <div class="venn-side-overlay"></div>
           <div class="venn-photo">
             <img src="images/carl-rogers.jpg" alt="Carl Rogers">
           </div>
@@ -108,6 +114,12 @@
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ET Description -->
+  <section class="fade-in corner-flourish" id="etDescriptionSection">
+    <div class="container">
       <div class="et-description">
         <p class="et-description-lead">Grounded in the work of <strong>Marshall Rosenberg</strong> and <strong>Carl Rogers</strong>, Empowerment Therapy is founded on the fulfillment of universal human needs. The underlying principle is that <em>when our needs are met, we feel and do well.</em></p>
         <p>Most people seek help because they have unmet needs that they struggle to identify and express. They may experience malaise, but can only account for it in general terms.</p>
@@ -164,25 +176,33 @@
     </div>
   </section>
 
-  <!-- Program details with 3D Diorama -->
+  <!-- Program details -->
   <section class="fade-in" id="programDetailsSection">
     <div class="container">
-      <div class="program-details-single">
-          <h3 class="program-details-heading">Who is this for?</h3>
-          <p>Empowerment Therapy is for <strong>therapists, coaches, and anyone</strong> who wants to do Empowerment work &mdash; help others create more satisfying relationships and build more fulfilling lives.</p>
-          <p class="program-details-note">Empowerment practitioners don't need a mental health background. Yet, while the work is therapeutic, it's not a substitute for professional psychotherapy.</p>
+      <h2>Who Is This For?</h2>
+      <div class="section-divider divider-leaf"><span class="ornament"></span></div>
 
+      <div class="program-details-hero">
+        <p class="program-details-lead">Empowerment Therapy is for <strong>therapists, coaches, and anyone</strong> who wants to do Empowerment work &mdash; help others create more satisfying relationships and build more fulfilling lives.</p>
+        <p class="program-details-note">Empowerment practitioners don't need a mental health background. Yet, while the work is therapeutic, it's not a substitute for professional psychotherapy.</p>
+      </div>
+
+      <div class="program-details-cards">
+        <div class="program-details-card">
           <h3 class="program-details-heading">What we build</h3>
           <p>In our program, we develop practitioners who go out in the world and <strong>accompany people without access to support services.</strong></p>
-
-          <div class="program-details-callout">
-            <p>Throughout the program, we foster the personal development of the participants in the safety of a <strong>close-knit learning community.</strong> We engage in processes that bring about healing and growth.</p>
-            <p class="program-details-highlight">At the end of the course, participants often report deeper self-connection, and increased self-acceptance and self-confidence.</p>
-          </div>
-
+        </div>
+        <div class="program-details-card">
           <h3 class="program-details-heading">Weekly practice</h3>
           <p>In addition to the regular sessions, we invite group members to attend a weekly session where they practice <strong>empathic listening</strong> and apply ET therapeutic interventions and processes. This is a space for learning, connection and community.</p>
+        </div>
       </div>
+
+      <div class="program-details-callout">
+        <p>Throughout the program, we foster the personal development of the participants in the safety of a <strong>close-knit learning community.</strong> We engage in processes that bring about healing and growth.</p>
+        <p class="program-details-highlight">At the end of the course, participants often report deeper self-connection, and increased self-acceptance and self-confidence.</p>
+      </div>
+
       <div class="highlight-box">
         <p>To register, please request an orientation session at <a href="mailto:empowermenttherapyinstitute@gmail.com">empowermenttherapyinstitute@gmail.com</a></p>
       </div>
@@ -274,7 +294,7 @@
           <div class="level-step-card">
             <div class="level-step-badge">Empowerment Processes</div>
             <h3>Level 2: Empowerment Processes</h3>
-            <p>Learning and application of Empowering Thoughts and Language &mdash; therapeutic processes the practitioner can share with clients when pertinent, relevant and timely.</p>
+            <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
             <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
             <span class="level-step-expand-hint">Learn more</span>
             <div class="level-step-detail">
@@ -533,11 +553,6 @@
             </div>
             <span class="timeline-card-hint">Click to explore &darr;</span>
           </div>
-        </div>
-
-        <div class="timeline-terminus fade-in">
-          <span class="timeline-terminus-dot"></span>
-          <span class="timeline-terminus-leaf">&#10087;</span>
         </div>
 
       </div>
@@ -820,6 +835,8 @@
     </div>
   </footer>
 
+  </div><!-- /.main-content-wrapper -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
@@ -853,53 +870,14 @@
       return chars;
     }
 
-    // Animate hero emblem — staggered entrance: frost circle → logo → text → tagline
-    var heroEmblem=document.getElementById('heroEmblem');
-    var heroLogo=document.getElementById('heroLogo');
-    var frostCircle=document.getElementById('heroFrostCircle');
-    var ringOuter=document.querySelector('.hero-ring-outer');
-    var svgTextTop=document.querySelector('.hero-svg-top');
-    var svgTextBottom=document.querySelector('.hero-svg-bottom');
-    var heroTagline=document.querySelector('.hero-tagline');
+    // Animate hero headline — fade up
+    var heroHeadline=document.getElementById('heroHeadline');
 
-    // Initial hidden states
-    if(heroEmblem) gsap.set(heroEmblem,{opacity:0});
-    if(frostCircle) gsap.set(frostCircle,{opacity:0,scale:0.5});
-    if(ringOuter) gsap.set(ringOuter,{opacity:0,scale:0,transformOrigin:'220px 220px'});
-    if(heroLogo) gsap.set(heroLogo,{opacity:0,scale:0.2,rotation:-90});
-    if(svgTextTop) gsap.set(svgTextTop,{opacity:0});
-    if(svgTextBottom) gsap.set(svgTextBottom,{opacity:0});
-    if(heroTagline) gsap.set(heroTagline,{opacity:0,y:15});
+    if(heroHeadline) gsap.set(heroHeadline,{opacity:0,y:30});
 
     function startTitleAnimation(){
-      // 1. Emblem container fades in
-      if(heroEmblem) gsap.to(heroEmblem,{
-        duration:0.6, opacity:1, ease:'power2.out', delay:0.2
-      });
-      // 2. Frosted circle expands in
-      if(frostCircle) gsap.to(frostCircle,{
-        duration:1.0, opacity:1, scale:1, ease:'power3.out', delay:0.3
-      });
-      // 3. Decorative ring fades in
-      if(ringOuter) gsap.to(ringOuter,{
-        duration:1.0, opacity:1, scale:1, rotation:30,
-        ease:'power3.out', delay:0.4
-      });
-      // 4. Logo twists in with spin
-      if(heroLogo) gsap.to(heroLogo,{
-        duration:1.4, opacity:1, scale:1, rotation:0,
-        ease:'elastic.out(1,0.5)', delay:0.6
-      });
-      // 5. Text fades in
-      if(svgTextTop) gsap.to(svgTextTop,{
-        duration:0.9, opacity:1, ease:'power2.out', delay:0.9
-      });
-      if(svgTextBottom) gsap.to(svgTextBottom,{
-        duration:0.9, opacity:1, ease:'power2.out', delay:1.1
-      });
-      // 6. Tagline slides up
-      if(heroTagline) gsap.to(heroTagline,{
-        duration:0.8, opacity:1, y:0, ease:'power2.out', delay:1.3
+      if(heroHeadline) gsap.to(heroHeadline,{
+        duration:1.2, opacity:1, y:0, ease:'power3.out', delay:0.3
       });
     }
 
