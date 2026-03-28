@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -30,17 +30,20 @@
   <header>
     <div class="container">
       <a href="#home" class="logo logo-flourish-botanical">
-        <img src="images/logo.png" alt="The Empowerment Institute">
+        <img src="images/logo.png" alt="Empowerment Therapy Institute">
+        <span class="logo-text">Empowerment Therapy Institute</span>
       </a>
       <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('nav').classList.toggle('active')">
         <span></span><span></span><span></span>
       </button>
       <nav>
-        <a href="#values">Our Values</a>
+        <a href="#home">Home</a>
+        <a href="#programs">Programs</a>
+        <a href="#values">Values</a>
         <a href="#team">Team</a>
         <a href="#resources">Resources</a>
-        <a href="#contact">Contact Us</a>
-        <a href="mailto:empowermenttherapyinstitute@gmail.com?cc=myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com&subject=Registration%20Inquiry" class="nav-register">Register</a>
+        <a href="#contact">Contact</a>
+        <a href="#" onclick="openRegModal(event)" class="nav-register">Register</a>
       </nav>
     </div>
   </header>
@@ -54,11 +57,37 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
-      <h1 class="hero-headline" id="heroHeadline">training empathy and empowerment practitioners around the world</h1>
+      <h1 class="hero-headline" id="heroHeadline">Training <strong>empathy</strong> and <strong>empowerment</strong> practitioners around the world</h1>
     </div>
   </section>
   <!-- Main content wrapper — covers fixed hero video -->
   <div class="main-content-wrapper">
+
+  <!-- Country Bar -->
+  <div class="country-bar">
+    <div class="country-bar-content">
+      <div class="globe-container">
+        <canvas id="globeCanvas" width="120" height="120"></canvas>
+      </div>
+      <div class="country-list">
+        <span class="country-bar-label">Practitioners around the world</span>
+        <div class="country-tags">
+          <span class="country-tag">Canada</span>
+          <span class="country-tag">United States</span>
+          <span class="country-tag">Mexico</span>
+          <span class="country-tag">Colombia</span>
+          <span class="country-tag">Germany</span>
+          <span class="country-tag">The Netherlands</span>
+          <span class="country-tag">Spain</span>
+          <span class="country-tag">Ukraine</span>
+          <span class="country-tag">Tanzania</span>
+          <span class="country-tag">Kenya</span>
+          <span class="country-tag">South Africa</span>
+          <span class="country-tag">India</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="hero-text-content">
     <div class="container">
@@ -204,7 +233,7 @@
       </div>
 
       <div class="highlight-box">
-        <p>To register, please request an orientation session at <a href="mailto:empowermenttherapyinstitute@gmail.com">empowermenttherapyinstitute@gmail.com</a></p>
+        <p>To register, please <a href="#" onclick="openRegModal(event)" style="color:var(--teal);text-decoration:underline;">request an orientation session</a>.</p>
       </div>
     </div>
   </section>
@@ -415,7 +444,7 @@
       </div>
 
       <div style="text-align:center;margin-top:2rem;">
-        <a href="mailto:empowermenttherapyinstitute@gmail.com?cc=myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com&subject=Registration%20Inquiry" class="btn">Register Now</a>
+        <a href="#" onclick="openRegModal(event)" class="btn">Register Now</a>
       </div>
     </div>
   </section>
@@ -489,7 +518,7 @@
 
   <section class="timeline-section living-bg vine-edge fade-in" id="values" style="position:relative;">
     <div class="container" style="padding-bottom:0;">
-      <h1>Our Values</h1>
+      <h1>Values</h1>
       <div class="section-divider divider-leaf"><span class="ornament"></span></div>
     </div>
     <div class="container">
@@ -731,7 +760,7 @@
 
   <section class="fade-in living-bg vine-edge" id="contact" style="position:relative;">
     <div class="container">
-      <h1>Contact Us</h1>
+      <h1>Contact</h1>
       <div class="section-divider divider-leaf"><span class="ornament"></span></div>
       <p style="text-align:center;color:var(--text-muted);max-width:500px;margin:0 auto 1.5rem;">We'd love to hear from you. Reach out with questions, or just to say hello.</p>
 
@@ -804,10 +833,10 @@
         <div class="footer-nav">
           <h4>Navigate</h4>
           <a href="#home">Home</a>
-          <a href="#values">Our Values</a>
+          <a href="#values">Values</a>
           <a href="#team">Team</a>
           <a href="#resources">Resources</a>
-          <a href="#contact">Contact Us</a>
+          <a href="#contact">Contact</a>
         </div>
         <div class="footer-contact">
           <h4>Get in Touch</h4>
@@ -836,6 +865,80 @@
   </footer>
 
   </div><!-- /.main-content-wrapper -->
+
+  <!-- Registration Modal -->
+  <div class="reg-modal-overlay" id="regModal">
+    <div class="reg-modal">
+      <button class="reg-modal-close" id="regModalClose" aria-label="Close">&times;</button>
+      <h2>Register for an Orientation Session</h2>
+      <p class="reg-modal-subtitle">Complete the form below to request a 45-minute orientation meeting. This session helps both you and our team determine if the program is a good fit.</p>
+
+      <form id="regForm" class="reg-form">
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regName">Full Name <span class="req">*</span></label>
+            <input type="text" id="regName" name="name" required placeholder="Your full name">
+          </div>
+          <div class="reg-form-field">
+            <label for="regEmail">Email <span class="req">*</span></label>
+            <input type="email" id="regEmail" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regTimezone">Your Timezone <span class="req">*</span></label>
+            <select id="regTimezone" name="timezone" required>
+              <option value="">Select your timezone</option>
+              <option value="UTC-8 (PST)">UTC-8 (Pacific)</option>
+              <option value="UTC-7 (MST)">UTC-7 (Mountain)</option>
+              <option value="UTC-6 (CST)">UTC-6 (Central US)</option>
+              <option value="UTC-5 (EST)">UTC-5 (Eastern)</option>
+              <option value="UTC-4 (AST)">UTC-4 (Atlantic)</option>
+              <option value="UTC-3 (ART)">UTC-3 (Argentina/Brazil)</option>
+              <option value="UTC-1 (CVT)">UTC-1 (Cape Verde)</option>
+              <option value="UTC+0 (GMT)">UTC+0 (GMT/UK)</option>
+              <option value="UTC+1 (CET)">UTC+1 (Central Europe)</option>
+              <option value="UTC+2 (EET)">UTC+2 (Eastern Europe)</option>
+              <option value="UTC+3 (EAT)">UTC+3 (East Africa)</option>
+              <option value="UTC+4 (GST)">UTC+4 (Gulf)</option>
+              <option value="UTC+5 (PKT)">UTC+5 (Pakistan)</option>
+              <option value="UTC+5:30 (IST)">UTC+5:30 (India)</option>
+              <option value="UTC+6 (BST)">UTC+6 (Bangladesh)</option>
+              <option value="UTC+8 (CST)">UTC+8 (China/Singapore)</option>
+              <option value="UTC+9 (JST)">UTC+9 (Japan/Korea)</option>
+              <option value="UTC+10 (AEST)">UTC+10 (Australia East)</option>
+              <option value="UTC+12 (NZST)">UTC+12 (New Zealand)</option>
+            </select>
+          </div>
+          <div class="reg-form-field">
+            <label for="regProgram">Program Interest <span class="reg-optional">(optional)</span></label>
+            <select id="regProgram" name="program">
+              <option value="">Select a program</option>
+              <option value="Level 1: Foundation">Level 1: Foundation</option>
+              <option value="Level 2: Empowerment Processes">Level 2: Empowerment Processes</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="reg-form-field">
+          <label>When are you available for your orientation session?</label>
+          <p class="reg-avail-note">All applicants meet with our team for a 45-minute orientation. Select any times that work for you below (shown in your local timezone). Once we receive your submission, we'll reach out to confirm a specific time. If none of these slots fit, leave this blank and we'll coordinate directly.</p>
+          <div class="reg-avail-grid" id="regAvailGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="reg-form-field">
+          <label for="regMessage">Anything else you'd like us to know? <span class="reg-optional">(optional)</span></label>
+          <textarea id="regMessage" name="message" rows="3" placeholder="E.g. how you heard about us, questions you have, etc."></textarea>
+        </div>
+
+        <button type="submit" class="reg-submit">Submit Registration</button>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1065,7 +1168,520 @@
 
   </script>
 
+  <!-- Globe Animation -->
+  <script>
+  (function(){
+    var canvas = document.getElementById('globeCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W = 120, H = 120, R = 52;
+    var cx = W/2, cy = H/2;
+    var rotation = 0;
+    var dotSize = 1.1;
 
+    // Lat/lon points approximating continent outlines (simplified)
+    var landPoints = [];
+
+    // Generate land mass dots from simplified continent data
+    // [latMin, latMax, lonMin, lonMax] bounding boxes with density
+    var continents = [
+      // North America
+      {lats:[25,50], lons:[-130,-60], density:0.12},
+      {lats:[50,70], lons:[-170,-55], density:0.1},
+      {lats:[15,25], lons:[-110,-85], density:0.1},
+      // Central America
+      {lats:[7,20], lons:[-92,-77], density:0.12},
+      // South America
+      {lats:[-55,-10], lons:[-80,-35], density:0.12},
+      {lats:[-10,12], lons:[-82,-35], density:0.12},
+      // Europe
+      {lats:[36,60], lons:[-10,30], density:0.14},
+      {lats:[55,71], lons:[10,40], density:0.1},
+      // Africa
+      {lats:[-35,5], lons:[10,42], density:0.11},
+      {lats:[5,37], lons:[-18,42], density:0.11},
+      // Middle East
+      {lats:[12,42], lons:[30,60], density:0.09},
+      // Asia
+      {lats:[8,55], lons:[60,145], density:0.1},
+      {lats:[55,72], lons:[60,180], density:0.06},
+      // India
+      {lats:[8,35], lons:[68,90], density:0.13},
+      // Southeast Asia
+      {lats:[-10,20], lons:[95,140], density:0.1},
+      // Australia
+      {lats:[-40,-12], lons:[112,155], density:0.09},
+      // Japan/Korea
+      {lats:[30,45], lons:[128,146], density:0.14},
+      // UK/Ireland
+      {lats:[50,59], lons:[-11,2], density:0.15},
+      // Iceland
+      {lats:[63,67], lons:[-24,-13], density:0.1},
+    ];
+
+    // Country locations to highlight (lat, lon)
+    var highlightCountries = [
+      {lat:56.1, lon:-106.3, name:'Canada'},
+      {lat:37.1, lon:-95.7, name:'United States'},
+      {lat:23.6, lon:-102.5, name:'Mexico'},
+      {lat:4.6, lon:-74.1, name:'Colombia'},
+      {lat:51.2, lon:10.4, name:'Germany'},
+      {lat:52.1, lon:5.3, name:'The Netherlands'},
+      {lat:40.5, lon:-3.7, name:'Spain'},
+      {lat:48.4, lon:31.2, name:'Ukraine'},
+      {lat:-6.4, lon:34.9, name:'Tanzania'},
+      {lat:-0.02, lon:37.9, name:'Kenya'},
+      {lat:-30.6, lon:22.9, name:'South Africa'},
+      {lat:20.6, lon:79.0, name:'India'},
+    ];
+
+    // Generate dot grid for each continent
+    continents.forEach(function(c){
+      var step = 3;
+      for(var lat=c.lats[0]; lat<=c.lats[1]; lat+=step){
+        for(var lon=c.lons[0]; lon<=c.lons[1]; lon+=step){
+          if(Math.random() < c.density * 3){
+            landPoints.push({lat:lat*Math.PI/180, lon:lon*Math.PI/180});
+          }
+        }
+      }
+    });
+
+    function project(lat, lon, rot){
+      var x = Math.cos(lat)*Math.sin(lon+rot);
+      var y = -Math.sin(lat);
+      var z = Math.cos(lat)*Math.cos(lon+rot);
+      return {x: cx + x*R, y: cy + y*R, z: z};
+    }
+
+    var pulsePhase = 0;
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      rotation += 0.0015;
+      pulsePhase += 0.03;
+
+      // Ocean sphere
+      var grad = ctx.createRadialGradient(cx-12, cy-12, R*0.1, cx, cy, R);
+      grad.addColorStop(0, '#3a4a5a');
+      grad.addColorStop(0.5, '#252f3a');
+      grad.addColorStop(1, '#181f28');
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Subtle grid lines (longitude)
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+      ctx.lineWidth = 0.5;
+      for(var g=0; g<6; g++){
+        var glon = (g/6)*Math.PI*2 + rotation;
+        ctx.beginPath();
+        for(var glat=-Math.PI/2; glat<=Math.PI/2; glat+=0.05){
+          var gp = project(glat, glon, 0);
+          if(gp.z < 0) continue;
+          if(glat === -Math.PI/2) ctx.moveTo(gp.x, gp.y);
+          else ctx.lineTo(gp.x, gp.y);
+        }
+        ctx.stroke();
+      }
+      // Latitude lines
+      for(var gl=-2; gl<=2; gl++){
+        var glat2 = (gl/3)*Math.PI/2;
+        ctx.beginPath();
+        var started = false;
+        for(var glon2=0; glon2<Math.PI*2; glon2+=0.05){
+          var gp2 = project(glat2, glon2, rotation);
+          if(gp2.z < 0){ started=false; continue; }
+          if(!started){ ctx.moveTo(gp2.x, gp2.y); started=true; }
+          else ctx.lineTo(gp2.x, gp2.y);
+        }
+        ctx.stroke();
+      }
+
+      // Land dots
+      landPoints.forEach(function(p){
+        var proj = project(p.lat, p.lon, rotation);
+        if(proj.z > 0){
+          var brightness = 0.3 + proj.z * 0.5;
+          ctx.fillStyle = 'rgba(180,200,210,' + brightness + ')';
+          ctx.beginPath();
+          ctx.arc(proj.x, proj.y, dotSize, 0, Math.PI*2);
+          ctx.fill();
+        }
+      });
+
+      // Country highlight dots (pulsing)
+      var pulse = 0.6 + Math.sin(pulsePhase)*0.4;
+      highlightCountries.forEach(function(c){
+        var proj = project(c.lat*Math.PI/180, c.lon*Math.PI/180, rotation);
+        if(proj.z > 0.1){
+          // Glow
+          ctx.fillStyle = 'rgba(133,207,174,' + (0.2*pulse*proj.z) + ')';
+          ctx.beginPath();
+          ctx.arc(proj.x, proj.y, 4, 0, Math.PI*2);
+          ctx.fill();
+          // Core dot
+          ctx.fillStyle = 'rgba(255,255,255,' + (0.8*proj.z) + ')';
+          ctx.beginPath();
+          ctx.arc(proj.x, proj.y, 1.8, 0, Math.PI*2);
+          ctx.fill();
+        }
+      });
+
+      // Atmosphere glow
+      var atmoGrad = ctx.createRadialGradient(cx, cy, R*0.92, cx, cy, R*1.08);
+      atmoGrad.addColorStop(0, 'rgba(133,207,174,0)');
+      atmoGrad.addColorStop(0.5, 'rgba(133,207,174,0.06)');
+      atmoGrad.addColorStop(1, 'rgba(133,207,174,0)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, R*1.08, 0, Math.PI*2);
+      ctx.fillStyle = atmoGrad;
+      ctx.fill();
+
+      // Specular highlight
+      var specGrad = ctx.createRadialGradient(cx-30, cy-30, 0, cx-30, cy-30, R*0.7);
+      specGrad.addColorStop(0, 'rgba(255,255,255,0.1)');
+      specGrad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = specGrad;
+      ctx.fill();
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+  </script>
+
+  <!-- Registration Form Script -->
+  <script>
+  (function(){
+    var modal = document.getElementById('regModal');
+    var closeBtn = document.getElementById('regModalClose');
+    var form = document.getElementById('regForm');
+    var grid = document.getElementById('regAvailGrid');
+
+    // Auto-detect timezone
+    (function(){
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        var offset = new Date().getTimezoneOffset();
+        var sign = offset <= 0 ? '+' : '-';
+        var absH = Math.floor(Math.abs(offset) / 60);
+        var absM = Math.abs(offset) % 60;
+        var utcLabel = 'UTC' + sign + absH + (absM ? ':' + (absM < 10 ? '0' : '') + absM : '');
+        var sel = document.getElementById('regTimezone');
+        // Try to match an existing option
+        var matched = false;
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value.indexOf(utcLabel) === 0) {
+            sel.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        // If no match, add a custom option with the detected timezone
+        if (!matched && tz) {
+          var opt = document.createElement('option');
+          opt.value = utcLabel + ' (' + tz + ')';
+          opt.textContent = utcLabel + ' (' + tz.replace(/_/g, ' ') + ')';
+          opt.selected = true;
+          sel.insertBefore(opt, sel.options[1]);
+        }
+      } catch(e) {}
+    })();
+
+    // Build availability grid for next 7 days
+    var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var timeSlots = ['12:00 AM','1:00 AM','2:00 AM','3:00 AM','4:00 AM','5:00 AM','6:00 AM','7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM','9:00 PM','10:00 PM','11:00 PM'];
+    var today = new Date();
+
+    // Build next 7 days, ordered: weekdays first (Mon–Fri), then weekend (Sat–Sun)
+    var next7 = [];
+    for (var d = 0; d < 7; d++) {
+      var dt = new Date(today);
+      dt.setDate(today.getDate() + d);
+      next7.push(dt);
+    }
+    var weekdays = next7.filter(function(dt){ return dt.getDay() >= 1 && dt.getDay() <= 5; });
+    var weekends = next7.filter(function(dt){ return dt.getDay() === 0 || dt.getDay() === 6; });
+    var orderedDays = weekdays.concat(weekends);
+
+    // Header row
+    var headerEl = document.createElement('div');
+    headerEl.className = 'reg-avail-header';
+    headerEl.innerHTML = '<div class="reg-avail-corner"></div>';
+    for (var d = 0; d < orderedDays.length; d++) {
+      var date = orderedDays[d];
+      var dayLabel = dayNames[date.getDay()];
+      var dateStr = (date.getMonth()+1) + '/' + date.getDate();
+      headerEl.innerHTML += '<div class="reg-avail-day-label">' + dayLabel + '<br><span>' + dateStr + '</span></div>';
+    }
+    grid.appendChild(headerEl);
+
+    // Time rows
+    for (var t = 0; t < timeSlots.length; t++) {
+      var row = document.createElement('div');
+      row.className = 'reg-avail-row';
+      row.innerHTML = '<div class="reg-avail-time-label">' + timeSlots[t] + '</div>';
+      for (var d2 = 0; d2 < orderedDays.length; d2++) {
+        var date2 = orderedDays[d2];
+        var dateKey = (date2.getMonth()+1) + '/' + date2.getDate();
+        var cellId = dateKey + ' ' + timeSlots[t];
+        row.innerHTML += '<div class="reg-avail-cell" data-slot="' + cellId + '" tabindex="0" role="checkbox" aria-checked="false" aria-label="' + dayNames[date2.getDay()] + ' ' + dateKey + ' at ' + timeSlots[t] + '"></div>';
+      }
+      grid.appendChild(row);
+    }
+
+    // Build mobile availability view (day cards with time pills)
+    var mobileAvail = document.createElement('div');
+    mobileAvail.className = 'reg-avail-mobile';
+
+    for (var md = 0; md < orderedDays.length; md++) {
+      var mDate = orderedDays[md];
+      var mDayLabel = dayNames[mDate.getDay()];
+      var mDateStr = (mDate.getMonth()+1) + '/' + mDate.getDate();
+
+      var card = document.createElement('div');
+      card.className = 'reg-avail-day-card';
+      card.setAttribute('data-day-index', md);
+
+      var header = document.createElement('div');
+      header.className = 'reg-avail-day-header';
+      header.innerHTML = '<div>' + mDayLabel + ' <span>' + mDateStr + '</span> <span class="day-count" style="display:none">0</span></div><span class="day-toggle">▼</span>';
+      card.appendChild(header);
+
+      var slots = document.createElement('div');
+      slots.className = 'reg-avail-day-slots';
+
+      for (var mt = 0; mt < timeSlots.length; mt++) {
+        var pill = document.createElement('div');
+        pill.className = 'reg-avail-time-pill';
+        pill.textContent = timeSlots[mt];
+        pill.setAttribute('data-slot', mDateStr + ' ' + timeSlots[mt]);
+        slots.appendChild(pill);
+      }
+      card.appendChild(slots);
+      mobileAvail.appendChild(card);
+    }
+
+    grid.parentNode.insertBefore(mobileAvail, grid.nextSibling);
+
+    // Mobile: toggle day cards open/close
+    mobileAvail.addEventListener('click', function(e) {
+      var header = e.target.closest('.reg-avail-day-header');
+      if (header) {
+        header.parentElement.classList.toggle('open');
+        return;
+      }
+      var pill = e.target.closest('.reg-avail-time-pill');
+      if (pill) {
+        pill.classList.toggle('selected');
+        // Sync with desktop grid
+        var slotKey = pill.getAttribute('data-slot');
+        var desktopCell = grid.querySelector('[data-slot="' + slotKey + '"]');
+        if (desktopCell) {
+          desktopCell.classList.toggle('selected', pill.classList.contains('selected'));
+          desktopCell.setAttribute('aria-checked', pill.classList.contains('selected'));
+        }
+        // Update count badge
+        var card = pill.closest('.reg-avail-day-card');
+        var count = card.querySelectorAll('.reg-avail-time-pill.selected').length;
+        var badge = card.querySelector('.day-count');
+        if (count > 0) {
+          badge.style.display = '';
+          badge.textContent = count;
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+    });
+
+    // Toggle cells — click and drag support
+    var isDragging = false;
+    var dragMode = null; // 'select' or 'deselect'
+    var dragCol = null;  // lock to column during drag
+
+    function getCellCol(cell) {
+      var row = cell.parentElement;
+      var cells = row.querySelectorAll('.reg-avail-cell');
+      for (var i = 0; i < cells.length; i++) {
+        if (cells[i] === cell) return i;
+      }
+      return -1;
+    }
+
+    function applyCellToggle(cell) {
+      if (dragMode === 'select') {
+        cell.classList.add('selected');
+        cell.setAttribute('aria-checked', 'true');
+      } else {
+        cell.classList.remove('selected');
+        cell.setAttribute('aria-checked', 'false');
+      }
+    }
+
+    grid.addEventListener('mousedown', function(e) {
+      var cell = e.target.closest('.reg-avail-cell');
+      if (!cell) return;
+      e.preventDefault();
+      isDragging = true;
+      dragMode = cell.classList.contains('selected') ? 'deselect' : 'select';
+      dragCol = getCellCol(cell);
+      applyCellToggle(cell);
+    });
+
+    grid.addEventListener('mouseover', function(e) {
+      if (!isDragging) return;
+      var cell = e.target.closest('.reg-avail-cell');
+      if (!cell) return;
+      if (getCellCol(cell) === dragCol) {
+        applyCellToggle(cell);
+      }
+    });
+
+    document.addEventListener('mouseup', function() {
+      isDragging = false;
+      dragMode = null;
+      dragCol = null;
+    });
+
+    // Touch support for drag
+    grid.addEventListener('touchstart', function(e) {
+      var cell = e.target.closest('.reg-avail-cell');
+      if (!cell) return;
+      isDragging = true;
+      dragMode = cell.classList.contains('selected') ? 'deselect' : 'select';
+      dragCol = getCellCol(cell);
+      applyCellToggle(cell);
+    }, {passive: true});
+
+    grid.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      var touch = e.touches[0];
+      var el = document.elementFromPoint(touch.clientX, touch.clientY);
+      var cell = el ? el.closest('.reg-avail-cell') : null;
+      if (!cell) return;
+      if (getCellCol(cell) === dragCol) {
+        applyCellToggle(cell);
+      }
+    }, {passive: true});
+
+    document.addEventListener('touchend', function() {
+      isDragging = false;
+      dragMode = null;
+      dragCol = null;
+    });
+
+    // Keyboard toggle
+    grid.addEventListener('keydown', function(e) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        var cell = e.target.closest('.reg-avail-cell');
+        if (!cell) return;
+        e.preventDefault();
+        cell.classList.toggle('selected');
+        cell.setAttribute('aria-checked', cell.classList.contains('selected'));
+      }
+    });
+
+    // Open / Close
+    window.openRegModal = function(e) {
+      if (e) e.preventDefault();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Submit → mailto with formatted body
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var name = document.getElementById('regName').value.trim();
+      var email = document.getElementById('regEmail').value.trim();
+      var timezone = document.getElementById('regTimezone').value;
+      var program = document.getElementById('regProgram').value;
+      var message = document.getElementById('regMessage').value.trim();
+
+      // Gather selected slots (desktop grid + mobile pills)
+      var selected = grid.querySelectorAll('.reg-avail-cell.selected');
+      var selectedMobile = mobileAvail.querySelectorAll('.reg-avail-time-pill.selected');
+      var slotSet = {};
+      var slots = [];
+      for (var i = 0; i < selected.length; i++) {
+        var s = selected[i].getAttribute('data-slot');
+        if (!slotSet[s]) { slotSet[s] = true; slots.push(s); }
+      }
+      for (var i2 = 0; i2 < selectedMobile.length; i2++) {
+        var s2 = selectedMobile[i2].getAttribute('data-slot');
+        if (!slotSet[s2]) { slotSet[s2] = true; slots.push(s2); }
+      }
+
+      // Build formatted email body
+      var body = '';
+      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+      body += '  NEW REGISTRATION REQUEST\n';
+      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+      body += 'Name:     ' + name + '\n';
+      body += 'Email:    ' + email + '\n';
+      body += 'Timezone: ' + timezone + '\n';
+      body += 'Program:  ' + program + '\n\n';
+
+      if (slots.length > 0) {
+        body += '── Availability ──────────────\n';
+        // Group by date
+        var byDate = {};
+        for (var j = 0; j < slots.length; j++) {
+          var parts = slots[j].split(' ');
+          var dateKey = parts[0];
+          var time = parts.slice(1).join(' ');
+          if (!byDate[dateKey]) byDate[dateKey] = [];
+          byDate[dateKey].push(time);
+        }
+        for (var dk in byDate) {
+          body += '  ' + dk + ':  ' + byDate[dk].join(', ') + '\n';
+        }
+        body += '\n';
+      } else {
+        body += '── Availability ──────────────\n';
+        body += '  No specific times selected.\n';
+        body += '  (Please reach out to coordinate)\n\n';
+      }
+
+      if (message) {
+        body += '── Additional Notes ──────────\n';
+        body += '  ' + message + '\n\n';
+      }
+
+      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+
+      var subject = 'Registration Request: ' + name + ' — ' + program;
+      var mailto = 'mailto:empowermenttherapyinstitute@gmail.com'
+        + '?cc=myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com'
+        + '&subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+
+      // Show confirmation
+      setTimeout(function() {
+        form.innerHTML = '<div class="reg-success"><div class="reg-success-icon">✓</div><h3>Registration Submitted!</h3><p>Your email client should have opened with your registration details. Please send the email to complete your registration.</p><p style="margin-top:1rem;color:var(--text-muted);font-size:0.9rem;">If your email client didn\'t open, please email us directly at <a href="mailto:empowermenttherapyinstitute@gmail.com">empowermenttherapyinstitute@gmail.com</a></p></div>';
+      }, 500);
+    });
+  })();
+  </script>
 
 </body>
 </html>
