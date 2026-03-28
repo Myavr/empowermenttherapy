@@ -163,50 +163,9 @@
     </div>
   </section>
 
-  <!-- Program with living background + vine edges + flower bouquets at corners -->
-  <section class="living-bg fade-in vine-edge" style="position:relative;">
-    <div class="container">
-      <h2>Empowerment Therapy Program</h2>
-      <p class="subtitle">not just for therapists</p>
-      <div class="schedule-cards">
-        <div class="schedule-card">
-          <h3>Level 1: Foundation</h3>
-          <p class="time" id="sched-time-1">Thursdays 9:00–10:30am CT</p>
-          <p class="date">Starting 8th January 2026</p>
-        </div>
-        <div class="schedule-card">
-          <h3>Level 2: Empowerment Processes</h3>
-          <p class="time" id="sched-time-2">Tuesdays 7:00–8:30pm CT</p>
-          <p class="date">Starting 6th January 2026</p>
-        </div>
-      </div>
-      <script>
-      (function(){try{
-        var schedule=[
-          {id:'sched-time-1',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z'},
-          {id:'sched-time-2',start:'2026-01-07T01:00:00Z',end:'2026-01-07T02:30:00Z'}
-        ];
-        var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
-        var tf={hour:'numeric',minute:'2-digit',hour12:true};
-        schedule.forEach(function(s){
-          var el=document.getElementById(s.id);if(!el)return;
-          var d1=new Date(s.start),d2=new Date(s.end);
-          var day=days[d1.getDay()];
-          var t1=new Intl.DateTimeFormat(undefined,tf).format(d1);
-          var t2=new Intl.DateTimeFormat(undefined,tf).format(d2);
-          var tz='';
-          new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
-            if(p.type==='timeZoneName')tz=p.value;
-          });
-          el.textContent=day+' '+t1+'\u2013'+t2+' '+tz;
-        });
-      }catch(e){}}());
-      </script>
-    </div>
-  </section>
 
   <!-- Program details -->
-  <section class="fade-in" id="programDetailsSection">
+  <section class="fade-in section-dark-green" id="programDetailsSection">
     <div class="container">
       <h2>Who Is This For?</h2>
       <div class="section-divider divider-leaf"><span class="ornament"></span></div>
@@ -239,7 +198,7 @@
   </section>
 
   <!-- Program Levels — stepped progression -->
-  <section class="fade-in botanical-border">
+  <section class="fade-in botanical-border" id="programs">
     <div class="container">
       <h2>Program Levels</h2>
       <div class="section-divider"><span class="ornament"></span></div>
@@ -253,6 +212,7 @@
           <div class="level-step-card">
             <div class="level-step-badge">Foundation</div>
             <h3>Level 1: Foundation</h3>
+            <p class="level-schedule" id="sched-time-1">📅 Thursdays 9:00–10:30 AM CT · Starting Jan 8, 2026</p>
             <p>Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions.</p>
             <span class="level-step-expand-hint">Learn more</span>
             <div class="level-step-detail">
@@ -323,6 +283,7 @@
           <div class="level-step-card">
             <div class="level-step-badge">Empowerment Processes</div>
             <h3>Level 2: Empowerment Processes</h3>
+            <p class="level-schedule" id="sched-time-2">📅 Tuesdays 7:00–8:30 PM CT · Starting Jan 6, 2026</p>
             <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
             <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
             <span class="level-step-expand-hint">Learn more</span>
@@ -446,6 +407,29 @@
       <div style="text-align:center;margin-top:2rem;">
         <a href="#" onclick="openRegModal(event)" class="btn">Register Now</a>
       </div>
+
+      <script>
+      (function(){try{
+        var schedule=[
+          {id:'sched-time-1',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z',startDate:'Jan 8, 2026'},
+          {id:'sched-time-2',start:'2026-01-07T01:00:00Z',end:'2026-01-07T02:30:00Z',startDate:'Jan 6, 2026'}
+        ];
+        var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
+        var tf={hour:'numeric',minute:'2-digit',hour12:true};
+        schedule.forEach(function(s){
+          var el=document.getElementById(s.id);if(!el)return;
+          var d1=new Date(s.start),d2=new Date(s.end);
+          var day=days[d1.getDay()];
+          var t1=new Intl.DateTimeFormat(undefined,tf).format(d1);
+          var t2=new Intl.DateTimeFormat(undefined,tf).format(d2);
+          var tz='';
+          new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
+            if(p.type==='timeZoneName')tz=p.value;
+          });
+          el.textContent='\u{1F4C5} '+day+' '+t1+'\u2013'+t2+' '+tz+' \u00B7 Starting '+s.startDate;
+        });
+      }catch(e){}}());
+      </script>
     </div>
   </section>
 

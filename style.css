@@ -1265,6 +1265,57 @@ p {
   color: var(--teal-dark);
 }
 
+/* Dark green section */
+.section-dark-green {
+  background: #343a1a;
+  color: rgba(255,255,255,0.9);
+}
+
+.section-dark-green h2 {
+  color: var(--white);
+}
+
+.section-dark-green .program-details-card {
+  background: #c8e6d4 !important;
+  border-color: rgba(133,207,174,0.3) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  color: var(--text-dark) !important;
+}
+
+.section-dark-green .program-details-heading {
+  color: #2a5c3f !important;
+}
+
+.section-dark-green .program-details-note {
+  color: rgba(255,255,255,0.6);
+  border-color: var(--teal);
+}
+
+.section-dark-green .program-details-callout {
+  background: #c8e6d4 !important;
+  border-left-color: var(--teal) !important;
+  color: var(--text-dark) !important;
+}
+
+.section-dark-green .program-details-highlight {
+  color: #2a5c3f !important;
+}
+
+.section-dark-green .highlight-box {
+  background: #c8e6d4 !important;
+  color: var(--text-dark) !important;
+}
+
+.section-dark-green .highlight-box a {
+  color: #2a5c3f !important;
+  text-decoration: underline !important;
+}
+
+.section-dark-green .section-divider::before,
+.section-dark-green .section-divider::after {
+  background: rgba(255,255,255,0.15);
+}
+
 /* 3D Diorama */
 .diorama-wrapper {
   position: sticky;
@@ -1413,6 +1464,18 @@ p {
 .level-step-card h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
+}
+
+.level-schedule {
+  font-size: 0.88rem;
+  color: var(--teal-dark);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(133,207,174,0.08);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 4px 4px 0;
+  display: inline-block;
 }
 
 .level-step-card > p {
