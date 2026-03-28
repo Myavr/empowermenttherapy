@@ -1593,10 +1593,14 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
+      var submitBtn = form.querySelector('.reg-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
       var name = document.getElementById('regName').value.trim();
       var email = document.getElementById('regEmail').value.trim();
       var timezone = document.getElementById('regTimezone').value;
-      var program = document.getElementById('regProgram').value;
+      var program = document.getElementById('regProgram').value || 'Not specified';
       var message = document.getElementById('regMessage').value.trim();
 
       // Gather selected slots (desktop grid + mobile pills)
@@ -1613,56 +1617,129 @@
         if (!slotSet[s2]) { slotSet[s2] = true; slots.push(s2); }
       }
 
-      // Build formatted email body
-      var body = '';
-      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
-      body += '  NEW REGISTRATION REQUEST\n';
-      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
-      body += 'Name:     ' + name + '\n';
-      body += 'Email:    ' + email + '\n';
-      body += 'Timezone: ' + timezone + '\n';
-      body += 'Program:  ' + program + '\n\n';
+      // Convert local hour to Central Time hour
+      // Returns {hour24, dateDelta} where dateDelta is -1, 0, or +1 if date shifts
+      function localHourToCT(hour24, dateStr) {
+        // Build a real Date in user's local timezone for this slot
+        var dateParts = dateStr.split('/');
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = parseInt(dateParts[0]) - 1;
+        var day = parseInt(dateParts[1]);
+        var localDate = new Date(year, month, day, hour24, 0, 0);
 
+        // Convert to Central Time using Intl
+        var ctStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit'});
+        var ctHour = parseInt(ctStr.split(':')[0]);
+
+        var ctDateStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', month: 'numeric', day: 'numeric'});
+        // Clean up date string
+        var ctDateParts = ctDateStr.match(/(\d+)\/(\d+)/);
+        var ctDate = ctDateParts ? ctDateParts[1] + '/' + ctDateParts[2] : dateStr;
+
+        return {hour24: ctHour, dateStr: ctDate};
+      }
+
+      function hour24To12(h) {
+        if (h === 0) return '12:00 AM';
+        if (h < 12) return h + ':00 AM';
+        if (h === 12) return '12:00 PM';
+        return (h - 12) + ':00 PM';
+      }
+
+      function timeToHour(t) {
+        var match = t.match(/^(\d+):00\s*(AM|PM)$/i);
+        if (!match) return -1;
+        var h = parseInt(match[1]);
+        var ampm = match[2].toUpperCase();
+        if (ampm === 'AM' && h === 12) h = 0;
+        else if (ampm === 'PM' && h !== 12) h += 12;
+        return h;
+      }
+
+      function collapseRanges(times) {
+        times.sort(function(a, b) { return timeToHour(a) - timeToHour(b); });
+        var ranges = [];
+        var rangeStart = null;
+        var rangePrev = null;
+        for (var r = 0; r < times.length; r++) {
+          var hr = timeToHour(times[r]);
+          if (rangeStart === null) {
+            rangeStart = times[r];
+            rangePrev = hr;
+          } else if (hr === rangePrev + 1) {
+            rangePrev = hr;
+          } else {
+            if (rangePrev === timeToHour(rangeStart)) {
+              ranges.push(rangeStart);
+            } else {
+              ranges.push(rangeStart + ' – ' + times[r - 1]);
+            }
+            rangeStart = times[r];
+            rangePrev = hr;
+          }
+        }
+        if (rangeStart !== null) {
+          if (rangePrev === timeToHour(rangeStart)) {
+            ranges.push(rangeStart);
+          } else {
+            ranges.push(rangeStart + ' – ' + times[times.length - 1]);
+          }
+        }
+        return ranges.join(', ');
+      }
+
+      var availStr = 'No specific times selected — please reach out to coordinate.';
       if (slots.length > 0) {
-        body += '── Availability ──────────────\n';
-        // Group by date
-        var byDate = {};
+        // Convert all slots to Central Time, re-group by CT date
+        var byDateCT = {};
         for (var j = 0; j < slots.length; j++) {
           var parts = slots[j].split(' ');
           var dateKey = parts[0];
           var time = parts.slice(1).join(' ');
-          if (!byDate[dateKey]) byDate[dateKey] = [];
-          byDate[dateKey].push(time);
+          var localH = timeToHour(time);
+          var ct = localHourToCT(localH, dateKey);
+          var ctTime = hour24To12(ct.hour24);
+          if (!byDateCT[ct.dateStr]) byDateCT[ct.dateStr] = [];
+          byDateCT[ct.dateStr].push(ctTime);
         }
-        for (var dk in byDate) {
-          body += '  ' + dk + ':  ' + byDate[dk].join(', ') + '\n';
+        var lines = [];
+        for (var dk in byDateCT) {
+          lines.push(dk + ': ' + collapseRanges(byDateCT[dk]));
         }
-        body += '\n';
-      } else {
-        body += '── Availability ──────────────\n';
-        body += '  No specific times selected.\n';
-        body += '  (Please reach out to coordinate)\n\n';
+        availStr = lines.join(' | ');
       }
 
-      if (message) {
-        body += '── Additional Notes ──────────\n';
-        body += '  ' + message + '\n\n';
-      }
+      // Submit via FormSubmit.co
+      var formData = new FormData();
+      formData.append('Name', name);
+      formData.append('Email', email);
+      formData.append('Timezone', timezone);
+      formData.append('Program Interest', program);
+      formData.append('Availability (Central Time)', availStr);
+      if (message) formData.append('Additional Notes', message);
+      formData.append('_subject', 'Registration Request: ' + name);
+      formData.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com');
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
 
-      body += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
-
-      var subject = 'Registration Request: ' + name + ' — ' + program;
-      var mailto = 'mailto:empowermenttherapyinstitute@gmail.com'
-        + '?cc=myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com'
-        + '&subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
-
-      window.location.href = mailto;
-
-      // Show confirmation
-      setTimeout(function() {
-        form.innerHTML = '<div class="reg-success"><div class="reg-success-icon">✓</div><h3>Registration Submitted!</h3><p>Your email client should have opened with your registration details. Please send the email to complete your registration.</p><p style="margin-top:1rem;color:var(--text-muted);font-size:0.9rem;">If your email client didn\'t open, please email us directly at <a href="mailto:empowermenttherapyinstitute@gmail.com">empowermenttherapyinstitute@gmail.com</a></p></div>';
-      }, 500);
+      fetch('https://formsubmit.co/ajax/empowermenttherapyinstitute@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success) {
+          form.innerHTML = '<div class="reg-success"><div class="reg-success-icon">✓</div><h3>Registration Submitted!</h3><p>Thank you, ' + name + '. We\'ve received your registration and will be in touch to confirm your orientation session.</p></div>';
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Registration';
+        alert('Something went wrong. Please try again, or email us directly at empowermenttherapyinstitute@gmail.com');
+      });
     });
   })();
   </script>
