@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -39,6 +39,7 @@
       <nav>
         <a href="#home">Home</a>
         <a href="#programs">Programs</a>
+        <a href="#testimonialsSection">Testimonials</a>
         <a href="#values">Values</a>
         <a href="#team">Team</a>
         <a href="#resources">Resources</a>
@@ -57,7 +58,7 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
-      <h1 class="hero-headline" id="heroHeadline">Training <strong>empathy</strong> and <strong>empowerment</strong> practitioners around the world</h1>
+      <h1 class="hero-headline" id="heroHeadline">Training <strong>Empowerment Practitioners</strong> around the world</h1>
     </div>
   </section>
   <!-- Main content wrapper — covers fixed hero video -->
@@ -67,27 +68,60 @@
   <div class="country-bar">
     <div class="country-bar-content">
       <div class="globe-container">
-        <canvas id="globeCanvas" width="120" height="120"></canvas>
+        <svg id="globeSvg" width="120" height="120"></svg>
       </div>
       <div class="country-list">
         <span class="country-bar-label">Practitioners around the world</span>
         <div class="country-tags">
           <span class="country-tag">Canada</span>
-          <span class="country-tag">United States</span>
-          <span class="country-tag">Mexico</span>
           <span class="country-tag">Colombia</span>
           <span class="country-tag">Germany</span>
-          <span class="country-tag">The Netherlands</span>
-          <span class="country-tag">Spain</span>
-          <span class="country-tag">Ukraine</span>
-          <span class="country-tag">Tanzania</span>
-          <span class="country-tag">Kenya</span>
-          <span class="country-tag">South Africa</span>
           <span class="country-tag">India</span>
+          <span class="country-tag">Kenya</span>
+          <span class="country-tag">Mexico</span>
+          <span class="country-tag">Spain</span>
+          <span class="country-tag">Tanzania</span>
+          <span class="country-tag">The Netherlands</span>
+          <span class="country-tag">Ukraine</span>
+          <span class="country-tag">United States</span>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- THE PROBLEM Section -->
+  <section class="problem-section fade-in" id="theProblem">
+    <div class="container">
+      <h2 class="section-title">The Problem</h2>
+      <div class="problem-content">
+        <p>Too many people around the world lack access to quality mental health support. The demand for trained practitioners far exceeds the supply, and traditional training models are expensive, exclusive, and slow to scale.</p>
+        <p>Many communities — particularly in the Global South — are underserved, leaving individuals without the empathetic, empowerment-based care they deserve. The systems meant to help often perpetuate dependency rather than fostering genuine autonomy and resilience.</p>
+        <p>Meanwhile, countless compassionate people who want to help others lack affordable, accessible pathways to develop the skills they need to make a real difference.</p>
+        <p class="problem-disclaimer"><em>Disclaimer: Empowerment Therapy training does not replace licensed professional therapy. Our program equips practitioners with complementary empowerment skills to support clients alongside professional care.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE ARE DOING Section -->
+  <section class="doing-section fade-in" id="whatWeAreDoing">
+    <div class="container">
+      <h2 class="section-title">What We Are Doing</h2>
+      <div class="doing-content">
+        <ul class="doing-list">
+          <li>Training empowerment practitioners in 11 countries and counting</li>
+          <li>Offering affordable, sliding-scale tuition so cost is never a barrier</li>
+          <li>Building a global community of practitioners who support each other</li>
+          <li>Providing a structured, evidence-informed curriculum rooted in empathy and empowerment</li>
+          <li>Making training accessible online so anyone, anywhere can participate</li>
+          <li>Equipping practitioners with skills to foster client autonomy, not dependency</li>
+          <li>Certifying practitioners at multiple levels to match their experience and goals</li>
+          <li>Partnering with communities in underserved regions to expand access to care</li>
+          <li>Integrating Nonviolent Communication and Enneagram frameworks into holistic practice</li>
+          <li>Creating a ripple effect — each practitioner we train goes on to help dozens more</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <div class="hero-text-content">
     <div class="container">
@@ -1152,189 +1186,83 @@
 
   </script>
 
-  <!-- Globe Animation -->
+  <!-- D3 Globe -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
   <script>
   (function(){
-    var canvas = document.getElementById('globeCanvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = 120, H = 120, R = 52;
-    var cx = W/2, cy = H/2;
-    var rotation = 0;
-    var dotSize = 1.1;
+    var svg = d3.select('#globeSvg');
+    if (svg.empty()) return;
+    var W = 120, H = 120, R = 56;
 
-    // Lat/lon points approximating continent outlines (simplified)
-    var landPoints = [];
+    // Orthographic projection
+    var projection = d3.geoOrthographic()
+      .scale(R)
+      .translate([W/2, H/2])
+      .clipAngle(90);
 
-    // Generate land mass dots from simplified continent data
-    // [latMin, latMax, lonMin, lonMax] bounding boxes with density
-    var continents = [
-      // North America
-      {lats:[25,50], lons:[-130,-60], density:0.12},
-      {lats:[50,70], lons:[-170,-55], density:0.1},
-      {lats:[15,25], lons:[-110,-85], density:0.1},
-      // Central America
-      {lats:[7,20], lons:[-92,-77], density:0.12},
-      // South America
-      {lats:[-55,-10], lons:[-80,-35], density:0.12},
-      {lats:[-10,12], lons:[-82,-35], density:0.12},
-      // Europe
-      {lats:[36,60], lons:[-10,30], density:0.14},
-      {lats:[55,71], lons:[10,40], density:0.1},
-      // Africa
-      {lats:[-35,5], lons:[10,42], density:0.11},
-      {lats:[5,37], lons:[-18,42], density:0.11},
-      // Middle East
-      {lats:[12,42], lons:[30,60], density:0.09},
-      // Asia
-      {lats:[8,55], lons:[60,145], density:0.1},
-      {lats:[55,72], lons:[60,180], density:0.06},
-      // India
-      {lats:[8,35], lons:[68,90], density:0.13},
-      // Southeast Asia
-      {lats:[-10,20], lons:[95,140], density:0.1},
-      // Australia
-      {lats:[-40,-12], lons:[112,155], density:0.09},
-      // Japan/Korea
-      {lats:[30,45], lons:[128,146], density:0.14},
-      // UK/Ireland
-      {lats:[50,59], lons:[-11,2], density:0.15},
-      // Iceland
-      {lats:[63,67], lons:[-24,-13], density:0.1},
-    ];
+    var path = d3.geoPath().projection(projection);
 
-    // Country locations to highlight (lat, lon)
-    var highlightCountries = [
-      {lat:56.1, lon:-106.3, name:'Canada'},
-      {lat:37.1, lon:-95.7, name:'United States'},
-      {lat:23.6, lon:-102.5, name:'Mexico'},
-      {lat:4.6, lon:-74.1, name:'Colombia'},
-      {lat:51.2, lon:10.4, name:'Germany'},
-      {lat:52.1, lon:5.3, name:'The Netherlands'},
-      {lat:40.5, lon:-3.7, name:'Spain'},
-      {lat:48.4, lon:31.2, name:'Ukraine'},
-      {lat:-6.4, lon:34.9, name:'Tanzania'},
-      {lat:-0.02, lon:37.9, name:'Kenya'},
-      {lat:-30.6, lon:22.9, name:'South Africa'},
-      {lat:20.6, lon:79.0, name:'India'},
-    ];
+    // Ocean background
+    svg.append('circle')
+      .attr('cx', W/2).attr('cy', H/2).attr('r', R)
+      .attr('fill', '#1e2a38');
 
-    // Generate dot grid for each continent
-    continents.forEach(function(c){
-      var step = 3;
-      for(var lat=c.lats[0]; lat<=c.lats[1]; lat+=step){
-        for(var lon=c.lons[0]; lon<=c.lons[1]; lon+=step){
-          if(Math.random() < c.density * 3){
-            landPoints.push({lat:lat*Math.PI/180, lon:lon*Math.PI/180});
-          }
-        }
+    // Graticule (subtle grid lines)
+    var graticule = d3.geoGraticule().step([30, 30]);
+    svg.append('path')
+      .datum(graticule)
+      .attr('class', 'globe-graticule')
+      .attr('d', path)
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(255,255,255,0.07)')
+      .attr('stroke-width', 0.3);
+
+    // Land group
+    var landPath = svg.append('path')
+      .attr('class', 'globe-land')
+      .attr('fill', '#c8d8e4')
+      .attr('stroke', 'rgba(255,255,255,0.15)')
+      .attr('stroke-width', 0.3);
+
+    // Country borders
+    var borderPath = svg.append('path')
+      .attr('class', 'globe-borders')
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(255,255,255,0.12)')
+      .attr('stroke-width', 0.2);
+
+    // Atmosphere glow
+    var defs = svg.append('defs');
+    var radGrad = defs.append('radialGradient').attr('id', 'atmoGlow');
+    radGrad.append('stop').attr('offset', '85%').attr('stop-color', 'rgba(133,207,174,0)');
+    radGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(133,207,174,0.08)');
+    svg.append('circle')
+      .attr('cx', W/2).attr('cy', H/2).attr('r', R+3)
+      .attr('fill', 'url(#atmoGlow)')
+      .attr('pointer-events', 'none');
+
+    // Load world data and animate
+    var worldUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+    d3.json(worldUrl).then(function(world) {
+      var land = topojson.feature(world, world.objects.land);
+      var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
+
+      var rotAngle = [0, -15];
+      var speed = 0.25;
+
+      function animate() {
+        rotAngle[0] += speed;
+        projection.rotate(rotAngle);
+
+        landPath.attr('d', path(land));
+        borderPath.attr('d', path(borders));
+        svg.select('.globe-graticule').attr('d', path(graticule()));
+
+        requestAnimationFrame(animate);
       }
+      animate();
     });
-
-    function project(lat, lon, rot){
-      var x = Math.cos(lat)*Math.sin(lon+rot);
-      var y = -Math.sin(lat);
-      var z = Math.cos(lat)*Math.cos(lon+rot);
-      return {x: cx + x*R, y: cy + y*R, z: z};
-    }
-
-    var pulsePhase = 0;
-
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      rotation += 0.0015;
-      pulsePhase += 0.03;
-
-      // Ocean sphere
-      var grad = ctx.createRadialGradient(cx-12, cy-12, R*0.1, cx, cy, R);
-      grad.addColorStop(0, '#3a4a5a');
-      grad.addColorStop(0.5, '#252f3a');
-      grad.addColorStop(1, '#181f28');
-      ctx.beginPath();
-      ctx.arc(cx, cy, R, 0, Math.PI*2);
-      ctx.fillStyle = grad;
-      ctx.fill();
-
-      // Subtle grid lines (longitude)
-      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-      ctx.lineWidth = 0.5;
-      for(var g=0; g<6; g++){
-        var glon = (g/6)*Math.PI*2 + rotation;
-        ctx.beginPath();
-        for(var glat=-Math.PI/2; glat<=Math.PI/2; glat+=0.05){
-          var gp = project(glat, glon, 0);
-          if(gp.z < 0) continue;
-          if(glat === -Math.PI/2) ctx.moveTo(gp.x, gp.y);
-          else ctx.lineTo(gp.x, gp.y);
-        }
-        ctx.stroke();
-      }
-      // Latitude lines
-      for(var gl=-2; gl<=2; gl++){
-        var glat2 = (gl/3)*Math.PI/2;
-        ctx.beginPath();
-        var started = false;
-        for(var glon2=0; glon2<Math.PI*2; glon2+=0.05){
-          var gp2 = project(glat2, glon2, rotation);
-          if(gp2.z < 0){ started=false; continue; }
-          if(!started){ ctx.moveTo(gp2.x, gp2.y); started=true; }
-          else ctx.lineTo(gp2.x, gp2.y);
-        }
-        ctx.stroke();
-      }
-
-      // Land dots
-      landPoints.forEach(function(p){
-        var proj = project(p.lat, p.lon, rotation);
-        if(proj.z > 0){
-          var brightness = 0.3 + proj.z * 0.5;
-          ctx.fillStyle = 'rgba(180,200,210,' + brightness + ')';
-          ctx.beginPath();
-          ctx.arc(proj.x, proj.y, dotSize, 0, Math.PI*2);
-          ctx.fill();
-        }
-      });
-
-      // Country highlight dots (pulsing)
-      var pulse = 0.6 + Math.sin(pulsePhase)*0.4;
-      highlightCountries.forEach(function(c){
-        var proj = project(c.lat*Math.PI/180, c.lon*Math.PI/180, rotation);
-        if(proj.z > 0.1){
-          // Glow
-          ctx.fillStyle = 'rgba(133,207,174,' + (0.2*pulse*proj.z) + ')';
-          ctx.beginPath();
-          ctx.arc(proj.x, proj.y, 4, 0, Math.PI*2);
-          ctx.fill();
-          // Core dot
-          ctx.fillStyle = 'rgba(255,255,255,' + (0.8*proj.z) + ')';
-          ctx.beginPath();
-          ctx.arc(proj.x, proj.y, 1.8, 0, Math.PI*2);
-          ctx.fill();
-        }
-      });
-
-      // Atmosphere glow
-      var atmoGrad = ctx.createRadialGradient(cx, cy, R*0.92, cx, cy, R*1.08);
-      atmoGrad.addColorStop(0, 'rgba(133,207,174,0)');
-      atmoGrad.addColorStop(0.5, 'rgba(133,207,174,0.06)');
-      atmoGrad.addColorStop(1, 'rgba(133,207,174,0)');
-      ctx.beginPath();
-      ctx.arc(cx, cy, R*1.08, 0, Math.PI*2);
-      ctx.fillStyle = atmoGrad;
-      ctx.fill();
-
-      // Specular highlight
-      var specGrad = ctx.createRadialGradient(cx-30, cy-30, 0, cx-30, cy-30, R*0.7);
-      specGrad.addColorStop(0, 'rgba(255,255,255,0.1)');
-      specGrad.addColorStop(1, 'rgba(255,255,255,0)');
-      ctx.beginPath();
-      ctx.arc(cx, cy, R, 0, Math.PI*2);
-      ctx.fillStyle = specGrad;
-      ctx.fill();
-
-      requestAnimationFrame(draw);
-    }
-    draw();
   })();
   </script>
 

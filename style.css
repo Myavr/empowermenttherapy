@@ -308,7 +308,7 @@ header .container {
 
 .logo-text {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: 600;
   color: var(--white);
   letter-spacing: 0.02em;
@@ -445,10 +445,10 @@ header.scrolled .nav-register:hover {
 
 .menu-toggle span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 28px;
+  height: 3px;
   background: var(--white);
-  margin: 5px 0;
+  margin: 6px 0;
   border-radius: 2px;
   transition: all 0.5s;
 }
@@ -632,9 +632,10 @@ header.scrolled .menu-toggle span {
   flex-shrink: 0;
 }
 
-.globe-container canvas {
+.globe-container svg {
   display: block;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .country-list {
@@ -661,10 +662,10 @@ header.scrolled .menu-toggle span {
 .country-tag {
   display: inline-block;
   padding: 0.35rem 0.85rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(70,130,180,0.2);
+  border: 1px solid rgba(70,130,180,0.35);
   border-radius: 100px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(200,225,255,0.95);
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 400;
@@ -674,9 +675,83 @@ header.scrolled .menu-toggle span {
 }
 
 .country-tag:hover {
-  background: rgba(133,207,174,0.15);
-  border-color: rgba(133,207,174,0.3);
+  background: rgba(70,130,180,0.35);
+  border-color: rgba(100,160,210,0.5);
   color: var(--white);
+}
+
+/* ===== THE PROBLEM SECTION ===== */
+.problem-section {
+  background: #343a1a;
+  color: var(--white);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+}
+
+.problem-section .section-title {
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.problem-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.problem-content p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.problem-disclaimer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.9rem !important;
+  color: rgba(255,255,255,0.6) !important;
+}
+
+/* ===== WHAT WE ARE DOING SECTION ===== */
+.doing-section {
+  background: #8abc5e;
+  color: var(--text-dark);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+}
+
+.doing-section .section-title {
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.doing-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.doing-list {
+  list-style: none;
+  padding: 0;
+}
+
+.doing-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+.doing-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: #2a5c1a;
+  font-size: 0.75rem;
+  top: 0.35rem;
 }
 
 /* Main content wrapper — sits above fixed hero video */
