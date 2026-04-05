@@ -150,6 +150,7 @@ html {
 
 body {
   font-family: var(--font-body);
+  font-size: 1.2rem;
   color: var(--text-dark);
   line-height: 1.7;
   background: var(--white);
@@ -335,17 +336,24 @@ nav {
   display: flex;
   align-items: center;
   gap: 0;
+  background: rgba(40, 80, 120, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid rgba(70, 130, 180, 0.3);
 }
 
 nav a {
-  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
-  font-weight: 400;
-  color: rgba(255,255,255,0.85);
+  font-size: clamp(0.75rem, 1.1vw, 1rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.95);
   text-transform: uppercase;
-  padding: 0.5rem clamp(0.5rem, 1vw, 1.25rem);
+  padding: 0.4rem clamp(0.4rem, 0.8vw, 1rem);
   text-decoration: none;
-  transition: color 0.5s ease;
-  letter-spacing: 0.02em;
+  transition: color 0.5s ease, background 0.3s ease;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
 }
 
 nav a:hover {
@@ -356,13 +364,19 @@ nav a.active {
   color: var(--white);
 }
 
+header.scrolled nav {
+  background: rgba(40, 80, 120, 0.85);
+  border-color: rgba(70, 130, 180, 0.4);
+}
+
 header.scrolled nav a {
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.9);
 }
 
 header.scrolled nav a:hover,
 header.scrolled nav a.active {
-  color: var(--navy);
+  color: var(--white);
+  background: rgba(255,255,255,0.15);
 }
 
 /* Remove pipe separators */
@@ -387,14 +401,14 @@ nav a + a::before {
 }
 
 header.scrolled .nav-register {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
   color: var(--white) !important;
 }
 
 header.scrolled .nav-register:hover {
-  background: var(--coral) !important;
-  border-color: var(--coral) !important;
+  background: rgba(255,255,255,0.35) !important;
+  border-color: rgba(255,255,255,0.5) !important;
 }
 
 /* ===== BUTTONS ===== */
@@ -469,7 +483,7 @@ header.scrolled .menu-toggle span {
   height: 100vh;
   min-height: 500px;
   overflow: visible;
-  background: transparent;
+  background: #0a1520;
   z-index: 0;
 }
 
@@ -644,11 +658,11 @@ header.scrolled .menu-toggle span {
 
 .country-bar-label {
   display: block;
-  color: rgba(255,255,255,0.5);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  color: #FFDB58;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
@@ -700,7 +714,7 @@ header.scrolled .menu-toggle span {
 
 .problem-content p {
   color: rgba(255,255,255,0.9);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
@@ -715,7 +729,7 @@ header.scrolled .menu-toggle span {
 
 /* ===== WHAT WE ARE DOING SECTION ===== */
 .doing-section {
-  background: #8abc5e;
+  background: #F5F5DC;
   color: var(--text-dark);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
 }
@@ -740,7 +754,7 @@ header.scrolled .menu-toggle span {
   position: relative;
   padding-left: 2rem;
   margin-bottom: 1rem;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.7;
   color: #1a1a1a;
 }
@@ -749,9 +763,31 @@ header.scrolled .menu-toggle span {
   content: '◆';
   position: absolute;
   left: 0;
-  color: #2a5c1a;
+  color: #343a1a;
   font-size: 0.75rem;
   top: 0.35rem;
+}
+
+.doing-sublist {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0.25rem 0;
+}
+
+.doing-sublist li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+
+.doing-sublist li::before {
+  content: '○';
+  position: absolute;
+  left: 0;
+  color: #343a1a;
+  font-size: 0.7rem;
+  top: 0.4rem;
 }
 
 /* Main content wrapper — sits above fixed hero video */
@@ -773,9 +809,29 @@ header.scrolled .menu-toggle span {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: 1.25rem;
   line-height: 1.8;
   color: var(--text-muted);
+}
+
+/* ET statement box — ocean blue */
+.et-statement-box {
+  background: rgba(40, 80, 120, 0.85) !important;
+}
+
+.et-statement-box .ornament {
+  background: rgba(255,255,255,0.3) !important;
+}
+
+.et-statement-box .section-divider::before,
+.et-statement-box .section-divider::after {
+  background: rgba(255,255,255,0.15) !important;
+}
+
+.et-statement {
+  color: rgba(255,255,255,0.95) !important;
+  font-size: 1.3rem !important;
+  line-height: 1.9 !important;
 }
 
 /* ===== SECTIONS ===== */
@@ -2453,8 +2509,8 @@ footer {
   }
 }
 
-/* Hamburger menu kicks in at 1490px to prevent nav/logo overlap */
-@media (max-width: 1530px) {
+/* Hamburger menu for smaller screens */
+@media (max-width: 900px) {
   .menu-toggle {
     display: block;
     position: relative;
@@ -2464,6 +2520,10 @@ footer {
   }
 
   .menu-toggle span {
+    background: var(--white) !important;
+  }
+
+  header.scrolled .menu-toggle span {
     background: var(--navy) !important;
   }
 
@@ -2473,14 +2533,18 @@ footer {
     right: 0;
     width: 300px;
     height: 100vh;
-    background: var(--white);
+    background: rgba(20, 50, 80, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
     align-items: stretch;
     padding: 5rem 2rem 2rem;
     gap: 0;
+    border-radius: 0;
+    border: none;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
     z-index: 5;
   }
 
@@ -2491,13 +2555,14 @@ footer {
   nav a {
     padding: 0.75rem 0;
     font-size: 1.05rem;
-    border-bottom: 1px solid rgba(20,8,14,0.06);
-    color: var(--text-muted) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85) !important;
+    letter-spacing: 0.08em;
   }
 
   nav a:hover,
   nav a.active {
-    color: var(--navy) !important;
+    color: var(--white) !important;
   }
 
   .nav-register {
@@ -2506,8 +2571,8 @@ footer {
     text-align: center;
     border-radius: 4px;
     padding: 0.75rem 1rem !important;
-    background: var(--navy) !important;
-    border-color: var(--navy) !important;
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.3) !important;
     color: var(--white) !important;
   }
 }
