@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -33,19 +33,26 @@
         <img src="images/logo.png" alt="Empowerment Therapy Institute">
         <span class="logo-text">Empowerment Therapy Institute</span>
       </a>
-      <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('nav').classList.toggle('active')">
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-stack').classList.toggle('active')">
         <span></span><span></span><span></span>
       </button>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#programs">Programs</a>
-        <a href="#testimonialsSection">Testimonials</a>
-        <a href="#values">Values</a>
-        <a href="#team">Team</a>
-        <a href="#resources">Resources</a>
-        <a href="#contact">Contact</a>
+      <div class="nav-stack">
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#programs">Programs</a>
+          <a href="#testimonialsSection">Testimonials</a>
+          <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle('open');">About</a>
+            <div class="nav-dropdown-menu">
+              <a href="#team">Team</a>
+              <a href="#values">Values</a>
+            </div>
+          </div>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </nav>
         <a href="#" onclick="openRegModal(event)" class="nav-register">Register</a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -58,7 +65,7 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
-      <h1 class="hero-headline" id="heroHeadline">Training<br><strong>Empowerment Practitioners</strong><br>around the world</h1>
+      <h1 class="hero-headline" id="heroHeadline">Training <strong>Empowerment Practitioners</strong><br>around the world</h1>
     </div>
   </section>
   <!-- Main content wrapper — covers fixed hero video -->
@@ -76,6 +83,7 @@
           <span class="country-tag">Canada</span>
           <span class="country-tag">Colombia</span>
           <span class="country-tag">Germany</span>
+          <span class="country-tag">Honduras</span>
           <span class="country-tag">India</span>
           <span class="country-tag">Kenya</span>
           <span class="country-tag">Mexico</span>
@@ -97,6 +105,7 @@
         <p>Relationship conflicts, financial insecurity, and the state of the world — climate change, war, job displacement — frequently lead people to anguish and despair. Unfortunately, in many parts of the world support services are either not affordable or outright unavailable.</p>
         <p>Empowerment Therapy is an accompaniment model that concerned individuals who want to help can learn and apply.</p>
         <p>Empowerment Practitioners aid people to not only navigate current challenges, but also build more fulfilling relationships and thriving lives.</p>
+        <hr class="problem-divider">
         <p class="problem-disclaimer"><em>Empowerment practice is not a substitute for psychotherapy when professional mental health services are necessary.</em></p>
       </div>
     </div>
@@ -108,7 +117,7 @@
       <h2 class="section-title">What We Are Doing</h2>
       <div class="doing-content">
         <ul class="doing-list">
-          <li>Training Empowerment Practitioners in eleven countries, so far.</li>
+          <li>Training Empowerment Practitioners in twelve countries, so far.</li>
           <li>Weekly training sessions online, thus greatly expanding access.</li>
           <li>Low fees and scholarships, so cost is not a barrier.</li>
           <li>In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited.</li>
@@ -130,17 +139,18 @@
 
   <div class="hero-text-content et-statement-box">
     <div class="container">
-      <div class="section-divider"><span class="ornament"></span></div>
-      <p class="et-statement" style="max-width:1100px;margin-left:auto;margin-right:auto;text-align:center;">
-        Empowerment Therapy is for those of us<br>
-        who want to accompany others on the journey towards<br>
-        equilibrium, wholeness,<br>
-        and<br>
-        connection with their authentic self.<br><br>
-        It supports us in helping our clients<br>
-        identify, trust, and endeavor to meet their needs because<br>
-        when our needs are met, we thrive!
-      </p>
+      <div class="et-statement-inner">
+        <p class="et-statement">
+          Empowerment Therapy is for those of us<br>
+          who want to accompany others on the journey towards<br>
+          <strong>equilibrium</strong>, <strong>wholeness</strong>,<br>
+          and<br>
+          connection with their <strong>authentic self</strong>.<br><br>
+          It supports us in helping our clients<br>
+          identify, trust, and endeavor to meet their needs because<br>
+          when our needs are met, we thrive!
+        </p>
+      </div>
     </div>
   </div>
 
@@ -1170,9 +1180,10 @@
     }());
 
     // Close mobile nav on anchor click
-    document.querySelectorAll('nav a').forEach(a => {
+    document.querySelectorAll('nav a, .nav-register').forEach(a => {
       a.addEventListener('click', () => {
-        document.querySelector('nav').classList.remove('active');
+        var ns = document.querySelector('.nav-stack');
+        if (ns) ns.classList.remove('active');
       });
     });
 
