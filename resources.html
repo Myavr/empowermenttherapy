@@ -1,7 +1,315 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0;url=index.html#resources">
-  <script>window.location.replace('index.html#resources');</script>
-</head><body></body></html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources | The Empowerment Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=25">
+</head>
+<body class="subpage">
+
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-bloom">
+        <div class="loader-petal"></div><div class="loader-petal"></div><div class="loader-petal"></div><div class="loader-petal"></div><div class="loader-petal"></div><div class="loader-petal"></div>
+        <div class="loader-core"></div>
+      </div>
+      <p class="loader-text">Empowerment Therapy Institute</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo logo-flourish-botanical">
+        <img src="images/logo.png" alt="Empowerment Therapy Institute">
+        <span class="logo-text">Empowerment Therapy Institute</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-stack').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-stack">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="testimonials.html">Testimonials</a>
+          <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle('open');">About</a>
+            <div class="nav-dropdown-menu">
+              <a href="team.html">Team</a>
+              <a href="values.html">Values</a>
+            </div>
+          </div>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a href="#" onclick="openRegModal(event)" class="nav-register">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="subpage-spacer"></div>
+
+  <div class="main-content-wrapper">
+
+  <section class="subpage-hero">
+    <h1>Resources</h1>
+    <p>Readings, tools, and practices to deepen your understanding of Empowerment Therapy.</p>
+  </section>
+
+  <section class="fade-in" id="resources">
+    <div class="container">
+      <div class="resource-grid">
+
+        <div class="resource-card" tabindex="0">
+          <div class="resource-card-header">
+            <span class="resource-card-icon" style="background:var(--teal-light);color:var(--teal-dark);">&#9997;</span>
+            <div>
+              <h3 class="resource-card-title">Articles</h3>
+              <p class="resource-card-count">5 readings</p>
+            </div>
+            <span class="resource-card-toggle">+</span>
+          </div>
+          <div class="resource-card-body">
+            <ul class="resource-list">
+              <li>
+                <a href="pdfs/From-Guilt-Shame-11026.pdf" target="_blank" rel="noopener">From Guilt and Shame to Self-Compassion<span class="resource-author">Myra Walden</span></a>
+              </li>
+              <li>
+                <a href="https://www.comunicacionplena.com/post/nonviolent-communication-and-trauma?lang=en" target="_blank" rel="noopener">Nonviolent Communication and Trauma<span class="resource-author">Claudia S&aacute;nchez</span></a>
+              </li>
+              <li>
+                <a href="https://share.google/ajfDRpElFRdBOQ0sA" target="_blank" rel="noopener">The Actualizing Tendency<span class="resource-author">Barbara Temaner Brodley</span></a>
+              </li>
+              <li>
+                <a href="https://counselling-tutor.s3.eu-west-2.amazonaws.com/CSR+Documents/The+Necessary+and+Sufficient+Conditions+of+Therapeutic+Personality+Change.pdf" target="_blank" rel="noopener">The Necessary and Sufficient Conditions of Therapeutic Personality Change<span class="resource-author">Carl Rogers</span></a>
+              </li>
+              <li>
+                <a href="pdfs/What-is-NVC-FINAL-PDF.pdf" target="_blank" rel="noopener">What is Nonviolent Communication?<span class="resource-author">Myra Walden</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resource-card" tabindex="0">
+          <div class="resource-card-header">
+            <span class="resource-card-icon" style="background:var(--coral-light);color:var(--coral);">&#9733;</span>
+            <div>
+              <h3 class="resource-card-title">Certification Candidates Kit</h3>
+              <p class="resource-card-count">2 tools</p>
+            </div>
+            <span class="resource-card-toggle">+</span>
+          </div>
+          <div class="resource-card-body">
+            <ul class="resource-list">
+              <li>
+                <a href="pdfs/EmpowermentJournalPDF.pdf" target="_blank" rel="noopener">Empowerment Journal Form<span class="resource-description">Tool for practitioners to increase self-awareness and embody therapeutic traits</span></a>
+              </li>
+              <li>
+                <a href="pdfs/Self-EvaluaitonsPDF.pdf" target="_blank" rel="noopener">Self-Evaluation Form<span class="resource-description">Tool for practitioners to increase self-awareness and improve client work</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resource-card" tabindex="0">
+          <div class="resource-card-header">
+            <span class="resource-card-icon" style="background:rgba(138,188,94,0.15);color:var(--gold);">&#10047;</span>
+            <div>
+              <h3 class="resource-card-title">Internal Processes</h3>
+              <p class="resource-card-count">3 practices</p>
+            </div>
+            <span class="resource-card-toggle">+</span>
+          </div>
+          <div class="resource-card-body">
+            <ul class="resource-list">
+              <li>
+                <a href="pdfs/FNSInventories.pdf" target="_blank" rel="noopener">Feelings, Needs, and Sensations Inventories<span class="resource-description">Three lists for understanding and connecting with personal experience</span></a>
+              </li>
+              <li>
+                <a href="pdfs/Inner-Silence-Meditation-PDF.pdf" target="_blank" rel="noopener">Inner Silence Meditation<span class="resource-description">Practice to reduce reactivity, increase equanimity and clarity regarding needs</span></a>
+              </li>
+              <li>
+                <a href="pdfs/S-EmpathyS-Empowerment3PDF.pdf" target="_blank" rel="noopener">Self-Empathy &amp; Empowerment (SEE)<span class="resource-description">Process for understanding difficult experiences, fostering healing, identifying heart's longings, gaining clarity on meeting needs</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resource-card" tabindex="0">
+          <div class="resource-card-header">
+            <span class="resource-card-icon" style="background:rgba(133,207,174,0.15);color:var(--blush);">&#10084;</span>
+            <div>
+              <h3 class="resource-card-title">Interpersonal Processes</h3>
+              <p class="resource-card-count">2 practices</p>
+            </div>
+            <span class="resource-card-toggle">+</span>
+          </div>
+          <div class="resource-card-body">
+            <ul class="resource-list">
+              <li>
+                <a href="pdfs/ConnectionSuperhighwayPDF.pdf" target="_blank" rel="noopener">Connection Superhighway<span class="resource-description">Process to resolve conflict satisfyingly for all involved parties</span></a>
+              </li>
+              <li>
+                <a href="pdfs/RestoationProcessPDF.pdf" target="_blank" rel="noopener">Restoration Dialogue<span class="resource-description">Tool for restoring self-respect and wholeness when actions conflict with values</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="The Empowerment Institute"></a>
+          <p class="footer-tagline">Healing. Liberation. Empowerment.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/empowerment.therapy/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/IEC.EmpoweringCommunication/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="values.html">Values</a>
+          <a href="team.html">Team</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <div class="team-photos">
+            <figure><img src="images/footer-simran.jpg" alt="Simran"><figcaption>Simran</figcaption></figure>
+            <figure><img src="images/footer-myra.jpg" alt="Myra"><figcaption>Myra</figcaption></figure>
+            <figure><img src="images/footer-priti.jpg" alt="Priti"><figcaption>Priti</figcaption></figure>
+          </div>
+          <a href="mailto:empowermenttherapyinstitute@gmail.com" class="footer-email">empowermenttherapyinstitute@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-mid">
+        <a href="https://www.amazon.com/Empowerment-Therapy-Helping-Clients-Fulfilling/dp/1737588420" target="_blank" rel="noopener" class="footer-book">
+          <img src="images/book-cover.png" alt="Empowerment Therapy Book">
+          <span>Get the Book</span>
+        </a>
+        <a href="https://www.paypal.com/ncp/payment/JT9X4BBKNB9ZE" target="_blank" rel="noopener" class="footer-paypal">
+          <img src="images/paypal-qr.png" alt="PayPal QR Code">
+          <span>Make a Payment</span>
+        </a>
+        <div class="footer-subscribe">
+          <span class="footer-subscribe-label">Subscribe &amp; Support</span>
+          <div id="paypal-button-container-P-8CS01676DE0612907NHPQXBQ"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Empowerment Therapy Institute. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main-content-wrapper -->
+
+  <div class="reg-modal-overlay" id="regModal">
+    <div class="reg-modal">
+      <button class="reg-modal-close" id="regModalClose" aria-label="Close">&times;</button>
+      <h2>Register for an Orientation Session</h2>
+      <p class="reg-modal-subtitle">Complete the form below to request a 45-minute orientation meeting. This session helps both you and our team determine if the program is a good fit.</p>
+      <form id="regForm" class="reg-form">
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regName">Full Name <span class="req">*</span></label>
+            <input type="text" id="regName" name="name" required placeholder="Your full name">
+          </div>
+          <div class="reg-form-field">
+            <label for="regEmail">Email <span class="req">*</span></label>
+            <input type="email" id="regEmail" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regTimezone">Your Timezone <span class="req">*</span></label>
+            <select id="regTimezone" name="timezone" required>
+              <option value="">Select your timezone</option>
+              <option value="UTC-8 (PST)">UTC-8 (Pacific)</option>
+              <option value="UTC-7 (MST)">UTC-7 (Mountain)</option>
+              <option value="UTC-6 (CST)">UTC-6 (Central US)</option>
+              <option value="UTC-5 (EST)">UTC-5 (Eastern)</option>
+              <option value="UTC-4 (AST)">UTC-4 (Atlantic)</option>
+              <option value="UTC-3 (ART)">UTC-3 (Argentina/Brazil)</option>
+              <option value="UTC-1 (CVT)">UTC-1 (Cape Verde)</option>
+              <option value="UTC+0 (GMT)">UTC+0 (GMT/UK)</option>
+              <option value="UTC+1 (CET)">UTC+1 (Central Europe)</option>
+              <option value="UTC+2 (EET)">UTC+2 (Eastern Europe)</option>
+              <option value="UTC+3 (EAT)">UTC+3 (East Africa)</option>
+              <option value="UTC+4 (GST)">UTC+4 (Gulf)</option>
+              <option value="UTC+5 (PKT)">UTC+5 (Pakistan)</option>
+              <option value="UTC+5:30 (IST)">UTC+5:30 (India)</option>
+              <option value="UTC+6 (BST)">UTC+6 (Bangladesh)</option>
+              <option value="UTC+8 (CST)">UTC+8 (China/Singapore)</option>
+              <option value="UTC+9 (JST)">UTC+9 (Japan/Korea)</option>
+              <option value="UTC+10 (AEST)">UTC+10 (Australia East)</option>
+              <option value="UTC+12 (NZST)">UTC+12 (New Zealand)</option>
+            </select>
+          </div>
+          <div class="reg-form-field">
+            <label for="regProgram">Program Interest <span class="reg-optional">(optional)</span></label>
+            <select id="regProgram" name="program">
+              <option value="">Select a program</option>
+              <option value="Level 1: Foundation">Level 1: Foundation</option>
+              <option value="Level 2: Empowerment Processes">Level 2: Empowerment Processes</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="reg-form-field">
+          <label>When are you available for your orientation session?</label>
+          <p class="reg-avail-note">All applicants meet with our team for a 45-minute orientation. Select any times that work for you below (shown in your local timezone). Once we receive your submission, we'll reach out to confirm a specific time. If none of these slots fit, leave this blank and we'll coordinate directly.</p>
+          <div class="reg-avail-grid" id="regAvailGrid"></div>
+        </div>
+        <div class="reg-form-field">
+          <label for="regMessage">Anything else you'd like us to know? <span class="reg-optional">(optional)</span></label>
+          <textarea id="regMessage" name="message" rows="3" placeholder="E.g. how you heard about us, questions you have, etc."></textarea>
+        </div>
+        <button type="submit" class="reg-submit">Submit Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="shared.js?v=25"></script>
+  <script>
+    document.querySelectorAll('.resource-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        document.querySelectorAll('.resource-card.is-open').forEach(c => {
+          if (c !== card) c.classList.remove('is-open');
+        });
+        card.classList.toggle('is-open');
+      });
+    });
+  </script>
+  <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+  <script>
+    if (window.paypal && paypal.Buttons) {
+      paypal.Buttons({
+        style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+        createSubscription: function(data, actions) {
+          return actions.subscription.create({ plan_id: 'P-8CS01676DE0612907NHPQXBQ' });
+        },
+        onApprove: function(data, actions) {
+          alert('Thank you for subscribing! Subscription ID: ' + data.subscriptionID);
+        }
+      }).render('#paypal-button-container-P-8CS01676DE0612907NHPQXBQ');
+    }
+  </script>
+
+</body>
+</html>

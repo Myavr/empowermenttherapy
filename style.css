@@ -338,6 +338,8 @@ header.scrolled .logo-text {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.6rem;
+  align-self: flex-end;
+  margin-bottom: 0.35rem;
 }
 
 nav {
@@ -359,9 +361,8 @@ nav {
 }
 
 .nav-dropdown-toggle::after {
-  content: ' ▾';
-  font-size: 0.7em;
-  opacity: 0.8;
+  content: '';
+  display: none;
 }
 
 .nav-dropdown-menu {
@@ -542,6 +543,74 @@ header.scrolled .menu-toggle span {
 /* ===== PAGE SPACER ===== */
 .page-spacer {
   height: 0;
+}
+
+/* Subpage adjustments — pages without a hero need content pushed below fixed header */
+body.subpage header {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom-color: rgba(20, 8, 14, 0.06);
+  box-shadow: 0 1px 20px rgba(20, 8, 14, 0.08);
+}
+
+body.subpage .logo-text {
+  color: var(--navy);
+}
+
+body.subpage .menu-toggle span {
+  background: var(--navy) !important;
+}
+
+body.subpage .subpage-spacer {
+  height: 132px;
+}
+
+/* Hamburger mode: header collapses to just logo + padding, so spacer shrinks to match */
+@media (max-width: 1200px) {
+  body.subpage .subpage-spacer {
+    height: 96px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.subpage .subpage-spacer {
+    height: 68px;
+  }
+}
+
+/* Subpage hero banner (small intro section) */
+.subpage-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a2f4a 50%, #14181f 100%);
+  color: var(--white);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 40%, rgba(133,207,174,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.subpage-hero h1 {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.subpage-hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* ===== HERO SECTION ===== */
@@ -782,7 +851,7 @@ header.scrolled .menu-toggle span {
 
 .problem-content p {
   color: rgba(255,255,255,0.9);
-  font-size: 1.25rem;
+  font-size: 1.58rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
@@ -798,9 +867,17 @@ header.scrolled .menu-toggle span {
 
 .problem-disclaimer {
   margin-top: 0;
-  font-size: 1.58rem !important;
+  font-size: 1.25rem !important;
   color: rgba(255,255,255,0.85) !important;
   line-height: 1.6;
+}
+
+/* Reusable "problem font" — applies the larger body size used on the Problem section sitewide */
+.problem-font,
+.problem-font p,
+.problem-font li {
+  font-size: 1.58rem !important;
+  line-height: 1.8 !important;
 }
 
 /* ===== WHAT WE ARE DOING SECTION ===== */
@@ -866,6 +943,98 @@ header.scrolled .menu-toggle span {
   top: 0.4rem;
 }
 
+/* Accordion version — each bullet is a collapsible item */
+.doing-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.doing-accordion-item {
+  background: rgba(52, 58, 26, 0.06);
+  border: 1px solid rgba(52, 58, 26, 0.18);
+  border-radius: 8px;
+  padding: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.doing-accordion-item[open] {
+  background: rgba(52, 58, 26, 0.1);
+  border-color: rgba(52, 58, 26, 0.3);
+}
+
+.doing-accordion-item > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.4rem 1rem 2.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.58rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  position: relative;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.doing-accordion-item > summary::-webkit-details-marker { display: none; }
+.doing-accordion-item > summary::marker { content: ''; }
+
+.doing-accordion-item > summary::before {
+  content: '◆';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #343a1a;
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+}
+
+.doing-accordion-item[open] > summary::before {
+  transform: translateY(-50%) rotate(45deg);
+  color: #FFDB58;
+  text-shadow: 0 0 4px rgba(52, 58, 26, 0.4);
+}
+
+.doing-accordion-item > summary::after {
+  content: '+';
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #343a1a;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.doing-accordion-item[open] > summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.doing-accordion-item > p,
+.doing-accordion-item > .doing-sublist {
+  margin: 0 1.4rem 1rem 2.5rem;
+  color: #1a1a1a;
+  font-size: 1.58rem;
+  line-height: 1.75;
+}
+
+.doing-accordion-item > p:first-of-type {
+  padding-top: 0.15rem;
+}
+
+.doing-accordion-item > .doing-sublist {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.doing-accordion-item > .doing-sublist li {
+  font-size: 1.3rem;
+  line-height: 1.7;
+}
+
 /* Main content wrapper — sits above fixed hero video */
 .main-content-wrapper {
   position: relative;
@@ -893,8 +1062,7 @@ header.scrolled .menu-toggle span {
 /* ET statement box — midnight blue */
 .et-statement-box {
   background: #1A1D23 !important;
-  padding-top: clamp(3rem, 6vw, 5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
 }
 
 .et-statement-inner {
@@ -905,11 +1073,15 @@ header.scrolled .menu-toggle span {
 
 .et-statement {
   color: rgba(255,255,255,0.95) !important;
-  font-size: 1.35rem !important;
-  line-height: 1.9 !important;
+  font-size: 1.58rem !important;
+  line-height: 1.8 !important;
   text-align: left !important;
   max-width: none !important;
-  margin: 0 !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+.et-statement:last-child {
+  margin-bottom: 0 !important;
 }
 
 .et-statement strong {
@@ -917,10 +1089,21 @@ header.scrolled .menu-toggle span {
   font-weight: 700;
 }
 
-/* Match Problem section container width */
+.et-thrive {
+  color: #FFDB58;
+  font-weight: 600;
+}
+
+/* Match Problem section container width and horizontal padding */
 .problem-section .container,
-.et-statement-box .container {
+.et-statement-box .container,
+.doing-section .container {
   max-width: 1000px;
+}
+
+.et-statement-inner {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* ===== SECTIONS ===== */
@@ -1168,10 +1351,10 @@ p {
 }
 
 .venn-photo {
-  width: 120px;
-  height: 120px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  padding: 3px;
+  padding: 4px;
   margin-bottom: 1rem;
   flex-shrink: 0;
 }
@@ -1195,16 +1378,60 @@ p {
 
 .venn-side h4 {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   color: var(--white);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .venn-subtitle {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+/* Centered ET emblem below Rosenberg / Rogers */
+.venn-et-box {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem auto 0;
+  position: relative;
+  z-index: 3;
+}
+
+.venn-et-circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 219, 88, 0.95) 0%, #FFDB58 60%, #d4b440 100%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35), inset 0 -8px 18px rgba(180, 140, 30, 0.35);
+  border: 4px solid var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.venn-et-title {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #1A1D23;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.venn-et-sub {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1A1D23;
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 180px;
 }
 
 .venn-points {
@@ -1318,13 +1545,19 @@ p {
 
 /* ===== ET DESCRIPTION ===== */
 .et-description {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 2rem auto 0;
+  padding: 0 2rem;
+}
+
+.et-description p {
+  font-size: 1.58rem !important;
+  line-height: 1.8 !important;
 }
 
 .et-description-lead {
-  font-size: 1.15rem !important;
-  line-height: 1.85;
+  font-size: 1.58rem !important;
+  line-height: 1.8 !important;
 }
 
 .et-examples {
@@ -1346,7 +1579,8 @@ p {
 
 .et-description-aims {
   font-weight: 500;
-  font-size: 1.1rem !important;
+  font-size: 1.58rem !important;
+  line-height: 1.8 !important;
   margin-top: 0.5rem;
 }
 
@@ -2007,13 +2241,7 @@ p {
   border-radius: var(--radius-md);
   padding: 1.75rem;
   width: 100%;
-  cursor: pointer;
   transition: border-color var(--transition-smooth), background var(--transition-smooth);
-}
-
-.timeline-card:hover {
-  border-color: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.08);
 }
 
 .timeline-card-label {
@@ -2033,14 +2261,15 @@ p {
 }
 
 .timeline-card-summary {
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 0;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1rem;
+  font-style: italic;
 }
 
 .timeline-card-detail {
-  display: none;
+  display: block;
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -2050,15 +2279,15 @@ p {
   display: none;
 }
 
-.timeline-card.is-open .timeline-card-detail {
-  display: block;
-  animation: detail-reveal 0.4s ease forwards;
+.timeline-card-detail p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
 }
 
-.timeline-card-detail p {
-  font-size: 0.92rem;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.8;
+.timeline-card-detail p:last-child {
+  margin-bottom: 0;
 }
 
 .timeline-card-detail blockquote {
@@ -2072,12 +2301,7 @@ p {
 }
 
 .timeline-card-hint {
-  display: block;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.3);
-  margin-top: 0.75rem;
+  display: none;
 }
 
 .timeline-terminus {
@@ -2561,6 +2785,25 @@ footer {
   opacity: 0.85;
 }
 
+.footer-subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 200px;
+}
+
+.footer-subscribe-label {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.02em;
+}
+
+.footer-subscribe #paypal-button-container-P-8CS01676DE0612907NHPQXBQ {
+  width: 200px;
+  max-width: 100%;
+}
+
 .footer-bottom {
   text-align: center;
   padding: 1.5rem 0;
@@ -2665,39 +2908,88 @@ footer {
     background: transparent;
   }
 
-  /* Flatten the About dropdown on mobile */
+  /* Flatten the About dropdown on mobile — expand inline within the menu */
   .nav-dropdown {
     display: block;
   }
 
   .nav-dropdown-toggle {
-    display: block;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Visible chevron indicator on mobile */
+  .nav-dropdown-toggle::after {
+    content: '';
+    display: inline-block !important;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid rgba(255,255,255,0.7);
+    border-bottom: 2px solid rgba(255,255,255,0.7);
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 0.25s ease;
+    margin-left: 0.5rem;
+  }
+
+  .nav-dropdown.open .nav-dropdown-toggle::after {
+    transform: rotate(-135deg) translateY(-2px);
   }
 
   .nav-dropdown-menu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    min-width: 0;
-    display: none;
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
 
+  .nav-dropdown:hover .nav-dropdown-menu,
   .nav-dropdown.open .nav-dropdown-menu {
-    display: block;
+    max-height: 200px;
+    transform: none !important;
+  }
+
+  /* Disable hover-open on mobile — only .open (tap) should expand */
+  .nav-dropdown:hover:not(.open) .nav-dropdown-menu {
+    max-height: 0;
   }
 
   .nav-dropdown-menu a {
-    padding: 0.6rem 0 0.6rem 1.25rem;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0.6rem 0 0.6rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    color: rgba(255,255,255,0.75) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: relative;
+  }
+
+  .nav-dropdown-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0.4rem;
+    top: 50%;
+    width: 0.6rem;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  .nav-dropdown-menu a.active {
+    color: var(--white) !important;
   }
 
   .nav-register {
@@ -2742,20 +3034,53 @@ footer {
 
   .problem-content p,
   .doing-list li {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
 
   .problem-disclaimer {
-    font-size: 1.25rem !important;
+    font-size: 1.0rem !important;
   }
 
   .doing-sublist li {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
+  }
+
+  .problem-font,
+  .problem-font p,
+  .problem-font li {
+    font-size: 1.2rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .doing-accordion-item > summary {
+    font-size: 1.15rem;
+    padding: 0.85rem 1.1rem 0.85rem 2.1rem;
+  }
+
+  .doing-accordion-item > summary::before {
+    left: 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  .doing-accordion-item > summary::after {
+    right: 0.85rem;
+    font-size: 1.3rem;
+  }
+
+  .doing-accordion-item > p,
+  .doing-accordion-item > .doing-sublist {
+    margin: 0 1.1rem 0.85rem 2.1rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .doing-accordion-item > .doing-sublist li {
+    font-size: 1rem;
   }
 
   .et-statement {
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
+    font-size: 1.2rem !important;
+    line-height: 1.75 !important;
   }
 
   .problem-section,
@@ -2809,8 +3134,32 @@ footer {
   }
 
   .venn-photo {
-    width: 90px;
-    height: 90px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .venn-et-circle {
+    width: 180px;
+    height: 180px;
+    padding: 0.75rem;
+  }
+
+  .venn-et-title {
+    font-size: 1.15rem;
+  }
+
+  .venn-et-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    max-width: 140px;
+  }
+
+  .venn-side h4 {
+    font-size: 1.2rem;
+  }
+
+  .venn-subtitle {
+    font-size: 0.95rem;
   }
 
 
@@ -2926,6 +3275,17 @@ footer {
   .et-examples {
     flex-direction: column;
     align-items: center;
+  }
+
+  .et-description {
+    padding: 0 1.25rem;
+  }
+
+  .et-description p,
+  .et-description-lead,
+  .et-description-aims {
+    font-size: 1.2rem !important;
+    line-height: 1.75 !important;
   }
 
   .diorama-wrapper {

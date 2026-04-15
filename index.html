@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
 
   <header>
     <div class="container">
-      <a href="#home" class="logo logo-flourish-botanical">
+      <a href="index.html" class="logo logo-flourish-botanical">
         <img src="images/logo.png" alt="Empowerment Therapy Institute">
         <span class="logo-text">Empowerment Therapy Institute</span>
       </a>
@@ -38,18 +38,18 @@
       </button>
       <div class="nav-stack">
         <nav>
-          <a href="#home">Home</a>
-          <a href="#programs">Programs</a>
-          <a href="#testimonialsSection">Testimonials</a>
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="testimonials.html">Testimonials</a>
           <div class="nav-dropdown">
             <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle('open');">About</a>
             <div class="nav-dropdown-menu">
-              <a href="#team">Team</a>
-              <a href="#values">Values</a>
+              <a href="team.html">Team</a>
+              <a href="values.html">Values</a>
             </div>
           </div>
-          <a href="#resources">Resources</a>
-          <a href="#contact">Contact</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
         </nav>
         <a href="#" onclick="openRegModal(event)" class="nav-register">Register</a>
       </div>
@@ -65,7 +65,7 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-clouds-overlay">
-      <h1 class="hero-headline" id="heroHeadline">Training <strong>Empowerment Practitioners</strong><br>around the world</h1>
+      <h1 class="hero-headline" id="heroHeadline">Training<br><strong>Empowerment Practitioners</strong><br>around the world.</h1>
     </div>
   </section>
   <!-- Main content wrapper — covers fixed hero video -->
@@ -82,6 +82,7 @@
         <div class="country-tags">
           <span class="country-tag">Canada</span>
           <span class="country-tag">Colombia</span>
+          <span class="country-tag">Czech Republic</span>
           <span class="country-tag">Germany</span>
           <span class="country-tag">Honduras</span>
           <span class="country-tag">India</span>
@@ -116,23 +117,49 @@
     <div class="container">
       <h2 class="section-title">What We Are Doing</h2>
       <div class="doing-content">
-        <ul class="doing-list">
-          <li>Training Empowerment Practitioners in twelve countries, so far.</li>
-          <li>Weekly training sessions online, thus greatly expanding access.</li>
-          <li>Low fees and scholarships, so cost is not a barrier.</li>
-          <li>In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited.</li>
-          <li>Structured, evidence-informed curriculum incorporating Nonviolent Communication and Client-Centered Therapy.</li>
-          <li>Training combines conceptual and experiential learning within a collaborative paradigm, and includes such topics as:
+        <div class="doing-accordion">
+          <details class="doing-accordion-item">
+            <summary>Global Reach</summary>
+            <p>Training Empowerment Practitioners in 13 countries, so far.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Weekly Online Training</summary>
+            <p>Weekly training sessions online, thus greatly expanding access.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Affordable Access</summary>
+            <p>Low fees and scholarships, so cost is not a barrier.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>In-Person Workshops</summary>
+            <p>In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Structured Curriculum</summary>
+            <p>Structured, evidence-informed curriculum incorporating Nonviolent Communication and Client-Centered Therapy.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Collaborative &amp; Experiential Learning</summary>
+            <p>Training combines conceptual and experiential learning within a collaborative paradigm, and includes such topics as:</p>
             <ul class="doing-sublist">
               <li>Step-by-step processes to transform anger, guilt, shame, fear, and conflict in relationships.</li>
               <li>Liberating Role Plays, a highly effective, healing and empowering process to be used with groups, thus increasing access significantly.</li>
               <li>Skills to foster clients' autonomy, resilience and agency.</li>
             </ul>
-          </li>
-          <li>Based on 30 years of practical experience in community mental health settings.</li>
-          <li>We are building a global community of practitioners who support, and learn from, one another.</li>
-          <li>Our vision: partnering with communities in underserved regions to expand access to care.</li>
-        </ul>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Grounded in Experience</summary>
+            <p>Based on 30 years of practical experience in community mental health settings.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Global Community</summary>
+            <p>We are building a global community of practitioners who support, and learn from, one another.</p>
+          </details>
+          <details class="doing-accordion-item">
+            <summary>Our Vision</summary>
+            <p>Partnering with communities in underserved regions to expand access to care.</p>
+          </details>
+        </div>
       </div>
     </div>
   </section>
@@ -141,14 +168,10 @@
     <div class="container">
       <div class="et-statement-inner">
         <p class="et-statement">
-          Empowerment Therapy is for those of us<br>
-          who want to accompany others on the journey towards<br>
-          <strong>equilibrium</strong>, <strong>wholeness</strong>,<br>
-          and<br>
-          connection with their <strong>authentic self</strong>.<br><br>
-          It supports us in helping our clients<br>
-          identify, trust, and endeavor to meet their needs because<br>
-          when our needs are met, we thrive!
+          Empowerment Therapy is for those of us who want to accompany others on the journey towards <strong>equilibrium</strong>, <strong>wholeness</strong>, and connection with their <strong>authentic self</strong>.
+        </p>
+        <p class="et-statement">
+          It supports us in helping our clients identify, trust, and endeavor to meet their needs because <span class="et-thrive">when our needs are met, we thrive!</span>
         </p>
       </div>
     </div>
@@ -171,11 +194,6 @@
           </div>
           <h4>Marshall Rosenberg</h4>
           <p class="venn-subtitle">Nonviolent Communication</p>
-          <ul class="venn-points">
-            <li>Universal human needs</li>
-            <li>Empathic connection</li>
-            <li>Feelings as signals</li>
-          </ul>
         </div>
         <div class="venn-middle">
           <div class="venn-connector">
@@ -194,11 +212,12 @@
           </div>
           <h4>Carl Rogers</h4>
           <p class="venn-subtitle">Person-Centered Therapy</p>
-          <ul class="venn-points">
-            <li>Unconditional positive regard</li>
-            <li>Congruence &amp; authenticity</li>
-            <li>Self-actualization</li>
-          </ul>
+        </div>
+      </div>
+      <div class="venn-et-box">
+        <div class="venn-et-circle">
+          <span class="venn-et-title">Empowerment<br>Therapy</span>
+          <span class="venn-et-sub">Healing &middot; Liberation &middot; Empowerment</span>
         </div>
       </div>
     </div>
@@ -255,272 +274,6 @@
     </div>
   </section>
 
-  <!-- Program Levels — stepped progression -->
-  <section class="fade-in botanical-border" id="programs">
-    <div class="container">
-      <h2>Program Levels</h2>
-      <div class="section-divider"><span class="ornament"></span></div>
-
-      <div class="levels-progression">
-
-        <!-- Level 1 -->
-        <div class="level-step level-step--1 fade-in">
-          <div class="level-step-number"><span>1</span></div>
-          <div class="level-step-connector"></div>
-          <div class="level-step-card">
-            <div class="level-step-badge">Foundation</div>
-            <h3>Level 1: Foundation</h3>
-            <p class="level-schedule" id="sched-time-1">📅 Thursdays 9:00–10:30 AM CT · Starting Jan 8, 2026</p>
-            <p>Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions.</p>
-            <span class="level-step-expand-hint">Learn more</span>
-            <div class="level-step-detail">
-              <div class="level-detail-grid">
-                <div class="level-detail-block">
-                  <h4>What You'll Learn</h4>
-                  <p>Practitioners develop core skills including cultivating trust, transforming judgments into acceptance, empathic listening, and forging collaborative partnerships with clients.</p>
-                  <p>Clients gain tools to connect with their heart's longings, access natural compassion, reduce reactivity, and request what they want cooperatively.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Key Interventions</h4>
-                  <ul class="level-detail-columns">
-                    <li>Awareness of Life-Alienating Systems</li>
-                    <li>Integrative Intuitive Choices</li>
-                    <li>Understanding the Other</li>
-                    <li>Inner Silence Meditation</li>
-                    <li>Needs Assessment (vs. Judgments)</li>
-                    <li>Self-Responsibility (vs. Blame)</li>
-                    <li>Mourning and Restoration</li>
-                    <li>Choice (vs. Demands)</li>
-                    <li>Courageous Transparency</li>
-                    <li>From Conflict to Connection</li>
-                    <li>Self-Care for Practitioners</li>
-                  </ul>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Session Structure</h4>
-                  <p>Each week alternates between conceptual learning and hands-on practice:</p>
-                  <ol>
-                    <li>Check-in &mdash; share feelings and needs</li>
-                    <li>Inner Silence Meditation</li>
-                    <li>Collaborative Learning discussions</li>
-                    <li>Practice Sessions with coaching</li>
-                    <li>Announcements and Check-out</li>
-                  </ol>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Schedule &amp; Duration</h4>
-                  <p id="level1-meeting-time"><strong>When:</strong> Thursdays, 9:00&ndash;10:30 AM CT</p>
-                  <p><strong>Duration:</strong> 6 months &mdash; 24 sessions (Jan&ndash;Jun &amp; Jul&ndash;Dec)</p>
-                  <p><strong>Join anytime:</strong> 1&ndash;4 catch-up sessions available for new participants</p>
-                  <p><strong>Certificate:</strong> Attend 20 of 24 sessions</p>
-                  <p><strong>Group Size:</strong> Max 25 participants</p>
-                  <p><strong>Facilitators:</strong> Myra Walden and Priti Sureka</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Required Reading</h4>
-                  <p><em>Empowerment Therapy</em> by Myra Walden &mdash; Chapters 2&ndash;5 covering Observations, Feelings, Needs, and Requests.</p>
-                  <p>Recommended: Print Feelings and Needs inventories for use during sessions.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Investment</h4>
-                  <p><strong>$30&ndash;$50 USD/month</strong> (sliding scale)</p>
-                  <p>Fees remain low to help develop practitioners who will bring this work to people without access to support services.</p>
-                </div>
-              </div>
-              <div class="level-detail-register">
-                <p><strong>How to enroll:</strong> Email <a href="mailto:empowermenttherapymw@gmail.com">empowermenttherapymw@gmail.com</a> to schedule a 45-minute assessment meeting with Myra Walden to determine goodness of fit.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Level 2 -->
-        <div class="level-step level-step--2 fade-in">
-          <div class="level-step-number"><span>2</span></div>
-          <div class="level-step-connector"></div>
-          <div class="level-step-card">
-            <div class="level-step-badge">Empowerment Processes</div>
-            <h3>Level 2: Empowerment Processes</h3>
-            <p class="level-schedule" id="sched-time-2">📅 Tuesdays 7:00–8:30 PM CT · Starting Jan 6, 2026</p>
-            <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
-            <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
-            <span class="level-step-expand-hint">Learn more</span>
-            <div class="level-step-detail">
-              <div class="level-detail-grid">
-                <div class="level-detail-block">
-                  <h4>What You'll Learn</h4>
-                  <p>Receive direct feedback on your empowerment work while reviewing Level 1 concepts and learning powerful new therapeutic processes.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Curriculum</h4>
-                  <ul class="level-detail-columns">
-                    <li>Review of Principal Tenets</li>
-                    <li>Advanced Inner Silence Meditation &amp; Self-Connection</li>
-                    <li>Advanced Empathy &amp; Non-Directiveness</li>
-                    <li>Self-Empathy and Self-Empowerment</li>
-                    <li>Connection Super Highway</li>
-                    <li>The Surprising Purpose of Anger</li>
-                    <li>Transforming Guilt &amp; Shame</li>
-                    <li>Transforming Fear</li>
-                    <li>Self-Love (Appreciation, Affection, Tenderness, Empathy, Acceptance)</li>
-                    <li>Group Work</li>
-                    <li>Needs-Based Regret</li>
-                    <li>Journey from Freedom to Wholeness</li>
-                    <li>Preparing for Difficult Conversations</li>
-                    <li>Liberating Roleplays</li>
-                  </ul>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Prerequisites</h4>
-                  <p>Certificate of completion for Level 1 is required (or studying key concepts to join concurrently).</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Schedule &amp; Duration</h4>
-                  <p><strong>Duration:</strong> 6 months of weekly sessions</p>
-                  <p><strong>Facilitators:</strong> Myra Walden and Priti Sureka</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Investment</h4>
-                  <p><strong>$30&ndash;$50 USD/month</strong> (sliding scale)</p>
-                  <p>Fees remain low to help develop practitioners who will bring this work to people without access to support services.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Level 3 -->
-        <div class="level-step level-step--3 fade-in">
-          <div class="level-step-number"><span>3</span></div>
-          <div class="level-step-connector"></div>
-          <div class="level-step-card">
-            <div class="level-step-badge">Certification</div>
-            <h3>Level 3: Certification</h3>
-            <p>A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer.</p>
-            <span class="level-step-expand-hint">Learn more</span>
-            <div class="level-step-detail">
-              <div class="level-detail-grid">
-                <div class="level-detail-block">
-                  <h4>Program Structure</h4>
-                  <p>A mentorship program where participants transition to co-facilitator roles. The facilitator assigns explanations, presentations, Q&amp;A sessions, and role plays while providing ongoing feedback.</p>
-                  <p><strong>Prerequisites:</strong> Completion of Levels 1 and 2</p>
-                  <p><strong>Duration:</strong> 50 sessions (may extend based on individual readiness)</p>
-                  <p><strong>Facilitators:</strong> Myra Walden, Simran Bhola, and Priti Sureka</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Required Reading</h4>
-                  <ul>
-                    <li><em>Nonviolent Communication: A Language of Life</em> by Marshall Rosenberg</li>
-                    <li><em>Personality Types: Using the Enneagram for Self-Discovery</em> by Don Richard Riso &amp; Russ Hudson</li>
-                  </ul>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Certification Packet</h4>
-                  <ul>
-                    <li><strong>NVC Paper</strong> &mdash; 20-page reaction paper on Rosenberg's book</li>
-                    <li><strong>Enneagram Paper</strong> &mdash; 8-page analysis of your type's integration-disintegration scale</li>
-                    <li><strong>Session Recordings</strong> &mdash; 5 recordings of 50-minute sessions with real (non-role-play) clients</li>
-                    <li><strong>Self-Evaluations</strong> &mdash; Assessment form for each recorded session</li>
-                    <li><strong>Weekly Journaling</strong> &mdash; 12 weeks of reflective entries</li>
-                    <li><strong>Peer &amp; Client Evaluations</strong> &mdash; Feedback from facilitators, colleagues, and clients</li>
-                  </ul>
-                  <p class="level-step-note">Packet review takes approximately 3 months.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Assessment</h4>
-                  <p>A 3-hour online meeting with 2&ndash;3 experienced assessors (recorded), including:</p>
-                  <ol>
-                    <li>Guide Inner Silence Meditation from memory</li>
-                    <li>Answer 15 questions on key differentiations, interventions, therapeutic attitudes, and principal tenets</li>
-                    <li>Discuss the Actualizing Tendency and its relation to nondirectiveness</li>
-                    <li>Conduct a Liberating Role Play demonstrating attitudes and concept application</li>
-                  </ol>
-                  <p class="level-step-note">Rubric-based grading provided at application. One retake attempt available if needed.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Certification Titles</h4>
-                  <p>Based on your professional background:</p>
-                  <ul>
-                    <li><strong>Mental health professionals:</strong> Empowerment Therapist, Psychologist, Counselor, or Social Worker</li>
-                    <li><strong>Non-MH background:</strong> Empowerment Practitioner</li>
-                    <li><strong>Coaching background:</strong> Empowerment Coach</li>
-                  </ul>
-                  <p class="level-step-note">Certification is valid for one year and renewable with 8 hours of continuing education. Trainer certification available as an additional track.</p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Investment</h4>
-                  <p><strong>Assessment fee:</strong> $300&ndash;$450 USD (sliding scale)</p>
-                  <p><strong>Annual renewal:</strong> $50&ndash;$150 USD</p>
-                </div>
-              </div>
-              <div class="level-detail-register">
-                <p><strong>To apply:</strong> Email <a href="mailto:empowermenttherapymw@gmail.com">empowermenttherapymw@gmail.com</a> &mdash; candidates must embody the therapeutic attitudes and demonstrate understanding and ability to apply the concepts.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align:center;margin-top:2rem;">
-        <a href="#" onclick="openRegModal(event)" class="btn">Register Now</a>
-      </div>
-
-      <script>
-      (function(){try{
-        var schedule=[
-          {id:'sched-time-1',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z',startDate:'Jan 8, 2026'},
-          {id:'sched-time-2',start:'2026-01-07T01:00:00Z',end:'2026-01-07T02:30:00Z',startDate:'Jan 6, 2026'}
-        ];
-        var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
-        var tf={hour:'numeric',minute:'2-digit',hour12:true};
-        schedule.forEach(function(s){
-          var el=document.getElementById(s.id);if(!el)return;
-          var d1=new Date(s.start),d2=new Date(s.end);
-          var day=days[d1.getDay()];
-          var t1=new Intl.DateTimeFormat(undefined,tf).format(d1);
-          var t2=new Intl.DateTimeFormat(undefined,tf).format(d2);
-          var tz='';
-          new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
-            if(p.type==='timeZoneName')tz=p.value;
-          });
-          el.textContent='\u{1F4C5} '+day+' '+t1+'\u2013'+t2+' '+tz+' \u00B7 Starting '+s.startDate;
-        });
-      }catch(e){}}());
-      </script>
-    </div>
-  </section>
-
-  <!-- Testimonials with living gradient bg + vine edges -->
-  <section class="living-bg fade-in vine-edge" id="testimonialsSection">
-    <div class="container">
-      <h2>What Our Students Say</h2>
-      <div class="section-divider"><span class="ornament"></span></div>
-      <div class="testimonials">
-        <div class="testimonial-card">
-          <img src="images/testimonial-lindsey.jpg" alt="Rev. Lindsey Turner">
-          <blockquote>"Empowerment Therapy enables me to approach my clients with a level of sensitivity and close-to-home quality that helps them feel seen, heard, and at ease right away."</blockquote>
-          <p class="author">&mdash; Rev. Lindsey Turner, United States</p>
-        </div>
-        <div class="testimonial-card">
-          <img src="images/testimonial-mukul.jpg" alt="Mukul S Gulati">
-          <blockquote>"Empowerment Therapy has roots in Myra's quiet, steady presence. Being in her circle is like being gently held while I learn to hold the parents and children with whom I work with the same love."</blockquote>
-          <p class="author">&mdash; Mukul S Gulati, India</p>
-        </div>
-        <div class="testimonial-card">
-          <img src="images/testimonial-cynthia.jpeg" alt="Cynthia Koskiewicz">
-          <blockquote>"Empowerment Therapy helps you to get out of your 'head space' and grounded into the power of your heart."</blockquote>
-          <p class="author">&mdash; Cynthia Koskiewicz, LCPC, CADC, United States</p>
-        </div>
-        <div class="testimonial-card">
-          <img src="images/testimonial-neve.jpeg" alt="Neve Cherry">
-          <blockquote>"The course has helped me deepen empathy and connect with clients reliably. I have learned new therapeutic concepts and tools. And I enjoy the group itself — a small community of people who want to help others."</blockquote>
-          <p class="author">&mdash; Neve Cherry, United Kingdom</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="fade-in">
     <div class="container">
@@ -553,315 +306,11 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- OUR VALUES                                  -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="section-separator"></div>
-
-  <section class="timeline-section living-bg vine-edge fade-in" id="values" style="position:relative;">
-    <div class="container" style="padding-bottom:0;">
-      <h1>Values</h1>
-      <div class="section-divider divider-leaf"><span class="ornament"></span></div>
-    </div>
-    <div class="container">
-      <div class="timeline">
-
-        <div class="timeline-entry timeline-entry--right fade-in">
-          <div class="timeline-node"><span class="timeline-node-dot"></span></div>
-          <div class="timeline-card" tabindex="0">
-            <div class="timeline-card-label">Vision</div>
-            <h2 class="timeline-card-title">Wholeness</h2>
-            <p class="timeline-card-summary">Empowered lives rooted in awareness, authenticity, and compassion.</p>
-            <div class="timeline-card-detail">
-              <div class="section-divider"><span class="ornament"></span></div>
-              <p>We want people to live empowered lives &mdash; rooted in awareness of their needs, grounded in authenticity, and growing in compassion for one another.</p>
-            </div>
-            <span class="timeline-card-hint">Click to explore &darr;</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--left slide-left">
-          <div class="timeline-node"><span class="timeline-node-dot"></span></div>
-          <div class="timeline-card" tabindex="0">
-            <div class="timeline-card-label">Mission</div>
-            <h2 class="timeline-card-title">Nurture &amp; Grow</h2>
-            <p class="timeline-card-summary">Sharing Empowerment Therapy so practitioners and clients can thrive.</p>
-            <div class="timeline-card-detail">
-              <div class="section-divider"><span class="ornament"></span></div>
-              <p>Our mission is to share Empowerment Therapy with practitioners and nurture their growth, so they can create the conditions for their clients to thrive.</p>
-              <p>We also equip managers with empowerment skills to foster workplaces rooted in safety, trust, and collaboration &mdash; where people can contribute their creativity and care in service of a shared purpose.</p>
-              <p>We do this in ways that are joyful, sustainable, and growthful &mdash; for those we serve, and for ourselves.</p>
-            </div>
-            <span class="timeline-card-hint">Click to explore &darr;</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--right slide-right">
-          <div class="timeline-node"><span class="timeline-node-dot"></span></div>
-          <div class="timeline-card" tabindex="0">
-            <div class="timeline-card-label">Connection</div>
-            <h2 class="timeline-card-title">Beyond Roles</h2>
-            <p class="timeline-card-summary">Self-connection as the ground from which all meaningful work grows.</p>
-            <div class="timeline-card-detail">
-              <div class="section-divider"><span class="ornament"></span></div>
-              <p style="font-style:italic;">Self-Connection &mdash; being in contact with our feelings, needs and natural compassion &mdash; is the ground from which we work. In that space, we endeavor to connect with others beyond roles. Our emphasis on connection is captured in the logo.</p>
-            </div>
-            <span class="timeline-card-hint">Click to explore &darr;</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--left fade-in">
-          <div class="timeline-node"><span class="timeline-node-dot"></span></div>
-          <div class="timeline-card" tabindex="0">
-            <div class="timeline-card-label">Values</div>
-            <h2 class="timeline-card-title">Only Connect</h2>
-            <p class="timeline-card-summary">The prose and the passion, exalted together.</p>
-            <div class="timeline-card-detail">
-              <div class="section-divider"><span class="ornament"></span></div>
-              <blockquote>
-                &ldquo;Only connect. That was the whole of her sermon. Only connect the prose and the passion and both will be exalted, and human love will be seen at its height. Live in fragments no longer. Only connect&hellip;&rdquo; ~E. M. Forster
-              </blockquote>
-            </div>
-            <span class="timeline-card-hint">Click to explore &darr;</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- TEAM                                        -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="section-separator"></div>
-
-  <section class="fade-in" id="team">
-    <div class="container">
-      <h1>Our Team</h1>
-      <div class="section-divider divider-leaf"><span class="ornament"></span></div>
-
-      <div class="team-member">
-        <img src="images/team-myra.jpg" alt="Myra Walden">
-        <div>
-          <h3>Myra Walden</h3>
-          <p class="role">Creator of Empowerment Therapy</p>
-          <p>Originally from Mexico, Myra Walden holds a bachelor's degree in psychology from the University of Illinois at Chicago and a master's degree in clinical psychology from the Illinois School of Professional Psychology.</p>
-          <p>She has practiced psychotherapy since 1991 and has offered workshops for mental health professionals since 1997.</p>
-          <p>In 2000, Myra became a certified trainer with the Center for Nonviolent Communication. She worked alongside Marshall Rosenberg, the developer of Nonviolent Communication, in multiple International Intensive Trainings.</p>
-          <p>Myra co-founded The Empowerment Institute and wrote Empowerment Therapy. She lives in West Chicago, Illinois, where she enjoys people and nature.</p>
-        </div>
-      </div>
-
-      <div class="team-member">
-        <img src="images/team-priti.jpg" alt="Priti Sureka">
-        <div>
-          <h3>Priti Sureka</h3>
-          <p class="role">Empowerment Coach</p>
-          <p>Priti is an Empowerment Coach, Nonviolent Communication (NVC) Certification Candidate, and HR leader with over 25 years of experience.</p>
-          <p>Drawing on her leadership background and coaching skills, she supports clients in moving beyond survival to create lives that feel aligned, purposeful, and authentic.</p>
-          <p>She integrates Ontological Coaching and NVC to help individuals reconnect with core values, identify deeper needs, and take meaningful, true-to-self action.</p>
-          <p>With an MBA and training in Empowerment Practice under psychotherapist Myra Walden, Priti brings a compassionate, grounded presence. As a mother of two, she understands the complexities of balancing work, family, and self-care.</p>
-        </div>
-      </div>
-
-      <div class="team-member">
-        <img src="images/team-simran.jpg" alt="Simran Bhola">
-        <div>
-          <h3>Simran Bhola</h3>
-          <p class="role">Organisational Development Consultant</p>
-          <p>Simran brings expertise in providing facilitation support and executing marketing and communication strategies.</p>
-          <p>With a background in content creation, facilitation, branding, and organizational storytelling, she transitioned from Ernst & Young to focus on organizational development.</p>
-          <p>At The Empowerment Institute, she manages operations, maintains the website, and leads strategic communications.</p>
-          <p>Simultaneously, she is pursuing certification as an Empowerment Practitioner to deepen her ability to support individuals in building meaningful and fulfilling lives.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- RESOURCES                                   -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="section-separator"></div>
-
-  <section class="fade-in" id="resources">
-    <div class="container">
-      <h1>Resources</h1>
-      <div class="section-divider divider-leaf"><span class="ornament"></span></div>
-      <p style="text-align:center;color:var(--text-muted);max-width:550px;margin:0 auto 1.5rem;">Readings, tools, and practices to deepen your understanding of Empowerment Therapy.</p>
-
-      <div class="resource-grid">
-
-        <!-- Articles -->
-        <div class="resource-card" tabindex="0">
-          <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:var(--teal-light);color:var(--teal-dark);">&#9997;</span>
-            <div>
-              <h3 class="resource-card-title">Articles</h3>
-              <p class="resource-card-count">5 readings</p>
-            </div>
-            <span class="resource-card-toggle">+</span>
-          </div>
-          <div class="resource-card-body">
-            <ul class="resource-list">
-              <li>
-                <a href="pdfs/From-Guilt-Shame-11026.pdf" target="_blank" rel="noopener">From Guilt and Shame to Self-Compassion<span class="resource-author">Myra Walden</span></a>
-              </li>
-              <li>
-                <a href="https://www.comunicacionplena.com/post/nonviolent-communication-and-trauma?lang=en" target="_blank" rel="noopener">Nonviolent Communication and Trauma<span class="resource-author">Claudia S&aacute;nchez</span></a>
-              </li>
-              <li>
-                <a href="https://share.google/ajfDRpElFRdBOQ0sA" target="_blank" rel="noopener">The Actualizing Tendency<span class="resource-author">Barbara Temaner Brodley</span></a>
-              </li>
-              <li>
-                <a href="https://counselling-tutor.s3.eu-west-2.amazonaws.com/CSR+Documents/The+Necessary+and+Sufficient+Conditions+of+Therapeutic+Personality+Change.pdf" target="_blank" rel="noopener">The Necessary and Sufficient Conditions of Therapeutic Personality Change<span class="resource-author">Carl Rogers</span></a>
-              </li>
-              <li>
-                <a href="pdfs/What-is-NVC-FINAL-PDF.pdf" target="_blank" rel="noopener">What is Nonviolent Communication?<span class="resource-author">Myra Walden</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Certification Kit -->
-        <div class="resource-card" tabindex="0">
-          <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:var(--coral-light);color:var(--coral);">&#9733;</span>
-            <div>
-              <h3 class="resource-card-title">Certification Candidates Kit</h3>
-              <p class="resource-card-count">2 tools</p>
-            </div>
-            <span class="resource-card-toggle">+</span>
-          </div>
-          <div class="resource-card-body">
-            <ul class="resource-list">
-              <li>
-                <a href="pdfs/EmpowermentJournalPDF.pdf" target="_blank" rel="noopener">Empowerment Journal Form<span class="resource-description">Tool for practitioners to increase self-awareness and embody therapeutic traits</span></a>
-              </li>
-              <li>
-                <a href="pdfs/Self-EvaluaitonsPDF.pdf" target="_blank" rel="noopener">Self-Evaluation Form<span class="resource-description">Tool for practitioners to increase self-awareness and improve client work</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Internal Processes -->
-        <div class="resource-card" tabindex="0">
-          <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:rgba(138,188,94,0.15);color:var(--gold);">&#10047;</span>
-            <div>
-              <h3 class="resource-card-title">Internal Processes</h3>
-              <p class="resource-card-count">3 practices</p>
-            </div>
-            <span class="resource-card-toggle">+</span>
-          </div>
-          <div class="resource-card-body">
-            <ul class="resource-list">
-              <li>
-                <a href="pdfs/FNSInventories.pdf" target="_blank" rel="noopener">Feelings, Needs, and Sensations Inventories<span class="resource-description">Three lists for understanding and connecting with personal experience</span></a>
-              </li>
-              <li>
-                <a href="pdfs/Inner-Silence-Meditation-PDF.pdf" target="_blank" rel="noopener">Inner Silence Meditation<span class="resource-description">Practice to reduce reactivity, increase equanimity and clarity regarding needs</span></a>
-              </li>
-              <li>
-                <a href="pdfs/S-EmpathyS-Empowerment3PDF.pdf" target="_blank" rel="noopener">Self-Empathy &amp; Empowerment (SEE)<span class="resource-description">Process for understanding difficult experiences, fostering healing, identifying heart's longings, gaining clarity on meeting needs</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Interpersonal Processes -->
-        <div class="resource-card" tabindex="0">
-          <div class="resource-card-header">
-            <span class="resource-card-icon" style="background:rgba(133,207,174,0.15);color:var(--blush);">&#10084;</span>
-            <div>
-              <h3 class="resource-card-title">Interpersonal Processes</h3>
-              <p class="resource-card-count">2 practices</p>
-            </div>
-            <span class="resource-card-toggle">+</span>
-          </div>
-          <div class="resource-card-body">
-            <ul class="resource-list">
-              <li>
-                <a href="pdfs/ConnectionSuperhighwayPDF.pdf" target="_blank" rel="noopener">Connection Superhighway<span class="resource-description">Process to resolve conflict satisfyingly for all involved parties</span></a>
-              </li>
-              <li>
-                <a href="pdfs/RestoationProcessPDF.pdf" target="_blank" rel="noopener">Restoration Dialogue<span class="resource-description">Tool for restoring self-respect and wholeness when actions conflict with values</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- CONTACT                                     -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="section-separator"></div>
-
-  <section class="fade-in living-bg vine-edge" id="contact" style="position:relative;">
-    <div class="container">
-      <h1>Contact</h1>
-      <div class="section-divider divider-leaf"><span class="ornament"></span></div>
-      <p style="text-align:center;color:var(--text-muted);max-width:500px;margin:0 auto 1.5rem;">We'd love to hear from you. Reach out with questions, or just to say hello.</p>
-
-      <div class="contact-layout">
-        <div class="contact-sidebar">
-          <div class="contact-team">
-            <figure>
-              <img src="images/contact-simran.jpg" alt="Simran">
-              <figcaption>Simran</figcaption>
-            </figure>
-            <figure>
-              <img src="images/contact-myra.jpg" alt="Myra">
-              <figcaption>Myra</figcaption>
-            </figure>
-            <figure>
-              <img src="images/contact-priti.jpg" alt="Priti">
-              <figcaption>Priti</figcaption>
-            </figure>
-          </div>
-
-          <div class="contact-info-cards">
-            <a href="mailto:empowermenttherapyinstitute@gmail.com" class="contact-info-card">
-              <span class="contact-info-icon">&#9993;</span>
-              <span class="contact-info-label">Email</span>
-              <span class="contact-info-value">empowermenttherapyinstitute@gmail.com</span>
-            </a>
-            <a href="tel:630-881-2525" class="contact-info-card">
-              <span class="contact-info-icon">&#9742;</span>
-              <span class="contact-info-label">Phone</span>
-              <span class="contact-info-value">630-881-2525</span>
-            </a>
-          </div>
-        </div>
-
-        <form class="contact-form" action="mailto:empowermenttherapyinstitute@gmail.com" method="post" enctype="text/plain">
-          <h3 class="contact-form-title">Send us a message</h3>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" placeholder="What would you like to share with us?" required></textarea>
-          </div>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#home" class="footer-logo"><img src="images/logo.png" alt="The Empowerment Institute"></a>
+          <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="The Empowerment Institute"></a>
           <p class="footer-tagline">Healing. Liberation. Empowerment.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/empowerment.therapy/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -874,11 +323,11 @@
         </div>
         <div class="footer-nav">
           <h4>Navigate</h4>
-          <a href="#home">Home</a>
-          <a href="#values">Values</a>
-          <a href="#team">Team</a>
-          <a href="#resources">Resources</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="values.html">Values</a>
+          <a href="team.html">Team</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="footer-contact">
           <h4>Get in Touch</h4>
@@ -899,6 +348,10 @@
           <img src="images/paypal-qr.png" alt="PayPal QR Code">
           <span>Make a Payment</span>
         </a>
+        <div class="footer-subscribe">
+          <span class="footer-subscribe-label">Subscribe &amp; Support</span>
+          <div id="paypal-button-container-P-8CS01676DE0612907NHPQXBQ"></div>
+        </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Empowerment Therapy Institute. All rights reserved.</p>
@@ -1056,160 +509,8 @@
   })();
   </script>
 
-  <script>
-    // Intersection Observer for all animation classes
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          if (entry.target.classList.contains('fade-in-group')) {
-            entry.target.querySelectorAll(':scope > *').forEach(child => child.classList.add('visible'));
-          }
-        }
-      });
-    }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
-    document.querySelectorAll('.fade-in, .fade-in-group, .slide-left, .slide-right, .scale-in').forEach(el => observer.observe(el));
-
-    // Header scroll: transparent on hero, fade in white bg + dark text
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      const scrollY = window.scrollY;
-      const threshold = 80;
-      if (scrollY > threshold) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-      // Smooth opacity interpolation for the transition zone
-      const t = Math.min(scrollY / threshold, 1);
-      header.style.setProperty('--header-opacity', t);
-      // Progress bar
-      const bar = document.getElementById('scrollProgress');
-      if (bar) { const h = document.documentElement.scrollHeight - window.innerHeight; bar.style.width = (scrollY / h * 100) + '%'; }
-    });
-
-    // Before/After slider
-    const ba = document.getElementById('beforeAfter'), baSlider = document.getElementById('baSlider'), baAfter = document.getElementById('baAfter');
-    if (ba) {
-      let dragging = false;
-      function updateBA(x) { const rect = ba.getBoundingClientRect(); let pct = ((x - rect.left) / rect.width) * 100; pct = Math.max(5, Math.min(95, pct)); baSlider.style.left = pct + '%'; baAfter.style.clipPath = `inset(0 ${100 - pct}% 0 0)`; }
-      baSlider.addEventListener('mousedown', (e) => { dragging = true; e.preventDefault(); });
-      ba.addEventListener('mousemove', (e) => { if (dragging) updateBA(e.clientX); });
-      document.addEventListener('mouseup', () => dragging = false);
-      baSlider.addEventListener('touchstart', (e) => { dragging = true; e.preventDefault(); });
-      ba.addEventListener('touchmove', (e) => { if (dragging) updateBA(e.touches[0].clientX); });
-      document.addEventListener('touchend', () => dragging = false);
-      ba.addEventListener('click', (e) => { if (!dragging) updateBA(e.clientX); });
-    }
-
-    // Page loader dismiss
-    window.addEventListener('load', function(){
-      var loader = document.getElementById('pageLoader');
-      if(loader){
-        loader.classList.add('loaded');
-        setTimeout(function(){ loader.style.display = 'none'; }, 800);
-      }
-    });
-
-    // Resource cards: click-to-toggle
-    document.querySelectorAll('.resource-card').forEach(card => {
-      card.addEventListener('click', function(e) {
-        if (e.target.closest('a')) return; // don't toggle when clicking links
-        document.querySelectorAll('.resource-card.is-open').forEach(c => {
-          if (c !== card) c.classList.remove('is-open');
-        });
-        card.classList.toggle('is-open');
-      });
-    });
-
-    // Timeline cards: click-to-toggle
-    document.querySelectorAll('.timeline-card').forEach(card => {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.timeline-card.is-open').forEach(c => {
-          if (c !== card) c.classList.remove('is-open');
-        });
-        card.classList.toggle('is-open');
-      });
-    });
-
-    // Update hint text for touch devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      document.querySelectorAll('.timeline-card-hint').forEach(h => {
-        h.innerHTML = 'Tap to explore &darr;';
-      });
-    }
-
-    // Level cards: click-to-toggle (one at a time)
-    document.querySelectorAll('.level-step').forEach(step => {
-      step.addEventListener('click', function(e) {
-        if (e.target.closest('a')) return; // don't toggle when clicking links
-        document.querySelectorAll('.level-step.is-open').forEach(s => {
-          if (s !== step) s.classList.remove('is-open');
-        });
-        step.classList.toggle('is-open');
-      });
-    });
-
-    // Update level card hints for touch devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      document.querySelectorAll('.level-step-expand-hint span').forEach(h => {
-        h.textContent = 'Tap to explore';
-      });
-    }
-
-    // Convert Level detail meeting times to viewer's local timezone
-    (function(){
-      try {
-        var days = ['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
-        var tf = {hour:'numeric', minute:'2-digit', hour12:true};
-        // Level 1: Thursdays 9:00-10:30 AM CT — use a reference Thursday in CT
-        // Jan 8 2026 is a Thursday. 9:00 AM CT = 15:00 UTC (CST)
-        var l1Start = new Date('2026-01-08T15:00:00Z');
-        var l1End = new Date('2026-01-08T16:30:00Z');
-        var l1Day = days[l1Start.getDay()];
-        var l1T1 = new Intl.DateTimeFormat(undefined, tf).format(l1Start);
-        var l1T2 = new Intl.DateTimeFormat(undefined, tf).format(l1End);
-        var tz = '';
-        new Intl.DateTimeFormat(undefined, {timeZoneName:'short'}).formatToParts(l1Start).forEach(function(p){
-          if (p.type === 'timeZoneName') tz = p.value;
-        });
-        var l1Time = l1Day + ', ' + l1T1 + '\u2013' + l1T2 + ' ' + tz;
-        var l1El = document.getElementById('level1-meeting-time');
-        if (l1El) l1El.innerHTML = '<strong>When:</strong> ' + l1Time;
-      } catch(e) {}
-    }());
-
-    // Close mobile nav on anchor click
-    document.querySelectorAll('nav a, .nav-register').forEach(a => {
-      a.addEventListener('click', () => {
-        var ns = document.querySelector('.nav-stack');
-        if (ns) ns.classList.remove('active');
-      });
-    });
-
-    // Scroll-spy: highlight active nav link based on scroll position
-    (function(){
-      var navLinks = document.querySelectorAll('nav a');
-      var sectionIds = ['home','values','team','resources','contact'];
-      function updateSpy(){
-        var scrollY = window.scrollY + 80; // offset for fixed header
-        var current = 'home';
-        for (var i = sectionIds.length - 1; i >= 0; i--) {
-          var el = document.getElementById(sectionIds[i]);
-          if (el && el.offsetTop <= scrollY) {
-            current = sectionIds[i];
-            break;
-          }
-        }
-        navLinks.forEach(function(link){
-          link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-        });
-      }
-      window.addEventListener('scroll', updateSpy);
-      updateSpy(); // run on load
-    })();
-
-  </script>
+  <!-- Shared scripts (fade-ins, header scroll, page loader, mobile nav, registration modal) -->
+  <script src="shared.js?v=25"></script>
 
   <!-- D3 Globe -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -1291,410 +592,28 @@
   })();
   </script>
 
-  <!-- Registration Form Script -->
+
+  <!-- PayPal Subscription Button -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
   <script>
-  (function(){
-    var modal = document.getElementById('regModal');
-    var closeBtn = document.getElementById('regModalClose');
-    var form = document.getElementById('regForm');
-    var grid = document.getElementById('regAvailGrid');
-
-    // Auto-detect timezone
-    (function(){
-      try {
-        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        var offset = new Date().getTimezoneOffset();
-        var sign = offset <= 0 ? '+' : '-';
-        var absH = Math.floor(Math.abs(offset) / 60);
-        var absM = Math.abs(offset) % 60;
-        var utcLabel = 'UTC' + sign + absH + (absM ? ':' + (absM < 10 ? '0' : '') + absM : '');
-        var sel = document.getElementById('regTimezone');
-        // Try to match an existing option
-        var matched = false;
-        for (var i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].value.indexOf(utcLabel) === 0) {
-            sel.selectedIndex = i;
-            matched = true;
-            break;
-          }
+    if (window.paypal && paypal.Buttons) {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function(data, actions) {
+          return actions.subscription.create({
+            plan_id: 'P-8CS01676DE0612907NHPQXBQ'
+          });
+        },
+        onApprove: function(data, actions) {
+          alert('Thank you for subscribing! Subscription ID: ' + data.subscriptionID);
         }
-        // If no match, add a custom option with the detected timezone
-        if (!matched && tz) {
-          var opt = document.createElement('option');
-          opt.value = utcLabel + ' (' + tz + ')';
-          opt.textContent = utcLabel + ' (' + tz.replace(/_/g, ' ') + ')';
-          opt.selected = true;
-          sel.insertBefore(opt, sel.options[1]);
-        }
-      } catch(e) {}
-    })();
-
-    // Build availability grid for next 7 days
-    var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    var timeSlots = ['12:00 AM','1:00 AM','2:00 AM','3:00 AM','4:00 AM','5:00 AM','6:00 AM','7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM','9:00 PM','10:00 PM','11:00 PM'];
-    var today = new Date();
-
-    // Build next 7 days, ordered: weekdays first (Mon–Fri), then weekend (Sat–Sun)
-    var next7 = [];
-    for (var d = 0; d < 7; d++) {
-      var dt = new Date(today);
-      dt.setDate(today.getDate() + d);
-      next7.push(dt);
+      }).render('#paypal-button-container-P-8CS01676DE0612907NHPQXBQ');
     }
-    var weekdays = next7.filter(function(dt){ return dt.getDay() >= 1 && dt.getDay() <= 5; });
-    var weekends = next7.filter(function(dt){ return dt.getDay() === 0 || dt.getDay() === 6; });
-    var orderedDays = weekdays.concat(weekends);
-
-    // Header row
-    var headerEl = document.createElement('div');
-    headerEl.className = 'reg-avail-header';
-    headerEl.innerHTML = '<div class="reg-avail-corner"></div>';
-    for (var d = 0; d < orderedDays.length; d++) {
-      var date = orderedDays[d];
-      var dayLabel = dayNames[date.getDay()];
-      var dateStr = (date.getMonth()+1) + '/' + date.getDate();
-      headerEl.innerHTML += '<div class="reg-avail-day-label">' + dayLabel + '<br><span>' + dateStr + '</span></div>';
-    }
-    grid.appendChild(headerEl);
-
-    // Time rows
-    for (var t = 0; t < timeSlots.length; t++) {
-      var row = document.createElement('div');
-      row.className = 'reg-avail-row';
-      row.innerHTML = '<div class="reg-avail-time-label">' + timeSlots[t] + '</div>';
-      for (var d2 = 0; d2 < orderedDays.length; d2++) {
-        var date2 = orderedDays[d2];
-        var dateKey = (date2.getMonth()+1) + '/' + date2.getDate();
-        var cellId = dateKey + ' ' + timeSlots[t];
-        row.innerHTML += '<div class="reg-avail-cell" data-slot="' + cellId + '" tabindex="0" role="checkbox" aria-checked="false" aria-label="' + dayNames[date2.getDay()] + ' ' + dateKey + ' at ' + timeSlots[t] + '"></div>';
-      }
-      grid.appendChild(row);
-    }
-
-    // Build mobile availability view (day cards with time pills)
-    var mobileAvail = document.createElement('div');
-    mobileAvail.className = 'reg-avail-mobile';
-
-    for (var md = 0; md < orderedDays.length; md++) {
-      var mDate = orderedDays[md];
-      var mDayLabel = dayNames[mDate.getDay()];
-      var mDateStr = (mDate.getMonth()+1) + '/' + mDate.getDate();
-
-      var card = document.createElement('div');
-      card.className = 'reg-avail-day-card';
-      card.setAttribute('data-day-index', md);
-
-      var header = document.createElement('div');
-      header.className = 'reg-avail-day-header';
-      header.innerHTML = '<div>' + mDayLabel + ' <span>' + mDateStr + '</span> <span class="day-count" style="display:none">0</span></div><span class="day-toggle">▼</span>';
-      card.appendChild(header);
-
-      var slots = document.createElement('div');
-      slots.className = 'reg-avail-day-slots';
-
-      for (var mt = 0; mt < timeSlots.length; mt++) {
-        var pill = document.createElement('div');
-        pill.className = 'reg-avail-time-pill';
-        pill.textContent = timeSlots[mt];
-        pill.setAttribute('data-slot', mDateStr + ' ' + timeSlots[mt]);
-        slots.appendChild(pill);
-      }
-      card.appendChild(slots);
-      mobileAvail.appendChild(card);
-    }
-
-    grid.parentNode.insertBefore(mobileAvail, grid.nextSibling);
-
-    // Mobile: toggle day cards open/close
-    mobileAvail.addEventListener('click', function(e) {
-      var header = e.target.closest('.reg-avail-day-header');
-      if (header) {
-        header.parentElement.classList.toggle('open');
-        return;
-      }
-      var pill = e.target.closest('.reg-avail-time-pill');
-      if (pill) {
-        pill.classList.toggle('selected');
-        // Sync with desktop grid
-        var slotKey = pill.getAttribute('data-slot');
-        var desktopCell = grid.querySelector('[data-slot="' + slotKey + '"]');
-        if (desktopCell) {
-          desktopCell.classList.toggle('selected', pill.classList.contains('selected'));
-          desktopCell.setAttribute('aria-checked', pill.classList.contains('selected'));
-        }
-        // Update count badge
-        var card = pill.closest('.reg-avail-day-card');
-        var count = card.querySelectorAll('.reg-avail-time-pill.selected').length;
-        var badge = card.querySelector('.day-count');
-        if (count > 0) {
-          badge.style.display = '';
-          badge.textContent = count;
-        } else {
-          badge.style.display = 'none';
-        }
-      }
-    });
-
-    // Toggle cells — click and drag support
-    var isDragging = false;
-    var dragMode = null; // 'select' or 'deselect'
-    var dragCol = null;  // lock to column during drag
-
-    function getCellCol(cell) {
-      var row = cell.parentElement;
-      var cells = row.querySelectorAll('.reg-avail-cell');
-      for (var i = 0; i < cells.length; i++) {
-        if (cells[i] === cell) return i;
-      }
-      return -1;
-    }
-
-    function applyCellToggle(cell) {
-      if (dragMode === 'select') {
-        cell.classList.add('selected');
-        cell.setAttribute('aria-checked', 'true');
-      } else {
-        cell.classList.remove('selected');
-        cell.setAttribute('aria-checked', 'false');
-      }
-    }
-
-    grid.addEventListener('mousedown', function(e) {
-      var cell = e.target.closest('.reg-avail-cell');
-      if (!cell) return;
-      e.preventDefault();
-      isDragging = true;
-      dragMode = cell.classList.contains('selected') ? 'deselect' : 'select';
-      dragCol = getCellCol(cell);
-      applyCellToggle(cell);
-    });
-
-    grid.addEventListener('mouseover', function(e) {
-      if (!isDragging) return;
-      var cell = e.target.closest('.reg-avail-cell');
-      if (!cell) return;
-      if (getCellCol(cell) === dragCol) {
-        applyCellToggle(cell);
-      }
-    });
-
-    document.addEventListener('mouseup', function() {
-      isDragging = false;
-      dragMode = null;
-      dragCol = null;
-    });
-
-    // Touch support for drag
-    grid.addEventListener('touchstart', function(e) {
-      var cell = e.target.closest('.reg-avail-cell');
-      if (!cell) return;
-      isDragging = true;
-      dragMode = cell.classList.contains('selected') ? 'deselect' : 'select';
-      dragCol = getCellCol(cell);
-      applyCellToggle(cell);
-    }, {passive: true});
-
-    grid.addEventListener('touchmove', function(e) {
-      if (!isDragging) return;
-      var touch = e.touches[0];
-      var el = document.elementFromPoint(touch.clientX, touch.clientY);
-      var cell = el ? el.closest('.reg-avail-cell') : null;
-      if (!cell) return;
-      if (getCellCol(cell) === dragCol) {
-        applyCellToggle(cell);
-      }
-    }, {passive: true});
-
-    document.addEventListener('touchend', function() {
-      isDragging = false;
-      dragMode = null;
-      dragCol = null;
-    });
-
-    // Keyboard toggle
-    grid.addEventListener('keydown', function(e) {
-      if (e.key === ' ' || e.key === 'Enter') {
-        var cell = e.target.closest('.reg-avail-cell');
-        if (!cell) return;
-        e.preventDefault();
-        cell.classList.toggle('selected');
-        cell.setAttribute('aria-checked', cell.classList.contains('selected'));
-      }
-    });
-
-    // Open / Close
-    window.openRegModal = function(e) {
-      if (e) e.preventDefault();
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
-
-    // Submit → mailto with formatted body
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var submitBtn = form.querySelector('.reg-submit');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-
-      var name = document.getElementById('regName').value.trim();
-      var email = document.getElementById('regEmail').value.trim();
-      var timezone = document.getElementById('regTimezone').value;
-      var program = document.getElementById('regProgram').value || 'Not specified';
-      var message = document.getElementById('regMessage').value.trim();
-
-      // Gather selected slots (desktop grid + mobile pills)
-      var selected = grid.querySelectorAll('.reg-avail-cell.selected');
-      var selectedMobile = mobileAvail.querySelectorAll('.reg-avail-time-pill.selected');
-      var slotSet = {};
-      var slots = [];
-      for (var i = 0; i < selected.length; i++) {
-        var s = selected[i].getAttribute('data-slot');
-        if (!slotSet[s]) { slotSet[s] = true; slots.push(s); }
-      }
-      for (var i2 = 0; i2 < selectedMobile.length; i2++) {
-        var s2 = selectedMobile[i2].getAttribute('data-slot');
-        if (!slotSet[s2]) { slotSet[s2] = true; slots.push(s2); }
-      }
-
-      // Convert local hour to Central Time hour
-      // Returns {hour24, dateDelta} where dateDelta is -1, 0, or +1 if date shifts
-      function localHourToCT(hour24, dateStr) {
-        // Build a real Date in user's local timezone for this slot
-        var dateParts = dateStr.split('/');
-        var now = new Date();
-        var year = now.getFullYear();
-        var month = parseInt(dateParts[0]) - 1;
-        var day = parseInt(dateParts[1]);
-        var localDate = new Date(year, month, day, hour24, 0, 0);
-
-        // Convert to Central Time using Intl
-        var ctStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit'});
-        var ctHour = parseInt(ctStr.split(':')[0]);
-
-        var ctDateStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', month: 'numeric', day: 'numeric'});
-        // Clean up date string
-        var ctDateParts = ctDateStr.match(/(\d+)\/(\d+)/);
-        var ctDate = ctDateParts ? ctDateParts[1] + '/' + ctDateParts[2] : dateStr;
-
-        return {hour24: ctHour, dateStr: ctDate};
-      }
-
-      function hour24To12(h) {
-        if (h === 0) return '12:00 AM';
-        if (h < 12) return h + ':00 AM';
-        if (h === 12) return '12:00 PM';
-        return (h - 12) + ':00 PM';
-      }
-
-      function timeToHour(t) {
-        var match = t.match(/^(\d+):00\s*(AM|PM)$/i);
-        if (!match) return -1;
-        var h = parseInt(match[1]);
-        var ampm = match[2].toUpperCase();
-        if (ampm === 'AM' && h === 12) h = 0;
-        else if (ampm === 'PM' && h !== 12) h += 12;
-        return h;
-      }
-
-      function collapseRanges(times) {
-        times.sort(function(a, b) { return timeToHour(a) - timeToHour(b); });
-        var ranges = [];
-        var rangeStart = null;
-        var rangePrev = null;
-        for (var r = 0; r < times.length; r++) {
-          var hr = timeToHour(times[r]);
-          if (rangeStart === null) {
-            rangeStart = times[r];
-            rangePrev = hr;
-          } else if (hr === rangePrev + 1) {
-            rangePrev = hr;
-          } else {
-            if (rangePrev === timeToHour(rangeStart)) {
-              ranges.push(rangeStart);
-            } else {
-              ranges.push(rangeStart + ' – ' + times[r - 1]);
-            }
-            rangeStart = times[r];
-            rangePrev = hr;
-          }
-        }
-        if (rangeStart !== null) {
-          if (rangePrev === timeToHour(rangeStart)) {
-            ranges.push(rangeStart);
-          } else {
-            ranges.push(rangeStart + ' – ' + times[times.length - 1]);
-          }
-        }
-        return ranges.join(', ');
-      }
-
-      var availStr = 'No specific times selected — please reach out to coordinate.';
-      if (slots.length > 0) {
-        // Convert all slots to Central Time, re-group by CT date
-        var byDateCT = {};
-        for (var j = 0; j < slots.length; j++) {
-          var parts = slots[j].split(' ');
-          var dateKey = parts[0];
-          var time = parts.slice(1).join(' ');
-          var localH = timeToHour(time);
-          var ct = localHourToCT(localH, dateKey);
-          var ctTime = hour24To12(ct.hour24);
-          if (!byDateCT[ct.dateStr]) byDateCT[ct.dateStr] = [];
-          byDateCT[ct.dateStr].push(ctTime);
-        }
-        var lines = [];
-        for (var dk in byDateCT) {
-          lines.push(dk + ': ' + collapseRanges(byDateCT[dk]));
-        }
-        availStr = lines.join(' | ');
-      }
-
-      // Submit via FormSubmit.co
-      var formData = new FormData();
-      formData.append('Name', name);
-      formData.append('Email', email);
-      formData.append('Timezone', timezone);
-      formData.append('Program Interest', program);
-      formData.append('Availability (Central Time)', availStr);
-      if (message) formData.append('Additional Notes', message);
-      formData.append('_subject', 'Registration Request: ' + name);
-      formData.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com');
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-
-      fetch('https://formsubmit.co/ajax/empowermenttherapyinstitute@gmail.com', {
-        method: 'POST',
-        body: formData
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data.success) {
-          form.innerHTML = '<div class="reg-success"><div class="reg-success-icon">✓</div><h3>Registration Submitted!</h3><p>Thank you, ' + name + '. We\'ve received your registration and will be in touch to confirm your orientation session.</p></div>';
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(function() {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Registration';
-        alert('Something went wrong. Please try again, or email us directly at empowermenttherapyinstitute@gmail.com');
-      });
-    });
-  })();
   </script>
 
 </body>

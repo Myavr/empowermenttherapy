@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs | The Empowerment Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=25">
+</head>
+<body class="subpage">
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-bloom">
+        <div class="loader-petal"></div>
+        <div class="loader-petal"></div>
+        <div class="loader-petal"></div>
+        <div class="loader-petal"></div>
+        <div class="loader-petal"></div>
+        <div class="loader-petal"></div>
+        <div class="loader-core"></div>
+      </div>
+      <p class="loader-text">Empowerment Therapy Institute</p>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo logo-flourish-botanical">
+        <img src="images/logo.png" alt="Empowerment Therapy Institute">
+        <span class="logo-text">Empowerment Therapy Institute</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-stack').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-stack">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="testimonials.html">Testimonials</a>
+          <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle('open');">About</a>
+            <div class="nav-dropdown-menu">
+              <a href="team.html">Team</a>
+              <a href="values.html">Values</a>
+            </div>
+          </div>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <a href="#" onclick="openRegModal(event)" class="nav-register">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="subpage-spacer"></div>
+
+  <!-- Main content wrapper -->
+  <div class="main-content-wrapper">
+
+  <section class="subpage-hero">
+    <h1>Program Levels</h1>
+    <p>A stepped progression of learning &mdash; from foundational skills to full certification as an Empowerment Practitioner.</p>
+  </section>
+
+  <!-- Program Levels — stepped progression -->
+  <section class="fade-in botanical-border" id="programs">
+    <div class="container">
+      <div class="section-divider"><span class="ornament"></span></div>
+
+      <div class="levels-progression">
+
+        <!-- Level 1 -->
+        <div class="level-step level-step--1 fade-in">
+          <div class="level-step-number"><span>1</span></div>
+          <div class="level-step-connector"></div>
+          <div class="level-step-card">
+            <div class="level-step-badge">Foundation</div>
+            <h3>Level 1: Foundation</h3>
+            <p class="level-schedule" id="sched-time-1">&#128197; Thursdays 9:00&ndash;10:30 AM CT &middot; Starting Jan 8, 2026</p>
+            <p>Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions.</p>
+            <span class="level-step-expand-hint">Learn more</span>
+            <div class="level-step-detail">
+              <div class="level-detail-grid">
+                <div class="level-detail-block">
+                  <h4>What You'll Learn</h4>
+                  <p>Practitioners develop core skills including cultivating trust, transforming judgments into acceptance, empathic listening, and forging collaborative partnerships with clients.</p>
+                  <p>Clients gain tools to connect with their heart's longings, access natural compassion, reduce reactivity, and request what they want cooperatively.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Key Interventions</h4>
+                  <ul class="level-detail-columns">
+                    <li>Awareness of Life-Alienating Systems</li>
+                    <li>Integrative Intuitive Choices</li>
+                    <li>Understanding the Other</li>
+                    <li>Inner Silence Meditation</li>
+                    <li>Needs Assessment (vs. Judgments)</li>
+                    <li>Self-Responsibility (vs. Blame)</li>
+                    <li>Mourning and Restoration</li>
+                    <li>Choice (vs. Demands)</li>
+                    <li>Courageous Transparency</li>
+                    <li>From Conflict to Connection</li>
+                    <li>Self-Care for Practitioners</li>
+                  </ul>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Session Structure</h4>
+                  <p>Each week alternates between conceptual learning and hands-on practice:</p>
+                  <ol>
+                    <li>Check-in &mdash; share feelings and needs</li>
+                    <li>Inner Silence Meditation</li>
+                    <li>Collaborative Learning discussions</li>
+                    <li>Practice Sessions with coaching</li>
+                    <li>Announcements and Check-out</li>
+                  </ol>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Schedule &amp; Duration</h4>
+                  <p id="level1-meeting-time"><strong>When:</strong> Thursdays, 9:00&ndash;10:30 AM CT</p>
+                  <p><strong>Duration:</strong> 6 months &mdash; 24 sessions (Jan&ndash;Jun &amp; Jul&ndash;Dec)</p>
+                  <p><strong>Join anytime:</strong> 1&ndash;4 catch-up sessions available for new participants</p>
+                  <p><strong>Certificate:</strong> Attend 20 of 24 sessions</p>
+                  <p><strong>Group Size:</strong> Max 25 participants</p>
+                  <p><strong>Facilitators:</strong> Myra Walden and Priti Sureka</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Required Reading</h4>
+                  <p><em>Empowerment Therapy</em> by Myra Walden &mdash; Chapters 2&ndash;5 covering Observations, Feelings, Needs, and Requests.</p>
+                  <p>Recommended: Print Feelings and Needs inventories for use during sessions.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Investment</h4>
+                  <p><strong>$30&ndash;$50 USD/month</strong> (sliding scale)</p>
+                  <p>Fees remain low to help develop practitioners who will bring this work to people without access to support services.</p>
+                </div>
+              </div>
+              <div class="level-detail-register">
+                <p><strong>How to enroll:</strong> Email <a href="mailto:empowermenttherapymw@gmail.com">empowermenttherapymw@gmail.com</a> to schedule a 45-minute assessment meeting with Myra Walden to determine goodness of fit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 2 -->
+        <div class="level-step level-step--2 fade-in">
+          <div class="level-step-number"><span>2</span></div>
+          <div class="level-step-connector"></div>
+          <div class="level-step-card">
+            <div class="level-step-badge">Empowerment Processes</div>
+            <h3>Level 2: Empowerment Processes</h3>
+            <p class="level-schedule" id="sched-time-2">&#128197; Tuesdays 7:00&ndash;8:30 PM CT &middot; Starting Jan 6, 2026</p>
+            <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
+            <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
+            <span class="level-step-expand-hint">Learn more</span>
+            <div class="level-step-detail">
+              <div class="level-detail-grid">
+                <div class="level-detail-block">
+                  <h4>What You'll Learn</h4>
+                  <p>Receive direct feedback on your empowerment work while reviewing Level 1 concepts and learning powerful new therapeutic processes.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Curriculum</h4>
+                  <ul class="level-detail-columns">
+                    <li>Review of Principal Tenets</li>
+                    <li>Advanced Inner Silence Meditation &amp; Self-Connection</li>
+                    <li>Advanced Empathy &amp; Non-Directiveness</li>
+                    <li>Self-Empathy and Self-Empowerment</li>
+                    <li>Connection Super Highway</li>
+                    <li>The Surprising Purpose of Anger</li>
+                    <li>Transforming Guilt &amp; Shame</li>
+                    <li>Transforming Fear</li>
+                    <li>Self-Love (Appreciation, Affection, Tenderness, Empathy, Acceptance)</li>
+                    <li>Group Work</li>
+                    <li>Needs-Based Regret</li>
+                    <li>Journey from Freedom to Wholeness</li>
+                    <li>Preparing for Difficult Conversations</li>
+                    <li>Liberating Roleplays</li>
+                  </ul>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Prerequisites</h4>
+                  <p>Certificate of completion for Level 1 is required (or studying key concepts to join concurrently).</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Schedule &amp; Duration</h4>
+                  <p><strong>Duration:</strong> 6 months of weekly sessions</p>
+                  <p><strong>Facilitators:</strong> Myra Walden and Priti Sureka</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Investment</h4>
+                  <p><strong>$30&ndash;$50 USD/month</strong> (sliding scale)</p>
+                  <p>Fees remain low to help develop practitioners who will bring this work to people without access to support services.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 3 -->
+        <div class="level-step level-step--3 fade-in">
+          <div class="level-step-number"><span>3</span></div>
+          <div class="level-step-connector"></div>
+          <div class="level-step-card">
+            <div class="level-step-badge">Certification</div>
+            <h3>Level 3: Certification</h3>
+            <p>A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer.</p>
+            <span class="level-step-expand-hint">Learn more</span>
+            <div class="level-step-detail">
+              <div class="level-detail-grid">
+                <div class="level-detail-block">
+                  <h4>Program Structure</h4>
+                  <p>A mentorship program where participants transition to co-facilitator roles. The facilitator assigns explanations, presentations, Q&amp;A sessions, and role plays while providing ongoing feedback.</p>
+                  <p><strong>Prerequisites:</strong> Completion of Levels 1 and 2</p>
+                  <p><strong>Duration:</strong> 50 sessions (may extend based on individual readiness)</p>
+                  <p><strong>Facilitators:</strong> Myra Walden, Simran Bhola, and Priti Sureka</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Required Reading</h4>
+                  <ul>
+                    <li><em>Nonviolent Communication: A Language of Life</em> by Marshall Rosenberg</li>
+                    <li><em>Personality Types: Using the Enneagram for Self-Discovery</em> by Don Richard Riso &amp; Russ Hudson</li>
+                  </ul>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Certification Packet</h4>
+                  <ul>
+                    <li><strong>NVC Paper</strong> &mdash; 20-page reaction paper on Rosenberg's book</li>
+                    <li><strong>Enneagram Paper</strong> &mdash; 8-page analysis of your type's integration-disintegration scale</li>
+                    <li><strong>Session Recordings</strong> &mdash; 5 recordings of 50-minute sessions with real (non-role-play) clients</li>
+                    <li><strong>Self-Evaluations</strong> &mdash; Assessment form for each recorded session</li>
+                    <li><strong>Weekly Journaling</strong> &mdash; 12 weeks of reflective entries</li>
+                    <li><strong>Peer &amp; Client Evaluations</strong> &mdash; Feedback from facilitators, colleagues, and clients</li>
+                  </ul>
+                  <p class="level-step-note">Packet review takes approximately 3 months.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Assessment</h4>
+                  <p>A 3-hour online meeting with 2&ndash;3 experienced assessors (recorded), including:</p>
+                  <ol>
+                    <li>Guide Inner Silence Meditation from memory</li>
+                    <li>Answer 15 questions on key differentiations, interventions, therapeutic attitudes, and principal tenets</li>
+                    <li>Discuss the Actualizing Tendency and its relation to nondirectiveness</li>
+                    <li>Conduct a Liberating Role Play demonstrating attitudes and concept application</li>
+                  </ol>
+                  <p class="level-step-note">Rubric-based grading provided at application. One retake attempt available if needed.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Certification Titles</h4>
+                  <p>Based on your professional background:</p>
+                  <ul>
+                    <li><strong>Mental health professionals:</strong> Empowerment Therapist, Psychologist, Counselor, or Social Worker</li>
+                    <li><strong>Non-MH background:</strong> Empowerment Practitioner</li>
+                    <li><strong>Coaching background:</strong> Empowerment Coach</li>
+                  </ul>
+                  <p class="level-step-note">Certification is valid for one year and renewable with 8 hours of continuing education. Trainer certification available as an additional track.</p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Investment</h4>
+                  <p><strong>Assessment fee:</strong> $300&ndash;$450 USD (sliding scale)</p>
+                  <p><strong>Annual renewal:</strong> $50&ndash;$150 USD</p>
+                </div>
+              </div>
+              <div class="level-detail-register">
+                <p><strong>To apply:</strong> Email <a href="mailto:empowermenttherapymw@gmail.com">empowermenttherapymw@gmail.com</a> &mdash; candidates must embody the therapeutic attitudes and demonstrate understanding and ability to apply the concepts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="#" onclick="openRegModal(event)" class="btn">Register Now</a>
+      </div>
+
+      <script>
+      (function(){try{
+        var schedule=[
+          {id:'sched-time-1',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z',startDate:'Jan 8, 2026'},
+          {id:'sched-time-2',start:'2026-01-07T01:00:00Z',end:'2026-01-07T02:30:00Z',startDate:'Jan 6, 2026'}
+        ];
+        var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
+        var tf={hour:'numeric',minute:'2-digit',hour12:true};
+        schedule.forEach(function(s){
+          var el=document.getElementById(s.id);if(!el)return;
+          var d1=new Date(s.start),d2=new Date(s.end);
+          var day=days[d1.getDay()];
+          var t1=new Intl.DateTimeFormat(undefined,tf).format(d1);
+          var t2=new Intl.DateTimeFormat(undefined,tf).format(d2);
+          var tz='';
+          new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
+            if(p.type==='timeZoneName')tz=p.value;
+          });
+          el.textContent='\u{1F4C5} '+day+' '+t1+'\u2013'+t2+' '+tz+' \u00B7 Starting '+s.startDate;
+        });
+      }catch(e){}}());
+      </script>
+    </div>
+  </section>
+
+  <!--#FOOTER-->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="The Empowerment Institute"></a>
+          <p class="footer-tagline">Healing. Liberation. Empowerment.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/empowerment.therapy/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/IEC.EmpoweringCommunication/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="values.html">Values</a>
+          <a href="team.html">Team</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <div class="team-photos">
+            <figure><img src="images/footer-simran.jpg" alt="Simran"><figcaption>Simran</figcaption></figure>
+            <figure><img src="images/footer-myra.jpg" alt="Myra"><figcaption>Myra</figcaption></figure>
+            <figure><img src="images/footer-priti.jpg" alt="Priti"><figcaption>Priti</figcaption></figure>
+          </div>
+          <a href="mailto:empowermenttherapyinstitute@gmail.com" class="footer-email">empowermenttherapyinstitute@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-mid">
+        <a href="https://www.amazon.com/Empowerment-Therapy-Helping-Clients-Fulfilling/dp/1737588420" target="_blank" rel="noopener" class="footer-book">
+          <img src="images/book-cover.png" alt="Empowerment Therapy Book">
+          <span>Get the Book</span>
+        </a>
+        <a href="https://www.paypal.com/ncp/payment/JT9X4BBKNB9ZE" target="_blank" rel="noopener" class="footer-paypal">
+          <img src="images/paypal-qr.png" alt="PayPal QR Code">
+          <span>Make a Payment</span>
+        </a>
+        <div class="footer-subscribe">
+          <span class="footer-subscribe-label">Subscribe &amp; Support</span>
+          <div id="paypal-button-container-P-8CS01676DE0612907NHPQXBQ"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Empowerment Therapy Institute. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main-content-wrapper -->
+
+  <!--#REGMODAL-->
+  <div class="reg-modal-overlay" id="regModal">
+    <div class="reg-modal">
+      <button class="reg-modal-close" id="regModalClose" aria-label="Close">&times;</button>
+      <h2>Register for an Orientation Session</h2>
+      <p class="reg-modal-subtitle">Complete the form below to request a 45-minute orientation meeting. This session helps both you and our team determine if the program is a good fit.</p>
+
+      <form id="regForm" class="reg-form">
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regName">Full Name <span class="req">*</span></label>
+            <input type="text" id="regName" name="name" required placeholder="Your full name">
+          </div>
+          <div class="reg-form-field">
+            <label for="regEmail">Email <span class="req">*</span></label>
+            <input type="email" id="regEmail" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="reg-form-row">
+          <div class="reg-form-field">
+            <label for="regTimezone">Your Timezone <span class="req">*</span></label>
+            <select id="regTimezone" name="timezone" required>
+              <option value="">Select your timezone</option>
+              <option value="UTC-8 (PST)">UTC-8 (Pacific)</option>
+              <option value="UTC-7 (MST)">UTC-7 (Mountain)</option>
+              <option value="UTC-6 (CST)">UTC-6 (Central US)</option>
+              <option value="UTC-5 (EST)">UTC-5 (Eastern)</option>
+              <option value="UTC-4 (AST)">UTC-4 (Atlantic)</option>
+              <option value="UTC-3 (ART)">UTC-3 (Argentina/Brazil)</option>
+              <option value="UTC-1 (CVT)">UTC-1 (Cape Verde)</option>
+              <option value="UTC+0 (GMT)">UTC+0 (GMT/UK)</option>
+              <option value="UTC+1 (CET)">UTC+1 (Central Europe)</option>
+              <option value="UTC+2 (EET)">UTC+2 (Eastern Europe)</option>
+              <option value="UTC+3 (EAT)">UTC+3 (East Africa)</option>
+              <option value="UTC+4 (GST)">UTC+4 (Gulf)</option>
+              <option value="UTC+5 (PKT)">UTC+5 (Pakistan)</option>
+              <option value="UTC+5:30 (IST)">UTC+5:30 (India)</option>
+              <option value="UTC+6 (BST)">UTC+6 (Bangladesh)</option>
+              <option value="UTC+8 (CST)">UTC+8 (China/Singapore)</option>
+              <option value="UTC+9 (JST)">UTC+9 (Japan/Korea)</option>
+              <option value="UTC+10 (AEST)">UTC+10 (Australia East)</option>
+              <option value="UTC+12 (NZST)">UTC+12 (New Zealand)</option>
+            </select>
+          </div>
+          <div class="reg-form-field">
+            <label for="regProgram">Program Interest <span class="reg-optional">(optional)</span></label>
+            <select id="regProgram" name="program">
+              <option value="">Select a program</option>
+              <option value="Level 1: Foundation">Level 1: Foundation</option>
+              <option value="Level 2: Empowerment Processes">Level 2: Empowerment Processes</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="reg-form-field">
+          <label>When are you available for your orientation session?</label>
+          <p class="reg-avail-note">All applicants meet with our team for a 45-minute orientation. Select any times that work for you below (shown in your local timezone). Once we receive your submission, we'll reach out to confirm a specific time. If none of these slots fit, leave this blank and we'll coordinate directly.</p>
+          <div class="reg-avail-grid" id="regAvailGrid"></div>
+        </div>
+
+        <div class="reg-form-field">
+          <label for="regMessage">Anything else you'd like us to know? <span class="reg-optional">(optional)</span></label>
+          <textarea id="regMessage" name="message" rows="3" placeholder="E.g. how you heard about us, questions you have, etc."></textarea>
+        </div>
+
+        <button type="submit" class="reg-submit">Submit Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <!--#SHARED_SCRIPTS-->
+  <script src="shared.js?v=25"></script>
+
+  <!-- Level card click-to-toggle + local time conversion -->
+  <script>
+    document.querySelectorAll('.level-step').forEach(step => {
+      step.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        document.querySelectorAll('.level-step.is-open').forEach(s => {
+          if (s !== step) s.classList.remove('is-open');
+        });
+        step.classList.toggle('is-open');
+      });
+    });
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      document.querySelectorAll('.level-step-expand-hint span').forEach(h => {
+        h.textContent = 'Tap to explore';
+      });
+    }
+    (function(){
+      try {
+        var days = ['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
+        var tf = {hour:'numeric', minute:'2-digit', hour12:true};
+        var l1Start = new Date('2026-01-08T15:00:00Z');
+        var l1End = new Date('2026-01-08T16:30:00Z');
+        var l1Day = days[l1Start.getDay()];
+        var l1T1 = new Intl.DateTimeFormat(undefined, tf).format(l1Start);
+        var l1T2 = new Intl.DateTimeFormat(undefined, tf).format(l1End);
+        var tz = '';
+        new Intl.DateTimeFormat(undefined, {timeZoneName:'short'}).formatToParts(l1Start).forEach(function(p){
+          if (p.type === 'timeZoneName') tz = p.value;
+        });
+        var l1Time = l1Day + ', ' + l1T1 + '\u2013' + l1T2 + ' ' + tz;
+        var l1El = document.getElementById('level1-meeting-time');
+        if (l1El) l1El.innerHTML = '<strong>When:</strong> ' + l1Time;
+      } catch(e) {}
+    }());
+  </script>
+
+  <!-- PayPal Subscription Button -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+  <script>
+    if (window.paypal && paypal.Buttons) {
+      paypal.Buttons({
+        style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+        createSubscription: function(data, actions) {
+          return actions.subscription.create({ plan_id: 'P-8CS01676DE0612907NHPQXBQ' });
+        },
+        onApprove: function(data, actions) {
+          alert('Thank you for subscribing! Subscription ID: ' + data.subscriptionID);
+        }
+      }).render('#paypal-button-container-P-8CS01676DE0612907NHPQXBQ');
+    }
+  </script>
+
+</body>
+</html>
