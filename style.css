@@ -1272,6 +1272,20 @@ p {
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5rem) 0;
   clip-path: inset(0);
+  background: var(--cream);
+}
+
+/* Soft fade from cloud background into the next section's cream background */
+.venn-cloud-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(247, 246, 240, 0) 0%, rgba(247, 246, 240, 0.6) 60%, var(--cream) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .venn-cloud-video {
@@ -1401,7 +1415,7 @@ p {
 /* Centered ET emblem below Rosenberg / Rogers — wrapped in a box matching the men's cards */
 .venn-side-et {
   width: 100%;
-  max-width: 818px; /* set to align to match the width of the marshall and rogers boxes */
+  max-width: none; /* width: 100% inherits parent width to naturally match the marshall and rogers diagram above */
   margin: 2.5rem auto 0;
   border: 1px solid rgba(255, 219, 88, 0.4);
   border-radius: var(--radius-md);
@@ -3260,6 +3274,7 @@ footer {
 
   .venn-et-title {
     font-size: 2.55rem;
+    white-space: normal; /* allow line break on mobile */
   }
 
   .venn-et-sub {
