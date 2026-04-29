@@ -839,8 +839,8 @@ body.subpage .subpage-spacer {
 
 /* ===== THE PROBLEM SECTION ===== */
 .problem-section {
-  background: #343a1a;
-  background:  rgb(19, 25, 114);
+  /* background: #343a1a; */
+  background:  rgb(13 17 79);
   color: var(--white);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
 }
@@ -1271,8 +1271,8 @@ p {
   position: relative;
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5rem) 0;
-  clip-path: inset(0);
-  background: var(--cream);
+  /* background: var(--cream); */
+  background: #F5F5DC;
 }
 
 /* Soft fade from cloud background into the next section's cream background */
@@ -1281,15 +1281,15 @@ p {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, rgba(247, 246, 240, 0) 0%, rgba(247, 246, 240, 0.6) 60%, var(--cream) 100%);
+  bottom: 0; /* extend 1px past the boundary to fully cover any sub-pixel seam */
+  height: 240px;
+  background: linear-gradient(to bottom, rgba(247, 246, 240, 0) 0%, rgba(247, 246, 240, 0.5) 45%, #F5F5DC 100%);
   z-index: 2;
   pointer-events: none;
 }
 
 .venn-cloud-video {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   min-width: 100%;
@@ -1303,7 +1303,7 @@ p {
 }
 
 .venn-cloud-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(20, 8, 14, 0.3);
   z-index: 1;
@@ -1571,7 +1571,8 @@ p {
 
 /* ===== ET DESCRIPTION ===== */
 #etDescriptionSection {
-  background: var(--cream);
+  /* background: var(--cream); */
+  background: #F5F5DC;
 }
 
 .et-description {
@@ -1581,12 +1582,12 @@ p {
 }
 
 .et-description p {
-  font-size: 1.58rem !important;
+  font-size: 1.95rem !important;
   line-height: 1.8 !important;
 }
 
 .et-description-lead {
-  font-size: 1.58rem !important;
+  font-size: 1.95rem !important;
   line-height: 1.8 !important;
 }
 
@@ -1611,16 +1612,16 @@ p {
 
 .et-description-aims {
   font-weight: 500;
-  font-size: 1.58rem !important;
+  font-size: 1.95rem !important;
   line-height: 1.8 !important;
   margin-top: 0.5rem;
 }
 
 .et-description-closing {
-  font-size: 1.58rem !important;
+  font-size: 1.95rem !important;
   line-height: 1.8 !important;
   margin-top: 1.25rem;
-  text-align: center;
+  /* text-align: center; */
   color: var(--text-dark);
 }
 
