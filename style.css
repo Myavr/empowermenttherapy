@@ -1057,16 +1057,16 @@ body.subpage .subpage-spacer {
   /* Normalized 0..1 across whole nav */
   --r-n: calc(var(--r) / (var(--max-z) * var(--max-p) - 1));
 
-  --hover-intensity: 8rem;
-  --tilt-strength: 10deg;
-  --w: 0.42;  /* falloff width — wider = more neighbors react */
-  --hover-smoothness: 80ms;
-  --fall-smoothness: 320ms;
+  --hover-intensity: 12rem;
+  --tilt-strength: 60deg;
+  --w: 0.4;  /* falloff width — matches original */
+  --hover-smoothness: 70ms;
+  --fall-smoothness: 250ms;
 
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  perspective: 2400px;
+  gap: 0.15rem;
+  perspective: 2000px;
   transform-style: preserve-3d;
   isolation: isolate;
 }
@@ -1077,9 +1077,8 @@ body.subpage .subpage-spacer {
   --z: 0;
 }
 
-/* When at rest, force exact flat position + uniform glide-back time */
+/* When at rest, force exact flat position to avoid sub-pixel drift in cosine math */
 .doing-strips:not(:hover) .doing-strip {
-  --ts: 380ms;
   transform: none;
   filter: brightness(0.55) saturate(0);
 }
@@ -1117,8 +1116,6 @@ body.subpage .subpage-spacer {
   --u: clamp(0, calc(abs(var(--diff)) / var(--w)), 1);
   --falloff: calc(0.5 * (1 + cos(var(--u) * 180deg)));
   --img: none;
-  /* Variable timing: snappy when item is the focus, gentle when settling back */
-  --ts: calc(var(--hover-smoothness) * var(--falloff) + var(--fall-smoothness) * (1 - var(--falloff)));
 
   background-color: #1a1a1a;
   background-image: var(--img);
@@ -1128,13 +1125,13 @@ body.subpage .subpage-spacer {
   overflow: hidden;
   transform-style: preserve-3d;
   transform-origin: 50% 50%;
+  will-change: transform, filter;
   transform:
     translateZ(calc(var(--falloff) * var(--hover-intensity)))
-    scale(calc(1 + var(--falloff) * 0.025))
-    rotateX(calc(clamp(-1, var(--diff) * 5, 1) * var(--falloff) * var(--tilt-strength)));
+    rotateX(calc(clamp(-1, var(--diff) * 5, 1) * var(--falloff) * var(--tilt-strength) * -1));
   transition:
-    transform var(--ts) cubic-bezier(0.22, 1, 0.36, 1),
-    filter var(--ts) ease;
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s ease;
   filter: brightness(max(0.55, calc(var(--falloff) * 1.15))) saturate(var(--falloff));
 }
 
@@ -1186,20 +1183,6 @@ body.subpage .subpage-spacer {
   font-family: inherit;
   color: inherit;
   position: relative;
-  z-index: 2;
-}
-
-/* Left accent bar (grows when active in falloff curve) — pulls from logo blue→green */
-.doing-strip-bar::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: calc(var(--falloff) * 70%);
-  background: linear-gradient(to bottom, #85cfae 0%, #8ABC5E 100%);
-  transition: height 0.4s ease;
   z-index: 2;
 }
 
