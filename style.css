@@ -807,13 +807,15 @@ body.subpage .subpage-spacer {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.75rem;
+  margin-top: 1rem;
 }
 
 .country-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .country-tag {
@@ -843,6 +845,94 @@ body.subpage .subpage-spacer {
   background:  rgb(13 17 79);
   color: var(--white);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid: title spans full width, body+aside share the middle row, footer spans full width */
+.problem-grid {
+  --col-gap: clamp(2rem, 5vw, 4.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 22%);
+  grid-template-areas:
+    "title  title"
+    "body   aside"
+    "footer footer";
+  column-gap: var(--col-gap);
+  row-gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.problem-grid-title {
+  grid-area: title;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.problem-grid-body {
+  grid-area: body;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+}
+
+.problem-grid-aside {
+  grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: center;
+  position: relative;
+}
+
+/* Vertical divider in the gap between body and aside, matched to the gold .problem-divider */
+.problem-grid-aside::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--col-gap) / 2 - 1px);
+  width: 2px;
+  background: #FFDB58;
+  opacity: 0.85;
+}
+
+.problem-grid-footer {
+  grid-area: footer;
+  max-width: none;
+  margin: 0;
+}
+
+.problem-grid-footer .problem-divider {
+  margin-top: 0.5rem;
+}
+
+.problem-decor-img {
+  width: 100%;
+  aspect-ratio: var(--ar, 1);
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  opacity: 0.9;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 720px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "body"
+      "footer";
+  }
+  .problem-grid-aside {
+    display: none; /* keep mobile clean */
+  }
+  .problem-grid-title {
+    text-align: center;
+  }
 }
 
 .problem-section .section-title {
