@@ -2291,9 +2291,32 @@ p {
   .who-block--reverse .who-block-img {
     order: 0;
   }
-  .who-hero-content {
-    padding: 0 1.5rem;
+
+  /* Hero: let it grow with content so the textbox always fits and never overflows
+     into adjacent sections on small screens */
+  .who-hero {
+    height: auto;
+    min-height: 380px;
   }
+  .who-hero-content {
+    position: relative;
+    inset: auto;
+    padding: clamp(2.5rem, 8vw, 4rem) 1.5rem;
+    justify-content: flex-start;
+  }
+  .who-hero-textbox {
+    margin-bottom: 0; /* no overflow on mobile */
+    max-width: 100%;
+  }
+
+  /* Cancel the desktop overflow-spacing on the next sections */
+  .who-intro {
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+  .who-blocks > .who-block:first-child {
+    margin-top: 0;
+  }
+
   .who-intro p,
   .who-block-text p {
     font-size: 1.2rem;
