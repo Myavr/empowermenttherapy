@@ -1450,11 +1450,12 @@ body.subpage .subpage-spacer {
 
 .et-statement {
   color: rgba(255,255,255,0.95) !important;
-  font-size: 1.58rem !important;
+  font-size: 1.95rem !important;
   line-height: 1.8 !important;
   text-align: left !important;
   max-width: none !important;
   margin: 0 0 1.25rem 0 !important;
+
 }
 
 .et-statement:last-child {
@@ -2048,7 +2049,7 @@ p {
 .who-section {
   background: var(--white);
   padding: 0 !important;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Hero with image + overlay title */
@@ -2056,7 +2057,7 @@ p {
   position: relative;
   width: 100%;
   height: clamp(380px, 55vh, 600px);
-  overflow: hidden;
+  overflow: visible; /* allow textbox to extend past hero bottom */
 }
 
 .who-hero-img {
@@ -2065,6 +2066,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
@@ -2079,12 +2081,33 @@ p {
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
   padding: 0 clamp(2rem, 8vw, 6rem);
   max-width: 1200px;
   margin: 0 auto;
   z-index: 2;
+}
+
+/* Frosted-glass box behind the title + lead — sits at the bottom of the hero
+   and overflows 50px below it into the next section. */
+.who-hero-textbox {
+  display: inline-block;
+  max-width: 760px;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: var(--radius-md);
+  background: rgba(20, 30, 50, 0.25);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: -150px; /* visibly overflow 150px below the hero */
+  position: relative;
+  z-index: 3;
+}
+
+.who-hero-textbox .who-hero-title,
+.who-hero-textbox .who-hero-lead {
+  max-width: none;
 }
 
 .who-hero-title {
@@ -2111,7 +2134,7 @@ p {
 .who-intro {
   max-width: 850px;
   margin: 0 auto;
-  padding: clamp(3rem, 6vw, 5rem) 2rem clamp(2rem, 4vw, 3rem);
+  padding: calc(150px + clamp(3rem, 6vw, 5rem)) 2rem clamp(2rem, 4vw, 3rem);
 }
 
 .who-intro p {
@@ -2136,7 +2159,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+  align-items: start;
   padding: clamp(3rem, 6vw, 5rem) 0;
   border-top: 1px solid rgba(20, 8, 14, 0.08);
 }
@@ -2154,6 +2177,14 @@ p {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-md);
+}
+
+.who-section {
+  overflow: visible !important; /* let textbox extend past section boundaries */
+}
+
+.who-blocks > .who-block:first-child {
+  margin-top: 170px;
 }
 
 .who-block-img img {
