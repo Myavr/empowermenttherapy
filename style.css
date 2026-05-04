@@ -762,8 +762,8 @@ body.subpage .subpage-spacer {
 
 /* ===== COUNTRY BAR ===== */
 .country-bar {
-  background: #F5F5DC;
-  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, #1a1f28 0%, #14181f 50%, #0f1318 100%);
+  padding: 2rem 2rem;
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid #FFDB58;
@@ -773,9 +773,7 @@ body.subpage .subpage-spacer {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 12% 50%, rgba(87, 110, 193, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 88% 50%, rgba(138, 188, 94, 0.06) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 10% 50%, rgba(133, 207, 174, 0.05) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -804,7 +802,7 @@ body.subpage .subpage-spacer {
 
 .country-bar-label {
   display: block;
-  color: #2a3d62;
+  color: #FFDB58;
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
@@ -824,13 +822,13 @@ body.subpage .subpage-spacer {
 .country-tag {
   display: inline-block;
   padding: 0.45rem 1.05rem;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(42, 61, 98, 0.25);
+  background: rgba(70, 130, 180, 0.2);
+  border: 1px solid rgba(70, 130, 180, 0.35);
   border-radius: 100px;
-  color: #2a3d62;
+  color: rgba(200, 225, 255, 0.95);
   font-family: var(--font-body);
   font-size: 1.13rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.02em;
   white-space: nowrap;
   cursor: default;
