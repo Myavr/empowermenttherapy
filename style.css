@@ -762,17 +762,20 @@ body.subpage .subpage-spacer {
 
 /* ===== COUNTRY BAR ===== */
 .country-bar {
-  background: linear-gradient(135deg, #1a1f28 0%, #14181f 50%, #0f1318 100%);
-  padding: 2rem 2rem;
+  background: #F5F5DC;
+  padding: 2.5rem 2rem;
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid #FFDB58;
 }
 
 .country-bar::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 10% 50%, rgba(133,207,174,0.05) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse at 12% 50%, rgba(87, 110, 193, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 88% 50%, rgba(138, 188, 94, 0.06) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -801,7 +804,7 @@ body.subpage .subpage-spacer {
 
 .country-bar-label {
   display: block;
-  color: #FFDB58;
+  color: #2a3d62;
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
@@ -821,22 +824,16 @@ body.subpage .subpage-spacer {
 .country-tag {
   display: inline-block;
   padding: 0.45rem 1.05rem;
-  background: rgba(70,130,180,0.2);
-  border: 1px solid rgba(70,130,180,0.35);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(42, 61, 98, 0.25);
   border-radius: 100px;
-  color: rgba(200,225,255,0.95);
+  color: #2a3d62;
   font-family: var(--font-body);
   font-size: 1.13rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.02em;
-  transition: background 0.25s, border-color 0.25s, color 0.25s;
   white-space: nowrap;
-}
-
-.country-tag:hover {
-  background: rgba(70,130,180,0.35);
-  border-color: rgba(100,160,210,0.5);
-  color: var(--white);
+  cursor: default;
 }
 
 /* ===== THE PROBLEM SECTION ===== */
@@ -847,6 +844,7 @@ body.subpage .subpage-spacer {
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid #FFDB58;
 }
 
 /* Grid: title spans full width, body+aside share the middle row, footer spans full width */
@@ -982,6 +980,7 @@ body.subpage .subpage-spacer {
   background: #020617;
   color: rgba(255, 255, 255, 0.92);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
+  border-bottom: 2px solid #FFDB58;
 }
 
 .doing-section .section-title {
@@ -1944,6 +1943,7 @@ p {
 #etDescriptionSection {
   /* background: var(--cream); */
   background: #F5F5DC;
+  border-bottom: 2px solid #FFDB58;
 }
 
 .et-description {
@@ -2050,6 +2050,7 @@ p {
   background: var(--white);
   padding: 0 !important;
   overflow: visible;
+  border-bottom: 2px solid #FFDB58;
 }
 
 /* Hero with image + overlay title */
@@ -3416,18 +3417,21 @@ footer {
     position: fixed;
     top: 0;
     right: 0;
-    width: 300px;
+    width: 280px;
     height: 100vh;
+    flex-direction: column;
     background: rgba(20, 50, 80, 0.97);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    padding: 5rem 2rem 2rem;
+    padding: 5rem 1.75rem 2rem;
     align-items: stretch;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -4px 0 20px rgba(0,0,0,0.2);
     z-index: 5;
+    overflow-y: auto;
   }
 
   .nav-stack.active {
@@ -3448,17 +3452,34 @@ footer {
   }
 
   nav a {
-    padding: 0.75rem 0;
-    font-size: 1.05rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.85) !important;
-    letter-spacing: 0.08em;
+    padding: 0.7rem 0.85rem;
+    margin: 0;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 6px;
+    color: rgba(255,255,255,0.78) !important;
+    letter-spacing: 0.06em;
+    background: transparent !important;
+    position: relative;
+    transition: color 0.2s ease, background 0.2s ease;
   }
 
-  nav a:hover,
+  /* Subtle separator between items via spacing, not lines */
+  nav > a + a,
+  nav > .nav-dropdown + a,
+  nav > a + .nav-dropdown,
+  nav > .nav-dropdown + .nav-dropdown {
+    margin-top: 0.15rem;
+  }
+
+  nav a:hover {
+    color: var(--white) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
   nav a.active {
     color: var(--white) !important;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1) !important;
   }
 
   /* Flatten the About dropdown on mobile — expand inline within the menu */
@@ -3522,10 +3543,12 @@ footer {
   }
 
   .nav-dropdown-menu a {
-    padding: 0.6rem 0 0.6rem 1.5rem !important;
-    font-size: 0.95rem !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-    color: rgba(255,255,255,0.75) !important;
+    padding: 0.55rem 0.85rem 0.55rem 1.85rem !important;
+    margin: 0;
+    font-size: 0.92rem !important;
+    border: 0 !important;
+    border-radius: 6px;
+    color: rgba(255,255,255,0.7) !important;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     position: relative;

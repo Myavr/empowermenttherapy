@@ -105,6 +105,10 @@
 
     <!-- THE PROBLEM Section -->
     <section class="problem-section fade-in" id="theProblem">
+      <video class="problem-bg-video" autoplay muted loop playsinline preload="auto">
+        <source src="https://videos.pexels.com/video-files/7033616/7033616-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+      <div class="problem-bg-overlay"></div>
       <div class="container">
         <div class="problem-grid">
           <h2 class="section-title problem-grid-title">The Problem</h2>
@@ -791,10 +795,12 @@
 
       var path = d3.geoPath().projection(projection);
 
-      // Ocean background
+      // Ocean background — deep navy
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-        .attr('fill', '#1e2a38');
+        .attr('fill', '#2a3d62')
+        .attr('stroke', 'rgba(20, 8, 14, 0.2)')
+        .attr('stroke-width', 0.5);
 
       // Graticule (subtle grid lines)
       var graticule = d3.geoGraticule().step([30, 30]);
@@ -803,21 +809,21 @@
         .attr('class', 'globe-graticule')
         .attr('d', path)
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(255,255,255,0.07)')
+        .attr('stroke', 'rgba(245, 245, 220, 0.12)')
         .attr('stroke-width', 0.3);
 
-      // Land group
+      // Land group — cream to match the section
       var landPath = svg.append('path')
         .attr('class', 'globe-land')
-        .attr('fill', '#c8d8e4')
-        .attr('stroke', 'rgba(255,255,255,0.15)')
+        .attr('fill', '#F5F5DC')
+        .attr('stroke', 'rgba(245, 245, 220, 0.4)')
         .attr('stroke-width', 0.3);
 
       // Country borders
       var borderPath = svg.append('path')
         .attr('class', 'globe-borders')
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(255,255,255,0.12)')
+        .attr('stroke', 'rgba(42, 61, 98, 0.35)')
         .attr('stroke-width', 0.2);
 
       // Atmosphere glow
