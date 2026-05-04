@@ -839,12 +839,36 @@ body.subpage .subpage-spacer {
 /* ===== THE PROBLEM SECTION ===== */
 .problem-section {
   /* background: #343a1a; */
-  background:  rgb(13 17 79);
+  background: #050810; /* fallback while the video is loading */
   color: var(--white);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid #FFDB58;
+}
+
+.problem-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.problem-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 8, 16, 0.55) 0%, rgba(5, 8, 16, 0.4) 50%, rgba(5, 8, 16, 0.65) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.problem-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* Grid: title spans full width, body+aside share the middle row, footer spans full width */
