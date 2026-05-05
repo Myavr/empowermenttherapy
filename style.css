@@ -347,7 +347,7 @@ header.scrolled .logo-text {
 nav {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 3px;
   background: rgba(40, 80, 120, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -434,6 +434,7 @@ nav a.active {
 header.scrolled nav {
   background: rgba(40, 80, 120, 0.85);
   border-color: rgba(70, 130, 180, 0.4);
+  gap: 3px;
 }
 
 header.scrolled nav a {
@@ -444,6 +445,7 @@ header.scrolled nav a:hover,
 header.scrolled nav a.active {
   color: var(--white);
   background: rgba(255,255,255,0.15);
+  gap: 3px;
 }
 
 /* Remove pipe separators */
@@ -1000,14 +1002,14 @@ body.subpage .subpage-spacer {
 
 /* ===== WHAT WE ARE DOING SECTION ===== */
 .doing-section {
-  background: #020617;
+  background: #F6F5F8;
   color: rgba(255, 255, 255, 0.92);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   border-bottom: 2px solid #FFDB58;
 }
 
 .doing-section .section-title {
-  color: #fff;
+  /* color: #fff; */
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -2009,6 +2011,102 @@ p {
   margin-top: 0.5rem;
 }
 
+/* "Why this is harder than it looks" expandable details — keeps the page compact */
+.et-deeper {
+  margin: 1.5rem 0 2rem;
+}
+
+.et-deeper > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.95rem;
+  background: rgba(42, 61, 98, 0.08);
+  border: 1px solid rgba(42, 61, 98, 0.3);
+  border-radius: 6px;
+  outline: 1px solid rgba(42, 61, 98, 0.18);
+  outline-offset: 2px;
+  font-family: var(--font-heading);
+  font-size: clamp(0.72rem, 0.9vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2A3D62;
+  user-select: none;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.et-deeper > summary::-webkit-details-marker { display: none; }
+.et-deeper > summary::marker { content: ''; }
+
+.et-deeper > summary:hover {
+  background: rgba(42, 61, 98, 0.16);
+  border-color: rgba(42, 61, 98, 0.5);
+  color: #1B2A4A;
+}
+
+.et-deeper-icon {
+  position: relative;
+  width: 0.7rem;
+  height: 0.7rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.et-deeper-icon::before,
+.et-deeper-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.et-deeper-icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.et-deeper-icon::after {
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.et-deeper[open] > summary .et-deeper-icon::after {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.et-deeper[open] > summary {
+  background: rgba(42, 61, 98, 0.16);
+  border-color: rgba(42, 61, 98, 0.5);
+}
+
+.et-deeper-body {
+  margin-top: 1.5rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(42, 61, 98, 0.18);
+  border-left: 3px solid #2A3D62;
+  border-radius: var(--radius-md);
+  background: rgba(42, 61, 98, 0.04);
+  animation: et-deeper-reveal 0.4s ease;
+}
+
+.et-deeper-body > p:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes et-deeper-reveal {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .et-description-closing {
   font-size: 1.95rem !important;
   line-height: 1.8 !important;
@@ -2627,13 +2725,13 @@ p {
 .testimonials {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 2.25rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .testimonial-card {
-  padding: 2.5rem;
+  padding: 3rem 2.75rem;
   border-radius: var(--radius-md);
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
@@ -2646,27 +2744,27 @@ p {
 }
 
 .testimonial-card img {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.75rem;
   border: 2px solid rgba(255,255,255,0.15);
 }
 
 .testimonial-card blockquote {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-style: italic;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 1.25rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 1.5rem;
   border: none;
   padding: 0;
 }
 
 .testimonial-card .author {
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--teal);
   letter-spacing: 0.02em;
@@ -2953,6 +3051,7 @@ p {
   gap: 1.25rem;
   max-width: 850px;
   margin: 0 auto;
+  margin-top: 2rem;
 }
 
 .resource-card {
