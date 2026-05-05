@@ -154,7 +154,7 @@ body {
   font-size: 1.2rem;
   color: var(--text-dark);
   line-height: 1.7;
-  background: var(--white);
+  background: #F6F5F8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -762,18 +762,20 @@ body.subpage .subpage-spacer {
 
 /* ===== COUNTRY BAR ===== */
 .country-bar {
-  background: linear-gradient(135deg, #1a1f28 0%, #14181f 50%, #0f1318 100%);
-  padding: 2rem 2rem;
+  background: #F6F5F8;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
-  border-bottom: 2px solid #FFDB58;
+  border-bottom: 1px solid #FFDB58;
 }
 
 .country-bar::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 10% 50%, rgba(133, 207, 174, 0.05) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse at 12% 50%, rgba(87, 110, 193, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 88% 50%, rgba(138, 188, 94, 0.06) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -802,11 +804,11 @@ body.subpage .subpage-spacer {
 
 .country-bar-label {
   display: block;
-  color: #FFDB58;
+  color: #2A3D62;
   font-family: var(--font-heading);
   font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 1.75rem;
   margin-top: 1rem;
@@ -822,13 +824,13 @@ body.subpage .subpage-spacer {
 .country-tag {
   display: inline-block;
   padding: 0.45rem 1.05rem;
-  background: rgba(70, 130, 180, 0.2);
-  border: 1px solid rgba(70, 130, 180, 0.35);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(42, 61, 98, 0.18);
   border-radius: 100px;
-  color: rgba(200, 225, 255, 0.95);
+  color: #2A3D62;
   font-family: var(--font-body);
-  font-size: 1.13rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 500;
   letter-spacing: 0.02em;
   white-space: nowrap;
   cursor: default;
@@ -836,9 +838,8 @@ body.subpage .subpage-spacer {
 
 /* ===== THE PROBLEM SECTION ===== */
 .problem-section {
-  /* background: #343a1a; */
   background: #050810; /* fallback while the video is loading */
-  color: var(--white);
+  color: #F6F5F8;
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   position: relative;
   overflow: hidden;
@@ -956,7 +957,7 @@ body.subpage .subpage-spacer {
 }
 
 .problem-section .section-title {
-  color: var(--white);
+  color: #F6F5F8;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -967,7 +968,7 @@ body.subpage .subpage-spacer {
 }
 
 .problem-content p {
-  color: rgba(255,255,255,0.9);
+  color: rgba(246, 245, 248, 0.92);
   font-size: 1.95rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
@@ -985,7 +986,7 @@ body.subpage .subpage-spacer {
 .problem-disclaimer {
   margin-top: 0;
   font-size: 1.4rem !important;
-  color: rgba(255,255,255,0.85) !important;
+  color: rgba(246, 245, 248, 0.65) !important;
   line-height: 1.6;
 }
 
@@ -1437,12 +1438,12 @@ body.subpage .subpage-spacer {
 .main-content-wrapper {
   position: relative;
   z-index: 1;
-  background: var(--white);
+  background: #F6F5F8;
 }
 
 /* Hero text below clouds */
 .hero-text-content {
-  background: var(--white);
+  background: #F6F5F8;
   padding-top: clamp(3rem, 6vw, 5rem);
   padding-bottom: clamp(2rem, 4vw, 3rem);
 }
@@ -1508,7 +1509,7 @@ body.subpage .subpage-spacer {
 /* ===== SECTIONS ===== */
 section {
   padding: clamp(4rem, 8vw, 7rem) 0;
-  background: var(--white);
+  background: #F6F5F8;
   position: relative;
   overflow: hidden;
 }
@@ -1663,19 +1664,18 @@ p {
   position: relative;
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5rem) 0;
-  /* background: var(--cream); */
-  background: #F5F5DC;
+  background: #F6F5F8;
 }
 
-/* Soft fade from cloud background into the next section's cream background */
+/* Soft fade from cloud background into the next section's background */
 .venn-cloud-section::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0; /* extend 1px past the boundary to fully cover any sub-pixel seam */
+  bottom: 0;
   height: 240px;
-  background: linear-gradient(to bottom, rgba(247, 246, 240, 0) 0%, rgba(247, 246, 240, 0.5) 45%, #F5F5DC 100%);
+  background: linear-gradient(to bottom, rgba(246, 245, 248, 0) 0%, rgba(246, 245, 248, 0.5) 45%, #F6F5F8 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -1963,8 +1963,7 @@ p {
 
 /* ===== ET DESCRIPTION ===== */
 #etDescriptionSection {
-  /* background: var(--cream); */
-  background: #F5F5DC;
+  background: #F6F5F8;
   border-bottom: 2px solid #FFDB58;
 }
 
@@ -2069,7 +2068,7 @@ p {
 
 /* ===== WHO IS THIS FOR? — editorial layout ===== */
 .who-section {
-  background: var(--white);
+  background: #F6F5F8;
   padding: 0 !important;
   overflow: visible;
   border-bottom: 2px solid #FFDB58;
@@ -2255,7 +2254,7 @@ p {
 
 /* Pull quote */
 .who-quote {
-  background: var(--cream);
+  background: #F6F5F8;
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   margin-top: clamp(3rem, 6vw, 5rem);
 }

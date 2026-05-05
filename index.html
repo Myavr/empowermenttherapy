@@ -7,7 +7,7 @@
   <title>The Empowerment Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=37">
+  <link rel="stylesheet" href="style.css?v=39">
 </head>
 
 <body>
@@ -791,10 +791,12 @@
 
       var path = d3.geoPath().projection(projection);
 
-      // Ocean background
+      // Ocean background — deep navy (works on light bg)
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-        .attr('fill', '#1e2a38');
+        .attr('fill', '#2A3D62')
+        .attr('stroke', 'rgba(20, 8, 14, 0.18)')
+        .attr('stroke-width', 0.5);
 
       // Graticule (subtle grid lines)
       var graticule = d3.geoGraticule().step([30, 30]);
@@ -803,21 +805,21 @@
         .attr('class', 'globe-graticule')
         .attr('d', path)
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(255,255,255,0.07)')
+        .attr('stroke', 'rgba(246, 245, 248, 0.18)')
         .attr('stroke-width', 0.3);
 
-      // Land group
+      // Land group — light off-white (matches the new section bg)
       var landPath = svg.append('path')
         .attr('class', 'globe-land')
-        .attr('fill', '#c8d8e4')
-        .attr('stroke', 'rgba(255,255,255,0.15)')
+        .attr('fill', '#F6F5F8')
+        .attr('stroke', 'rgba(246, 245, 248, 0.5)')
         .attr('stroke-width', 0.3);
 
       // Country borders
       var borderPath = svg.append('path')
         .attr('class', 'globe-borders')
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(255,255,255,0.12)')
+        .attr('stroke', 'rgba(42, 61, 98, 0.35)')
         .attr('stroke-width', 0.2);
 
       // Atmosphere glow
