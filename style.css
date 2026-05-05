@@ -571,20 +571,9 @@ body.subpage .menu-toggle span {
 }
 
 body.subpage .subpage-spacer {
-  height: 132px;
-}
-
-/* Hamburger mode: header collapses to just logo + padding, so spacer shrinks to match */
-@media (max-width: 1200px) {
-  body.subpage .subpage-spacer {
-    height: 96px;
-  }
-}
-
-@media (max-width: 768px) {
-  body.subpage .subpage-spacer {
-    height: 68px;
-  }
+  /* shared.js measures the header at runtime and writes --header-h on <html>.
+     Fallback covers the moment before the script runs. */
+  height: var(--header-h, 92px);
 }
 
 /* Subpage hero banner (small intro section) */
@@ -840,7 +829,7 @@ body.subpage .subpage-spacer {
 
 /* ===== THE PROBLEM SECTION ===== */
 .problem-section {
-  background: #050810; /* fallback while the video is loading */
+  background: #0E1A33; /* flat dark blue */
   color: #F6F5F8;
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   position: relative;
@@ -2037,6 +2026,9 @@ p {
   user-select: none;
   transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
+.et-deeper-label{
+  font-size: 1.5em;
+}
 
 .et-deeper > summary::-webkit-details-marker { display: none; }
 .et-deeper > summary::marker { content: ''; }
@@ -2216,11 +2208,11 @@ p {
   max-width: 760px;
   padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
   border-radius: var(--radius-md);
-  background: rgba(20, 30, 50, 0.25);
+  background: rgba(20, 30, 50, 0.45);
   backdrop-filter: blur(10px) saturate(1.05);
   -webkit-backdrop-filter: blur(10px) saturate(1.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: -150px; /* visibly overflow 150px below the hero */
+  margin-bottom: -210px; /* visibly overflow 150px below the hero */
   position: relative;
   z-index: 3;
 }
@@ -2304,7 +2296,7 @@ p {
 }
 
 .who-blocks > .who-block:first-child {
-  margin-top: 170px;
+  margin-top: 190px;
 }
 
 .who-block-img img {

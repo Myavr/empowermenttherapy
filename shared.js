@@ -1,6 +1,23 @@
 // ===== Shared scripts used across all pages =====
 (function(){
 
+  // Dynamic header-height measurement → sets --header-h on <html>
+  // Lets the subpage spacer (and anything else) match the header exactly.
+  function measureHeader() {
+    var h = document.querySelector('header');
+    if (!h) return;
+    var px = Math.round(h.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--header-h', px + 'px');
+  }
+  measureHeader();
+  window.addEventListener('load', measureHeader);
+  window.addEventListener('resize', measureHeader);
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(measureHeader);
+    var hdr = document.querySelector('header');
+    if (hdr) ro.observe(hdr);
+  }
+
   // Intersection Observer for fade-in animations
   var observer = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
