@@ -1160,24 +1160,26 @@ body.subpage .subpage-spacer {
   /* Normalized 0..1 across whole nav */
   --r-n: calc(var(--r) / (var(--max-z) * var(--max-p) - 1));
 
-  --hover-intensity: 12rem;
-  --tilt-strength: 60deg;
-  --w: 0.4;  /* falloff width — matches original */
+  --hover-intensity: 6rem;     /* push-forward distance for the active strip */
+  --tilt-strength: 0deg;       /* no rotateX — was creating warped gaps between tilted strips */
+  --w: 0.4;
   --hover-smoothness: 70ms;
   --fall-smoothness: 250ms;
 
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0; /* zero gap so cursor never falls into a "no-strip" zone */
   perspective: 2000px;
   transform-style: preserve-3d;
   isolation: isolate;
+  /* Sub-zone (--z) is locked to the strip center — removes per-pixel sub-zone flicker */
+  --z: 4;
 }
 
 /* Resting state — when nothing in the nav is hovered, push --r-n far away (all flat) */
-.doing-strips:not(:hover) {
+.doing-strips:not(:hover),
+.doing-strips:hover:not(:has(.doing-strip:hover)) {
   --p: -10;
-  --z: 0;
 }
 
 /* When at rest, force exact flat position to avoid sub-pixel drift in cosine math */
@@ -1191,7 +1193,7 @@ body.subpage .subpage-spacer {
   filter: brightness(1.05) saturate(1.15);
 }
 
-/* CSS-driven hover: which strip sets --p, which sub-zone sets --z (always active, no lock) */
+/* CSS-driven hover: which strip sets --p (just the strip, no sub-zone tracking) */
 .doing-strips:has(.doing-strip:nth-child(1):hover) { --p: 0; }
 .doing-strips:has(.doing-strip:nth-child(2):hover) { --p: 1; }
 .doing-strips:has(.doing-strip:nth-child(3):hover) { --p: 2; }
@@ -1201,16 +1203,6 @@ body.subpage .subpage-spacer {
 .doing-strips:has(.doing-strip:nth-child(7):hover) { --p: 6; }
 .doing-strips:has(.doing-strip:nth-child(8):hover) { --p: 7; }
 .doing-strips:has(.doing-strip:nth-child(9):hover) { --p: 8; }
-
-.doing-strips:has(.doing-strip-zones > i:nth-child(1):hover) { --z: 0; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(2):hover) { --z: 1; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(3):hover) { --z: 2; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(4):hover) { --z: 3; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(5):hover) { --z: 4; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(6):hover) { --z: 5; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(7):hover) { --z: 6; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(8):hover) { --z: 7; }
-.doing-strips:has(.doing-strip-zones > i:nth-child(9):hover) { --z: 8; }
 
 .doing-strip {
   --i: 0;
@@ -1229,12 +1221,10 @@ body.subpage .subpage-spacer {
   transform-style: preserve-3d;
   transform-origin: 50% 50%;
   will-change: transform, filter;
-  transform:
-    translateZ(calc(var(--falloff) * var(--hover-intensity)))
-    rotateX(calc(clamp(-1, var(--diff) * 5, 1) * var(--falloff) * var(--tilt-strength) * -1));
+  transform: translateZ(calc(var(--falloff) * var(--hover-intensity)));
   transition:
-    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.25s ease;
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.32s ease;
   filter: brightness(max(0.55, calc(var(--falloff) * 1.15))) saturate(var(--falloff));
 }
 
@@ -1481,8 +1471,8 @@ body.subpage .subpage-spacer {
 }
 
 .et-thrive {
-  color: #FFDB58;
-  font-weight: 600;
+  color: #000;
+  font-weight: 700;
 }
 
 /* Match Problem section container width and horizontal padding */
@@ -2164,84 +2154,6 @@ p {
   border-bottom: 2px solid #FFDB58;
 }
 
-/* Hero with image + overlay title */
-.who-hero {
-  position: relative;
-  width: 100%;
-  height: clamp(380px, 55vh, 600px);
-  overflow: visible; /* allow textbox to extend past hero bottom */
-}
-
-.who-hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-.who-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(20, 30, 50, 0.7) 0%, rgba(20, 30, 50, 0.45) 60%, rgba(20, 30, 50, 0.7) 100%);
-}
-
-.who-hero-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 0 clamp(2rem, 8vw, 6rem);
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 2;
-}
-
-/* Frosted-glass box behind the title + lead — sits at the bottom of the hero
-   and overflows 50px below it into the next section. */
-.who-hero-textbox {
-  display: inline-block;
-  max-width: 760px;
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
-  border-radius: var(--radius-md);
-  background: rgba(20, 30, 50, 0.45);
-  backdrop-filter: blur(10px) saturate(1.05);
-  -webkit-backdrop-filter: blur(10px) saturate(1.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: -210px; /* visibly overflow 150px below the hero */
-  position: relative;
-  z-index: 3;
-}
-
-.who-hero-textbox .who-hero-title,
-.who-hero-textbox .who-hero-lead {
-  max-width: none;
-}
-
-.who-hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
-  color: var(--white);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0 0 1.25rem;
-  max-width: 800px;
-}
-
-.who-hero-lead {
-  font-size: 1.58rem !important;
-  line-height: 1.55 !important;
-  color: rgba(255, 255, 255, 0.92);
-  max-width: 720px;
-  margin: 0;
-  font-weight: 300;
-}
-
 /* Intro */
 .who-intro {
   max-width: 850px;
@@ -2293,10 +2205,6 @@ p {
 
 .who-section {
   overflow: visible !important; /* let textbox extend past section boundaries */
-}
-
-.who-blocks > .who-block:first-child {
-  margin-top: 190px;
 }
 
 .who-block-img img {
@@ -2404,29 +2312,8 @@ p {
     order: 0;
   }
 
-  /* Hero: let it grow with content so the textbox always fits and never overflows
-     into adjacent sections on small screens */
-  .who-hero {
-    height: auto;
-    min-height: 380px;
-  }
-  .who-hero-content {
-    position: relative;
-    inset: auto;
-    padding: clamp(2.5rem, 8vw, 4rem) 1.5rem;
-    justify-content: flex-start;
-  }
-  .who-hero-textbox {
-    margin-bottom: 0; /* no overflow on mobile */
-    max-width: 100%;
-  }
-
-  /* Cancel the desktop overflow-spacing on the next sections */
   .who-intro {
     padding-top: clamp(3rem, 6vw, 5rem);
-  }
-  .who-blocks > .who-block:first-child {
-    margin-top: 0;
   }
 
   .who-intro p,
