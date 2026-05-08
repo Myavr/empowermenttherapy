@@ -2727,6 +2727,11 @@ p {
   margin: 0 auto;
 }
 
+/* Add breathing room below the "Frequently Asked Questions" heading */
+.container:has(> .faq) > h2 {
+  margin-bottom: 50px;
+}
+
 .faq details {
   border-bottom: 1px solid rgba(20,8,14,0.08);
 }
@@ -2734,7 +2739,7 @@ p {
 .faq summary {
   padding: 1.25rem 0;
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.95rem;
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -2767,7 +2772,7 @@ p {
 }
 
 .faq-answer p {
-  font-size: 0.95rem;
+  font-size: 1.95rem;
   line-height: 1.8;
   color: var(--text-muted);
 }
