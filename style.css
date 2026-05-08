@@ -2154,7 +2154,50 @@ p {
 .who-section {
   background: #F6F5F8;
   padding: 0 !important;
-  overflow: visible;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Title slice: forest video lives here only, fading into cream at its bottom */
+.who-title-slice {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Forest video — fills the title slice */
+.who-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Cream-tinted overlay that fades the bottom of the title slice into the cream below */
+.who-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 245, 248, 0.55) 0%,
+    rgba(246, 245, 248, 0.55) 55%,
+    rgba(246, 245, 248, 0.95) 90%,
+    #F6F5F8 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Lift the lead block above the video + overlay */
+.who-title-slice > .who-block--lead {
+  position: relative;
+  z-index: 2;
 }
 
 /* Intro */
@@ -2191,13 +2234,12 @@ p {
   border-top: 1px solid rgba(20, 8, 14, 0.08);
 }
 
-.who-block:last-child {
+.who-blocks > .who-block:last-child {
   border-bottom: 1px solid rgba(20, 8, 14, 0.08);
 }
 
-/* Remove the divider between the lead "Who Is This For?" block and the
-   first child block ("For Therapists") */
-.who-block--lead + .who-block {
+/* The first block inside .who-blocks (the "For Therapists" subsection) — no top border */
+.who-blocks > .who-block:first-child {
   border-top: none;
 }
 
@@ -2212,9 +2254,7 @@ p {
   border-radius: var(--radius-md);
 }
 
-.who-section {
-  overflow: visible !important; /* let textbox extend past section boundaries */
-}
+/* (removed overflow: visible override — section now clips its forest video bg) */
 
 .who-block-img img {
   width: 100%;
