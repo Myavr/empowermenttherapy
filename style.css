@@ -2416,14 +2416,15 @@ p {
 /* Pull quote */
 .who-quote {
   background: #F6F5F8;
-  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  padding: clamp(3rem, 6vw, 5rem) 0;
   margin-top: clamp(3rem, 6vw, 5rem);
 }
 
+/* Match the text width allocation of .et-description ("Grounded in the work…") */
 .who-quote blockquote {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 2rem;
   border: none;
   text-align: left;
 }
