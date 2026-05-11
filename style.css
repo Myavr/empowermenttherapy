@@ -2257,10 +2257,43 @@ p {
 /* The first block inside .who-blocks (the "For Therapists" subsection) — no top border */
 .who-blocks > .who-block:first-child {
   border-top: none;
+  margin-top: 100px;
 }
 
 .who-block--reverse .who-block-img {
   order: 2;
+}
+
+/* === 3 child blocks: eyebrow above image; heading top-aligns with image === */
+.who-blocks > .who-block {
+  grid-template-areas:
+    "eyebrow ."
+    "image   content";
+  gap: clamp(0.5rem, 1.2vw, 1rem) clamp(2rem, 5vw, 4.5rem);
+}
+
+/* Reverse (Coaches): image on right, text on left → eyebrow on the RIGHT, flush right */
+.who-blocks > .who-block--reverse {
+  grid-template-areas:
+    ".       eyebrow"
+    "content image";
+}
+
+.who-blocks > .who-block--reverse > .who-block-eyebrow {
+  text-align: right;
+}
+
+.who-blocks > .who-block > .who-block-eyebrow {
+  grid-area: eyebrow;
+}
+
+.who-blocks > .who-block > .who-block-img {
+  grid-area: image;
+  order: initial; /* override the older .who-block--reverse .who-block-img { order: 2 } */
+}
+
+.who-blocks > .who-block > .who-block-text {
+  grid-area: content;
 }
 
 .who-block-img {
@@ -2347,7 +2380,9 @@ p {
 
 /* The three child subsections — slightly smaller eyebrows than the lead block, but still ≥1.95rem */
 .who-block:not(.who-block--lead) .who-block-eyebrow {
-  font-size: clamp(1.95rem, 2.4vw, 2.4rem);
+  font-size: clamp(1.56rem, 1.92vw, 1.92rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* Logo-color mapping for each child subsection eyebrow */
@@ -2390,7 +2425,7 @@ p {
   margin: 0 auto;
   padding: 0;
   border: none;
-  text-align: center;
+  text-align: left;
 }
 
 .who-quote blockquote p {
@@ -2405,7 +2440,7 @@ p {
 
 /* CTA */
 .who-cta {
-  text-align: center;
+  /* text-align: center; */
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   max-width: 850px;
   margin: 0 auto;
@@ -2438,6 +2473,16 @@ p {
   }
   .who-block--reverse .who-block-img {
     order: 0;
+  }
+
+  /* Collapse 3 child blocks to a single column: eyebrow → image → text */
+  .who-blocks > .who-block,
+  .who-blocks > .who-block--reverse {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "eyebrow"
+      "image"
+      "content";
   }
 
   .who-intro {
