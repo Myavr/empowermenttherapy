@@ -2162,6 +2162,10 @@ p {
 .who-title-slice {
   position: relative;
   overflow: hidden;
+  min-height: clamp(280px, 40vh, 480px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Forest video — fills the title slice */
@@ -2179,15 +2183,15 @@ p {
   pointer-events: none;
 }
 
-/* Cream-tinted overlay that fades the bottom of the title slice into the cream below */
+/* Bottom-half gradient overlay — top 50% is clear (trees fully visible),
+   then fades into the cream below. */
 .who-bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(246, 245, 248, 0.55) 0%,
-    rgba(246, 245, 248, 0.55) 55%,
-    rgba(246, 245, 248, 0.95) 90%,
+    rgba(246, 245, 248, 0) 0%,
+    rgba(246, 245, 248, 0) 50%,
     #F6F5F8 100%
   );
   z-index: 1;
@@ -2198,6 +2202,18 @@ p {
 .who-title-slice > .who-block--lead {
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+/* "Who is this for?" — white text on a tiny darkened backdrop blur */
+.who-title-slice .who-block-eyebrow {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 8px;
+  color: #ffffff;
+  background: rgba(20, 8, 14, 0.12);
+  backdrop-filter: blur(8px) saturate(1.05) brightness(0.85);
+  -webkit-backdrop-filter: blur(8px) saturate(1.05) brightness(0.85);
 }
 
 /* Intro */
