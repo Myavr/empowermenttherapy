@@ -2363,7 +2363,7 @@ p {
 .who-title-slice {
   position: relative;
   overflow: hidden;
-  min-height: clamp(280px, 100vh, 700px);
+  min-height: clamp(280px, 50vh, 700px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3001,7 +3001,7 @@ p {
 .testimonials-title-slice {
   position: relative;
   overflow: hidden;
-  min-height: clamp(280px, 100vh, 700px);
+  min-height: clamp(280px, 50vh, 700px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3125,7 +3125,7 @@ p {
 }
 
 .testimonial-card .author {
-  font-size: 1.35rem;
+  font-size: 1.65rem;
   font-weight: 500;
   color: var(--teal);
   letter-spacing: 0.02em;
