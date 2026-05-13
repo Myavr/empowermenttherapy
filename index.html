@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Empowerment Institute</title>
+
+  <!-- Eagerly preload decorative background videos so they're ready when their sections render -->
+  <link rel="preload" as="video" type="video/mp4" href="images/clouds-loop.mp4">
+  <link rel="preload" as="video" type="video/mp4" href="images/who-title-loop.mp4?v=6">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=102">
+  <link rel="stylesheet" href="style.css?v=103">
 </head>
 
 <body>
@@ -64,7 +69,7 @@
 
   <!-- Hero: Background Video -->
   <section class="hero-clouds-section" id="heroCloudsSection">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" autoplay muted loop playsinline disablepictureinpicture preload="auto">
       <source src="images/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay"></div>
@@ -311,7 +316,7 @@
 
     <!-- Venn / Founders -->
     <section class="venn-cloud-section" id="whatIsEtSection">
-      <video class="venn-cloud-video" autoplay muted loop playsinline>
+      <video class="venn-cloud-video" autoplay muted loop playsinline disablepictureinpicture preload="auto">
         <source src="images/clouds-loop.mp4" type="video/mp4">
       </video>
       <div class="venn-cloud-overlay"></div>
@@ -390,7 +395,7 @@
 
       <!-- Title slice: forest video + lead title; fades into the cream below -->
       <div class="who-title-slice">
-        <video class="who-bg-video" autoplay muted loop playsinline>
+        <video class="who-bg-video" autoplay muted loop playsinline disablepictureinpicture preload="auto">
           <source src="images/who-title-loop.mp4?v=6" type="video/mp4">
         </video>
         <div class="who-bg-overlay"></div>

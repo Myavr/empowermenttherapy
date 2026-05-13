@@ -641,6 +641,32 @@ body.subpage .subpage-spacer {
   z-index: -2;
 }
 
+/* Suppress iOS Safari "tap to play" overlay for all decorative background videos */
+.hero-video,
+.venn-cloud-video,
+.who-bg-video {
+  pointer-events: none;
+}
+
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-overlay-play-button,
+.hero-video::-webkit-media-controls-panel,
+.venn-cloud-video::-webkit-media-controls,
+.venn-cloud-video::-webkit-media-controls-start-playback-button,
+.venn-cloud-video::-webkit-media-controls-overlay-play-button,
+.venn-cloud-video::-webkit-media-controls-panel,
+.who-bg-video::-webkit-media-controls,
+.who-bg-video::-webkit-media-controls-start-playback-button,
+.who-bg-video::-webkit-media-controls-overlay-play-button,
+.who-bg-video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Dark overlay on video for readability */
 .hero-video-overlay {
   position: fixed;
