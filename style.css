@@ -2188,7 +2188,7 @@ p {
 .who-title-slice {
   position: relative;
   overflow: hidden;
-  min-height: clamp(280px, 40vh, 480px);
+  min-height: clamp(280px, 40vh, 560px);
   display: flex;
   align-items: center;
   justify-content: center;
