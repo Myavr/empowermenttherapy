@@ -3100,7 +3100,7 @@ p {
 /* Cards now sit on cream — give them a solid dark bg so the light text stays readable */
 .living-bg .testimonial-card {
   /* background: var(--navy); */
-  background: #0E1A33;
+  background: #577330;
   border: none;
   box-shadow: 0 8px 30px rgba(20, 8, 14, 0.12);
 }
@@ -3163,8 +3163,12 @@ p {
 .testimonial-card .author {
   font-size: 1.65rem;
   font-weight: 500;
-  color: var(--teal);
+  /* color: var(--teal); */
   letter-spacing: 0.02em;
+  /* Thin separator line between the quote above and the byline */
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 1.25rem;
+  margin-top: 0.25rem;
 }
 
 /* ===== FAQ ===== */
