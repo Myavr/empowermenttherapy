@@ -859,7 +859,8 @@ body.subpage .subpage-spacer {
 
 /* ===== COUNTRY BAR ===== */
 .country-bar {
-  background: #FAF8F3;                               /* Warm Linen */
+  background: #FAF8F3;
+  /* Warm Linen */
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -870,8 +871,10 @@ body.subpage .subpage-spacer {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 12% 50%, rgba(93, 115, 216, 0.07) 0%, transparent 55%),  /* Deep Empathy Blue glow */
-    radial-gradient(ellipse at 88% 50%, rgba(155, 200, 93, 0.06) 0%, transparent 55%);  /* Growth Green glow */
+    radial-gradient(ellipse at 12% 50%, rgba(93, 115, 216, 0.07) 0%, transparent 55%),
+    /* Deep Empathy Blue glow */
+    radial-gradient(ellipse at 88% 50%, rgba(155, 200, 93, 0.06) 0%, transparent 55%);
+  /* Growth Green glow */
   pointer-events: none;
 }
 
@@ -900,7 +903,8 @@ body.subpage .subpage-spacer {
 
 .country-bar-label {
   display: block;
-  color: #3E4F99;                                    /* Deep Navy */
+  color: #3E4F99;
+  /* Deep Navy */
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
@@ -921,9 +925,11 @@ body.subpage .subpage-spacer {
   display: inline-block;
   padding: 0.45rem 1.05rem;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(62, 79, 153, 0.18);         /* Deep Navy border */
+  border: 1px solid rgba(62, 79, 153, 0.18);
+  /* Deep Navy border */
   border-radius: 100px;
-  color: #3E4F99;                                    /* Deep Navy */
+  color: #3E4F99;
+  /* Deep Navy */
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 500;
@@ -1391,10 +1397,7 @@ body.subpage .subpage-spacer {
   will-change: filter;
   transition: filter 0.32s ease;
   filter:
-    sepia(calc(1 - var(--falloff)))
-    hue-rotate(calc((1 - var(--falloff)) * 50deg))
-    saturate(calc(1 + var(--falloff) * 0.3))
-    brightness(calc(0.42 + var(--falloff) * 0.73));
+    sepia(calc(1 - var(--falloff))) hue-rotate(calc((1 - var(--falloff)) * 50deg)) saturate(calc(1 + var(--falloff) * 0.3)) brightness(calc(0.42 + var(--falloff) * 0.73));
 }
 
 /* Sub-zone overlay — divides each strip into 9 hover detection slices */
@@ -1450,6 +1453,7 @@ body.subpage .subpage-spacer {
 }
 
 .doing-strip-num {
+  display: none;
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 500;
@@ -1468,7 +1472,8 @@ body.subpage .subpage-spacer {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.2vw, 1.95rem);
   font-weight: 500;
-  color: #fff;
+  /* color: #fff; */
+  color: #c2ff70;
   flex: 1;
   line-height: 1.25;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
@@ -1480,13 +1485,15 @@ body.subpage .subpage-spacer {
   width: 1.4rem;
   height: 1.4rem;
   flex-shrink: 0;
+  color: #c2ff70;
 }
 
 .doing-strip-toggle::before,
 .doing-strip-toggle::after {
   content: '';
   position: absolute;
-  background: rgba(255, 255, 255, 0.85);
+  /* background: rgba(255, 255, 255, 0.85); */
+  background: #c2ff70;
   transition: transform 0.4s ease, background 0.3s ease;
 }
 
