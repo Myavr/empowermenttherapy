@@ -1472,8 +1472,8 @@ body.subpage .subpage-spacer {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.2vw, 1.95rem);
   font-weight: 500;
-  /* color: #fff; */
-  color: #c2ff70;
+  color: #fff;
+  /* color: #c2ff70; */
   flex: 1;
   line-height: 1.25;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
@@ -1485,7 +1485,8 @@ body.subpage .subpage-spacer {
   width: 1.4rem;
   height: 1.4rem;
   flex-shrink: 0;
-  color: #c2ff70;
+  /* color: #c2ff70; */
+  
 }
 
 .doing-strip-toggle::before,
@@ -1493,7 +1494,8 @@ body.subpage .subpage-spacer {
   content: '';
   position: absolute;
   /* background: rgba(255, 255, 255, 0.85); */
-  background: #c2ff70;
+  /* background: #c2ff70; */
+  background: white;
   transition: transform 0.4s ease, background 0.3s ease;
 }
 
