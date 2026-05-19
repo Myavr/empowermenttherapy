@@ -859,7 +859,7 @@ body.subpage .subpage-spacer {
 
 /* ===== COUNTRY BAR ===== */
 .country-bar {
-  background: #F6F5F8;
+  background: #FAF8F3;                               /* Warm Linen */
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -870,8 +870,8 @@ body.subpage .subpage-spacer {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 12% 50%, rgba(87, 110, 193, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 88% 50%, rgba(138, 188, 94, 0.06) 0%, transparent 55%);
+    radial-gradient(ellipse at 12% 50%, rgba(93, 115, 216, 0.07) 0%, transparent 55%),  /* Deep Empathy Blue glow */
+    radial-gradient(ellipse at 88% 50%, rgba(155, 200, 93, 0.06) 0%, transparent 55%);  /* Growth Green glow */
   pointer-events: none;
 }
 
@@ -900,7 +900,7 @@ body.subpage .subpage-spacer {
 
 .country-bar-label {
   display: block;
-  color: #2A3D62;
+  color: #3E4F99;                                    /* Deep Navy */
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
@@ -921,9 +921,9 @@ body.subpage .subpage-spacer {
   display: inline-block;
   padding: 0.45rem 1.05rem;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(42, 61, 98, 0.18);
+  border: 1px solid rgba(62, 79, 153, 0.18);         /* Deep Navy border */
   border-radius: 100px;
-  color: #2A3D62;
+  color: #3E4F99;                                    /* Deep Navy */
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 500;

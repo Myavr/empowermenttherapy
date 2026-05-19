@@ -12,7 +12,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=107">
+  <link rel="stylesheet" href="style.css?v=109">
 </head>
 
 <body>
@@ -790,42 +790,42 @@
 
       var path = d3.geoPath().projection(projection);
 
-      // Ocean background — deep navy (works on light bg)
+      // Ocean background — Deep Navy (brand palette)
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-        .attr('fill', '#2A3D62')
-        .attr('stroke', 'rgba(20, 8, 14, 0.18)')
+        .attr('fill', '#3E4F99')                                  // Deep Navy
+        .attr('stroke', 'rgba(44, 49, 56, 0.18)')                 // Charcoal Ink rim
         .attr('stroke-width', 0.5);
 
-      // Graticule (subtle grid lines)
+      // Graticule (subtle grid lines) — Warm Linen at low opacity
       var graticule = d3.geoGraticule().step([30, 30]);
       svg.append('path')
         .datum(graticule)
         .attr('class', 'globe-graticule')
         .attr('d', path)
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(246, 245, 248, 0.18)')
+        .attr('stroke', 'rgba(250, 248, 243, 0.18)')              // Warm Linen
         .attr('stroke-width', 0.3);
 
-      // Land group — light off-white (matches the new section bg)
+      // Land — Warm Linen (matches the section background)
       var landPath = svg.append('path')
         .attr('class', 'globe-land')
-        .attr('fill', '#F6F5F8')
-        .attr('stroke', 'rgba(246, 245, 248, 0.5)')
+        .attr('fill', '#FAF8F3')                                  // Warm Linen
+        .attr('stroke', 'rgba(250, 248, 243, 0.5)')               // Warm Linen
         .attr('stroke-width', 0.3);
 
-      // Country borders
+      // Country borders — Deep Navy
       var borderPath = svg.append('path')
         .attr('class', 'globe-borders')
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(42, 61, 98, 0.35)')
+        .attr('stroke', 'rgba(62, 79, 153, 0.35)')                // Deep Navy
         .attr('stroke-width', 0.2);
 
-      // Atmosphere glow
+      // Atmosphere glow — Connection Aqua halo
       var defs = svg.append('defs');
       var radGrad = defs.append('radialGradient').attr('id', 'atmoGlow');
-      radGrad.append('stop').attr('offset', '85%').attr('stop-color', 'rgba(133,207,174,0)');
-      radGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(133,207,174,0.08)');
+      radGrad.append('stop').attr('offset', '85%').attr('stop-color', 'rgba(143, 217, 200, 0)');
+      radGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(143, 217, 200, 0.08)');
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R + 3)
         .attr('fill', 'url(#atmoGlow)')
