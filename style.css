@@ -1462,7 +1462,7 @@ body.subpage .subpage-spacer {
 .doing-strip-num {
   display: none;
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.08em;
@@ -1477,7 +1477,7 @@ body.subpage .subpage-spacer {
 
 .doing-strip-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
   font-weight: 500;
   color: #fff;
   /* color: #c2ff70; */
@@ -1544,13 +1544,24 @@ body.subpage .subpage-spacer {
 }
 
 .doing-strip-body-inner {
-  padding: 0 2rem 1.75rem calc(2rem + 2.4rem + 1.5rem);
+  padding: 1.25rem 2rem 1.75rem calc(2rem + 2.4rem + 1.5rem);
+}
+
+/* When the strip is open, give the inner content a frosted-glass panel so the
+   text reads cleanly over the bright photo background. */
+.doing-strip.is-open .doing-strip-body-inner {
+  background: rgba(20, 8, 14, 0.32);
+  backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
+  border-radius: 6px;
+  margin: 0 1.25rem 1.25rem;
+  padding: 1.25rem 1.75rem 1.5rem calc(2.4rem + 1.5rem);
 }
 
 .doing-strip-body-inner p {
-  font-size: 1.35rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.65rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
@@ -1562,9 +1573,9 @@ body.subpage .subpage-spacer {
 }
 
 .doing-strip-body-inner .doing-sublist li {
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   padding-left: 1.4rem;
   position: relative;
   margin-bottom: 0.5rem;
@@ -1585,24 +1596,29 @@ body.subpage .subpage-spacer {
   }
 
   .doing-strip-num {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     min-width: 1.85rem;
   }
 
   .doing-strip-title {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
   }
 
   .doing-strip-body-inner {
-    padding: 0 1rem 1.25rem calc(1.25rem + 1.85rem + 0.85rem);
+    padding: 1rem 1rem 1.25rem calc(1.25rem + 1.85rem + 0.85rem);
+  }
+
+  .doing-strip.is-open .doing-strip-body-inner {
+    margin: 0 0.75rem 1rem;
+    padding: 1rem 1.1rem 1.1rem calc(1.85rem + 0.85rem);
   }
 
   .doing-strip-body-inner p {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
   }
 
   .doing-strip-body-inner .doing-sublist li {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 }
 
