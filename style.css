@@ -1697,7 +1697,7 @@ section {
 
 /* Alternating dark/light sections */
 .living-bg {
-  /* background: var(--navy); */
+  background: #0E1A33;                               /* dark navy — required since all .living-bg content is white-on-dark */
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -3701,35 +3701,54 @@ footer {
   /* background: var(--navy); */
   background: #0E1A33;
   color: rgba(255, 255, 255, 0.6);
-  padding: 4rem 0 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 0;
+}
+
+/* === Unified footer-column section headings === */
+footer h4 {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
 }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.5fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
+  grid-template-columns: 1.4fr 0.8fr 1.1fr 1.2fr;
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+  padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-brand {}
+/* Brand column — tight vertical stack with consistent gaps */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
 
 .footer-logo img {
-  height: 44px;
+  height: 48px;
   width: auto;
-  margin-bottom: 1rem;
   opacity: 0.9;
+  margin: 0;
 }
 
 .footer-tagline {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.5;
 }
 
 .social-links {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
 }
 
 .social-links a {
@@ -3763,34 +3782,17 @@ footer {
   gap: 0.5rem;
 }
 
-.footer-nav h4 {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.5rem;
-}
+/* .footer-nav h4 and .footer-contact h4 now inherit the unified `footer h4` rule above */
 
 .footer-nav a {
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.6);
   transition: color var(--transition-fast);
+  padding: 0.15rem 0;
 }
 
 .footer-nav a:hover {
   color: var(--teal);
-}
-
-.footer-contact h4 {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.75rem;
 }
 
 .team-photos {
@@ -3827,20 +3829,18 @@ footer {
   color: var(--teal);
 }
 
-.footer-mid {
+/* === Support column (Book + PayPal QR + Subscribe button stacked) === */
+.footer-support {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 2rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
 .footer-book,
 .footer-paypal {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.6);
   transition: color var(--transition-fast);
@@ -3853,29 +3853,34 @@ footer {
 
 .footer-book img,
 .footer-paypal img {
-  height: 56px;
+  height: 48px;
   width: auto;
   border-radius: var(--radius-sm);
   opacity: 0.85;
+  flex-shrink: 0;
 }
 
 .footer-subscribe {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  min-width: 200px;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-subscribe-label {
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.02em;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
 }
 
 .footer-subscribe #paypal-button-container-P-8CS01676DE0612907NHPQXBQ {
-  width: 200px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 200px;
 }
 
 .footer-bottom {
@@ -3914,6 +3919,7 @@ footer {
 
   .footer-top {
     grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
   }
 
   .contact-layout {
@@ -4340,12 +4346,47 @@ footer {
 
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.25rem;
+    padding-bottom: 1.75rem;
+    text-align: center;
+    justify-items: center;
   }
 
-  .footer-mid {
-    flex-direction: column;
-    gap: 1.5rem;
+  /* In single-column mode, constrain each column's width and centre everything */
+  .footer-brand,
+  .footer-nav,
+  .footer-contact,
+  .footer-support {
+    width: 100%;
+    max-width: 320px;
+    align-items: center;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-nav a {
+    text-align: center;
+  }
+
+  .team-photos {
+    justify-content: center;
+  }
+
+  .footer-book,
+  .footer-paypal {
+    align-self: center;
+  }
+
+  .footer-subscribe {
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-subscribe #paypal-button-container-P-8CS01676DE0612907NHPQXBQ {
+    max-width: 220px;
+    margin: 0 auto;
   }
 }
 
