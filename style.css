@@ -1009,7 +1009,7 @@ body.subpage .subpage-spacer {
   position: relative;
 }
 
-/* Vertical divider in the gap between body and aside, matched to the gold .problem-divider */
+/* Vertical divider in the gap between body and aside — Connection Aqua (logo color) */
 .problem-grid-aside::before {
   content: '';
   position: absolute;
@@ -1017,7 +1017,7 @@ body.subpage .subpage-spacer {
   bottom: 0;
   left: calc(-1 * var(--col-gap) / 2 - 1px);
   width: 2px;
-  background: #FFDB58;
+  background: #8FD9C8;
   opacity: 0.85;
 }
 
@@ -1082,7 +1082,7 @@ body.subpage .subpage-spacer {
 .problem-divider {
   border: none;
   height: 2px;
-  background: #FFDB58;
+  background: #8FD9C8;
   margin: 2rem 0 1.5rem;
   width: 100%;
   opacity: 0.85;
@@ -1381,6 +1381,13 @@ body.subpage .subpage-spacer {
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Mask any sub-pixel hairline between consecutive strips by overlapping them by 1px.
+   The transform: translateZ + preserve-3d combo sometimes rounds strip heights to
+   fractional pixels; without this, a sliver of the section's cream bg peeks through. */
+.doing-strip + .doing-strip {
+  margin-top: -1px;
+}
+
 /* === IMAGE LAYER + green tint (filter only affects this pseudo, not the text) ===
    At rest (falloff=0): sepia + hue-rotate dial the photo into a dark olive-green
    approximating #6C8E3C. As falloff → 1, all the tint filters decay and the natural
@@ -1650,8 +1657,8 @@ body.subpage .subpage-spacer {
 }
 
 .et-statement strong {
-  color: #FFDB58;
-  font-weight: 700;
+  color: #8FD9C8;
+  font-weight: 400;
 }
 
 .et-thrive {
