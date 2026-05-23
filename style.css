@@ -1543,13 +1543,10 @@ body.subpage .subpage-spacer {
   max-height: 800px;
 }
 
+/* Frosted-glass panel for the body text. Applied unconditionally so it stays
+   in sync with the body's max-height collapse — `.doing-strip-body { overflow:
+   hidden }` clips it when the strip is closed, so it's only visible when open. */
 .doing-strip-body-inner {
-  padding: 1.25rem 2rem 1.75rem calc(2rem + 2.4rem + 1.5rem);
-}
-
-/* When the strip is open, give the inner content a frosted-glass panel so the
-   text reads cleanly over the bright photo background. */
-.doing-strip.is-open .doing-strip-body-inner {
   background: rgba(20, 8, 14, 0.32);
   backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   -webkit-backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
@@ -1605,10 +1602,6 @@ body.subpage .subpage-spacer {
   }
 
   .doing-strip-body-inner {
-    padding: 1rem 1rem 1.25rem calc(1.25rem + 1.85rem + 0.85rem);
-  }
-
-  .doing-strip.is-open .doing-strip-body-inner {
     margin: 0 0.75rem 1rem;
     padding: 1rem 1.1rem 1.1rem calc(1.85rem + 0.85rem);
   }
