@@ -1559,14 +1559,28 @@ body.subpage .subpage-spacer {
   font-size: 1.65rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.95);
-  margin: 0;
+  margin: 0 0 0.85em;                                /* breathing room between paragraphs */
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
+.doing-strip-body-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* If a paragraph immediately precedes a sublist, it's a lead-in line —
+   tighten its bottom margin so it visually attaches to the bullets. */
+.doing-strip-body-inner p:has(+ .doing-sublist) {
+  margin-bottom: 0.45em;
+}
+
 .doing-strip-body-inner .doing-sublist {
-  margin: 1rem 0 0;
+  margin: 0 0 0.85em;
   padding: 0;
   list-style: none;
+}
+
+.doing-strip-body-inner .doing-sublist:last-child {
+  margin-bottom: 0;
 }
 
 .doing-strip-body-inner .doing-sublist li {
@@ -1575,8 +1589,12 @@ body.subpage .subpage-spacer {
   color: rgba(255, 255, 255, 0.92);
   padding-left: 1.4rem;
   position: relative;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.doing-strip-body-inner .doing-sublist li:last-child {
+  margin-bottom: 0;
 }
 
 .doing-strip-body-inner .doing-sublist li::before {
