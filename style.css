@@ -2654,12 +2654,14 @@ p {
 
 /* Logo-color mapping for each child subsection eyebrow */
 .who-block--therapists .who-block-eyebrow {
-  color: #576ec1;
+  /* color: #576ec1; */
+  color: #5ba888;
   /* royal blue from logo */
 }
 
 .who-block--coaches .who-block-eyebrow {
-  color: #8abc5e;
+  /* color: #8abc5e; */
+  color: #5ba888;
   /* color: #3B4EA1; */
   /* olive/leaf green from logo */
 }
