@@ -1947,18 +1947,18 @@ p {
 
 .venn-side-left {
   border: 1px solid rgba(133, 207, 174, 0.3);
-  border-radius: var(--radius-md);
+  /* border-radius: var(--radius-md); */
 }
 
 .venn-side-right {
   border: 1px solid rgba(87, 110, 193, 0.3);
-  border-radius: var(--radius-md);
+  /* border-radius: var(--radius-md); */
 }
 
 .venn-photo {
   width: 240px;
   height: 240px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   padding: 4px;
   margin-bottom: 1rem;
   flex-shrink: 0;
@@ -1969,16 +1969,18 @@ p {
 }
 
 .venn-side-right .venn-photo {
-  background: linear-gradient(135deg, var(--coral), var(--coral-light));
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+
+  /* background: linear-gradient(135deg, var(--coral), var(--coral-light)); */
 }
 
 .venn-photo img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   object-fit: cover;
   display: block;
-  border: 2px solid var(--white);
+  /* border: 2px solid var(--white); */
 }
 
 .venn-side h4 {
