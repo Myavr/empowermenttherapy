@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Empowerment Institute</title>
+  <title>Empowerment Therapy Institute</title>
 
   <!-- Eagerly preload decorative background videos so they're ready when their sections render -->
   <link rel="preload" as="video" type="video/mp4" href="images/clouds-loop.mp4">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sorts+Mill+Goudy:ital@0;1&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=144">
+  <link rel="stylesheet" href="style.css?v=207">
 </head>
 
 <body>
@@ -87,7 +87,7 @@
         </div>
         <div class="country-list">
           <span class="country-bar-label">Practitioners Worldwide</span>
-          <div class="country-tags">
+          <div class="country-tags fade-in-group">
             <span class="country-tag">Canada</span>
             <span class="country-tag">Colombia</span>
             <span class="country-tag">Czech Republic</span>
@@ -117,24 +117,22 @@
               support services are either not affordable or outright unavailable.</p>
             <p>Empowerment Therapy is an accompaniment model that concerned individuals who want to help can learn and
               apply.</p>
-                          <p class="et-statement">
-              Empowerment Therapy is for those of us who want to accompany others on the journey towards
-              <strong>equilibrium</strong>, <strong>wholeness</strong>, and connection with their <strong>authentic
-                self</strong>. 
-            </p>
-            <p class="et-statement">Empowerment Practitioners aid people to not only navigate current challenges, but also build more
-              <strong>fulfilling relationships and thriving lives.</strong></p>
+            <div class="problem-thesis">
+              <p class="et-statement">
+                Empowerment Therapy is for those of us who want to accompany others on the journey towards
+                <strong>equilibrium</strong>, <strong>wholeness</strong>, and connection with their <strong>authentic
+                  self</strong>.
+              </p>
+              <p class="et-statement">Empowerment Practitioners aid people to not only navigate current challenges, but also build more
+                <strong>fulfilling relationships and thriving lives.</strong></p>
+            </div>
 
           </div>
           <aside class="problem-grid-aside" aria-hidden="true">
-            <div class="problem-decor-img"
-              style="--img: url('https://plus.unsplash.com/premium_photo-1745218786817-ead24f4c571f?w=800&amp;q=80&amp;auto=format&amp;fit=crop'); --ar: 1/1;">
-            </div>
+            <div class="problem-decor-img" style="--img: url('images/dist_man.jpg'); --ar: 1/1;"></div>
             <div class="problem-decor-img" style="--img: url('images/problem-shepherd.jpg'); --ar: 3/2;"></div>
             <div class="problem-decor-img" style="--img: url('images/sad_woman.png'); --ar: 4/5;"></div>
-            <div class="problem-decor-img"
-              style="--img: url('https://plus.unsplash.com/premium_photo-1664533227575-560c4ff393d2?w=800&amp;q=80&amp;auto=format&amp;fit=crop'); --ar: 3/2;">
-            </div>
+            <div class="problem-decor-img" style="--img: url('images/troubled_woman.jpg'); --ar: 3/2;"></div>
           </aside>
           <div class="problem-grid-footer problem-content">
             <hr class="problem-divider">
@@ -298,13 +296,13 @@
             <p class="venn-subtitle">Client Centered Therapy</p>
           </div>
         </div>
-        <!-- <div class="venn-side venn-side-et">
-          <div class="venn-side-overlay"></div>
+        <!-- The overlap of the two circles — the logo's center, enacted -->
+        <div class="venn-side venn-side-et">
           <div class="venn-et-circle">
             <span class="venn-et-title">Empowerment Therapy</span>
           </div>
           <h4 class="venn-et-tagline">Healing &middot; Liberation &middot; Empowerment</h4>
-        </div> -->
+        </div>
       </div>
     </section>
 
@@ -363,7 +361,7 @@
       </div>
 
       <!-- Principle blocks -->
-      <div class="who-blocks">
+      <div class="who-blocks fade-in-group">
 
         <article class="who-block who-block--therapists">
           <span class="who-block-eyebrow">For Therapists</span>
@@ -428,7 +426,7 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="living-bg fade-in vine-edge" id="testimonialsSection">
+    <section class="fade-in" id="testimonialsSection">
 
       <!-- Header slice with a still nature image -->
       <div class="testimonials-title-slice">
@@ -444,7 +442,7 @@
       </div>
 
       <div class="container">
-        <div class="testimonials">
+        <div class="testimonials fade-in-group">
           <div class="testimonial-card">
             <img src="images/testimonial-lindsey.jpg" alt="Rev. Lindsey Turner">
             <blockquote>"Empowerment Therapy enables me to approach my clients with a level of sensitivity and close-to-home quality that helps them feel seen, heard, and at ease right away."</blockquote>
@@ -488,7 +486,7 @@
       </div>
 
       <div class="container">
-        <div class="faq">
+        <div class="faq fade-in-group">
           <details>
             <summary>How was Empowerment Therapy developed?</summary>
             <div class="faq-answer">
@@ -540,11 +538,21 @@
       </div>
     </section>
 
+  <!-- Closing invitation -->
+  <section class="cta-band">
+    <h2>Begin your own journey</h2>
+    <p>Join a 45-minute orientation session and discover whether Empowerment Therapy is the right fit for you.</p>
+    <div class="cta-actions">
+      <a href="#" onclick="openRegModal(event)" class="btn btn--gold">Register for Orientation</a>
+      <a href="contact.html" class="btn btn--ghost-light">Contact Us</a>
+    </div>
+  </section>
+
     <footer>
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="The Empowerment Institute"></a>
+            <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="Empowerment Therapy Institute"></a>
             <p class="footer-tagline">Healing. Liberation. Empowerment.</p>
             <div class="social-links">
               <a href="https://www.instagram.com/empowerment.therapy/" target="_blank" rel="noopener"
@@ -809,11 +817,11 @@
 
       var path = d3.geoPath().projection(projection);
 
-      // Ocean background — Deep Navy (brand palette)
+      // Ocean background — the logo's royal blue
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-        .attr('fill', '#3E4F99')                                  // Deep Navy
-        .attr('stroke', 'rgba(44, 49, 56, 0.18)')                 // Charcoal Ink rim
+        .attr('fill', '#546cc0')                                  // logo royal blue
+        .attr('stroke', 'rgba(26, 35, 64, 0.2)')                  // ink rim
         .attr('stroke-width', 0.5);
 
       // Graticule (subtle grid lines) — Warm Linen at low opacity
@@ -823,28 +831,28 @@
         .attr('class', 'globe-graticule')
         .attr('d', path)
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(250, 248, 243, 0.18)')              // Warm Linen
+        .attr('stroke', 'rgba(250, 248, 240, 0.18)')              // brand cream
         .attr('stroke-width', 0.3);
 
-      // Land — Warm Linen (matches the section background)
+      // Land — the logo's starburst cream (matches the section background)
       var landPath = svg.append('path')
         .attr('class', 'globe-land')
-        .attr('fill', '#FAF8F3')                                  // Warm Linen
-        .attr('stroke', 'rgba(250, 248, 243, 0.5)')               // Warm Linen
+        .attr('fill', '#faf8f0')                                  // brand cream
+        .attr('stroke', 'rgba(250, 248, 240, 0.5)')               // brand cream
         .attr('stroke-width', 0.3);
 
-      // Country borders — Deep Navy
+      // Country borders — royal blue
       var borderPath = svg.append('path')
         .attr('class', 'globe-borders')
         .attr('fill', 'none')
-        .attr('stroke', 'rgba(62, 79, 153, 0.35)')                // Deep Navy
+        .attr('stroke', 'rgba(84, 108, 192, 0.35)')               // logo royal blue
         .attr('stroke-width', 0.2);
 
-      // Atmosphere glow — Connection Aqua halo
+      // Atmosphere glow — seafoam halo (the overlap color)
       var defs = svg.append('defs');
       var radGrad = defs.append('radialGradient').attr('id', 'atmoGlow');
-      radGrad.append('stop').attr('offset', '85%').attr('stop-color', 'rgba(143, 217, 200, 0)');
-      radGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(143, 217, 200, 0.08)');
+      radGrad.append('stop').attr('offset', '85%').attr('stop-color', 'rgba(132, 204, 168, 0)');
+      radGrad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(132, 204, 168, 0.1)');
       svg.append('circle')
         .attr('cx', W / 2).attr('cy', H / 2).attr('r', R + 3)
         .attr('fill', 'url(#atmoGlow)')
