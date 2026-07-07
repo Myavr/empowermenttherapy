@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Programs | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=211">
+  <link rel="stylesheet" href="style.css?v=212">
 </head>
 <body class="subpage">
 
@@ -72,11 +72,29 @@
 
       <div class="levels-progression">
 
+        <!-- Reusable bloom motif: petals take each level's accent via
+             currentColor; the gold core echoes the logo's central ring -->
+        <svg width="0" height="0" class="et-flower-def" aria-hidden="true" focusable="false">
+          <symbol id="et-flower" viewBox="0 0 40 40">
+            <g fill="currentColor">
+              <ellipse cx="20" cy="11" rx="5" ry="8"/>
+              <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(72 20 20)"/>
+              <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(144 20 20)"/>
+              <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(216 20 20)"/>
+              <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(288 20 20)"/>
+            </g>
+            <circle cx="20" cy="20" r="4.6" fill="#e4cc78"/>
+          </symbol>
+        </svg>
+
         <!-- Level 1 -->
         <div class="level-step level-step--1 fade-in">
           <div class="level-step-number"><span>1</span></div>
           <div class="level-step-connector"></div>
           <div class="level-step-card">
+            <div class="lvl-blooms" aria-hidden="true">
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+            </div>
             <div class="level-step-badge">Foundation</div>
             <h3>Level 1: Foundation</h3>
             <p class="level-schedule" id="sched-time-1">&#128197; Tuesdays 8:00&ndash;9:30 PM CT</p>
@@ -150,6 +168,10 @@
           <div class="level-step-number"><span>2</span></div>
           <div class="level-step-connector"></div>
           <div class="level-step-card">
+            <div class="lvl-blooms" aria-hidden="true">
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+            </div>
             <div class="level-step-badge">Empowerment Processes</div>
             <h3>Level 2: Empowerment Processes</h3>
             <p class="level-schedule" id="sched-time-2">&#128197; Thursdays 9:00&ndash;10:30 AM CT</p>
@@ -207,6 +229,11 @@
           <div class="level-step-number"><span>3</span></div>
           <div class="level-step-connector"></div>
           <div class="level-step-card">
+            <div class="lvl-blooms" aria-hidden="true">
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+              <svg class="lvl-bloom"><use href="#et-flower"/></svg>
+            </div>
             <div class="level-step-badge">Certification</div>
             <h3>Level 3: Certification</h3>
             <p>A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer.</p>

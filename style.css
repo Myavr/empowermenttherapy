@@ -3230,12 +3230,60 @@ p {
 }
 
 .level-step-card {
+  position: relative;
   background: var(--white);
   border: 1px solid rgba(156, 192, 192, 0.5);
   border-radius: var(--radius-md);
   padding: 2rem;
   transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
   box-shadow: var(--shadow-sm);
+}
+
+/* ===== Level bloom flourish =====
+   1 / 2 / 3 blooms mark the progression, mirroring the numbered circle
+   opposite. Petals inherit each level's pole color via currentColor;
+   the gold core echoes the logo's central ring. */
+.lvl-blooms {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  display: flex;
+  gap: 0.1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lvl-bloom {
+  width: 24px;
+  height: 24px;
+  opacity: 0.92;
+  filter: drop-shadow(0 1px 1.5px rgba(26, 35, 64, 0.1));
+  transition: transform var(--transition-spring);
+}
+
+.level-step--1 .lvl-blooms {
+  color: var(--green);
+}
+
+.level-step--2 .lvl-blooms {
+  color: var(--blue);
+}
+
+.level-step--3 .lvl-blooms {
+  color: var(--seafoam);
+}
+
+/* petals stir gently when the card is hovered */
+.level-step:hover .lvl-bloom {
+  transform: rotate(6deg) scale(1.1);
+}
+
+.level-step:hover .lvl-bloom:nth-child(2) {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.level-step:hover .lvl-bloom:nth-child(3) {
+  transform: rotate(9deg) scale(1.1);
 }
 
 /* each level card opens with its pole — same anatomy as every card on the site */
@@ -4174,8 +4222,16 @@ p {
   max-width: 850px;
   margin: 0 auto;
   margin-top: 2rem;
-  /* opened cards grow downward without stretching their neighbors */
+  /* two independent columns — opening a card only grows its own column,
+     never leaving blank space beside its neighbour */
   align-items: start;
+}
+
+.resource-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
 }
 
 .resource-card {
@@ -5443,6 +5499,16 @@ footer h4::after {
     font-size: 1rem;
   }
 
+  .lvl-bloom {
+    width: 19px;
+    height: 19px;
+  }
+
+  .lvl-blooms {
+    top: 0.9rem;
+    right: 0.9rem;
+  }
+
   .contact-layout {
     grid-template-columns: 1fr;
   }
@@ -5494,7 +5560,8 @@ blockquote {
   .fade-in-group>*,
   .slide-left,
   .slide-right,
-  .scale-in {
+  .scale-in,
+  .lvl-bloom {
     transition: none !important;
     transform: none !important;
   }
