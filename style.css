@@ -4587,9 +4587,28 @@ footer {
   background: var(--ink);
   color: rgba(255, 255, 255, 0.6);
   padding: clamp(2.5rem, 5vw, 4rem) 0 0;
+  position: relative;
   /* the logo read as a line: blue pole -> seafoam overlap -> green pole */
   border-top: 3px solid var(--seafoam);
   border-image: linear-gradient(90deg, var(--blue), var(--seafoam), var(--green)) 1;
+}
+
+/* Same logo aurora as "The Problem" section — blue glow top-left,
+   green glow bottom-right, over the ink ground. */
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(84, 108, 192, 0.28) 0%, transparent 45%),
+    radial-gradient(circle at 95% 100%, rgba(132, 180, 84, 0.16) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+footer .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* === Unified footer-column section headings === */
@@ -4615,7 +4634,7 @@ footer h4::after {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 1.1fr 1.2fr;
+  grid-template-columns: 1.35fr 0.7fr 1.5fr 1fr;
   gap: clamp(1.75rem, 3.5vw, 3rem);
   padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -4686,8 +4705,6 @@ footer h4::after {
   gap: 0.5rem;
 }
 
-/* .footer-nav h4 and .footer-contact h4 now inherit the unified `footer h4` rule above */
-
 .footer-nav a {
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.6);
@@ -4710,27 +4727,30 @@ footer h4::after {
 
 .team-photos {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+  flex-wrap: wrap;
 }
 
 .team-photos figure {
   text-align: center;
 }
 
+/* The three faces are the visual anchor of the footer */
 .team-photos img {
-  width: 48px;
-  height: 48px;
+  width: clamp(82px, 6.6vw, 104px);
+  height: clamp(82px, 6.6vw, 104px);
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 0.3rem;
-  border: 2px solid rgba(228, 204, 120, 0.7);
-  box-shadow: 0 0 0 3px rgba(228, 204, 120, 0.12);
+  margin-bottom: 0.5rem;
+  border: 2px solid rgba(228, 204, 120, 0.8);
+  box-shadow: 0 0 0 4px rgba(228, 204, 120, 0.14), 0 8px 18px rgba(0, 0, 0, 0.3);
 }
 
 .team-photos figcaption {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 500;
 }
 
 .footer-email {
@@ -4772,6 +4792,25 @@ footer h4::after {
   border-radius: var(--radius-sm);
   opacity: 0.85;
   flex-shrink: 0;
+}
+
+/* Book relocated into the brand column as a featured, prominent cover */
+.footer-brand .footer-book {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.footer-book img {
+  height: 140px;
+  opacity: 1;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+}
+
+.footer-book span {
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .footer-subscribe {
@@ -5331,7 +5370,27 @@ footer h4::after {
     text-align: center;
   }
 
+  /* Navigate links become a centered two-column grid on phones */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    column-gap: clamp(1.75rem, 9vw, 3rem);
+    row-gap: 0.6rem;
+  }
+
+  .footer-nav h4 {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .footer-nav h4::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .footer-nav a {
+    justify-self: center;
     text-align: center;
   }
 
