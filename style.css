@@ -1408,10 +1408,7 @@ body.subpage .subpage-spacer {
 
 /* ===== WHAT WE ARE DOING SECTION ===== */
 .doing-section {
-  background-color: var(--cream);
-  background-image: url('images/patternbackgroundv1.png');
-  background-size: auto;
-  background-repeat: repeat;
+  background: var(--cream);
   color: var(--text-dark);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
 }
