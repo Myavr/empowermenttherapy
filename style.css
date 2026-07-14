@@ -499,7 +499,7 @@ nav {
 }
 
 nav a {
-  font-size: clamp(0.7rem, 0.85vw, 0.9rem);
+  font-size: clamp(0.7rem, 1.1vw, 1.15rem);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
