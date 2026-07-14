@@ -1341,6 +1341,7 @@ body.subpage .subpage-spacer {
 
 .problem-section .section-title::after {
   margin-left: 0;
+  display: none;
 }
 
 .problem-content {
@@ -1368,7 +1369,7 @@ body.subpage .subpage-spacer {
   margin-top: 1.75rem;
   padding: 1.5rem 1.75rem;
   background: rgba(250, 248, 240, 0.05);
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--seafoam);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
