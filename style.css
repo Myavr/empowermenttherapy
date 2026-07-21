@@ -2986,13 +2986,7 @@ p {
    therapists = the blue pole, coaches = the green pole,
    anyone = the seafoam overlap — the logo's own story. */
 .who-block:not(.who-block--lead) .who-block-eyebrow::after {
-  content: '';
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: currentColor;
-  margin-top: 0.55rem;
-  opacity: 0.8;
+  content: none;
 }
 
 .who-blocks>.who-block--reverse>.who-block-eyebrow::after {
@@ -3000,15 +2994,15 @@ p {
 }
 
 .who-block--therapists .who-block-eyebrow {
-  color: var(--blue-deep);
+  color: #6d9340;
 }
 
 .who-block--coaches .who-block-eyebrow {
-  color: var(--green-deep);
+  color: #6d9340;
 }
 
 .who-block--anyone .who-block-eyebrow {
-  color: var(--seafoam-deep);
+  color: #6d9340;
 }
 
 /* The three child subsection subtitles — black + large display size */
