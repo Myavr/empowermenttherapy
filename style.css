@@ -2275,12 +2275,12 @@ p {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  padding: 4px;
+  padding: 0;
   margin-bottom: 1rem;
   flex-shrink: 0;
   overflow: hidden;
-  border: 2px solid var(--seafoam);
-  box-shadow: 0 0 0 3px rgba(132, 204, 168, 0.18);
+  border: 3px solid #84cca8;
+  background: #84cca8;
 }
 
 .venn-side-left .venn-photo {
