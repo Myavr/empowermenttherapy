@@ -1284,9 +1284,9 @@ body.subpage .subpage-spacer {
   transform: translateX(0);
 }
 
-/* alternate images settle slightly left, across the seafoam rule */
+/* Keep every photo aligned to the same right edge. */
 .problem-section.visible .problem-grid-aside .problem-decor-img:nth-child(even) {
-  transform: translateX(-18px);
+  transform: translateX(0);
 }
 
 .problem-section .problem-decor-img:nth-child(1) { transition-delay: 0.15s; }
@@ -5599,7 +5599,7 @@ blockquote {
   }
 
   .problem-section.visible .problem-grid-aside .problem-decor-img:nth-child(even) {
-    transform: translateX(-18px) !important;
+    transform: translateX(0) !important;
   }
 
   .reg-modal {
