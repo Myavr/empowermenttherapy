@@ -725,10 +725,9 @@ summary:focus-visible,
 
 .cta-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* ===== MOBILE MENU ===== */
