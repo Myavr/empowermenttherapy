@@ -194,7 +194,7 @@
      Controls: "The Problem", "What We Are Doing", "Who Is This For?",
      "What is Empowerment Therapy?", "What Our Students Say", "Frequently Asked Questions".
      Change this single value to scale all major section headings together. */
-  --section-title-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  --section-title-size: clamp(2.04rem, 3.825vw, 3.06rem);
 
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2352,7 +2352,7 @@ p {
 
 .venn-et-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-size: clamp(1.53rem, 3.4vw, 2.72rem);
   color: var(--cream);
   line-height: 1.1;
   letter-spacing: 0;
@@ -5302,7 +5302,7 @@ footer h4::after {
   }
 
   .venn-et-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     white-space: normal;
     /* allow line break on mobile */
   }
