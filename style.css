@@ -2262,13 +2262,11 @@ p {
 }
 
 .venn-side-left {
-  border: 1px solid rgba(84, 108, 192, 0.6);
-  border-top: 3px solid var(--blue);
+  border: 0;
 }
 
 .venn-side-right {
-  border: 1px solid rgba(132, 180, 84, 0.6);
-  border-top: 3px solid var(--green);
+  border: 0;
 }
 
 .venn-photo {
