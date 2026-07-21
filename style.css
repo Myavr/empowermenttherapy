@@ -3054,6 +3054,10 @@ p {
   margin: 0;
 }
 
+.who-quote blockquote p + p {
+  margin-top: 1.5rem;
+}
+
 /* CTA */
 .who-cta {
   /* text-align: center; */
