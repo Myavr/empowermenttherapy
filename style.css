@@ -1862,7 +1862,7 @@ body.subpage .subpage-spacer {
    hidden }` clips it when the strip is closed, so it's only visible when open. */
 .doing-strip-body-inner {
   background: rgba(26, 35, 64, 0.55);
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid #3E4F99;
   backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   -webkit-backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   /* border-radius: 6px; */
