@@ -1862,7 +1862,7 @@ body.subpage .subpage-spacer {
    hidden }` clips it when the strip is closed, so it's only visible when open. */
 .doing-strip-body-inner {
   background: rgba(26, 35, 64, 0.55);
-  border-left: 3px solid #3E4F99;
+  border-left: 3px solid var(--gold);
   backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   -webkit-backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   /* border-radius: 6px; */
@@ -3040,7 +3040,7 @@ p {
   margin: 0 auto;
   padding: 0 2rem 0 calc(2rem + 20px);
   border: none;
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid #3E4F99;
   text-align: left;
 }
 
@@ -3725,7 +3725,7 @@ p {
   background: rgba(26, 35, 64, 0.45);
   backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
   -webkit-backdrop-filter: blur(10px) saturate(1.05) brightness(0.9);
-  margin-bottom: 0.75rem;
+  margin: 0;
 }
 
 .faq {
@@ -3733,8 +3733,7 @@ p {
   margin: 0 auto;
 }
 
-/* Add breathing room below the "Frequently Asked Questions" heading (now inside .faq-title-content) */
-.faq-title-content > h2,
+/* Add breathing room below legacy FAQ headings outside the image slice. */
 .container:has(> .faq)>h2 {
   margin-bottom: 50px;
 }
