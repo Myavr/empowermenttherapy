@@ -4691,11 +4691,11 @@ footer h4::after {
 
 .footer-top {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.7fr) minmax(0, 0.95fr) minmax(0, 0.85fr);
-  gap: clamp(0.9rem, 1.8vw, 1.6rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.7fr) minmax(0, 0.9fr) minmax(0, 0.8fr);
+  gap: clamp(1rem, 2vw, 1.8rem);
   padding-bottom: 2.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 0 auto 0 0;
   align-items: start;
 }
@@ -4706,7 +4706,7 @@ footer h4::after {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6rem;
-  max-width: 260px;
+  max-width: 240px;
 }
 
 .footer-logo img {
@@ -4755,6 +4755,7 @@ footer h4::after {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  justify-self: center;
 }
 
 .footer-nav a {
@@ -4820,6 +4821,7 @@ footer h4::after {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  justify-self: end;
 }
 
 .footer-book,
