@@ -3060,7 +3060,7 @@ p {
 
 /* CTA */
 .who-cta {
-  /* text-align: center; */
+  text-align: center;
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   max-width: 850px;
   margin: 0 auto;
