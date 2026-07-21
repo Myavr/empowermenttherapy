@@ -4749,7 +4749,8 @@ footer h4::after {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  justify-self: center;
+  justify-self: start;
+  margin-left: 0.35rem;
 }
 
 .footer-nav a {
