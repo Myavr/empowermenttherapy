@@ -4691,12 +4691,12 @@ footer h4::after {
 
 .footer-top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr) minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(1.1rem, 2.2vw, 2rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.7fr) minmax(0, 0.95fr) minmax(0, 0.85fr);
+  gap: clamp(0.9rem, 1.8vw, 1.6rem);
   padding-bottom: 2.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  max-width: 1120px;
-  margin: 0 auto;
+  max-width: 1080px;
+  margin: 0 auto 0 0;
   align-items: start;
 }
 
@@ -4706,7 +4706,7 @@ footer h4::after {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6rem;
-  max-width: 280px;
+  max-width: 260px;
 }
 
 .footer-logo img {
