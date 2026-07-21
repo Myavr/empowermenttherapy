@@ -4783,9 +4783,10 @@ footer h4::after {
 
 .team-photos {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1.15rem;
-  flex-wrap: wrap;
 }
 
 .team-photos figure {
