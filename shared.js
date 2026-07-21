@@ -64,43 +64,6 @@
     }
   });
 
-  // Toggle footer support menu from a single PayPal button
-  document.querySelectorAll('.footer-support-actions').forEach(function(wrapper){
-    var button = wrapper.querySelector('.footer-paypal-toggle');
-    var menu = wrapper.querySelector('.footer-support-menu');
-    if (!button || !menu) return;
-
-    button.addEventListener('click', function(e){
-      e.stopPropagation();
-      var isOpen = button.getAttribute('aria-expanded') === 'true';
-
-      document.querySelectorAll('.footer-support-actions').forEach(function(other){
-        var otherButton = other.querySelector('.footer-paypal-toggle');
-        var otherMenu = other.querySelector('.footer-support-menu');
-        if (!otherButton || !otherMenu) return;
-        otherButton.setAttribute('aria-expanded', 'false');
-        otherMenu.hidden = true;
-      });
-
-      if (!isOpen) {
-        button.setAttribute('aria-expanded', 'true');
-        menu.hidden = false;
-      }
-    });
-  });
-
-  document.addEventListener('click', function(e){
-    if (!e.target.closest('.footer-support-actions')) {
-      document.querySelectorAll('.footer-support-actions').forEach(function(wrapper){
-        var button = wrapper.querySelector('.footer-paypal-toggle');
-        var menu = wrapper.querySelector('.footer-support-menu');
-        if (!button || !menu) return;
-        button.setAttribute('aria-expanded', 'false');
-        menu.hidden = true;
-      });
-    }
-  });
-
   // Close mobile nav on anchor click (except the About dropdown toggle, which
   // should expand its submenu inline without closing the whole mobile menu)
   document.querySelectorAll('nav a, .nav-register').forEach(function(a){
