@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=212">
+  <link rel="stylesheet" href="style.css?v=214">
 </head>
 
 <body>
@@ -108,6 +108,24 @@
         </div>
       </div>
     </div>
+
+    <!-- NEWS & EVENTS — populated from data/news.json + data/events.json.
+         Stays hidden (the `hidden` attribute) unless there is something to show. -->
+    <section class="news-section" id="newsEvents" hidden>
+      <div class="container">
+        <h2 class="section-title">News &amp; Events</h2>
+        <div class="news-events-grid">
+          <div class="ne-col" id="newsCol" hidden>
+            <h3 class="ne-subhead"><span class="ne-dot ne-dot--blue" aria-hidden="true"></span>Latest news</h3>
+            <div class="ne-list" id="newsList"></div>
+          </div>
+          <div class="ne-col" id="eventsCol" hidden>
+            <h3 class="ne-subhead"><span class="ne-dot ne-dot--green" aria-hidden="true"></span>Upcoming events</h3>
+            <div class="ne-list ne-list--events" id="eventsList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- THE PROBLEM Section -->
     <section class="problem-section fade-in" id="theProblem">
@@ -826,7 +844,7 @@
     })();
   </script>
 
-  <script src="shared.js?v=29"></script>
+  <script src="shared.js?v=30"></script>
 
   <!-- D3 Globe -->
   <script src="https://d3js.org/d3.v7.min.js"></script>

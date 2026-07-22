@@ -602,3 +602,44 @@
     if (shown > 0) section.hidden = false;
   });
 })();
+
+/* ===== Editable-content helper: small escape used by the renders below ===== */
+function etEsc(s) {
+  var e = document.createElement('div');
+  e.textContent = s == null ? '' : String(s);
+  return e.innerHTML;
+}
+
+/* ===== Testimonials (data/testimonials.json) ===== */
+(function () {
+  var wrap = document.querySelector('.testimonials');
+  if (!wrap) return;
+  fetch('data/testimonials.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.items) || !data.items.length) return; // keep hardcoded fallback
+      wrap.innerHTML = '';
+      data.items.forEach(function (t) {
+        t = t || {};
+        var card = document.createElement('div');
+        card.className = 'testimonial-card visible';
+        var html = '';
+        if (t.photo) html += '<img src="' + etEsc(t.photo) + '" alt="' + etEsc(t.name || '') + '">';
+        if (t.quote) html += '<blockquote>"' + etEsc(t.quote) + '"</blockquote>';
+        if (t.name) html += '<p class="author">&mdash; ' + etEsc(t.name) + '</p>';
+        card.innerHTML = html;
+        wrap.appendChild(card);
+      });
+    })
+    .catch(function () { /* keep hardcoded fallback */ });
+})();
+
+/* ===== Hero headline (data/hero.json) ===== */
+(function () {
+  var el = document.getElementById('heroHeadline');
+  if (!el) return;
+  fetch('data/hero.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) { if (data && data.headline) el.textContent = data.headline; })
+    .catch(function () {});
+})();

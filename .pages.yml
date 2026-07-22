@@ -4,6 +4,11 @@
 # here only changes the JSON data files — never the HTML or CSS — so the site's
 # styling can't be broken by content edits.
 
+# Where uploaded images are stored / referenced (enables the upload button on image fields).
+media:
+  input: images
+  output: /images
+
 content:
   - name: countries
     label: Practitioners worldwide
@@ -97,3 +102,35 @@ content:
             label: Link text (optional)
             type: string
             required: false
+
+  - name: testimonials
+    label: Testimonials
+    description: Quotes shown in the "What Our Students Say" section on the home page.
+    type: file
+    path: data/testimonials.json
+    fields:
+      - name: items
+        label: Testimonials
+        type: object
+        list: true
+        fields:
+          - name: photo
+            label: Photo
+            type: image
+            required: false
+          - name: quote
+            label: Quote
+            type: text
+          - name: name
+            label: Name and place (e.g. "Rev. Lindsey Turner, United States")
+            type: string
+
+  - name: hero
+    label: Home hero
+    description: The large headline at the top of the home page.
+    type: file
+    path: data/hero.json
+    fields:
+      - name: headline
+        label: Headline
+        type: text

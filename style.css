@@ -1155,6 +1155,141 @@ body.subpage .subpage-spacer {
   background: var(--white);
 }
 
+/* ===== NEWS & EVENTS (data-driven; the section hides itself when empty) ===== */
+.news-section {
+  background: var(--cream);
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+}
+
+.news-events-grid {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ne-col {
+  flex: 1 1 320px;
+  max-width: 480px;
+  min-width: 0;
+}
+
+.ne-subhead {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ne-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.ne-dot--blue { background: var(--blue); }
+.ne-dot--green { background: var(--green); }
+
+.ne-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ne-item {
+  background: var(--white);
+  border: 1px solid rgba(156, 192, 192, 0.5);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ne-item-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  margin: 0 0 0.4rem;
+}
+
+.ne-list--events .ne-item-date {
+  color: var(--green-deep);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ne-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+}
+
+.ne-item-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.ne-item-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0.45rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+}
+
+.ne-item-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+}
+
+.ne-item-link:hover { color: var(--seafoam-deep); }
+
+.ne-recur {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold-deep);
+  background: rgba(228, 204, 120, 0.2);
+  padding: 0.12rem 0.5rem;
+  border-radius: 100px;
+}
+
+@media (max-width: 700px) {
+  .news-events-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ne-col {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
 /* ===== THE PROBLEM SECTION ===== */
 .problem-section {
   background: var(--ink);
