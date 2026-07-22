@@ -643,3 +643,64 @@ function etEsc(s) {
     .then(function (data) { if (data && data.headline) el.textContent = data.headline; })
     .catch(function () {});
 })();
+
+/* ===== Team (data/team.json) ===== */
+(function () {
+  var wrap = document.querySelector('#team .container');
+  if (!wrap) return;
+  fetch('data/team.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.items) || !data.items.length) return;
+      wrap.innerHTML = '';
+      data.items.forEach(function (m) {
+        m = m || {};
+        var bio = String(m.bio || '').split(/\n\s*\n/).filter(Boolean)
+          .map(function (p) { return '<p>' + etEsc(p) + '</p>'; }).join('');
+        var el = document.createElement('div');
+        el.className = 'team-member visible';
+        el.innerHTML =
+          (m.photo ? '<img src="' + etEsc(m.photo) + '" alt="' + etEsc(m.name || '') + '">' : '') +
+          '<div>' +
+            (m.name ? '<h3>' + etEsc(m.name) + '</h3>' : '') +
+            (m.role ? '<p class="role">' + etEsc(m.role) + '</p>' : '') +
+            bio +
+          '</div>';
+        wrap.appendChild(el);
+      });
+    })
+    .catch(function () {});
+})();
+
+/* ===== Values timeline (data/values.json) ===== */
+(function () {
+  var wrap = document.querySelector('.timeline');
+  if (!wrap) return;
+  fetch('data/values.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.items) || !data.items.length) return;
+      wrap.innerHTML = '';
+      data.items.forEach(function (v, i) {
+        v = v || {};
+        var detail = String(v.detail || '').split(/\n\s*\n/).filter(Boolean)
+          .map(function (p) { return '<p>' + etEsc(p) + '</p>'; }).join('');
+        var entry = document.createElement('div');
+        entry.className = 'timeline-entry ' + (i % 2 === 0 ? 'timeline-entry--right' : 'timeline-entry--left') + ' visible';
+        entry.innerHTML =
+          '<div class="timeline-node"><span class="timeline-node-dot"></span></div>' +
+          '<div class="timeline-card">' +
+            (v.label ? '<div class="timeline-card-label">' + etEsc(v.label) + '</div>' : '') +
+            (v.title ? '<h2 class="timeline-card-title">' + etEsc(v.title) + '</h2>' : '') +
+            (v.summary ? '<p class="timeline-card-summary">' + etEsc(v.summary) + '</p>' : '') +
+            '<div class="timeline-card-detail">' + detail + '</div>' +
+          '</div>';
+        wrap.appendChild(entry);
+      });
+      var term = document.createElement('div');
+      term.className = 'timeline-terminus';
+      term.innerHTML = '<span class="timeline-terminus-dot"></span>';
+      wrap.appendChild(term);
+    })
+    .catch(function () {});
+})();

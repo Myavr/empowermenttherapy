@@ -134,3 +134,59 @@ content:
       - name: headline
         label: Headline
         type: text
+
+  - name: team
+    label: Team
+    description: The people shown on the Team page.
+    type: file
+    path: data/team.json
+    fields:
+      - name: items
+        label: Team members
+        type: object
+        list: true
+        fields:
+          - name: photo
+            label: Photo
+            type: image
+            required: false
+          - name: name
+            label: Name
+            type: string
+          - name: role
+            label: Role
+            type: string
+            required: false
+          - name: bio
+            label: Bio
+            description: Separate paragraphs with a blank line.
+            type: text
+            required: false
+
+  - name: values
+    label: Values (timeline)
+    description: The entries on the Values page timeline.
+    type: file
+    path: data/values.json
+    fields:
+      - name: items
+        label: Timeline entries
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Label (e.g. Vision, Mission)
+            type: string
+            required: false
+          - name: title
+            label: Title
+            type: string
+          - name: summary
+            label: Summary
+            type: text
+            required: false
+          - name: detail
+            label: Detail
+            description: Separate paragraphs with a blank line.
+            type: text
+            required: false

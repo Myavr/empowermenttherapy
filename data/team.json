@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "photo": "images/team-myra.jpg",
+      "name": "Myra Walden",
+      "role": "Creator of Empowerment Therapy",
+      "bio": "Originally from Mexico, Myra Walden holds a bachelor's degree in psychology from the University of Illinois at Chicago and a master's degree in clinical psychology from the Illinois School of Professional Psychology.\n\nShe has practiced psychotherapy since 1991 and has offered workshops for mental health professionals since 1997.\n\nIn 2000, Myra became a certified trainer with the Center for Nonviolent Communication. She worked alongside Marshall Rosenberg, the developer of Nonviolent Communication, in multiple International Intensive Trainings.\n\nMyra co-founded The Empowerment Institute and wrote Empowerment Therapy. She lives in West Chicago, Illinois, where she enjoys people and nature."
+    },
+    {
+      "photo": "images/team-priti.jpg",
+      "name": "Priti Sureka",
+      "role": "Empowerment Coach",
+      "bio": "Priti is an Empowerment Coach, Nonviolent Communication (NVC) Certification Candidate, and HR leader with over 25 years of experience.\n\nDrawing on her leadership background and coaching skills, she supports clients in moving beyond survival to create lives that feel aligned, purposeful, and authentic.\n\nShe integrates Ontological Coaching and NVC to help individuals reconnect with core values, identify deeper needs, and take meaningful, true-to-self action.\n\nWith an MBA and training in Empowerment Practice under psychotherapist Myra Walden, Priti brings a compassionate, grounded presence. As a mother of two, she understands the complexities of balancing work, family, and self-care."
+    },
+    {
+      "photo": "images/team-simran.jpg",
+      "name": "Simran Bhola",
+      "role": "Organisational Development Consultant",
+      "bio": "Simran brings expertise in providing facilitation support and executing marketing and communication strategies.\n\nWith a background in content creation, facilitation, branding, and organizational storytelling, she transitioned from Ernst & Young to focus on organizational development.\n\nAt The Empowerment Institute, she manages operations, maintains the website, and leads strategic communications.\n\nSimultaneously, she is pursuing certification as an Empowerment Practitioner to deepen her ability to support individuals in building meaningful and fulfilling lives."
+    }
+  ]
+}
