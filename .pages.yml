@@ -269,7 +269,7 @@ content:
             fields:
               - name: style
                 label: Block type
-                description: Paragraph is normal text. Scene is an italic intro line. Dialogue shows a back-and-forth (one line per exchange, written as "Name: what they said"). Closing is the final emphasized line. Divider is a small horizontal rule (no text needed).
+                description: 'Paragraph is normal text. Scene is an italic intro line. Dialogue shows a back-and-forth (one line per exchange, written as "Name: what they said"). Closing is the final emphasized line. Divider is a small horizontal rule (no text needed).'
                 type: select
                 options:
                   values:
