@@ -1,0 +1,202 @@
+{
+  "levels": [
+    {
+      "badge": "Foundation",
+      "title": "Level 1: Foundation",
+      "intro": ["Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions."],
+      "blocks": [
+        {
+          "heading": "What You'll Learn",
+          "body": [
+            { "type": "p", "text": "Practitioners develop core skills including cultivating trust, transforming judgments into acceptance, empathic listening, and forging collaborative partnerships with clients." },
+            { "type": "p", "text": "Clients gain tools to connect with their heart's longings, access natural compassion, reduce reactivity, and request what they want cooperatively." }
+          ]
+        },
+        {
+          "heading": "Key Interventions",
+          "body": [
+            { "type": "ul", "columns": true, "items": [
+              "Awareness of Life-Alienating Systems",
+              "Integrative Intuitive Choices",
+              "Understanding the Other",
+              "Inner Silence Meditation",
+              "Needs Assessment (vs. Judgments)",
+              "Self-Responsibility (vs. Blame)",
+              "Mourning and Restoration",
+              "Choice (vs. Demands)",
+              "Courageous Transparency",
+              "From Conflict to Connection",
+              "Self-Care for Practitioners"
+            ] }
+          ]
+        },
+        {
+          "heading": "Session Structure",
+          "body": [
+            { "type": "p", "text": "Each week alternates between conceptual learning and hands-on practice:" },
+            { "type": "ol", "items": [
+              "Check-in — share feelings and needs",
+              "Inner Silence Meditation",
+              "Collaborative Learning discussions",
+              "Practice Sessions with coaching",
+              "Announcements and Check-out"
+            ] }
+          ]
+        },
+        {
+          "heading": "Schedule & Duration",
+          "body": [
+            { "type": "p", "role": "meetingTime", "text": "**When:** Tuesdays, 8:00–9:30 PM CT" },
+            { "type": "p", "text": "**Duration:** 6 months — 24 sessions (Jan–Jun & Jul–Dec)" },
+            { "type": "p", "text": "**Join anytime:** 1–4 catch-up sessions available for new participants" },
+            { "type": "p", "text": "**Certificate:** Attend 20 of 24 sessions" },
+            { "type": "p", "text": "**Group Size:** Max 25 participants" },
+            { "type": "p", "text": "**Facilitators:** Myra Walden and Priti Sureka" }
+          ]
+        },
+        {
+          "heading": "Required Reading",
+          "body": [
+            { "type": "p", "text": "*Empowerment Therapy* by Myra Walden — Chapters 2–5 covering Observations, Feelings, Needs, and Requests." },
+            { "type": "p", "text": "Recommended: Print Feelings and Needs inventories for use during sessions." }
+          ]
+        },
+        {
+          "heading": "Investment",
+          "body": [
+            { "type": "p", "text": "**$30–$50 USD/month** (sliding scale)" },
+            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." }
+          ]
+        }
+      ],
+      "register": "**How to enroll:** Email [empowermenttherapymw@gmail.com](mailto:empowermenttherapymw@gmail.com) to schedule a 45-minute assessment meeting with Myra Walden to determine goodness of fit."
+    },
+    {
+      "badge": "Empowerment Processes",
+      "title": "Level 2: Empowerment Processes",
+      "intro": ["Learning and application of Empowering Thoughts and Language — these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely."],
+      "note": "*By studying some key concepts, people can take Level 2 before Level 1.",
+      "blocks": [
+        {
+          "heading": "What You'll Learn",
+          "body": [
+            { "type": "p", "text": "Receive direct feedback on your empowerment work while reviewing Level 1 concepts and learning powerful new therapeutic processes." }
+          ]
+        },
+        {
+          "heading": "Curriculum",
+          "body": [
+            { "type": "ul", "columns": true, "items": [
+              "Review of Principal Tenets",
+              "Advanced Inner Silence Meditation & Self-Connection",
+              "Advanced Empathy & Non-Directiveness",
+              "Self-Empathy and Self-Empowerment",
+              "Connection Super Highway",
+              "The Surprising Purpose of Anger",
+              "Transforming Guilt & Shame",
+              "Transforming Fear",
+              "Self-Love (Appreciation, Affection, Tenderness, Empathy, Acceptance)",
+              "Group Work",
+              "Needs-Based Regret",
+              "Journey from Freedom to Wholeness",
+              "Preparing for Difficult Conversations",
+              "Liberating Roleplays"
+            ] }
+          ]
+        },
+        {
+          "heading": "Prerequisites",
+          "body": [
+            { "type": "p", "text": "Certificate of completion for Level 1 is required (or studying key concepts to join concurrently)." }
+          ]
+        },
+        {
+          "heading": "Schedule & Duration",
+          "body": [
+            { "type": "p", "text": "**Duration:** 6 months of weekly sessions" },
+            { "type": "p", "text": "**Facilitators:** Myra Walden and Priti Sureka" }
+          ]
+        },
+        {
+          "heading": "Investment",
+          "body": [
+            { "type": "p", "text": "**$30–$50 USD/month** (sliding scale)" },
+            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." }
+          ]
+        }
+      ]
+    },
+    {
+      "badge": "Certification",
+      "title": "Level 3: Certification",
+      "intro": ["A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer."],
+      "blocks": [
+        {
+          "heading": "Program Structure",
+          "body": [
+            { "type": "p", "text": "A mentorship program where participants transition to co-facilitator roles. The facilitator assigns explanations, presentations, Q&A sessions, and role plays while providing ongoing feedback." },
+            { "type": "p", "text": "**Prerequisites:** Completion of Levels 1 and 2" },
+            { "type": "p", "text": "**Duration:** 50 sessions (may extend based on individual readiness)" },
+            { "type": "p", "text": "**Facilitators:** Myra Walden, Simran Bhola, and Priti Sureka" }
+          ]
+        },
+        {
+          "heading": "Required Reading",
+          "body": [
+            { "type": "ul", "items": [
+              "*Nonviolent Communication: A Language of Life* by Marshall Rosenberg",
+              "*Personality Types: Using the Enneagram for Self-Discovery* by Don Richard Riso & Russ Hudson"
+            ] }
+          ]
+        },
+        {
+          "heading": "Certification Packet",
+          "body": [
+            { "type": "ul", "items": [
+              "**NVC Paper** — 20-page reaction paper on Rosenberg's book",
+              "**Enneagram Paper** — 8-page analysis of your type's integration-disintegration scale",
+              "**Session Recordings** — 5 recordings of 50-minute sessions with real (non-role-play) clients",
+              "**Self-Evaluations** — Assessment form for each recorded session",
+              "**Weekly Journaling** — 12 weeks of reflective entries",
+              "**Peer & Client Evaluations** — Feedback from facilitators, colleagues, and clients"
+            ] },
+            { "type": "note", "text": "Packet review takes approximately 3 months." }
+          ]
+        },
+        {
+          "heading": "Assessment",
+          "body": [
+            { "type": "p", "text": "A 3-hour online meeting with 2–3 experienced assessors (recorded), including:" },
+            { "type": "ol", "items": [
+              "Guide Inner Silence Meditation from memory",
+              "Answer 15 questions on key differentiations, interventions, therapeutic attitudes, and principal tenets",
+              "Discuss the Actualizing Tendency and its relation to nondirectiveness",
+              "Conduct a Liberating Role Play demonstrating attitudes and concept application"
+            ] },
+            { "type": "note", "text": "Rubric-based grading provided at application. One retake attempt available if needed." }
+          ]
+        },
+        {
+          "heading": "Certification Titles",
+          "body": [
+            { "type": "p", "text": "Based on your professional background:" },
+            { "type": "ul", "items": [
+              "**Mental health professionals:** Empowerment Therapist, Psychologist, Counselor, or Social Worker",
+              "**Non-MH background:** Empowerment Practitioner",
+              "**Coaching background:** Empowerment Coach"
+            ] },
+            { "type": "note", "text": "Certification is valid for one year and renewable with 8 hours of continuing education. Trainer certification available as an additional track." }
+          ]
+        },
+        {
+          "heading": "Investment",
+          "body": [
+            { "type": "p", "text": "**Assessment fee:** $300–$450 USD (sliding scale)" },
+            { "type": "p", "text": "**Annual renewal:** $50–$150 USD" }
+          ]
+        }
+      ],
+      "register": "**To apply:** Email [empowermenttherapymw@gmail.com](mailto:empowermenttherapymw@gmail.com) — candidates must embody the therapeutic attitudes and demonstrate understanding and ability to apply the concepts."
+    }
+  ]
+}

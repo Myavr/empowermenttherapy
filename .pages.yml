@@ -442,3 +442,75 @@ content:
           - name: phone
             label: Phone number
             type: string
+
+  - name: programs
+    label: Program levels
+    description: The three level cards on the Programs page. You can edit all the wording; the meeting times, expand behavior, and payment button are managed in the page design. Use **double asterisks** for bold, *single asterisks* for italic, and [text](https://link) for links.
+    type: file
+    path: data/programs.json
+    fields:
+      - name: levels
+        label: Levels
+        type: object
+        list: true
+        fields:
+          - name: badge
+            label: Badge
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: intro
+            label: Intro line(s)
+            type: text
+            list: true
+          - name: note
+            label: Note under the intro (optional)
+            type: string
+            required: false
+          - name: blocks
+            label: Detail sections
+            type: object
+            list: true
+            fields:
+              - name: heading
+                label: Section heading
+                type: string
+              - name: body
+                label: Content
+                type: object
+                list: true
+                fields:
+                  - name: type
+                    label: Block type
+                    description: "paragraph = a line of text; bullets = a bulleted list; numbered = a numbered list; note = a small footnote line. (Internally: p / ul / ol / note.)"
+                    type: select
+                    options:
+                      values:
+                        - p
+                        - ul
+                        - ol
+                        - note
+                    default: p
+                  - name: text
+                    label: Text (for paragraph / note)
+                    type: text
+                    required: false
+                  - name: columns
+                    label: Show list in two columns (bulleted lists only)
+                    type: boolean
+                    default: false
+                  - name: items
+                    label: List items (for bullets / numbered)
+                    type: text
+                    list: true
+                    required: false
+                  - name: role
+                    label: Special role
+                    description: Leave blank. "meetingTime" marks the auto-localized class time line and should not be changed.
+                    type: string
+                    required: false
+          - name: register
+            label: How-to-enroll line (optional)
+            type: text
+            required: false

@@ -610,9 +610,10 @@ function etEsc(s) {
   return e.innerHTML;
 }
 
-/* Escape, then apply lightweight **bold** / *italic* inline formatting. */
+/* Escape, then apply lightweight [text](url) links and **bold** / *italic* inline formatting. */
 function etInline(s) {
   s = etEsc(s == null ? '' : String(s));
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
   return s;
@@ -943,6 +944,95 @@ function etInline(s) {
           a.textContent = contact.email;
         });
       }
+    })
+    .catch(function () {});
+})();
+
+/* ===== Programs curriculum (data/programs.json) =====
+   Injects text into the existing level cards and rebuilds each detail block's
+   body. The card scaffolding, the timezone-localized schedule line, the
+   expand-on-click behavior, and the PayPal button are all left untouched.
+   The one localized element inside a block (#level1-meeting-time) is preserved
+   node-and-all so its per-visitor local time survives the rebuild. */
+(function () {
+  var root = document.getElementById('programs');
+  if (!root) return;
+  var domLevels = root.querySelectorAll('.level-step');
+  if (!domLevels.length) return;
+
+  fetch('data/programs.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.levels)) return;
+
+      function buildBody(items, preservedMeetingTime) {
+        var frag = document.createDocumentFragment();
+        (Array.isArray(items) ? items : []).forEach(function (it) {
+          it = it || {};
+          if (it.type === 'ul' || it.type === 'ol') {
+            var list = document.createElement(it.type === 'ol' ? 'ol' : 'ul');
+            if (it.type === 'ul' && it.columns) list.className = 'level-detail-columns';
+            (Array.isArray(it.items) ? it.items : []).forEach(function (li) {
+              var liEl = document.createElement('li');
+              liEl.innerHTML = etInline(li);
+              list.appendChild(liEl);
+            });
+            frag.appendChild(list);
+          } else if (it.role === 'meetingTime' && preservedMeetingTime) {
+            frag.appendChild(preservedMeetingTime);        // keep the localized node
+          } else {
+            var p = document.createElement('p');
+            if (it.type === 'note') p.className = 'level-step-note';
+            if (it.role === 'meetingTime') p.id = 'level1-meeting-time';
+            p.innerHTML = etInline(it.text || '');
+            frag.appendChild(p);
+          }
+        });
+        return frag;
+      }
+
+      data.levels.forEach(function (L, i) {
+        L = L || {};
+        var step = domLevels[i];
+        if (!step) return;
+        var card = step.querySelector('.level-step-card');
+        if (!card) return;
+
+        var badge = card.querySelector('.level-step-badge');
+        if (badge && L.badge) badge.textContent = L.badge;
+        var h3 = card.querySelector('h3');
+        if (h3 && L.title) h3.textContent = L.title;
+
+        // Intro paragraph(s): direct children that aren't the schedule line or a note.
+        var introPs = card.querySelectorAll(':scope > p:not(.level-schedule):not(.level-step-note)');
+        (Array.isArray(L.intro) ? L.intro : []).forEach(function (t, k) {
+          if (introPs[k]) introPs[k].innerHTML = etInline(t);
+        });
+
+        if (L.note) {
+          var noteEl = card.querySelector(':scope > .level-step-note');
+          if (noteEl) noteEl.innerHTML = etInline(L.note);
+        }
+
+        var domBlocks = card.querySelectorAll('.level-detail-block');
+        (Array.isArray(L.blocks) ? L.blocks : []).forEach(function (block, k) {
+          block = block || {};
+          var db = domBlocks[k];
+          if (!db) return;
+          var h4 = db.querySelector('h4');
+          if (h4 && block.heading) h4.textContent = block.heading;
+          var mt = db.querySelector('#level1-meeting-time');   // preserve localized node
+          Array.prototype.slice.call(db.children).forEach(function (child) {
+            if (child !== h4) db.removeChild(child);
+          });
+          db.appendChild(buildBody(block.body, mt));
+        });
+
+        if (L.register) {
+          var reg = card.querySelector('.level-detail-register p');
+          if (reg) reg.innerHTML = etInline(L.register);
+        }
+      });
     })
     .catch(function () {});
 })();
