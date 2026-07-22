@@ -5,9 +5,12 @@
 # styling can't be broken by content edits.
 
 # Where uploaded images are stored / referenced (enables the upload button on image fields).
+# output has no leading slash so new uploads are saved as "images/file.jpg" —
+# matching the relative paths the rest of the site already uses (works whether the
+# site is served from the domain root or a project subpath).
 media:
   input: images
-  output: /images
+  output: images
 
 content:
   - name: countries
@@ -205,10 +208,11 @@ content:
           - name: title
             label: Title
             type: string
-          - name: count
-            label: Count label (e.g. "5 readings")
+          - name: unit
+            label: Unit word (e.g. readings / practices / tools) — the number is counted automatically
             type: string
             required: false
+            default: items
           - name: color
             label: Colour
             type: select
@@ -345,6 +349,7 @@ content:
                     default: paragraph
                   - name: text
                     label: Paragraph text (for paragraph blocks)
+                    description: "Tip: {{countryCount}} is replaced automatically with the current number of countries from the Practitioners-Worldwide list, so you never have to update it by hand."
                     type: text
                     required: false
                   - name: items

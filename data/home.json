@@ -18,7 +18,7 @@
         "title": "Global Reach & Community",
         "image": "images/accordion-flowers.webp",
         "body": [
-          { "type": "paragraph", "text": "We are training Empowerment Practitioners in 15 countries and three continents, thus far." },
+          { "type": "paragraph", "text": "We are training Empowerment Practitioners in {{countryCount}} countries and three continents, thus far." },
           { "type": "paragraph", "text": "Our students have forged a close-knit, global community:" },
           { "type": "list", "items": [
             "They support one another in difficult times.",

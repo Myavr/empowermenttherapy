@@ -746,7 +746,8 @@ function etInline(s) {
             '<div class="resource-card-header">' +
               '<span class="resource-card-icon">' + etEsc(cat.icon || '') + '</span>' +
               '<div><h3 class="resource-card-title">' + etEsc(cat.title || '') + '</h3>' +
-              (cat.count ? '<p class="resource-card-count">' + etEsc(cat.count) + '</p>' : '') + '</div>' +
+              '<p class="resource-card-count">' + (Array.isArray(cat.links) ? cat.links.length : 0) +
+                ' ' + etEsc(cat.unit || 'items') + '</p>' + '</div>' +
               '<span class="resource-card-toggle">+</span>' +
             '</div>' +
             '<div class="resource-card-body"><ul class="resource-list">' + links + '</ul></div>';
@@ -806,10 +807,32 @@ function etInline(s) {
 (function () {
   // Only run on the home page (the Problem section is unique to it).
   if (!document.getElementById('theProblem')) return;
-  fetch('data/home.json', { cache: 'no-cache' })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (data) {
+  Promise.all([
+    fetch('data/home.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }),
+    fetch('data/countries.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+  ])
+    .then(function (results) {
+      var data = results[0];
       if (!data) return;
+
+      // Resolve the country count so any "{{countryCount}}" token in the home
+      // text stays in sync with the Practitioners-Worldwide list automatically.
+      var countriesData = results[1];
+      var countryCount = (countriesData && Array.isArray(countriesData.items)) ? countriesData.items.length : null;
+      if (countryCount == null) {
+        var tags = document.querySelectorAll('.country-tags .country-tag');
+        if (tags.length) countryCount = tags.length;                 // fall back to the rendered tags
+      }
+      var ccText = countryCount != null ? String(countryCount) : '15';
+      (function subst(obj) {
+        if (!obj || typeof obj !== 'object') return;
+        Object.keys(obj).forEach(function (k) {
+          var v = obj[k];
+          if (typeof v === 'string') {
+            obj[k] = v.replace(/\{\{\s*countryCount\s*\}\}/g, ccText);
+          } else if (v && typeof v === 'object') { subst(v); }
+        });
+      })(data);
 
       /* ----- The Problem ----- */
       var problem = data.problem;
