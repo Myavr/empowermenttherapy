@@ -379,3 +379,66 @@ content:
             description: The highlighted quote below the audience blocks (one paragraph per line).
             type: text
             list: true
+
+  - name: pages
+    label: Page intros & contact
+    description: The title and subtitle at the top of each inner page, plus the contact email and phone shown on the Contact page and in the footer.
+    type: file
+    path: data/pages.json
+    fields:
+      - name: programs
+        label: Programs page
+        type: object
+        fields:
+          - name: hero_title
+            label: Title
+            type: string
+          - name: hero_subtitle
+            label: Subtitle
+            type: text
+      - name: resources
+        label: Resources page
+        type: object
+        fields:
+          - name: hero_title
+            label: Title
+            type: string
+          - name: hero_subtitle
+            label: Subtitle
+            type: text
+      - name: team
+        label: Team page
+        type: object
+        fields:
+          - name: hero_title
+            label: Title
+            type: string
+          - name: hero_subtitle
+            label: Subtitle
+            type: text
+      - name: values
+        label: Values page
+        type: object
+        fields:
+          - name: hero_title
+            label: Title
+            type: string
+          - name: hero_subtitle
+            label: Subtitle
+            type: text
+      - name: contact
+        label: Contact page
+        type: object
+        fields:
+          - name: hero_title
+            label: Title
+            type: string
+          - name: hero_subtitle
+            label: Subtitle
+            type: text
+          - name: email
+            label: Email address
+            type: string
+          - name: phone
+            label: Phone number
+            type: string

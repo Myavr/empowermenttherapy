@@ -895,3 +895,54 @@ function etInline(s) {
     })
     .catch(function () {});
 })();
+
+/* ===== Subpage hero intros + contact info + footer email (data/pages.json) ===== */
+(function () {
+  fetch('data/pages.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data) return;
+
+      // Subpage hero title + subtitle (inner pages only), keyed by filename.
+      var hero = document.querySelector('.subpage-hero');
+      if (hero) {
+        var key = (location.pathname.split('/').pop() || '').replace(/\.html$/, '').toLowerCase();
+        var page = key && data[key];
+        if (page) {
+          var h1 = hero.querySelector('h1');
+          if (h1 && page.hero_title) h1.textContent = page.hero_title;
+          var sub = hero.querySelector('p');
+          if (sub && page.hero_subtitle) sub.textContent = page.hero_subtitle;
+        }
+      }
+
+      var contact = data.contact || {};
+
+      // Contact page — email/phone cards
+      if (contact.email) {
+        var mailCard = document.querySelector('a.contact-info-card[href^="mailto:"]');
+        if (mailCard) {
+          mailCard.setAttribute('href', 'mailto:' + contact.email);
+          var mv = mailCard.querySelector('.contact-info-value');
+          if (mv) mv.textContent = contact.email;
+        }
+      }
+      if (contact.phone) {
+        var telCard = document.querySelector('a.contact-info-card[href^="tel:"]');
+        if (telCard) {
+          telCard.setAttribute('href', 'tel:' + String(contact.phone).replace(/[^0-9+]/g, ''));
+          var pv = telCard.querySelector('.contact-info-value');
+          if (pv) pv.textContent = contact.phone;
+        }
+      }
+
+      // Footer email — present on every page, kept in sync from one source.
+      if (contact.email) {
+        document.querySelectorAll('a.footer-email').forEach(function (a) {
+          a.setAttribute('href', 'mailto:' + contact.email);
+          a.textContent = contact.email;
+        });
+      }
+    })
+    .catch(function () {});
+})();

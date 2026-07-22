@@ -1,0 +1,24 @@
+{
+  "programs": {
+    "hero_title": "Program Levels",
+    "hero_subtitle": "A stepped progression of learning — from foundational skills to full certification as an Empowerment Practitioner."
+  },
+  "resources": {
+    "hero_title": "Resources",
+    "hero_subtitle": "Readings, tools, and practices to deepen your understanding of Empowerment Therapy."
+  },
+  "team": {
+    "hero_title": "Our Team",
+    "hero_subtitle": "The people behind The Empowerment Institute — carrying this work into classrooms, communities, and therapy rooms around the world."
+  },
+  "values": {
+    "hero_title": "Our Values",
+    "hero_subtitle": "The beliefs and commitments that shape how we teach, practice, and walk alongside one another."
+  },
+  "contact": {
+    "hero_title": "Contact",
+    "hero_subtitle": "We'd love to hear from you. Reach out with questions, or just to say hello.",
+    "email": "empowermenttherapyinstitute@gmail.com",
+    "phone": "630-881-2525"
+  }
+}
