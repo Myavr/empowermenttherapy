@@ -1,23 +1,99 @@
 # Pages CMS content configuration  —  https://pagescms.org
 #
-# This file defines what a non-coder can edit. Each entry below becomes a
-# friendly form in the CMS editor. Editing content here only changes the JSON
-# data files — never the HTML or CSS — so the site's styling can't be broken
-# by content edits.
-#
-# As we convert more sections, we add more entries under `content:` (FAQ,
-# testimonials, resources, team, hero text, etc.), each pointing at its own
-# data/*.json file.
+# Each entry below becomes a friendly form in the CMS editor. Editing content
+# here only changes the JSON data files — never the HTML or CSS — so the site's
+# styling can't be broken by content edits.
 
 content:
   - name: countries
     label: Practitioners worldwide
-    description: The list of countries shown in the "Practitioners Worldwide" bar on the home page.
+    description: The countries shown in the "Practitioners Worldwide" bar on the home page.
     type: file
     path: data/countries.json
     fields:
       - name: items
         label: Countries
-        description: One country per line. Drag to reorder, use + to add, trash to remove.
+        description: One country per line. Use + to add, the trash icon to remove, drag to reorder.
         type: string
         list: true
+
+  - name: news
+    label: News
+    description: Announcements in the "News & Events" section. Leave the list empty to hide the News column (and, if Events is also empty, the whole section).
+    type: file
+    path: data/news.json
+    fields:
+      - name: items
+        label: News items
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: Date
+            type: date
+          - name: title
+            label: Headline
+            type: string
+          - name: body
+            label: Text
+            type: text
+          - name: link
+            label: Link URL (optional)
+            type: string
+            required: false
+          - name: link_label
+            label: Link text (optional)
+            type: string
+            required: false
+
+  - name: events
+    label: Events
+    description: One-time or recurring events. Leave the list empty to hide the Events column. Past one-time events disappear automatically; recurring events always show.
+    type: file
+    path: data/events.json
+    fields:
+      - name: items
+        label: Events
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Event name
+            type: string
+          - name: schedule_type
+            label: Schedule
+            description: Choose "Recurring" for something that repeats (e.g. a weekly group).
+            type: select
+            options:
+              values:
+                - One-time
+                - Recurring
+            default: One-time
+          - name: date
+            label: Date (one-time events only)
+            type: date
+            required: false
+          - name: recurrence
+            label: Repeats (recurring events, e.g. "Every Tuesday" or "First Monday of the month")
+            type: string
+            required: false
+          - name: time
+            label: Time (e.g. "5:00 PM UTC")
+            type: string
+            required: false
+          - name: location
+            label: Location (e.g. Online, Mexico City)
+            type: string
+            required: false
+          - name: description
+            label: Description (optional)
+            type: text
+            required: false
+          - name: link
+            label: Register / info link (optional)
+            type: string
+            required: false
+          - name: link_label
+            label: Link text (optional)
+            type: string
+            required: false

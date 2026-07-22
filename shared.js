@@ -485,3 +485,120 @@
     })
     .catch(function () { /* leave the hardcoded list as-is */ });
 })();
+
+/* ===== News & Events =====
+   Rendered from data/news.json + data/events.json. The whole section stays
+   hidden unless there is at least one news item or upcoming event. Past
+   one-time events fall off automatically; recurring events always show.
+   Editing the JSON (via the CMS) can never affect styling. */
+(function () {
+  var section = document.getElementById('newsEvents');
+  if (!section) return;
+
+  function esc(s) {
+    var e = document.createElement('div');
+    e.textContent = s == null ? '' : String(s);
+    return e.innerHTML;
+  }
+  function escLines(s) { return esc(s).replace(/\n/g, '<br>'); }
+  function safeUrl(u) {
+    u = String(u == null ? '' : u).trim();
+    return /^(https?:\/\/|mailto:|\/)/i.test(u) ? u : '';
+  }
+  function parseLocalDate(s) {
+    if (!s) return null;
+    var p = String(s).slice(0, 10).split('-');
+    if (p.length !== 3) return null;
+    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+  function fmtDate(d) {
+    return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function getJSON(path) {
+    return fetch(path, { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
+  function renderNews(items) {
+    var col = document.getElementById('newsCol');
+    var list = document.getElementById('newsList');
+    if (!list) return 0;
+    var rows = items.map(function (it) { return { it: it || {}, d: parseLocalDate((it || {}).date) }; });
+    rows.sort(function (a, b) { return (b.d ? b.d.getTime() : 0) - (a.d ? a.d.getTime() : 0); });
+    list.innerHTML = '';
+    var count = 0;
+    rows.forEach(function (row) {
+      var it = row.it;
+      if (!it.title && !it.body) return;
+      count++;
+      var html = '';
+      if (row.d) html += '<p class="ne-item-date">' + esc(fmtDate(row.d)) + '</p>';
+      if (it.title) html += '<h4 class="ne-item-title">' + esc(it.title) + '</h4>';
+      if (it.body) html += '<p class="ne-item-body">' + escLines(it.body) + '</p>';
+      var url = safeUrl(it.link);
+      if (url) html += '<a class="ne-item-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(it.link_label || 'Read more') + '</a>';
+      var el = document.createElement('article');
+      el.className = 'ne-item';
+      el.innerHTML = html;
+      list.appendChild(el);
+    });
+    if (col) col.hidden = count === 0;
+    return count;
+  }
+
+  function renderEvents(items) {
+    var col = document.getElementById('eventsCol');
+    var list = document.getElementById('eventsList');
+    if (!list) return 0;
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var rows = [];
+    items.forEach(function (it) {
+      it = it || {};
+      if (!it.title) return;
+      var recurring = it.schedule_type === 'Recurring' || (!!it.recurrence && !it.date);
+      var d = parseLocalDate(it.date);
+      if (!recurring && d && d.getTime() < today.getTime()) return; // drop past one-time events
+      rows.push({ it: it, recurring: recurring, d: d });
+    });
+    rows.sort(function (a, b) {
+      if (a.recurring !== b.recurring) return a.recurring ? 1 : -1;
+      return (a.d ? a.d.getTime() : 0) - (b.d ? b.d.getTime() : 0);
+    });
+    list.innerHTML = '';
+    var count = 0;
+    rows.forEach(function (row) {
+      var it = row.it;
+      count++;
+      var html = '';
+      if (row.recurring) {
+        html += '<p class="ne-item-date"><span class="ne-recur">Repeats</span>' +
+          esc(it.recurrence || 'Recurring') + (it.time ? ' &middot; ' + esc(it.time) : '') + '</p>';
+      } else if (row.d) {
+        html += '<p class="ne-item-date">' + esc(fmtDate(row.d)) + (it.time ? ' &middot; ' + esc(it.time) : '') + '</p>';
+      } else if (it.time) {
+        html += '<p class="ne-item-date">' + esc(it.time) + '</p>';
+      }
+      html += '<h4 class="ne-item-title">' + esc(it.title) + '</h4>';
+      if (it.description) html += '<p class="ne-item-body">' + escLines(it.description) + '</p>';
+      if (it.location) html += '<p class="ne-item-meta">' + esc(it.location) + '</p>';
+      var url = safeUrl(it.link);
+      if (url) html += '<a class="ne-item-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(it.link_label || 'Learn more') + '</a>';
+      var el = document.createElement('article');
+      el.className = 'ne-item';
+      el.innerHTML = html;
+      list.appendChild(el);
+    });
+    if (col) col.hidden = count === 0;
+    return count;
+  }
+
+  Promise.all([getJSON('data/news.json'), getJSON('data/events.json')]).then(function (res) {
+    var news = res[0] && Array.isArray(res[0].items) ? res[0].items : [];
+    var events = res[1] && Array.isArray(res[1].items) ? res[1].items : [];
+    var shown = renderNews(news) + renderEvents(events);
+    if (shown > 0) section.hidden = false;
+  });
+})();
