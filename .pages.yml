@@ -190,3 +190,59 @@ content:
             description: Separate paragraphs with a blank line.
             type: text
             required: false
+
+  - name: resources
+    label: Resources
+    description: The resource categories on the Resources page. Each has a colour, an icon, a title, a count, and a list of links.
+    type: file
+    path: data/resources.json
+    fields:
+      - name: categories
+        label: Categories
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: count
+            label: Count label (e.g. "5 readings")
+            type: string
+            required: false
+          - name: color
+            label: Colour
+            type: select
+            options:
+              values:
+                - blue
+                - green
+                - gold
+                - seafoam
+            default: blue
+          - name: icon
+            label: Icon (a single emoji or symbol)
+            type: string
+            required: false
+          - name: open
+            label: Expanded by default?
+            type: boolean
+            default: false
+          - name: links
+            label: Links
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Title
+                type: string
+              - name: url
+                label: Link URL
+                type: string
+              - name: author
+                label: Author (optional)
+                type: string
+                required: false
+              - name: description
+                label: Description (optional)
+                type: text
+                required: false

@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "color": "blue",
+      "icon": "✍",
+      "title": "Articles",
+      "count": "5 readings",
+      "open": true,
+      "links": [
+        { "title": "From Guilt and Shame to Self-Compassion", "url": "pdfs/From-Guilt-Shame-11026.pdf", "author": "Myra Walden" },
+        { "title": "Nonviolent Communication and Trauma", "url": "https://www.comunicacionplena.com/post/nonviolent-communication-and-trauma?lang=en", "author": "Claudia Sánchez" },
+        { "title": "The Actualizing Tendency", "url": "https://share.google/ajfDRpElFRdBOQ0sA", "author": "Barbara Temaner Brodley" },
+        { "title": "The Necessary and Sufficient Conditions of Therapeutic Personality Change", "url": "https://counselling-tutor.s3.eu-west-2.amazonaws.com/CSR+Documents/The+Necessary+and+Sufficient+Conditions+of+Therapeutic+Personality+Change.pdf", "author": "Carl Rogers" },
+        { "title": "What is Nonviolent Communication?", "url": "pdfs/What-is-NVC-FINAL-PDF.pdf", "author": "Myra Walden" }
+      ]
+    },
+    {
+      "color": "green",
+      "icon": "❋",
+      "title": "Internal Processes",
+      "count": "3 practices",
+      "open": false,
+      "links": [
+        { "title": "Feelings, Needs, and Sensations Inventories", "url": "pdfs/FNSInventories.pdf", "description": "Three lists for understanding and connecting with personal experience" },
+        { "title": "Inner Silence Meditation", "url": "pdfs/Inner-Silence-Meditation-PDF.pdf", "description": "Practice to reduce reactivity, increase equanimity and clarity regarding needs" },
+        { "title": "Self-Empathy & Empowerment (SEE)", "url": "pdfs/S-EmpathyS-Empowerment3PDF.pdf", "description": "Process for understanding difficult experiences, fostering healing, identifying heart's longings, gaining clarity on meeting needs" }
+      ]
+    },
+    {
+      "color": "gold",
+      "icon": "★",
+      "title": "Certification Candidates Kit",
+      "count": "2 tools",
+      "open": false,
+      "links": [
+        { "title": "Empowerment Journal Form", "url": "pdfs/EmpowermentJournalPDF.pdf", "description": "Tool for practitioners to increase self-awareness and embody therapeutic traits" },
+        { "title": "Self-Evaluation Form", "url": "pdfs/Self-EvaluaitonsPDF.pdf", "description": "Tool for practitioners to increase self-awareness and improve client work" }
+      ]
+    },
+    {
+      "color": "seafoam",
+      "icon": "❤",
+      "title": "Interpersonal Processes",
+      "count": "2 practices",
+      "open": false,
+      "links": [
+        { "title": "Connection Superhighway", "url": "pdfs/ConnectionSuperhighwayPDF.pdf", "description": "Process to resolve conflict satisfyingly for all involved parties" },
+        { "title": "Restoration Dialogue", "url": "pdfs/RestoationProcessPDF.pdf", "description": "Tool for restoring self-respect and wholeness when actions conflict with values" }
+      ]
+    }
+  ]
+}

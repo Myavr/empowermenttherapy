@@ -704,3 +704,47 @@ function etEsc(s) {
     })
     .catch(function () {});
 })();
+
+/* ===== Resources (data/resources.json) ===== */
+(function () {
+  var grid = document.querySelector('.resource-grid');
+  if (!grid) return;
+  fetch('data/resources.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.categories) || !data.categories.length) return;
+      var cats = data.categories;
+      var mid = Math.ceil(cats.length / 2);
+      var cols = [cats.slice(0, mid), cats.slice(mid)];
+      grid.innerHTML = '';
+      cols.forEach(function (colCats) {
+        var col = document.createElement('div');
+        col.className = 'resource-col';
+        colCats.forEach(function (cat) {
+          cat = cat || {};
+          var links = (Array.isArray(cat.links) ? cat.links : []).map(function (l) {
+            l = l || {};
+            var meta = '';
+            if (l.author) meta = '<span class="resource-author">' + etEsc(l.author) + '</span>';
+            else if (l.description) meta = '<span class="resource-description">' + etEsc(l.description) + '</span>';
+            return '<li><a href="' + etEsc(String(l.url || '')) + '" target="_blank" rel="noopener">' +
+              etEsc(l.title || '') + meta + '</a></li>';
+          }).join('');
+          var card = document.createElement('div');
+          card.className = 'resource-card resource-card--' + (cat.color || 'blue') + (cat.open ? ' is-open' : '');
+          card.setAttribute('tabindex', '0');
+          card.innerHTML =
+            '<div class="resource-card-header">' +
+              '<span class="resource-card-icon">' + etEsc(cat.icon || '') + '</span>' +
+              '<div><h3 class="resource-card-title">' + etEsc(cat.title || '') + '</h3>' +
+              (cat.count ? '<p class="resource-card-count">' + etEsc(cat.count) + '</p>' : '') + '</div>' +
+              '<span class="resource-card-toggle">+</span>' +
+            '</div>' +
+            '<div class="resource-card-body"><ul class="resource-list">' + links + '</ul></div>';
+          col.appendChild(card);
+        });
+        grid.appendChild(col);
+      });
+    })
+    .catch(function () {});
+})();
