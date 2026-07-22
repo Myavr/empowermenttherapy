@@ -1,0 +1,107 @@
+{
+  "problem": {
+    "title": "The Problem",
+    "paragraphs": [
+      "Relationship conflicts, financial insecurity, and the state of the world — climate change, war, A.I. job displacement — frequently lead people to anguish and despair. Unfortunately, in many parts of the world support services are either not affordable or outright unavailable.",
+      "Empowerment Therapy is an accompaniment model that concerned individuals who want to help can learn and apply."
+    ],
+    "thesis": [
+      "Empowerment Therapy is for those of us who want to accompany others on the journey towards **equilibrium**, **wholeness**, and connection with their **authentic self**.",
+      "Empowerment Practitioners aid people to not only navigate current challenges, but also build more **fulfilling relationships and thriving lives.**"
+    ],
+    "disclaimer": "Empowerment practice is not a substitute for psychotherapy when professional mental health services are necessary."
+  },
+  "doing": {
+    "title": "What We Are Doing",
+    "strips": [
+      {
+        "title": "Global Reach & Community",
+        "image": "images/accordion-flowers.webp",
+        "body": [
+          { "type": "paragraph", "text": "We are training Empowerment Practitioners in 15 countries and three continents, thus far." },
+          { "type": "paragraph", "text": "Our students have forged a close-knit, global community:" },
+          { "type": "list", "items": [
+            "They support one another in difficult times.",
+            "We host an Empathy Cafe — a weekly group where students listen to one another empathically, building resilience."
+          ] }
+        ]
+      },
+      {
+        "title": "Affordable Access",
+        "image": "images/accordion-pond.webp",
+        "body": [
+          { "type": "paragraph", "text": "We keep Empowerment Therapy training within reach for anyone called to it:" },
+          { "type": "list", "items": [
+            "Fees are comparatively low — $30–$50 USD per month, based on ability to pay.",
+            "Partial scholarships are available, so cost is never a barrier.",
+            "No one is turned away for lack of financial resources."
+          ] }
+        ]
+      },
+      {
+        "title": "Online and In-Person Training",
+        "image": "images/accordion-canopy.webp",
+        "body": [
+          { "type": "paragraph", "text": "We offer training in two complementary formats:" },
+          { "type": "list", "items": [
+            "Weekly online sessions, greatly expanding access.",
+            "In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited."
+          ] }
+        ]
+      },
+      {
+        "title": "Curriculum Content",
+        "image": "images/accordion-mountains.webp",
+        "body": [
+          { "type": "paragraph", "text": "Structured, evidence-informed curriculum integrating Nonviolent Communication and Client-Centered Therapy." },
+          { "type": "paragraph", "text": "The model incorporates 30 years of practical experience in community mental health settings." },
+          { "type": "paragraph", "text": "It includes such topics as:" },
+          { "type": "list", "items": [
+            "Step-by-step processes to transform anger, guilt, shame, fear, and conflict in relationships.",
+            "Liberating Role Plays, a highly effective, healing and empowering process to be used with groups, thus increasing access significantly.",
+            "Skills to foster clients' autonomy, resilience and agency."
+          ] },
+          { "type": "paragraph", "text": "It combines conceptual and experiential learning within a collaborative paradigm." }
+        ]
+      },
+      {
+        "title": "Our Vision",
+        "image": "images/accordion-sunrise.webp",
+        "body": [
+          { "type": "paragraph", "text": "Our goal is to establish sustainable partnerships with local communities in underserved regions, systematically expanding access to care by:" },
+          { "type": "list", "items": [
+            "Building relationships of trust with community leaders.",
+            "Assessing needs and co-designing programs with local residents.",
+            "Training local practitioners to provide empowerment services within their communities to ensure language and cultural competence.",
+            "Emphasizing group (v. individual) work for expanded access, reduced cost, and community building.",
+            "Training program participants to teach empowerment skills to their children to increase impact for generations to come."
+          ] }
+        ]
+      }
+    ]
+  },
+  "who": {
+    "eyebrow": "Who is this for?",
+    "blocks": [
+      {
+        "eyebrow": "For Therapists",
+        "heading": "A practice grounded in the relationship.",
+        "text": "Mental health professionals find in Empowerment Therapy a coherent model that integrates Nonviolent Communication and Client Centered Therapy. The framework offers comprehensive guidelines to build the therapeutic alliance — what we know, from research, is the most important aspect of healing work."
+      },
+      {
+        "eyebrow": "For Coaches and Helpers",
+        "heading": "Skills that meet people where they are.",
+        "text": "If you already work with people in caring or helping roles, Empowerment Therapy gives you a structured way to deepen your practice. You will learn to identify needs beneath the words, hold space for transformation, and support clients in building autonomy, resilience, and agency."
+      },
+      {
+        "eyebrow": "For Anyone Called to This Work",
+        "heading": "No mental health background required.",
+        "text": "This program is open to anyone who wants to learn to accompany others in their journey of healing, growth and fulfillment. We develop practitioners who go out in the world and offer support to people without access to traditional services."
+      }
+    ],
+    "quote": [
+      "Throughout the program, we foster the personal development of participants in the safety of a close-knit learning community. At the end of the course, participants often report deeper self-connection, increased self-acceptance, and more self-confidence.",
+      "The path is rigorous, but it begins with one quality: **the desire to help**."
+    ]
+  }
+}

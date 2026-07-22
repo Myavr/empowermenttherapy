@@ -824,27 +824,30 @@
   <!-- Shared scripts (fade-ins, header scroll, page loader, mobile nav, registration modal) -->
   <script>
     // What We Are Doing — vertical click-to-expand strips with fluid 3D perspective
-    // Click only toggles the body open state; hover always drives the perspective
+    // Click only toggles the body open state; hover always drives the perspective.
+    // Event delegation on the container so the strips can be re-rendered from data.
     (function () {
-      var strips = document.querySelectorAll('#doingStrips .doing-strip');
-      strips.forEach(function (strip) {
-        var bar = strip.querySelector('.doing-strip-bar');
-        bar.addEventListener('click', function () {
-          var wasOpen = strip.classList.contains('is-open');
-          strips.forEach(function (s) {
-            s.classList.remove('is-open');
-            s.querySelector('.doing-strip-bar').setAttribute('aria-expanded', 'false');
-          });
-          if (!wasOpen) {
-            strip.classList.add('is-open');
-            bar.setAttribute('aria-expanded', 'true');
-          }
+      var container = document.getElementById('doingStrips');
+      if (!container) return;
+      container.addEventListener('click', function (e) {
+        var bar = e.target.closest('.doing-strip-bar');
+        if (!bar || !container.contains(bar)) return;
+        var strip = bar.closest('.doing-strip');
+        var wasOpen = strip.classList.contains('is-open');
+        container.querySelectorAll('.doing-strip').forEach(function (s) {
+          s.classList.remove('is-open');
+          var b = s.querySelector('.doing-strip-bar');
+          if (b) b.setAttribute('aria-expanded', 'false');
         });
+        if (!wasOpen) {
+          strip.classList.add('is-open');
+          bar.setAttribute('aria-expanded', 'true');
+        }
       });
     })();
   </script>
 
-  <script src="shared.js?v=33"></script>
+  <script src="shared.js?v=34"></script>
 
   <!-- D3 Globe -->
   <script src="https://d3js.org/d3.v7.min.js"></script>

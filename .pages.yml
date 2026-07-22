@@ -283,3 +283,99 @@ content:
                 label: Text
                 type: text
                 required: false
+
+  - name: home
+    label: Home page text
+    description: One-off text on the home page — the Problem section, the "What We Are Doing" strips, and the "Who Is This For?" blocks. Use **double asterisks** for bold and *single asterisks* for italic.
+    type: file
+    path: data/home.json
+    fields:
+      - name: problem
+        label: The Problem section
+        type: object
+        fields:
+          - name: title
+            label: Section title
+            type: string
+          - name: paragraphs
+            label: Opening paragraphs
+            type: text
+            list: true
+          - name: thesis
+            label: Emphasized statements
+            description: The two highlighted statements below the opening paragraphs.
+            type: text
+            list: true
+          - name: disclaimer
+            label: Disclaimer (italic footnote)
+            type: text
+            required: false
+      - name: doing
+        label: What We Are Doing
+        type: object
+        fields:
+          - name: title
+            label: Section title
+            type: string
+          - name: strips
+            label: Expandable strips
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: Strip title
+                type: string
+              - name: image
+                label: Background image
+                type: image
+                required: false
+              - name: body
+                label: Body
+                type: object
+                list: true
+                fields:
+                  - name: type
+                    label: Block type
+                    description: Choose "paragraph" for a line of text, or "list" for a bulleted list.
+                    type: select
+                    options:
+                      values:
+                        - paragraph
+                        - list
+                    default: paragraph
+                  - name: text
+                    label: Paragraph text (for paragraph blocks)
+                    type: text
+                    required: false
+                  - name: items
+                    label: Bullet points (for list blocks)
+                    type: text
+                    list: true
+                    required: false
+      - name: who
+        label: Who Is This For?
+        type: object
+        fields:
+          - name: eyebrow
+            label: Header label
+            type: string
+          - name: blocks
+            label: Audience blocks
+            description: The three fixed audience blocks. You can edit the words here; the images and layout are managed in the page design.
+            type: object
+            list: true
+            fields:
+              - name: eyebrow
+                label: Label (e.g. For Therapists)
+                type: string
+              - name: heading
+                label: Heading
+                type: string
+              - name: text
+                label: Text
+                type: text
+          - name: quote
+            label: Pull quote
+            description: The highlighted quote below the audience blocks (one paragraph per line).
+            type: text
+            list: true

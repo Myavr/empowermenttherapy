@@ -610,6 +610,14 @@ function etEsc(s) {
   return e.innerHTML;
 }
 
+/* Escape, then apply lightweight **bold** / *italic* inline formatting. */
+function etInline(s) {
+  s = etEsc(s == null ? '' : String(s));
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return s;
+}
+
 /* ===== Testimonials (data/testimonials.json) ===== */
 (function () {
   var wrap = document.querySelector('.testimonials');
@@ -758,14 +766,6 @@ function etEsc(s) {
     .then(function (data) {
       if (!data || !Array.isArray(data.items) || !data.items.length) return;
 
-      // Escape, then apply lightweight **bold** / *italic* inline formatting.
-      function inline(s) {
-        s = etEsc(s == null ? '' : String(s));
-        s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-        s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-        return s;
-      }
-
       function blockHtml(b) {
         b = b || {};
         var style = b.style || 'paragraph';
@@ -775,16 +775,16 @@ function etEsc(s) {
             ln = ln.trim();
             if (!ln) return '';
             var idx = ln.indexOf(':');
-            if (idx === -1) return '<p>' + inline(ln) + '</p>';
+            if (idx === -1) return '<p>' + etInline(ln) + '</p>';
             var speaker = ln.slice(0, idx);
             var rest = ln.slice(idx + 1).replace(/^\s+/, '');
-            return '<p><span class="faq-speaker">' + inline(speaker) + ':</span> ' + inline(rest) + '</p>';
+            return '<p><span class="faq-speaker">' + etInline(speaker) + ':</span> ' + etInline(rest) + '</p>';
           }).join('');
           return '<div class="faq-dialogue">' + lines + '</div>';
         }
         var cls = style === 'scene' ? ' class="faq-scene"'
           : style === 'closing' ? ' class="faq-closing"' : '';
-        return '<p' + cls + '>' + inline(b.text || '') + '</p>';
+        return '<p' + cls + '>' + etInline(b.text || '') + '</p>';
       }
 
       wrap.innerHTML = '';
@@ -797,6 +797,101 @@ function etEsc(s) {
           '<div class="faq-answer">' + blocks.map(blockHtml).join('') + '</div>';
         wrap.appendChild(d);
       });
+    })
+    .catch(function () {});
+})();
+
+/* ===== Home page one-off text (data/home.json) ===== */
+(function () {
+  // Only run on the home page (the Problem section is unique to it).
+  if (!document.getElementById('theProblem')) return;
+  fetch('data/home.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data) return;
+
+      /* ----- The Problem ----- */
+      var problem = data.problem;
+      if (problem) {
+        var pTitle = document.querySelector('#theProblem .problem-grid-title');
+        if (pTitle && problem.title) pTitle.textContent = problem.title;
+
+        var pBody = document.querySelector('#theProblem .problem-grid-body');
+        if (pBody && (Array.isArray(problem.paragraphs) || Array.isArray(problem.thesis))) {
+          var html = (problem.paragraphs || []).map(function (p) {
+            return '<p>' + etInline(p) + '</p>';
+          }).join('');
+          var thesis = (problem.thesis || []).map(function (t) {
+            return '<p class="et-statement">' + etInline(t) + '</p>';
+          }).join('');
+          if (thesis) html += '<div class="problem-thesis">' + thesis + '</div>';
+          pBody.innerHTML = html;
+        }
+
+        var pDisc = document.querySelector('#theProblem .problem-disclaimer');
+        if (pDisc && problem.disclaimer) pDisc.innerHTML = '<em>' + etInline(problem.disclaimer) + '</em>';
+      }
+
+      /* ----- What We Are Doing ----- */
+      var doing = data.doing;
+      if (doing) {
+        var dTitle = document.querySelector('#whatWeAreDoing .section-title');
+        if (dTitle && doing.title) dTitle.textContent = doing.title;
+
+        var strips = document.getElementById('doingStrips');
+        if (strips && Array.isArray(doing.strips) && doing.strips.length) {
+          var zones = '<span class="doing-strip-zones" aria-hidden="true">' +
+            '<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>';
+          strips.innerHTML = doing.strips.map(function (strip, i) {
+            strip = strip || {};
+            var num = ('0' + (i + 1)).slice(-2);
+            var bodyHtml = (Array.isArray(strip.body) ? strip.body : []).map(function (b) {
+              b = b || {};
+              if (b.type === 'list') {
+                var items = (Array.isArray(b.items) ? b.items : []).map(function (it) {
+                  return '<li>' + etInline(it) + '</li>';
+                }).join('');
+                return '<ul class="doing-sublist">' + items + '</ul>';
+              }
+              return '<p>' + etInline(b.text || '') + '</p>';
+            }).join('');
+            var imgVar = strip.image ? "; --img: url('" + etEsc(strip.image) + "')" : '';
+            return '<article class="doing-strip" style="--i: ' + i + imgVar + '">' +
+              '<button class="doing-strip-bar" type="button" aria-expanded="false">' +
+                '<span class="doing-strip-num">' + num + '</span>' +
+                '<span class="doing-strip-title">' + etEsc(strip.title || '') + '</span>' +
+                '<span class="doing-strip-toggle" aria-hidden="true"></span>' +
+                zones +
+              '</button>' +
+              '<div class="doing-strip-body"><div class="doing-strip-body-inner">' + bodyHtml + '</div></div>' +
+              '</article>';
+          }).join('');
+        }
+      }
+
+      /* ----- Who Is This For? (text of the three fixed audience blocks) ----- */
+      var who = data.who;
+      if (who) {
+        var lead = document.querySelector('.who-title-slice .who-block-eyebrow');
+        if (lead && who.eyebrow) lead.textContent = who.eyebrow;
+
+        var domBlocks = document.querySelectorAll('.who-blocks .who-block');
+        (Array.isArray(who.blocks) ? who.blocks : []).forEach(function (b, i) {
+          var el = domBlocks[i];
+          if (!el || !b) return;
+          var eb = el.querySelector('.who-block-eyebrow');
+          if (eb && b.eyebrow) eb.textContent = b.eyebrow;
+          var h = el.querySelector('.who-block-heading');
+          if (h && b.heading) h.textContent = b.heading;
+          var p = el.querySelector('.who-block-text p');
+          if (p && b.text) p.innerHTML = etInline(b.text);
+        });
+
+        var bq = document.querySelector('.who-quote blockquote');
+        if (bq && Array.isArray(who.quote) && who.quote.length) {
+          bq.innerHTML = who.quote.map(function (q) { return '<p>' + etInline(q) + '</p>'; }).join('');
+        }
+      }
     })
     .catch(function () {});
 })();
