@@ -748,3 +748,55 @@ function etEsc(s) {
     })
     .catch(function () {});
 })();
+
+/* ===== FAQ (data/faq.json) ===== */
+(function () {
+  var wrap = document.querySelector('.faq-section .faq');
+  if (!wrap) return;
+  fetch('data/faq.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.items) || !data.items.length) return;
+
+      // Escape, then apply lightweight **bold** / *italic* inline formatting.
+      function inline(s) {
+        s = etEsc(s == null ? '' : String(s));
+        s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        return s;
+      }
+
+      function blockHtml(b) {
+        b = b || {};
+        var style = b.style || 'paragraph';
+        if (style === 'divider') return '<div class="faq-divider"></div>';
+        if (style === 'dialogue') {
+          var lines = String(b.text || '').split(/\n+/).map(function (ln) {
+            ln = ln.trim();
+            if (!ln) return '';
+            var idx = ln.indexOf(':');
+            if (idx === -1) return '<p>' + inline(ln) + '</p>';
+            var speaker = ln.slice(0, idx);
+            var rest = ln.slice(idx + 1).replace(/^\s+/, '');
+            return '<p><span class="faq-speaker">' + inline(speaker) + ':</span> ' + inline(rest) + '</p>';
+          }).join('');
+          return '<div class="faq-dialogue">' + lines + '</div>';
+        }
+        var cls = style === 'scene' ? ' class="faq-scene"'
+          : style === 'closing' ? ' class="faq-closing"' : '';
+        return '<p' + cls + '>' + inline(b.text || '') + '</p>';
+      }
+
+      wrap.innerHTML = '';
+      data.items.forEach(function (item) {
+        item = item || {};
+        var blocks = Array.isArray(item.answer) ? item.answer : [];
+        var d = document.createElement('details');
+        d.classList.add('visible');
+        d.innerHTML = '<summary>' + etEsc(item.question || '') + '</summary>' +
+          '<div class="faq-answer">' + blocks.map(blockHtml).join('') + '</div>';
+        wrap.appendChild(d);
+      });
+    })
+    .catch(function () {});
+})();

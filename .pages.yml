@@ -246,3 +246,40 @@ content:
                 label: Description (optional)
                 type: text
                 required: false
+
+  - name: faq
+    label: FAQ
+    description: The questions and answers in the "Frequently Asked Questions" section on the home page.
+    type: file
+    path: data/faq.json
+    fields:
+      - name: items
+        label: Questions
+        type: object
+        list: true
+        fields:
+          - name: question
+            label: Question
+            type: string
+          - name: answer
+            label: Answer
+            description: The answer is built from blocks. Add a block for each paragraph. Use **double asterisks** for bold and *single asterisks* for italic.
+            type: object
+            list: true
+            fields:
+              - name: style
+                label: Block type
+                description: Paragraph is normal text. Scene is an italic intro line. Dialogue shows a back-and-forth (one line per exchange, written as "Name: what they said"). Closing is the final emphasized line. Divider is a small horizontal rule (no text needed).
+                type: select
+                options:
+                  values:
+                    - paragraph
+                    - scene
+                    - dialogue
+                    - closing
+                    - divider
+                default: paragraph
+              - name: text
+                label: Text
+                type: text
+                required: false

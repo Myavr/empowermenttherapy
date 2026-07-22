@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "question": "How was Empowerment Therapy developed?",
+      "answer": [
+        { "style": "paragraph", "text": "I, Myra Walden, developed the model based on my own experience as a client in therapy with a Client Centered therapist, **Dr. Marge Witty**, my never-ending study of the human psyche, and over 30 years of practicing psychotherapy in community mental health centers and private practice. In 1998, I started studying **Nonviolent Communication** and began to incorporate the concepts into my life and therapy practice. In 2021, I codified my experience and developed a coherent therapy model. We will need research to demonstrate its effectiveness, gain credibility and broaden usage in the field. Below is my testimonial." },
+        { "style": "divider", "text": "" },
+        { "style": "scene", "text": "I was 28 years old. At a gathering of friends, each of us was to answer the question, “Where do you see yourself in 10 years?”" },
+        { "style": "dialogue", "text": "Myra: “I see myself divorced.”\nFriend: “Myra, but you’re not even dating!”" },
+        { "style": "paragraph", "text": "No, I wasn’t dating at the time, but I knew that if I were to get married, no one would put up with my temper for very long. My anger and reactivity were an aftereffect of the many years of severe lack of safety and respect I went through as a teenager that resulted in self-loathing and troubled relationships. As it turns out, I did not divorce." },
+        { "style": "paragraph", "text": "At age 33, I sought psychotherapy and pursued my healing in earnest. The work bore fruit. My beloved late husband of 35 years, Peter, saw me through the angry stage, and we built a relationship of **connection, closeness, and communion.** Many of my dreams have come true: to have very close friends, to become a therapist, a goal I conceived at age 12 and pursued at 30; to give workshops for mental health professionals and write a book to share what I’ve learned, and more. In 2024, six years after Peter died, I met and married Kerry, a bright and loving man I adore." },
+        { "style": "closing", "text": "There are multiple factors that contributed to these outcomes, not the least of which were receiving nondirective therapy and finding a needs-based compass to guide me in building a fulfilling life. **And that’s what I want to share with others.**" }
+      ]
+    },
+    {
+      "question": "Is the Empowerment Therapy certification program just for therapists?",
+      "answer": [
+        { "style": "paragraph", "text": "**No.** It is for mental health professionals and anyone who wants to learn to accompany others in their journey of healing, growth and fulfillment, even if they don’t have a background in mental health." },
+        { "style": "paragraph", "text": "This approach is grounded on Carl Rogers’ seminal paper *The Necessary and Sufficient Conditions of Therapeutic Personality Change.* In it, Rogers describes the attitudes necessary to develop a therapeutic relationship. And, as we understand from the research, **the most important aspect of therapy is the relationship** between the therapist and the client. ET offers comprehensive guidelines to build the therapeutic alliance. At the same time, we make it clear that our work is not a substitute for professional psychotherapy." }
+      ]
+    }
+  ]
+}
