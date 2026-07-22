@@ -1,0 +1,23 @@
+# Pages CMS content configuration  —  https://pagescms.org
+#
+# This file defines what a non-coder can edit. Each entry below becomes a
+# friendly form in the CMS editor. Editing content here only changes the JSON
+# data files — never the HTML or CSS — so the site's styling can't be broken
+# by content edits.
+#
+# As we convert more sections, we add more entries under `content:` (FAQ,
+# testimonials, resources, team, hero text, etc.), each pointing at its own
+# data/*.json file.
+
+content:
+  - name: countries
+    label: Practitioners worldwide
+    description: The list of countries shown in the "Practitioners Worldwide" bar on the home page.
+    type: file
+    path: data/countries.json
+    fields:
+      - name: items
+        label: Countries
+        description: One country per line. Drag to reorder, use + to add, trash to remove.
+        type: string
+        list: true

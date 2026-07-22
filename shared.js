@@ -461,3 +461,27 @@
     });
   }
 })();
+
+/* ===== Editable content: render sections from /data JSON files =====
+   Content lives in data/*.json and is edited by non-coders through the CMS.
+   Styling stays entirely in style.css and the markup classes used below, so
+   editing the JSON can never change the design. If a fetch ever fails, the
+   page keeps whatever HTML is already in place (progressive enhancement),
+   so it never breaks. */
+(function () {
+  var tags = document.querySelector('.country-tags');
+  if (!tags) return;
+  fetch('data/countries.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !Array.isArray(data.items)) return; // keep the existing HTML fallback
+      tags.innerHTML = '';
+      data.items.forEach(function (name) {
+        var span = document.createElement('span');
+        span.className = 'country-tag visible';
+        span.textContent = String(name);
+        tags.appendChild(span);
+      });
+    })
+    .catch(function () { /* leave the hardcoded list as-is */ });
+})();
