@@ -178,7 +178,12 @@
               <svg class="lvl-bloom"><use href="#et-flower"/></svg>
             </div>
             <h3>Level 2: Empowerment Processes</h3>
-            <p class="level-schedule" id="sched-time-2">Thursdays 9:00&ndash;10:30 AM CT</p>
+            <div class="level-schedule-list" aria-label="Level 2 schedule by city">
+              <p class="level-schedule">Thursdays 9:00&ndash;10:30 AM Chicago</p>
+              <p class="level-schedule">Thursdays 4:00&ndash;5:30 PM Amsterdam</p>
+              <p class="level-schedule">Thursdays 5:00&ndash;6:30 PM Dodoma</p>
+              <p class="level-schedule">Thursdays 7:30&ndash;9:00 PM Mumbai</p>
+            </div>
             <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
             <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
             <span class="level-step-expand-hint">Learn more</span>
@@ -307,28 +312,6 @@
 
       </div>
 
-
-      <script>
-      (function(){try{
-        var schedule=[
-          {id:'sched-time-2',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z'}
-        ];
-        var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
-        var tf={hour:'numeric',minute:'2-digit',hour12:true};
-        schedule.forEach(function(s){
-          var el=document.getElementById(s.id);if(!el)return;
-          var d1=new Date(s.start),d2=new Date(s.end);
-          var day=days[d1.getDay()];
-          var t1=new Intl.DateTimeFormat(undefined,tf).format(d1);
-          var t2=new Intl.DateTimeFormat(undefined,tf).format(d2);
-          var tz='';
-          new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
-            if(p.type==='timeZoneName')tz=p.value;
-          });
-          el.textContent=day+' '+t1+'\u2013'+t2+' '+tz+(s.startDate?' \u00B7 Starting '+s.startDate:'');
-        });
-      }catch(e){}}());
-      </script>
     </div>
   </section>
 
