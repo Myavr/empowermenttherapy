@@ -3527,6 +3527,12 @@ p {
   margin-bottom: 0;
 }
 
+.level-step--1 .level-schedule-list .level-schedule {
+  background: rgba(132, 180, 84, 0.12);
+  border-color: var(--green);
+  border-left-color: var(--green);
+}
+
 .level-step-card>p {
   color: var(--text-muted);
   font-size: 0.95rem;
