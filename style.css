@@ -3305,6 +3305,29 @@ p {
 }
 
 /* ===== PROGRAM LEVELS ===== */
+.program-image-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 980px;
+  margin: 0 auto 2rem;
+}
+
+.program-image-strip img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+  .program-image-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
 .levels-progression {
   max-width: 860px;
   margin: 0 auto;
