@@ -96,7 +96,13 @@
               <svg class="lvl-bloom"><use href="#et-flower"/></svg>
             </div>
             <h3>Level 1: Foundation</h3>
-            <p class="level-schedule" id="sched-time-1">Tuesdays 8:00&ndash;9:30 PM CT</p>
+            <div class="level-schedule-list" aria-label="Level 1 schedule by city">
+              <p class="level-schedule">Tuesdays 6:00&ndash;7:30 PM San Francisco</p>
+              <p class="level-schedule">Tuesdays 7:00&ndash;8:30 PM Mexico City</p>
+              <p class="level-schedule">Wednesdays 6:30&ndash;8:00 AM Mumbai</p>
+              <p class="level-schedule">Wednesdays 9:00&ndash;10:30 AM Hong Kong</p>
+              <p class="level-schedule">Wednesdays 11:00 AM&ndash;12:30 PM Melbourne</p>
+            </div>
             <p>Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions.</p>
             <span class="level-step-expand-hint">Learn more</span>
             <div class="level-step-detail">
@@ -305,7 +311,6 @@
       <script>
       (function(){try{
         var schedule=[
-          {id:'sched-time-1',start:'2026-01-07T02:00:00Z',end:'2026-01-07T03:30:00Z'},
           {id:'sched-time-2',start:'2026-01-08T15:00:00Z',end:'2026-01-08T16:30:00Z'}
         ];
         var days=['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
@@ -320,7 +325,7 @@
           new Intl.DateTimeFormat(undefined,{timeZoneName:'short'}).formatToParts(d1).forEach(function(p){
             if(p.type==='timeZoneName')tz=p.value;
           });
-          el.textContent='\u{1F4C5} '+day+' '+t1+'\u2013'+t2+' '+tz+(s.startDate?' \u00B7 Starting '+s.startDate:'');
+          el.textContent=day+' '+t1+'\u2013'+t2+' '+tz+(s.startDate?' \u00B7 Starting '+s.startDate:'');
         });
       }catch(e){}}());
       </script>

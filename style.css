@@ -3475,9 +3475,10 @@ p {
   margin-bottom: 0.5rem;
 }
 
-.level-step-card > p.level-schedule {
+.level-step-card > p.level-schedule,
+.level-schedule-list .level-schedule {
   font-size: 1.05rem;
-  color: var(--seafoam);
+  color: var(--text-muted);
   font-weight: 500;
   margin-bottom: 0.75rem;
   padding: 0.4rem 0.75rem;
@@ -3485,6 +3486,20 @@ p {
   border-left: 3px solid var(--seafoam);
   border-radius: 0 4px 4px 0;
   display: inline-block;
+}
+
+.level-schedule-list {
+  margin-bottom: 0.75rem;
+}
+
+.level-schedule-list .level-schedule {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.4rem;
+}
+
+.level-schedule-list .level-schedule:last-child {
+  margin-bottom: 0;
 }
 
 .level-step-card>p {
