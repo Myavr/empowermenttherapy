@@ -459,9 +459,6 @@ content:
         type: object
         list: true
         fields:
-          - name: badge
-            label: Badge
-            type: string
           - name: title
             label: Title
             type: string

@@ -1021,8 +1021,6 @@ function etInline(s) {
         var card = step.querySelector('.level-step-card');
         if (!card) return;
 
-        var badge = card.querySelector('.level-step-badge');
-        if (badge && L.badge) badge.textContent = L.badge;
         var h3 = card.querySelector('h3');
         if (h3 && L.title) h3.textContent = L.title;
 

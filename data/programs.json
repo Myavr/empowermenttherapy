@@ -1,7 +1,6 @@
 {
   "levels": [
     {
-      "badge": "Foundation",
       "title": "Level 1: Foundation",
       "intro": ["Introduction to the principal tenets, key differentiation, therapeutic attitudes, and needs-based interventions."],
       "blocks": [
@@ -72,7 +71,6 @@
       "register": "**How to enroll:** Email [empowermenttherapymw@gmail.com](mailto:empowermenttherapymw@gmail.com) to schedule a 45-minute assessment meeting with Myra Walden to determine goodness of fit."
     },
     {
-      "badge": "Empowerment Processes",
       "title": "Level 2: Empowerment Processes",
       "intro": ["Learning and application of Empowering Thoughts and Language — these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely."],
       "note": "*By studying some key concepts, people can take Level 2 before Level 1.",
@@ -127,7 +125,6 @@
       ]
     },
     {
-      "badge": "Certification",
       "title": "Level 3: Certification",
       "intro": ["A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer."],
       "blocks": [
