@@ -3475,9 +3475,9 @@ p {
   margin-bottom: 0.5rem;
 }
 
-.level-schedule {
-  font-size: 0.95rem;
-  color: var(--seafoam-deep);
+.level-step-card > p.level-schedule {
+  font-size: 1.05rem;
+  color: var(--seafoam);
   font-weight: 500;
   margin-bottom: 0.75rem;
   padding: 0.4rem 0.75rem;
