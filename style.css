@@ -3382,10 +3382,10 @@ p {
 }
 
 .level-step--3 .level-step-number {
-  background: var(--seafoam-deep);
+  background: var(--seafoam);
   color: var(--white);
   border: 3px solid var(--cream);
-  box-shadow: 0 0 0 1.5px var(--gold);
+  box-shadow: 0 0 0 1.5px var(--seafoam);
 }
 
 .level-step-connector {
@@ -3459,7 +3459,7 @@ p {
 }
 
 .level-step--3 .level-step-card {
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid var(--seafoam);
 }
 
 .level-step:hover .level-step-card {
@@ -3537,6 +3537,12 @@ p {
   background: rgba(84, 108, 192, 0.12);
   border-color: var(--blue);
   border-left-color: var(--blue);
+}
+
+.level-step--3 .level-schedule-list .level-schedule {
+  background: rgba(132, 204, 168, 0.12);
+  border-color: var(--seafoam);
+  border-left-color: var(--seafoam);
 }
 
 .level-step-card>p {
