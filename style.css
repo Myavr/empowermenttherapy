@@ -3496,6 +3496,8 @@ p {
   display: block;
   width: fit-content;
   margin-bottom: 0.4rem;
+  border: 1px solid rgba(132, 204, 168, 0.45);
+  border-left: 3px solid var(--seafoam);
 }
 
 .level-schedule-list .level-schedule:last-child {
