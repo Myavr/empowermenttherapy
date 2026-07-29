@@ -3463,7 +3463,6 @@ p {
 }
 
 .level-step:hover .level-step-card {
-  border-color: var(--seafoam);
   box-shadow: var(--shadow-md);
 }
 
