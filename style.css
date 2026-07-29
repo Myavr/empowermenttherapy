@@ -792,6 +792,10 @@ body.subpage .subpage-spacer {
   overflow: hidden;
 }
 
+.subpage-hero.programs-hero {
+  background: #3e4f99;
+}
+
 /* The logo's geometry as a hero motif: a blue glow from the left and a
    green glow from the right, softly meeting in seafoam at the center. */
 .subpage-hero::before {
