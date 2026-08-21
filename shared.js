@@ -86,11 +86,15 @@
         // and its main link as active so users see the grouping.
         var parentDropdown = link.closest('.nav-dropdown');
         if (parentDropdown) {
-          parentDropdown.classList.add('open');
           var toggle = parentDropdown.querySelector('.nav-dropdown-toggle');
           if (toggle) toggle.classList.add('active');
-          var expander = parentDropdown.querySelector('.nav-dropdown-expander');
-          if (expander) expander.setAttribute('aria-expanded', 'true');
+          // Only child pages expand their group on mobile. A directly clicked
+          // parent link such as Programs must not leave its dropdown open.
+          if (link.closest('.nav-dropdown-menu')) {
+            parentDropdown.classList.add('open');
+            var expander = parentDropdown.querySelector('.nav-dropdown-expander');
+            if (expander) expander.setAttribute('aria-expanded', 'true');
+          }
         }
       }
     });
