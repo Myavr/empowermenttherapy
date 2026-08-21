@@ -90,7 +90,9 @@
           if (toggle) toggle.classList.add('active');
           // Only child pages expand their group on mobile. A directly clicked
           // parent link such as Programs must not leave its dropdown open.
-          if (link.closest('.nav-dropdown-menu')) {
+          var isChildLink = link.closest('.nav-dropdown-menu');
+          var toggleHref = toggle ? (toggle.getAttribute('href') || '').toLowerCase() : '';
+          if (isChildLink && toggleHref !== href) {
             parentDropdown.classList.add('open');
             var expander = parentDropdown.querySelector('.nav-dropdown-expander');
             if (expander) expander.setAttribute('aria-expanded', 'true');

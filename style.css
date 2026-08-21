@@ -846,28 +846,6 @@ body.subpage .subpage-spacer {
   position: relative;
 }
 
-/* Starter content used by newly added pages until their full content arrives. */
-.new-page-intro {
-  min-height: 360px;
-  display: grid;
-  place-items: center;
-  padding: clamp(4rem, 8vw, 7rem) 2rem;
-  text-align: center;
-}
-
-.new-page-intro h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
-
-.new-page-intro p {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  margin: 0;
-}
-
 /* Events reuse the visual language of the Program Levels progression. */
 .events-listing {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
