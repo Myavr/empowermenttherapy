@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=215">
+  <link rel="stylesheet" href="style.css?v=216">
 </head>
 <body class="subpage">
   <div class="page-loader" id="pageLoader">
@@ -63,10 +63,57 @@
       <p>Explore upcoming opportunities to learn, connect, and grow together.</p>
     </section>
 
-    <section class="new-page-intro fade-in">
+    <section class="events-listing fade-in" id="events">
       <div class="container">
-        <h2>Events</h2>
-        <p>Event information will be added here soon.</p>
+        <div class="levels-progression event-progression">
+          <svg width="0" height="0" class="et-flower-def" aria-hidden="true" focusable="false">
+            <symbol id="event-flower" viewBox="0 0 40 40">
+              <g fill="currentColor">
+                <ellipse cx="20" cy="11" rx="5" ry="8"/>
+                <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(72 20 20)"/>
+                <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(144 20 20)"/>
+                <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(216 20 20)"/>
+                <ellipse cx="20" cy="11" rx="5" ry="8" transform="rotate(288 20 20)"/>
+              </g>
+              <circle cx="20" cy="20" r="4.6" fill="#e4cc78"/>
+            </symbol>
+          </svg>
+
+          <article class="level-step level-step--2 event-step fade-in">
+            <div class="level-step-number"><span>24</span></div>
+            <div class="level-step-connector"></div>
+            <div class="level-step-card">
+              <div class="lvl-blooms" aria-hidden="true">
+                <svg class="lvl-bloom"><use href="#event-flower"/></svg>
+                <svg class="lvl-bloom"><use href="#event-flower"/></svg>
+              </div>
+              <span class="level-step-badge">September 24, 2026</span>
+              <h3>The Surprising Purpose of Anger</h3>
+
+              <div class="level-schedule-list" aria-label="Event times by region">
+                <p class="level-schedule">9:00&ndash;11:00 AM Central Time</p>
+                <p class="level-schedule">5:00&ndash;7:00 PM Amsterdam</p>
+                <p class="level-schedule">7:30&ndash;9:30 PM India</p>
+              </div>
+
+              <div class="level-detail-grid event-detail-grid">
+                <div class="level-detail-block">
+                  <h4>Price</h4>
+                  <p><strong>300 Indian Rupees</strong></p>
+                  <p><strong>$10.00 US dollars</strong></p>
+                </div>
+                <div class="level-detail-block">
+                  <h4>Presenter</h4>
+                  <p><strong>Myra Walden</strong></p>
+                </div>
+              </div>
+
+              <div class="level-detail-register">
+                <p><a href="contact.html"><strong>Contact us to register.</strong></a></p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
