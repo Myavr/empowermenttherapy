@@ -846,6 +846,18 @@ body.subpage .subpage-spacer {
   position: relative;
 }
 
+.subpage-hero-kicker {
+  display: block;
+  position: relative;
+  margin: 0.25rem auto 0.55rem;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 /* Events reuse the visual language of the Program Levels progression. */
 .events-listing {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
