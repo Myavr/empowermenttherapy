@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=214">
+  <link rel="stylesheet" href="style.css?v=215">
 </head>
 
 <body>
@@ -48,7 +48,15 @@
       <div class="nav-stack">
         <nav>
           <a href="index.html">Home</a>
-          <a href="programs.html">Programs</a>
+          <div class="nav-dropdown nav-dropdown--linked">
+            <a href="programs.html" class="nav-dropdown-toggle">Programs</a>
+            <button class="nav-dropdown-expander" type="button" aria-label="Show program pages" aria-expanded="false"
+              onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'));"></button>
+            <div class="nav-dropdown-menu">
+              <a href="et-program.html">ET Program</a>
+              <a href="events.html">Events</a>
+            </div>
+          </div>
           <div class="nav-dropdown">
             <a href="#" class="nav-dropdown-toggle"
               onclick="event.preventDefault();this.parentElement.classList.toggle('open');">About</a>
@@ -850,7 +858,7 @@
     })();
   </script>
 
-  <script src="shared.js?v=37"></script>
+  <script src="shared.js?v=38"></script>
 
   <!-- D3 Globe -->
   <script src="https://d3js.org/d3.v7.min.js"></script>

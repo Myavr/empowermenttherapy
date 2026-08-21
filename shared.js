@@ -64,8 +64,8 @@
     }
   });
 
-  // Close mobile nav on anchor click (except the About dropdown toggle, which
-  // should expand its submenu inline without closing the whole mobile menu)
+  // Close mobile nav on anchor click (except dropdown-only toggles, which
+  // expand their submenu inline without closing the whole mobile menu).
   document.querySelectorAll('nav a, .nav-register').forEach(function(a){
     if (a.classList.contains('nav-dropdown-toggle')) return;
     a.addEventListener('click', function(){
@@ -82,13 +82,15 @@
       var href = (link.getAttribute('href') || '').toLowerCase();
       if (href === path) {
         link.classList.add('active');
-        // If this link is inside the About dropdown, mark the parent dropdown
-        // as open & the toggle as active so users see the grouping
+        // If this link is inside a dropdown, mark the parent dropdown as open
+        // and its main link as active so users see the grouping.
         var parentDropdown = link.closest('.nav-dropdown');
         if (parentDropdown) {
           parentDropdown.classList.add('open');
           var toggle = parentDropdown.querySelector('.nav-dropdown-toggle');
           if (toggle) toggle.classList.add('active');
+          var expander = parentDropdown.querySelector('.nav-dropdown-expander');
+          if (expander) expander.setAttribute('aria-expanded', 'true');
         }
       }
     });
