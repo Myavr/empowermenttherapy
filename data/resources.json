@@ -4,7 +4,6 @@
       "color": "blue",
       "icon": "✍",
       "title": "Articles",
-      "unit": "readings",
       "links": [
         { "title": "From Guilt and Shame to Self-Compassion", "url": "pdfs/From-Guilt-Shame-11026.pdf", "author": "Myra Walden" },
         { "title": "Nonviolent Communication and Trauma", "url": "https://www.comunicacionplena.com/post/nonviolent-communication-and-trauma?lang=en", "author": "Claudia Sánchez" },
@@ -17,7 +16,6 @@
       "color": "green",
       "icon": "❋",
       "title": "Internal Processes",
-      "unit": "practices",
       "links": [
         { "title": "Feelings, Needs, and Sensations Inventories", "url": "pdfs/FNSInventories.pdf", "description": "Three lists for understanding and connecting with personal experience" },
         { "title": "Inner Silence Meditation", "url": "pdfs/Inner-Silence-Meditation-PDF.pdf", "description": "Practice to reduce reactivity, increase equanimity and clarity regarding needs" },
@@ -28,7 +26,6 @@
       "color": "gold",
       "icon": "★",
       "title": "Certification Candidates Kit",
-      "unit": "tools",
       "links": [
         { "title": "Empowerment Journal Form", "url": "pdfs/EmpowermentJournalPDF.pdf", "description": "Tool for practitioners to increase self-awareness and embody therapeutic traits" },
         { "title": "Self-Evaluation Form", "url": "pdfs/Self-EvaluaitonsPDF.pdf", "description": "Tool for practitioners to increase self-awareness and improve client work" }
@@ -38,7 +35,6 @@
       "color": "seafoam",
       "icon": "❤",
       "title": "Interpersonal Processes",
-      "unit": "practices",
       "links": [
         { "title": "Connection Superhighway", "url": "pdfs/ConnectionSuperhighwayPDF.pdf", "description": "Process to resolve conflict satisfyingly for all involved parties" },
         { "title": "Restoration Dialogue", "url": "pdfs/RestoationProcessPDF.pdf", "description": "Tool for restoring self-respect and wholeness when actions conflict with values" }

@@ -4648,15 +4648,6 @@ p {
   margin-bottom: 0;
 }
 
-.resource-card-count {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0;
-}
-
 .resource-card-toggle {
   margin-left: auto;
   font-size: 1.3rem;

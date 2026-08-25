@@ -230,11 +230,6 @@ content:
           - name: title
             label: Title
             type: string
-          - name: unit
-            label: Unit word (e.g. readings / practices / tools) — the number is counted automatically
-            type: string
-            required: false
-            default: items
           - name: color
             label: Colour
             type: select

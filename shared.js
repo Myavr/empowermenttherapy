@@ -846,9 +846,7 @@ function etInline(s) {
           card.innerHTML =
             '<div class="resource-card-header">' +
               '<span class="resource-card-icon">' + etEsc(cat.icon || '') + '</span>' +
-              '<div><h3 class="resource-card-title">' + etEsc(cat.title || '') + '</h3>' +
-              '<p class="resource-card-count">' + (Array.isArray(cat.links) ? cat.links.length : 0) +
-                ' ' + etEsc(cat.unit || 'items') + '</p>' + '</div>' +
+              '<div><h3 class="resource-card-title">' + etEsc(cat.title || '') + '</h3></div>' +
               '<span class="resource-card-toggle">+</span>' +
             '</div>' +
             '<div class="resource-card-body"><ul class="resource-list">' + links + '</ul></div>';
