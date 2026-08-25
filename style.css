@@ -2318,10 +2318,6 @@ section {
   border: none;
 }
 
-#resources {
-  padding-top: 0;
-}
-
 /* ===== SECTION DIVIDERS ===== */
 /* A miniature of the logo: two overlapping circles — blue and green —
    with hairlines fading out to either side. Used under section titles. */
@@ -4551,7 +4547,7 @@ p {
 /* ===== RESOURCES ===== */
 .resource-hero-image {
   max-width: 420px;
-  margin: 2rem auto 0;
+  margin: 0 auto 2rem;
 }
 
 .resource-grid {
@@ -4560,7 +4556,6 @@ p {
   gap: 1.25rem;
   max-width: 850px;
   margin: 0 auto;
-  margin-top: 2rem;
   /* two independent columns — opening a card only grows its own column,
      never leaving blank space beside its neighbour */
   align-items: start;
