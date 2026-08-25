@@ -841,7 +841,7 @@ function etInline(s) {
               etEsc(l.title || '') + meta + '</a></li>';
           }).join('');
           var card = document.createElement('div');
-          card.className = 'resource-card resource-card--' + (cat.color || 'blue') + (cat.open ? ' is-open' : '');
+          card.className = 'resource-card resource-card--' + (cat.color || 'blue');
           card.setAttribute('tabindex', '0');
           card.innerHTML =
             '<div class="resource-card-header">' +
