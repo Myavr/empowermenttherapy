@@ -1610,7 +1610,7 @@ body.subpage .subpage-spacer {
 /* magazine-style serif lead on the opening paragraph */
 .problem-grid-body > p:first-child {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 2.3vw, 1.9rem);
+  font-size: clamp(1.4rem, 1.8vw, 1.6rem);
   line-height: 1.6;
   color: var(--cream);
 }
