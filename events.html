@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=222">
+  <link rel="stylesheet" href="style.css?v=223">
 </head>
 <body class="subpage">
   <div class="page-loader" id="pageLoader">
@@ -79,45 +79,9 @@
             </symbol>
           </svg>
 
-          <article class="level-step level-step--2 event-step fade-in">
-            <div class="level-step-number"><span>1</span></div>
-            <div class="level-step-connector"></div>
-            <div class="level-step-card">
-              <div class="lvl-blooms" aria-hidden="true">
-                <svg class="lvl-bloom"><use href="#event-flower"/></svg>
-              </div>
-              <div class="event-card-main">
-                <div class="event-card-copy">
-                  <span class="level-step-badge">September 24, 2026</span>
-                  <h3>The Surprising Purpose of Anger</h3>
-
-                  <div class="level-schedule-list" aria-label="Event times by region">
-                    <p class="level-schedule">9:00&ndash;11:00 AM Chicago</p>
-                    <p class="level-schedule">5:00&ndash;7:00 PM Amsterdam</p>
-                    <p class="level-schedule">7:30&ndash;9:30 PM India</p>
-                  </div>
-                </div>
-                <img class="event-card-image" src="images/gift.webp" alt="Gift box tied with a blue ribbon">
-              </div>
-
-              <div class="level-detail-grid event-detail-grid">
-                <div class="level-detail-block">
-                  <h4>Price</h4>
-                  <p><strong>300 Indian Rupees</strong></p>
-                  <p><strong>$10.00 US dollars</strong></p>
-                </div>
-                <div class="level-detail-block">
-                  <h4>Presenter</h4>
-                  <p><strong>Myra Walden</strong></p>
-                </div>
-              </div>
-
-              <div class="level-detail-register">
-                <p><a href="contact.html"><strong>Contact us to register.</strong></a></p>
-              </div>
-            </div>
-          </article>
         </div>
+        <p class="event-empty-state" id="eventEmptyState" hidden>No upcoming events are scheduled right now. Please check back soon.</p>
+        <noscript><p class="event-empty-state">Please enable JavaScript to view upcoming events.</p></noscript>
       </div>
     </section>
 
@@ -175,7 +139,7 @@
     </footer>
   </div>
 
-  <script src="shared.js?v=40"></script>
+  <script src="shared.js?v=41"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
   <script>
     if (window.paypal && paypal.Buttons) {

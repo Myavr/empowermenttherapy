@@ -495,13 +495,13 @@
 })();
 
 /* ===== News & Events =====
-   Rendered from data/news.json + data/events.json. The whole section stays
-   hidden unless there is at least one news item or upcoming event. Past
-   one-time events fall off automatically; recurring events always show.
-   Editing the JSON (via the CMS) can never affect styling. */
+   data/events.json is the single source for both the compact home-page event
+   list and the full Events page. Past one-time events fall off automatically;
+   recurring events always show. Editing CMS content cannot affect styling. */
 (function () {
   var section = document.getElementById('newsEvents');
-  if (!section) return;
+  var eventProgression = document.querySelector('#events .event-progression');
+  if (!section && !eventProgression) return;
 
   function esc(s) {
     var e = document.createElement('div');
@@ -511,7 +511,12 @@
   function escLines(s) { return esc(s).replace(/\n/g, '<br>'); }
   function safeUrl(u) {
     u = String(u == null ? '' : u).trim();
-    return /^(https?:\/\/|mailto:|\/)/i.test(u) ? u : '';
+    if (!u || /^\/\//.test(u)) return '';
+    if (/^(https?:\/\/|mailto:|\/(?!\/)|\.{1,2}\/|#)/i.test(u)) return u;
+    // Permit ordinary relative site paths such as "contact.html" or
+    // "images/event.webp", but reject all other URI schemes.
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(u) && !/[\s<>"']/.test(u)) return u;
+    return '';
   }
   function parseLocalDate(s) {
     if (!s) return null;
@@ -523,13 +528,47 @@
   function fmtDate(d) {
     return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
   }
+  function fmtLongDate(d) {
+    return d.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' });
+  }
   function getJSON(path) {
     return fetch(path, { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () { return null; });
   }
+  function getTimes(it) {
+    if (Array.isArray(it.times)) {
+      return it.times.map(function (time) { return String(time || '').trim(); }).filter(Boolean);
+    }
+    // Backward compatibility for events saved with the original single-time field.
+    return it.time ? [String(it.time)] : [];
+  }
+  function prepareEvents(items) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var rows = [];
+    items.forEach(function (it) {
+      it = it || {};
+      if (!it.title) return;
+      var recurring = it.schedule_type === 'Recurring' || (!!it.recurrence && !it.date);
+      var d = parseLocalDate(it.date);
+      if (!recurring && d && d.getTime() < today.getTime()) return;
+      rows.push({ it: it, recurring: recurring, d: d });
+    });
+    rows.sort(function (a, b) {
+      if (a.recurring !== b.recurring) return a.recurring ? 1 : -1;
+      var aTime = a.d ? a.d.getTime() : Number.MAX_SAFE_INTEGER;
+      var bTime = b.d ? b.d.getTime() : Number.MAX_SAFE_INTEGER;
+      return aTime - bTime;
+    });
+    return rows;
+  }
+  function externalLinkAttrs(url) {
+    return /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener"' : '';
+  }
 
   function renderNews(items) {
+    if (!section) return 0;
     var col = document.getElementById('newsCol');
     var list = document.getElementById('newsList');
     if (!list) return 0;
@@ -556,44 +595,30 @@
     return count;
   }
 
-  function renderEvents(items) {
+  function renderEventSummaries(rows) {
+    if (!section) return 0;
     var col = document.getElementById('eventsCol');
     var list = document.getElementById('eventsList');
     if (!list) return 0;
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var rows = [];
-    items.forEach(function (it) {
-      it = it || {};
-      if (!it.title) return;
-      var recurring = it.schedule_type === 'Recurring' || (!!it.recurrence && !it.date);
-      var d = parseLocalDate(it.date);
-      if (!recurring && d && d.getTime() < today.getTime()) return; // drop past one-time events
-      rows.push({ it: it, recurring: recurring, d: d });
-    });
-    rows.sort(function (a, b) {
-      if (a.recurring !== b.recurring) return a.recurring ? 1 : -1;
-      return (a.d ? a.d.getTime() : 0) - (b.d ? b.d.getTime() : 0);
-    });
     list.innerHTML = '';
     var count = 0;
     rows.forEach(function (row) {
       var it = row.it;
+      var times = getTimes(it);
       count++;
       var html = '';
       if (row.recurring) {
         html += '<p class="ne-item-date"><span class="ne-recur">Repeats</span>' +
-          esc(it.recurrence || 'Recurring') + (it.time ? ' &middot; ' + esc(it.time) : '') + '</p>';
+          esc(it.recurrence || 'Recurring') + '</p>';
       } else if (row.d) {
-        html += '<p class="ne-item-date">' + esc(fmtDate(row.d)) + (it.time ? ' &middot; ' + esc(it.time) : '') + '</p>';
-      } else if (it.time) {
-        html += '<p class="ne-item-date">' + esc(it.time) + '</p>';
+        html += '<p class="ne-item-date">' + esc(fmtDate(row.d)) + '</p>';
       }
       html += '<h4 class="ne-item-title">' + esc(it.title) + '</h4>';
+      if (times.length) html += '<p class="ne-item-meta">' + times.map(esc).join('<br>') + '</p>';
       if (it.description) html += '<p class="ne-item-body">' + escLines(it.description) + '</p>';
       if (it.location) html += '<p class="ne-item-meta">' + esc(it.location) + '</p>';
       var url = safeUrl(it.link);
-      if (url) html += '<a class="ne-item-link" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(it.link_label || 'Learn more') + '</a>';
+      if (url) html += '<a class="ne-item-link" href="' + esc(url) + '"' + externalLinkAttrs(url) + '>' + esc(it.link_label || 'Learn more') + '</a>';
       var el = document.createElement('article');
       el.className = 'ne-item';
       el.innerHTML = html;
@@ -603,11 +628,79 @@
     return count;
   }
 
+  function renderEventsPage(rows) {
+    if (!eventProgression) return;
+    eventProgression.querySelectorAll('.event-step').forEach(function (el) { el.remove(); });
+    var emptyState = document.getElementById('eventEmptyState');
+    if (emptyState) emptyState.hidden = rows.length !== 0;
+
+    rows.forEach(function (row, index) {
+      var it = row.it;
+      var times = getTimes(it);
+      var prices = Array.isArray(it.prices) ? it.prices.map(function (price) {
+        return String(price || '').trim();
+      }).filter(Boolean) : [];
+      var imageUrl = safeUrl(it.image);
+      var registerUrl = safeUrl(it.link);
+      var badge = row.recurring ? (it.recurrence || 'Recurring') : (row.d ? fmtLongDate(row.d) : 'Upcoming event');
+
+      var timesHtml = times.length
+        ? '<div class="level-schedule-list" aria-label="Event times">' + times.map(function (time) {
+            return '<p class="level-schedule">' + esc(time) + '</p>';
+          }).join('') + '</div>'
+        : '';
+      var descriptionHtml = it.description ? '<p class="event-description">' + escLines(it.description) + '</p>' : '';
+      var locationHtml = it.location ? '<p class="event-location">' + esc(it.location) + '</p>' : '';
+      var imageHtml = imageUrl
+        ? '<img class="event-card-image" src="' + esc(imageUrl) + '" alt="' + esc(it.image_alt || '') + '">'
+        : '';
+
+      var detailsHtml = '';
+      if (prices.length || it.presenter) {
+        detailsHtml = '<div class="level-detail-grid event-detail-grid">';
+        if (prices.length) {
+          detailsHtml += '<div class="level-detail-block"><h4>Price</h4>' + prices.map(function (price) {
+            return '<p><strong>' + esc(price) + '</strong></p>';
+          }).join('') + '</div>';
+        }
+        if (it.presenter) {
+          detailsHtml += '<div class="level-detail-block"><h4>Presenter</h4><p><strong>' + esc(it.presenter) + '</strong></p></div>';
+        }
+        detailsHtml += '</div>';
+      }
+
+      var registerHtml = registerUrl
+        ? '<div class="level-detail-register"><p><a href="' + esc(registerUrl) + '"' + externalLinkAttrs(registerUrl) + '><strong>' + esc(it.link_label || 'Learn more') + '</strong></a></p></div>'
+        : '';
+
+      var article = document.createElement('article');
+      article.className = 'level-step level-step--2 event-step fade-in visible';
+      article.innerHTML =
+        '<div class="level-step-number"><span>' + (index + 1) + '</span></div>' +
+        '<div class="level-step-connector"></div>' +
+        '<div class="level-step-card">' +
+          '<div class="lvl-blooms" aria-hidden="true"><svg class="lvl-bloom"><use href="#event-flower"></use></svg></div>' +
+          '<div class="event-card-main' + (imageHtml ? '' : ' event-card-main--no-image') + '">' +
+            '<div class="event-card-copy">' +
+              '<span class="level-step-badge">' + esc(badge) + '</span>' +
+              '<h3>' + esc(it.title) + '</h3>' +
+              timesHtml + descriptionHtml + locationHtml +
+            '</div>' +
+            imageHtml +
+          '</div>' +
+          detailsHtml + registerHtml +
+        '</div>';
+      eventProgression.appendChild(article);
+    });
+  }
+
   Promise.all([getJSON('data/news.json'), getJSON('data/events.json')]).then(function (res) {
     var news = res[0] && Array.isArray(res[0].items) ? res[0].items : [];
     var events = res[1] && Array.isArray(res[1].items) ? res[1].items : [];
-    var shown = renderNews(news) + renderEvents(events);
-    if (shown > 0) section.hidden = false;
+    var eventRows = prepareEvents(events);
+    var shown = renderNews(news) + renderEventSummaries(eventRows);
+    if (section && shown > 0) section.hidden = false;
+    renderEventsPage(eventRows);
   });
 })();
 

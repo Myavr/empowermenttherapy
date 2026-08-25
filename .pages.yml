@@ -56,7 +56,7 @@ content:
 
   - name: events
     label: Events
-    description: One-time or recurring events. Leave the list empty to hide the Events column. Past one-time events disappear automatically; recurring events always show.
+    description: Events shown on both the Events page and the home-page "News & Events" section. Use + to add, the trash icon to remove, and drag to reorder. Past one-time events disappear automatically; recurring events always show.
     type: file
     path: data/events.json
     fields:
@@ -85,9 +85,11 @@ content:
             label: Repeats (recurring events, e.g. "Every Tuesday" or "First Monday of the month")
             type: string
             required: false
-          - name: time
-            label: Time (e.g. "5:00 PM UTC")
+          - name: times
+            label: Event times
+            description: Add one display-ready time per line (e.g. "9:00–11:00 AM Chicago"). These appear in the order entered.
             type: string
+            list: true
             required: false
           - name: location
             label: Location (e.g. Online, Mexico City)
@@ -97,12 +99,32 @@ content:
             label: Description (optional)
             type: text
             required: false
+          - name: image
+            label: Event image (optional)
+            type: image
+            required: false
+          - name: image_alt
+            label: Image description (for accessibility)
+            description: Briefly describe the image for visitors who cannot see it.
+            type: string
+            required: false
+          - name: prices
+            label: Prices
+            description: Add one display-ready price per line (e.g. "300 Indian Rupees" or "$10.00 US dollars").
+            type: string
+            list: true
+            required: false
+          - name: presenter
+            label: Presenter
+            type: string
+            required: false
           - name: link
-            label: Register / info link (optional)
+            label: Registration / information link (optional)
+            description: Use a full URL, or "contact.html" to link to this website's Contact page.
             type: string
             required: false
           - name: link_label
-            label: Link text (optional)
+            label: Registration link text (optional)
             type: string
             required: false
 

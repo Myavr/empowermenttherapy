@@ -1,3 +1,25 @@
 {
-  "items": []
+  "items": [
+    {
+      "title": "The Surprising Purpose of Anger",
+      "schedule_type": "One-time",
+      "date": "2026-09-24",
+      "times": [
+        "9:00–11:00 AM Chicago",
+        "5:00–7:00 PM Amsterdam",
+        "7:30–9:30 PM India"
+      ],
+      "location": "",
+      "description": "",
+      "image": "images/gift.webp",
+      "image_alt": "Gift box tied with a blue ribbon",
+      "prices": [
+        "300 Indian Rupees",
+        "$10.00 US dollars"
+      ],
+      "presenter": "Myra Walden",
+      "link": "contact.html",
+      "link_label": "Contact us to register."
+    }
+  ]
 }
