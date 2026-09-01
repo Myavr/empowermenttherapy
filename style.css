@@ -4750,13 +4750,8 @@ p {
   box-shadow: 0 0 0 3px rgba(228, 204, 120, 0.16);
 }
 
-/* the same identity mapping as the team page: Simran green, Myra gold, Priti blue */
-.contact-team figure:nth-child(1) img {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(132, 180, 84, 0.16);
-}
-
-.contact-team figure:nth-child(3) img {
+/* Myra keeps the default gold ring; Priti carries the blue pole. */
+.contact-team figure:nth-child(2) img {
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(84, 108, 192, 0.16);
 }
@@ -5082,7 +5077,7 @@ footer h4::after {
   text-align: center;
 }
 
-/* The three faces are the visual anchor of the footer */
+/* The team faces are the visual anchor of the footer */
 .team-photos img {
   width: clamp(82px, 6.6vw, 104px);
   height: clamp(82px, 6.6vw, 104px);

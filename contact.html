@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=217">
+  <link rel="stylesheet" href="style.css?v=218">
 </head>
 <body class="subpage">
 
@@ -70,10 +70,6 @@
       <div class="contact-layout">
         <div class="contact-sidebar">
           <div class="contact-team">
-            <figure>
-              <img src="images/contact-simran.jpg" alt="Simran">
-              <figcaption>Simran</figcaption>
-            </figure>
             <figure>
               <img src="images/contact-myra.jpg" alt="Myra">
               <figcaption>Myra</figcaption>
@@ -152,7 +148,6 @@
         <div class="footer-contact">
           <h4>Get in Touch</h4>
           <div class="team-photos">
-            <figure><img src="images/footer-simran.jpg" alt="Simran"><figcaption>Simran</figcaption></figure>
             <figure><img src="images/footer-myra.jpg" alt="Myra"><figcaption>Myra</figcaption></figure>
             <figure><img src="images/footer-priti.jpg" alt="Priti"><figcaption>Priti</figcaption></figure>
           </div>
@@ -244,7 +239,7 @@
     </div>
   </div>
 
-  <script src="shared.js?v=40"></script>
+  <script src="shared.js?v=41"></script>
   <script>
     // Contact form: AJAX submit via FormSubmit.co
     var contactForm = document.getElementById('contactForm');
@@ -263,7 +258,7 @@
         fd.append('Email', email);
         fd.append('Message', message);
         fd.append('_subject', 'Website Contact: ' + name);
-        fd.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com');
+        fd.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com');
         fd.append('_template', 'table');
         fd.append('_captcha', 'false');
         fetch('https://formsubmit.co/ajax/empowermenttherapyinstitute@gmail.com', { method: 'POST', body: fd })

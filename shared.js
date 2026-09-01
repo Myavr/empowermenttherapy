@@ -445,7 +445,7 @@
       formData.append('Availability (Central Time)', availStr);
       if (message) formData.append('Additional Notes', message);
       formData.append('_subject', 'Registration Request: ' + name);
-      formData.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com,simran.bhola@gmail.com');
+      formData.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com');
       formData.append('_template', 'table');
       formData.append('_captcha', 'false');
 
