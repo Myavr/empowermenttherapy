@@ -206,6 +206,15 @@ content:
           - name: title
             label: Title
             type: string
+          - name: image
+            label: Paired image (optional)
+            description: Displays opposite this value's panel in the timeline.
+            type: image
+            required: false
+          - name: image_alt
+            label: Image description (for accessibility)
+            type: string
+            required: false
           - name: summary
             label: Summary
             type: text

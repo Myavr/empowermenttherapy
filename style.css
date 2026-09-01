@@ -4244,6 +4244,25 @@ p {
   padding-right: calc(50% + 30px);
 }
 
+.timeline-entry-image {
+  position: absolute;
+  top: 0;
+  width: calc(50% - 30px);
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+}
+
+.timeline-entry--right .timeline-entry-image {
+  left: 0;
+}
+
+.timeline-entry--left .timeline-entry-image {
+  right: 0;
+}
+
 .timeline-node {
   position: absolute;
   left: 50%;
@@ -5737,6 +5756,20 @@ footer h4::after {
     padding-left: 50px;
     padding-right: 0;
     justify-content: flex-start;
+  }
+
+  .timeline-entry--with-image {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .timeline-entry--with-image .timeline-entry-image {
+    position: relative;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
   }
 
   .timeline-node {

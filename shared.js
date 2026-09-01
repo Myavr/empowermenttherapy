@@ -793,11 +793,14 @@ function etInline(s) {
       wrap.innerHTML = '';
       data.items.forEach(function (v, i) {
         v = v || {};
+        var hasImage = !!v.image;
         var detail = String(v.detail || '').split(/\n\s*\n/).filter(Boolean)
           .map(function (p) { return '<p>' + etEsc(p) + '</p>'; }).join('');
         var entry = document.createElement('div');
-        entry.className = 'timeline-entry ' + (i % 2 === 0 ? 'timeline-entry--right' : 'timeline-entry--left') + ' visible';
+        entry.className = 'timeline-entry ' + (i % 2 === 0 ? 'timeline-entry--right' : 'timeline-entry--left') +
+          (hasImage ? ' timeline-entry--with-image' : '') + ' visible';
         entry.innerHTML =
+          (hasImage ? '<img class="timeline-entry-image" src="' + etEsc(v.image) + '" alt="' + etEsc(v.image_alt || '') + '">' : '') +
           '<div class="timeline-node"><span class="timeline-node-dot"></span></div>' +
           '<div class="timeline-card">' +
             (v.label ? '<div class="timeline-card-label">' + etEsc(v.label) + '</div>' : '') +
