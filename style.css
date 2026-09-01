@@ -4550,12 +4550,11 @@ p {
   box-shadow: var(--shadow-md);
 }
 
-/* A consistent blue top outline across every resource category. Icon colors
-   still distinguish the categories; hovering changes the full outline to aqua. */
-.resource-card--blue,
-.resource-card--green,
-.resource-card--seafoam,
-.resource-card--gold {
+/* Category color story, mapped to the logo:
+   Articles = blue (knowledge), Internal = green (inner growth),
+   Interpersonal = seafoam (the overlap — two people meeting),
+   Certification Kit = gold (attainment). */
+.resource-card--blue {
   border-top: 3px solid var(--blue);
 }
 
@@ -4564,14 +4563,26 @@ p {
   color: var(--blue-deep);
 }
 
+.resource-card--green {
+  border-top: 3px solid var(--green);
+}
+
 .resource-card--green .resource-card-icon {
   background: var(--green-light);
   color: var(--green-deep);
 }
 
+.resource-card--seafoam {
+  border-top: 3px solid var(--seafoam);
+}
+
 .resource-card--seafoam .resource-card-icon {
   background: var(--seafoam-light);
   color: var(--seafoam-deep);
+}
+
+.resource-card--gold {
+  border-top: 3px solid var(--gold);
 }
 
 .resource-card--gold .resource-card-icon {
