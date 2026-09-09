@@ -61,6 +61,63 @@ const fixtures = [
   { title: 'Weekly group', schedule_type: 'Recurring', date: '2026-01-01', recurrence: 'Every Tuesday' }
 ];
 
+test('multi-day events show both dates and stay upcoming through the final day', async () => {
+  const items = [{ title: 'Three-day workshop', date: '2026-09-08', end_date: '2026-09-10' }];
+  const page = await loadEvents(items);
+  const home = await loadEvents(items, { home: true });
+  const longDate = day => new Date(2026, 8, day).toLocaleDateString(undefined,
+    { month: 'long', day: 'numeric', year: 'numeric' });
+  const shortDate = day => new Date(2026, 8, day).toLocaleDateString(undefined,
+    { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  assert.ok(page.upcoming.children[0].innerHTML.includes(longDate(8) + ' – ' + longDate(10)));
+  assert.ok(home.ids.eventsList.children[0].innerHTML.includes(shortDate(8) + ' – ' + shortDate(10)));
+  page.setDate(new Date(2026, 8, 10, 23, 59));
+  page.listeners.visibilitychange();
+  assert.deepEqual(titles(page.upcoming), ['Three-day workshop']);
+  page.setDate(new Date(2026, 8, 11));
+  page.timers[0].callback();
+  assert.deepEqual(titles(page.upcoming), []);
+  assert.deepEqual(titles(page.past), ['Three-day workshop']);
+  home.setDate(new Date(2026, 8, 11));
+  home.listeners.visibilitychange();
+  assert.deepEqual(titles(home.ids.eventsList), []);
+});
+
+test('past ranges sort by final date rather than start date', async () => {
+  const page = await loadEvents([
+    { title: 'Earlier finish', date: '2026-09-06', end_date: '2026-09-07' },
+    { title: 'Recent finish', date: '2026-08-01', end_date: '2026-09-08' },
+    { title: 'Single day', date: '2026-09-05' }
+  ]);
+  assert.deepEqual(titles(page.past), ['Recent finish', 'Earlier finish', 'Single day']);
+});
+
+test('optional, equal, invalid, and reversed end dates preserve single-day display', async () => {
+  for (const end_date of [undefined, '', '2026-09-09', 'invalid', '2026-09-08']) {
+    const page = await loadEvents([{ title: 'Single day', date: '2026-09-09', end_date }]);
+    const badge = page.upcoming.children[0].innerHTML.match(/level-step-badge">(.*?)<\/span>/)[1];
+    assert.ok(!badge.includes(' – '));
+    page.setDate(new Date(2026, 8, 10));
+    page.listeners.visibilitychange();
+    assert.deepEqual(titles(page.past), ['Single day']);
+  }
+});
+
+test('ranges can cross a year boundary; recurring and undated events do not expire', async () => {
+  const page = await loadEvents([
+    { title: 'New Year retreat', date: '2026-12-30', end_date: '2027-01-02' },
+    { title: 'Recurring', schedule_type: 'Recurring', date: '2026-08-01', end_date: '2026-08-02' },
+    { title: 'Undated', end_date: '2026-08-02' }
+  ]);
+  page.setDate(new Date(2027, 0, 2));
+  page.listeners.visibilitychange();
+  assert.deepEqual(titles(page.upcoming), ['New Year retreat', 'Undated', 'Recurring']);
+  page.setDate(new Date(2027, 0, 3));
+  page.listeners.visibilitychange();
+  assert.deepEqual(titles(page.past), ['New Year retreat']);
+  assert.deepEqual(titles(page.upcoming), ['Undated', 'Recurring']);
+});
+
 test('past events are newest first; today and recurring events stay upcoming', async () => {
   const page = await loadEvents(fixtures);
   assert.deepEqual(titles(page.upcoming), ['Today', 'Tomorrow', 'Weekly group']);

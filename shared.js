@@ -532,6 +532,13 @@
   function fmtLongDate(d) {
     return d.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' });
   }
+  function fmtEventDates(row, format) {
+    var label = format(row.d);
+    if (row.end && row.end.getTime() > row.d.getTime()) {
+      label += ' – ' + format(row.end);
+    }
+    return label;
+  }
   function getJSON(path) {
     return fetch(path, { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.json() : null; })
@@ -553,8 +560,12 @@
       if (!it.title) return;
       var recurring = it.schedule_type === 'Recurring' || (!!it.recurrence && !it.date);
       var d = parseLocalDate(it.date);
-      var past = !recurring && d !== null && d.getTime() < today.getTime();
-      rows.push({ it: it, recurring: recurring, d: d, past: past });
+      var end = parseLocalDate(it.end_date);
+      // Missing or reversed ranges retain the original single-day behavior.
+      if (!d || !end || end.getTime() < d.getTime()) end = null;
+      var finalDate = end || d;
+      var past = !recurring && finalDate !== null && finalDate.getTime() < today.getTime();
+      rows.push({ it: it, recurring: recurring, d: d, end: end, past: past });
     });
     rows.sort(function (a, b) {
       if (a.recurring !== b.recurring) return a.recurring ? 1 : -1;
@@ -564,7 +575,9 @@
     });
     return {
       upcoming: rows.filter(function (row) { return !row.past; }),
-      past: rows.filter(function (row) { return row.past; }).reverse()
+      past: rows.filter(function (row) { return row.past; }).sort(function (a, b) {
+        return (b.end || b.d).getTime() - (a.end || a.d).getTime();
+      })
     };
   }
   function externalLinkAttrs(url) {
@@ -615,7 +628,7 @@
         html += '<p class="ne-item-date"><span class="ne-recur">Repeats</span>' +
           esc(it.recurrence || 'Recurring') + '</p>';
       } else if (row.d) {
-        html += '<p class="ne-item-date">' + esc(fmtDate(row.d)) + '</p>';
+        html += '<p class="ne-item-date">' + esc(fmtEventDates(row, fmtDate)) + '</p>';
       }
       html += '<h4 class="ne-item-title">' + esc(it.title) + '</h4>';
       if (times.length) html += '<p class="ne-item-meta">' + times.map(esc).join('<br>') + '</p>';
@@ -646,7 +659,7 @@
       }).filter(Boolean) : [];
       var imageUrl = safeUrl(it.image);
       var registerUrl = row.past ? '' : safeUrl(it.link);
-      var badge = row.recurring ? (it.recurrence || 'Recurring') : (row.d ? fmtLongDate(row.d) : 'Upcoming event');
+      var badge = row.recurring ? (it.recurrence || 'Recurring') : (row.d ? fmtEventDates(row, fmtLongDate) : 'Upcoming event');
 
       var timesHtml = times.length
         ? '<div class="level-schedule-list" aria-label="Event times">' + times.map(function (time) {
