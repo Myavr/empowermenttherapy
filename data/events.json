@@ -9,8 +9,6 @@
         "5:00–7:00 PM Amsterdam",
         "7:30–9:30 PM India"
       ],
-      "location": "",
-      "description": "",
       "image": "images/gift.webp",
       "image_alt": "Gift box tied with a blue ribbon",
       "prices": [
@@ -22,18 +20,17 @@
       "link_label": "Contact us to register."
     },
     {
-      "title": "Sample Past Event — Preview Only",
+      "title": "Empowerment Therapy Immersive Training",
       "schedule_type": "One-time",
-      "date": "2026-08-15",
-      "times": ["9:00–11:00 AM Chicago"],
-      "location": "Online",
-      "description": "This placeholder shows how a completed event appears in Past Events. You can delete this sample from the Events list in the CMS after reviewing the layout.",
-      "image": "images/gift.webp",
-      "image_alt": "Gift box tied with a blue ribbon",
-      "prices": ["Free sample event"],
-      "presenter": "Sample presenter",
-      "link": "",
-      "link_label": ""
+      "date": "2026-06-11",
+      "times": [
+        "9:00–11:00 AM Chicago"
+      ],
+      "location": "Tepoztlan, Mexico",
+      "description": "Immersive Training",
+      "image": "images/IMG-20260909-WA0000.jpg",
+      "image_alt": "Participants with Myra Walden",
+      "presenter": "Myra Walden"
     }
   ]
 }
