@@ -63,8 +63,9 @@
       <p>Explore upcoming opportunities to learn, connect, and grow together.</p>
     </section>
 
-    <section class="events-listing fade-in" id="events">
+    <section class="events-listing fade-in" id="events" aria-labelledby="upcomingEventsTitle">
       <div class="container">
+        <h2 class="section-title" id="upcomingEventsTitle">Upcoming Events</h2>
         <div class="levels-progression event-progression">
           <svg width="0" height="0" class="et-flower-def" aria-hidden="true" focusable="false">
             <symbol id="event-flower" viewBox="0 0 40 40">
@@ -81,7 +82,15 @@
 
         </div>
         <p class="event-empty-state" id="eventEmptyState" hidden>No upcoming events are scheduled right now. Please check back soon.</p>
-        <noscript><p class="event-empty-state">Please enable JavaScript to view upcoming events.</p></noscript>
+        <noscript><p class="event-empty-state">Please enable JavaScript to view events.</p></noscript>
+      </div>
+    </section>
+
+    <section class="events-listing fade-in" id="pastEvents" aria-labelledby="pastEventsTitle">
+      <div class="container">
+        <h2 class="section-title" id="pastEventsTitle">Past Events</h2>
+        <div class="levels-progression event-progression"></div>
+        <p class="event-empty-state" id="pastEventEmptyState" hidden>No past events to show yet.</p>
       </div>
     </section>
 
@@ -139,7 +148,7 @@
     </footer>
   </div>
 
-  <script src="shared.js?v=41"></script>
+  <script src="shared.js?v=42"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
   <script>
     if (window.paypal && paypal.Buttons) {

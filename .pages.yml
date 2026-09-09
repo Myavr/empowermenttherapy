@@ -56,7 +56,7 @@ content:
 
   - name: events
     label: Events
-    description: Events shown on both the Events page and the home-page "News & Events" section. Use + to add, the trash icon to remove, and drag to reorder. Past one-time events disappear automatically; recurring events always show.
+    description: Events shown on both the Events page and the home-page "News & Events" section. Use + to add and the trash icon to remove. After their listed date, one-time events automatically move to Past Events on the Events page and leave the home page. Past events appear newest first; recurring events stay upcoming.
     type: file
     path: data/events.json
     fields:
@@ -79,6 +79,7 @@ content:
             default: One-time
           - name: date
             label: Date (one-time events only)
+            description: The event stays upcoming through this date and moves to Past Events the following day, using the visitor's local date. Leave blank if the date is not yet known.
             type: date
             required: false
           - name: recurrence

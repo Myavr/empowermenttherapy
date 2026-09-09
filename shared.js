@@ -496,11 +496,12 @@
 
 /* ===== News & Events =====
    data/events.json is the single source for both the compact home-page event
-   list and the full Events page. Past one-time events fall off automatically;
+   list and the full Events page. Past one-time events move to the page archive;
    recurring events always show. Editing CMS content cannot affect styling. */
 (function () {
   var section = document.getElementById('newsEvents');
   var eventProgression = document.querySelector('#events .event-progression');
+  var pastEventProgression = document.querySelector('#pastEvents .event-progression');
   if (!section && !eventProgression) return;
 
   function esc(s) {
@@ -552,8 +553,8 @@
       if (!it.title) return;
       var recurring = it.schedule_type === 'Recurring' || (!!it.recurrence && !it.date);
       var d = parseLocalDate(it.date);
-      if (!recurring && d && d.getTime() < today.getTime()) return;
-      rows.push({ it: it, recurring: recurring, d: d });
+      var past = !recurring && d !== null && d.getTime() < today.getTime();
+      rows.push({ it: it, recurring: recurring, d: d, past: past });
     });
     rows.sort(function (a, b) {
       if (a.recurring !== b.recurring) return a.recurring ? 1 : -1;
@@ -561,7 +562,10 @@
       var bTime = b.d ? b.d.getTime() : Number.MAX_SAFE_INTEGER;
       return aTime - bTime;
     });
-    return rows;
+    return {
+      upcoming: rows.filter(function (row) { return !row.past; }),
+      past: rows.filter(function (row) { return row.past; }).reverse()
+    };
   }
   function externalLinkAttrs(url) {
     return /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener"' : '';
@@ -628,10 +632,10 @@
     return count;
   }
 
-  function renderEventsPage(rows) {
-    if (!eventProgression) return;
-    eventProgression.querySelectorAll('.event-step').forEach(function (el) { el.remove(); });
-    var emptyState = document.getElementById('eventEmptyState');
+  function renderEventsPage(rows, progression, emptyStateId) {
+    if (!progression) return;
+    progression.querySelectorAll('.event-step').forEach(function (el) { el.remove(); });
+    var emptyState = document.getElementById(emptyStateId);
     if (emptyState) emptyState.hidden = rows.length !== 0;
 
     rows.forEach(function (row, index) {
@@ -641,7 +645,7 @@
         return String(price || '').trim();
       }).filter(Boolean) : [];
       var imageUrl = safeUrl(it.image);
-      var registerUrl = safeUrl(it.link);
+      var registerUrl = row.past ? '' : safeUrl(it.link);
       var badge = row.recurring ? (it.recurrence || 'Recurring') : (row.d ? fmtLongDate(row.d) : 'Upcoming event');
 
       var timesHtml = times.length
@@ -690,17 +694,35 @@
           '</div>' +
           detailsHtml + registerHtml +
         '</div>';
-      eventProgression.appendChild(article);
+      progression.appendChild(article);
     });
   }
 
   Promise.all([getJSON('data/news.json'), getJSON('data/events.json')]).then(function (res) {
     var news = res[0] && Array.isArray(res[0].items) ? res[0].items : [];
     var events = res[1] && Array.isArray(res[1].items) ? res[1].items : [];
-    var eventRows = prepareEvents(events);
-    var shown = renderNews(news) + renderEventSummaries(eventRows);
-    if (section && shown > 0) section.hidden = false;
-    renderEventsPage(eventRows);
+    var newsCount = renderNews(news);
+    function refreshEvents() {
+      var eventRows = prepareEvents(events);
+      var shown = newsCount + renderEventSummaries(eventRows.upcoming);
+      if (section) section.hidden = shown === 0;
+      renderEventsPage(eventRows.upcoming, eventProgression, 'eventEmptyState');
+      renderEventsPage(eventRows.past, pastEventProgression, 'pastEventEmptyState');
+    }
+    // Reclassify at local midnight even if the visitor leaves the page open.
+    function scheduleRefresh() {
+      var now = new Date();
+      var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      setTimeout(function () {
+        refreshEvents();
+        scheduleRefresh();
+      }, midnight.getTime() - now.getTime());
+    }
+    refreshEvents();
+    scheduleRefresh();
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) refreshEvents();
+    });
   });
 })();
 
