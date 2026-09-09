@@ -4438,6 +4438,7 @@ p {
 
 /* ===== TEAM ===== */
 .team-member {
+  --team-accent: var(--gold);
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 3rem;
@@ -4448,7 +4449,7 @@ p {
   margin-right: auto;
   background: var(--white);
   border: 1px solid rgba(156, 192, 192, 0.5);
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid var(--team-accent);
   border-radius: var(--radius-lg);
   padding: clamp(1.5rem, 4vw, 2.5rem);
   box-shadow: var(--shadow-sm);
@@ -4456,6 +4457,15 @@ p {
 
 .team-member:last-child {
   margin-bottom: 0;
+}
+
+/* Repeat the card and photo colors in CMS display order. */
+.team-member:nth-of-type(3n + 2) {
+  --team-accent: var(--blue);
+}
+
+.team-member:nth-of-type(3n) {
+  --team-accent: var(--seafoam);
 }
 
 /* mirror the middle row — the zig-zag rhythm of the homepage editorial blocks */
@@ -4475,25 +4485,12 @@ p {
   padding: 5px;
   background: var(--white);
   box-shadow: var(--shadow-md);
-  border: 3px solid var(--seafoam);
+  border: 3px solid var(--team-accent);
   transition: box-shadow 0.4s ease;
 }
 
 .team-member:hover img {
   box-shadow: var(--shadow-md), 0 0 0 7px rgba(228, 204, 120, 0.16);
-}
-
-/* The founder wears the logo's gold ring; the others carry the two poles */
-.team-member:nth-of-type(1) img {
-  border-color: var(--gold);
-}
-
-.team-member:nth-of-type(2) img {
-  border-color: var(--blue);
-}
-
-.team-member:nth-of-type(3) img {
-  border-color: var(--green);
 }
 
 .team-member h3 {
