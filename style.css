@@ -4340,19 +4340,28 @@ p {
 }
 
 .timeline-entry--left .timeline-card-label {
+  background: rgba(77, 109, 40, 0.12);
   color: var(--green-deep);
 }
 
 .timeline-entry--right .timeline-card-label {
+  background: rgba(60, 81, 159, 0.12);
   color: var(--blue-deep);
 }
 
 .timeline-card-label {
-  font-size: 0.75rem;
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0;
+  background: rgba(47, 107, 80, 0.12);
+  font-size: 0.9rem;
+  line-height: 1.4;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--seafoam-deep);
+  overflow-wrap: anywhere;
   margin-bottom: 0.5rem;
 }
 
