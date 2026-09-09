@@ -4,6 +4,7 @@
       "title": "The Surprising Purpose of Anger",
       "schedule_type": "One-time",
       "date": "2026-09-24",
+      "end_date": "2026-09-09",
       "times": [
         "9:00–11:00 AM Chicago",
         "5:00–7:00 PM Amsterdam",
@@ -22,20 +23,25 @@
     {
       "title": "Empowerment Therapy Immersive Training",
       "schedule_type": "One-time",
+      "date": "2026-10-22",
+      "end_date": "2026-10-25",
+      "location": " Bengaluru, India",
+      "image": "images/bengaluru-1.avif",
+      "image_alt": " Bengaluru india view from above",
+      "presenter": "Myra Walden",
+      "link": "contact.html",
+      "link_label": "Contact us to register."
+    },
+    {
+      "title": "Empowerment Therapy Immersive Training",
+      "schedule_type": "One-time",
       "date": "2026-06-11",
-      "times": [
-        "9:00–11:00 AM Chicago"
-      ],
+      "end_date": "2026-09-09",
       "location": "Tepoztlan, Mexico",
       "description": "Immersive Training",
       "image": "images/IMG-20260909-WA0000.jpg",
       "image_alt": "Participants with Myra Walden",
       "presenter": "Myra Walden"
-    },
-    {
-      "title": "Empowerment Therapy Immersive Training",
-      "schedule_type": "One-time",
-      "date": "2026-10-22"
     }
   ]
 }
