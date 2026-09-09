@@ -864,6 +864,15 @@ body.subpage .subpage-spacer {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
 }
 
+/* Give both event lists the same gap without relying on the SVG's line box. */
+.event-progression {
+  padding-top: 1lh;
+}
+
+.event-progression > .et-flower-def {
+  position: absolute;
+}
+
 .event-progression::before {
   bottom: 24px;
 }

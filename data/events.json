@@ -20,6 +20,20 @@
       "presenter": "Myra Walden",
       "link": "contact.html",
       "link_label": "Contact us to register."
+    },
+    {
+      "title": "Sample Past Event — Preview Only",
+      "schedule_type": "One-time",
+      "date": "2026-08-15",
+      "times": ["9:00–11:00 AM Chicago"],
+      "location": "Online",
+      "description": "This placeholder shows how a completed event appears in Past Events. You can delete this sample from the Events list in the CMS after reviewing the layout.",
+      "image": "images/gift.webp",
+      "image_alt": "Gift box tied with a blue ribbon",
+      "prices": ["Free sample event"],
+      "presenter": "Sample presenter",
+      "link": "",
+      "link_label": ""
     }
   ]
 }
