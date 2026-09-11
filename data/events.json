@@ -28,6 +28,9 @@
       "location": " Bengaluru, India",
       "image": "images/bengaluru-1.avif",
       "image_alt": " Bengaluru india view from above",
+      "prices": [
+        "14000 Indian Rupees"
+      ],
       "presenter": "Myra Walden",
       "link": "contact.html",
       "link_label": "Contact us to register."
