@@ -2773,15 +2773,19 @@ p {
   line-height: 1.8 !important;
 }
 
+.et-description-lead,
+.et-description-aims {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+
 .et-description-lead {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.3vw, 1.9rem) !important;
   line-height: 1.65 !important;
   color: var(--ink);
-  text-align: center;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .et-examples {
