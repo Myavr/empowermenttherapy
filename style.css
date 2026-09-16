@@ -4455,7 +4455,7 @@ p {
 
 /* ===== TEAM ===== */
 .team-member {
-  --team-accent: var(--gold);
+  --team-accent: var(--blue);
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 3rem;
@@ -4478,7 +4478,7 @@ p {
 
 /* Repeat the card and photo colors in CMS display order. */
 .team-member:nth-of-type(3n + 2) {
-  --team-accent: var(--blue);
+  --team-accent: var(--gold);
 }
 
 .team-member:nth-of-type(3n) {
