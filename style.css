@@ -3486,6 +3486,9 @@ p {
 .level-step {
   position: relative;
   margin-bottom: 2rem;
+}
+
+#programs .level-step {
   cursor: pointer;
 }
 
