@@ -3331,7 +3331,7 @@ p {
 /* CTA */
 .who-cta {
   text-align: center;
-  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  padding: calc(clamp(3rem, 6vw, 5rem) + clamp(2rem, 4vw, 3.5rem)) 2rem;
   max-width: 850px;
   margin: 0 auto;
 }
@@ -3853,6 +3853,7 @@ p {
 /* ===== "What Our Students Say" section ===== */
 #testimonialsSection {
   background: var(--cream);
+  padding-top: 0;
 }
 
 /* Section content padding for the cards area */
@@ -5866,6 +5867,10 @@ footer h4::after {
 }
 
 @media (max-width: 480px) {
+  .who-cta {
+    padding-block: calc(clamp(3rem, 6vw, 5rem) + clamp(1.25rem, 3vw, 2rem));
+  }
+
   section {
     padding: clamp(2.5rem, 6vw, 4rem) 0;
   }
