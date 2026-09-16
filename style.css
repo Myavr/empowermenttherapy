@@ -4784,9 +4784,14 @@ p {
 }
 
 /* Myra keeps the default gold ring; Priti carries the blue pole. */
-.contact-team figure:nth-child(2) img {
+.contact-team img.contact-portrait--blue {
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(84, 108, 192, 0.16);
+}
+
+.contact-team .contact-person--seafoam img {
+  border-color: var(--seafoam);
+  box-shadow: 0 0 0 3px rgba(132, 204, 168, 0.16);
 }
 
 .contact-team figcaption {
