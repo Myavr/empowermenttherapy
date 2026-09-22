@@ -821,6 +821,45 @@ function etInline(s) {
 (function () {
   var wrap = document.querySelector('.timeline');
   if (!wrap) return;
+
+  // A centered image gains extra space above it when its text is taller.
+  // Match that largest natural gap (currently Mission) across all image rows.
+  var spacingObserver;
+  var spacingFrame;
+  function syncLabelSpacing() {
+    spacingFrame = null;
+    var stacked = window.matchMedia('(max-width: 768px)').matches;
+    var rows = Array.prototype.map.call(wrap.querySelectorAll('.timeline-entry--with-image'), function (entry) {
+      var picture = entry.querySelector('.timeline-entry-image');
+      var text = entry.querySelector('.timeline-card');
+      return {
+        entry: entry,
+        offset: !stacked && picture && text ? Math.max(0, (text.offsetHeight - picture.offsetHeight) / 2) : 0
+      };
+    });
+    var largestOffset = rows.reduce(function (largest, row) { return Math.max(largest, row.offset); }, 0);
+    rows.forEach(function (row) {
+      row.entry.style.setProperty('--values-label-extra-gap', (largestOffset - row.offset) + 'px');
+    });
+  }
+  function scheduleLabelSpacing() {
+    if (spacingFrame == null) spacingFrame = requestAnimationFrame(syncLabelSpacing);
+  }
+  function watchLabelSpacing() {
+    if (spacingObserver) spacingObserver.disconnect();
+    if (window.ResizeObserver) {
+      spacingObserver = new window.ResizeObserver(scheduleLabelSpacing);
+      wrap.querySelectorAll('.timeline-entry-image, .timeline-card').forEach(function (element) {
+        spacingObserver.observe(element);
+      });
+    }
+    scheduleLabelSpacing();
+  }
+  window.addEventListener('resize', scheduleLabelSpacing);
+  wrap.addEventListener('load', scheduleLabelSpacing, true);
+  if (document.fonts) document.fonts.ready.then(scheduleLabelSpacing);
+  watchLabelSpacing();
+
   fetch('data/values.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
@@ -844,6 +883,7 @@ function etInline(s) {
           '</div>';
         wrap.appendChild(entry);
       });
+      watchLabelSpacing();
     })
     .catch(function () {});
 })();

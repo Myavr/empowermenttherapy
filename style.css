@@ -4247,6 +4247,7 @@ p {
 .timeline-entry--with-image {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas: "label ." "image content";
+  row-gap: calc(clamp(0.5rem, 1.2vw, 1rem) + var(--values-label-extra-gap, 0px));
 }
 
 .timeline-entry--with-image.timeline-entry--left {
@@ -4356,6 +4357,7 @@ p {
   .timeline-entry--with-image.timeline-entry--left {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "label" "image" "content";
+    row-gap: 1.5rem;
   }
 
   .timeline-entry--with-image.timeline-entry--left > .timeline-card-label {
