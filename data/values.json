@@ -2,7 +2,8 @@
   "items": [
     {
       "label": "Vision",
-      "title": "Wholeness",
+      "title": "Growing in compassion",
+      "image": "images/kids-kindness-compassion-1280x720-1.webp",
       "image_alt": "Tree",
       "summary": "Empowered lives rooted in awareness, authenticity, and compassion.",
       "detail": "We want people to live empowered lives — rooted in awareness of their needs, grounded in authenticity, and growing in compassion for one another."
@@ -10,6 +11,7 @@
     {
       "label": "Mission",
       "title": "Nurture & Grow",
+      "image": "images/germinating-seeds.avif",
       "summary": "Sharing Empowerment Therapy so practitioners and clients can thrive.",
       "detail": "Our mission is to share Empowerment Therapy with practitioners and nurture their growth, so they can create the conditions for their clients to thrive.\n\nWe also equip managers with empowerment skills to foster workplaces rooted in safety, trust, and collaboration — where people can contribute their creativity and care in service of a shared purpose.\n\nWe do this in ways that are joyful, sustainable, and growthful — for those we serve, and for ourselves."
     },
