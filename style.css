@@ -4313,6 +4313,11 @@ p {
   margin-bottom: 0;
 }
 
+.timeline-card-summary {
+  color: #4A642C;
+  font-style: italic;
+}
+
 .timeline-card-detail blockquote {
   font-family: var(--font-heading);
   font-style: italic;
