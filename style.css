@@ -4228,17 +4228,10 @@ p {
   padding: 2rem 0;
 }
 
-/* Central vertical line — the two poles meeting in seafoam */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--blue) 8%, var(--seafoam) 50%, var(--green) 92%, transparent);
-  opacity: 0.45;
+/* Hide the decorative markers in both static and CMS-rendered values. */
+#values .timeline-node,
+#values .timeline-terminus {
+  display: none;
 }
 
 .timeline-entry {
@@ -5790,10 +5783,6 @@ footer h4::after {
 
   .level-detail-columns {
     columns: 1;
-  }
-
-  .timeline::before {
-    left: 20px;
   }
 
   .timeline-entry--right,
