@@ -1554,12 +1554,34 @@ body.subpage .subpage-spacer {
     grid-template-areas:
       "title"
       "body"
+      "aside"
       "footer";
   }
 
   .problem-grid-aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 440px;
+    justify-self: center;
+  }
+
+  .problem-grid-aside::before {
     display: none;
-    /* keep mobile clean */
+  }
+
+  .problem-grid-aside .problem-decor-img {
+    aspect-ratio: 1;
+    min-width: 0;
+  }
+
+  .problem-grid-aside .problem-decor-img:nth-child(2) {
+    background-position: 70% center;
+  }
+
+  .problem-grid-aside .problem-decor-img:nth-child(4) {
+    background-position: center 30%;
   }
 
   .problem-grid-title {
