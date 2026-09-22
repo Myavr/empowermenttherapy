@@ -155,6 +155,8 @@
         <div class="footer-subscribe">
           <span class="footer-subscribe-label">Subscribe &amp; Support</span>
           <div id="paypal-button-container-P-8CS01676DE0612907NHPQXBQ"></div>
+              <p id="paypal-subscribe-status" class="footer-subscribe-status" role="status" hidden></p>
+              <a class="footer-subscribe-direct" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-8CS01676DE0612907NHPQXBQ">Subscribe directly on PayPal</a>
         </div>
         </div>
       </div>
@@ -234,19 +236,7 @@
 
   <script src="shared.js?v=41"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
-  <script>
-    if (window.paypal && paypal.Buttons) {
-      paypal.Buttons({
-        style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-        createSubscription: function(data, actions) {
-          return actions.subscription.create({ plan_id: 'P-8CS01676DE0612907NHPQXBQ' });
-        },
-        onApprove: function(data, actions) {
-          alert('Thank you for subscribing! Subscription ID: ' + data.subscriptionID);
-        }
-      }).render('#paypal-button-container-P-8CS01676DE0612907NHPQXBQ');
-    }
-  </script>
+  <script src="paypal-subscribe.js?v=1"></script>
 
 </body>
 </html>

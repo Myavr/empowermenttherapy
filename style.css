@@ -5221,6 +5221,27 @@ footer h4::after {
   max-width: 200px;
 }
 
+.footer-subscribe-direct {
+  color: #f4d58d;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0.4rem 0;
+}
+
+.footer-subscribe-direct:focus-visible {
+  outline: 2px solid #f4d58d;
+  outline-offset: 3px;
+}
+
+.footer-subscribe-status {
+  max-width: 240px;
+  margin: 0;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 /* every page signs off with the logo mark in miniature */
 .footer-bottom {
   text-align: center;
