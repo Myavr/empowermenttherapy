@@ -4259,7 +4259,7 @@ p {
 
 .timeline-entry-image {
   grid-area: image;
-  align-self: start;
+  align-self: center;
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
