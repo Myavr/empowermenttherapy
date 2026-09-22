@@ -195,13 +195,13 @@ content:
             required: false
 
   - name: values
-    label: Values (timeline)
-    description: The entries on the Values page timeline.
+    label: Values
+    description: The image and text sections on the Values page.
     type: file
     path: data/values.json
     fields:
       - name: items
-        label: Timeline entries
+        label: Values sections
         type: object
         list: true
         fields:
@@ -214,7 +214,7 @@ content:
             type: string
           - name: image
             label: Paired image (optional)
-            description: Displays opposite this value's panel in the timeline.
+            description: Displays beside this value's text, or above it on mobile. Sections without images use the available width.
             type: image
             required: false
           - name: image_alt

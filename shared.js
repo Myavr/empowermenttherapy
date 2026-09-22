@@ -817,7 +817,7 @@ function etInline(s) {
     .catch(function () {});
 })();
 
-/* ===== Values timeline (data/values.json) ===== */
+/* ===== Values sections (data/values.json) ===== */
 (function () {
   var wrap = document.querySelector('.timeline');
   if (!wrap) return;
@@ -835,20 +835,15 @@ function etInline(s) {
         entry.className = 'timeline-entry ' + (i % 2 === 0 ? 'timeline-entry--right' : 'timeline-entry--left') +
           (hasImage ? ' timeline-entry--with-image' : '') + ' visible';
         entry.innerHTML =
+          (v.label ? '<div class="timeline-card-label">' + etEsc(v.label) + '</div>' : '') +
           (hasImage ? '<img class="timeline-entry-image" src="' + etEsc(v.image) + '" alt="' + etEsc(v.image_alt || '') + '">' : '') +
-          '<div class="timeline-node"><span class="timeline-node-dot"></span></div>' +
           '<div class="timeline-card">' +
-            (v.label ? '<div class="timeline-card-label">' + etEsc(v.label) + '</div>' : '') +
             (v.title ? '<h2 class="timeline-card-title">' + etEsc(v.title) + '</h2>' : '') +
             (v.summary ? '<p class="timeline-card-summary">' + etEsc(v.summary) + '</p>' : '') +
             '<div class="timeline-card-detail">' + detail + '</div>' +
           '</div>';
         wrap.appendChild(entry);
       });
-      var term = document.createElement('div');
-      term.className = 'timeline-terminus';
-      term.innerHTML = '<span class="timeline-terminus-dot"></span>';
-      wrap.appendChild(term);
     })
     .catch(function () {});
 })();
