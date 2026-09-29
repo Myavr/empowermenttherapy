@@ -3041,6 +3041,16 @@ p {
   pointer-events: none;
 }
 
+/* Center the bridge arch (45.2% across the photo), with enough zoom to fill both edges. */
+.contact-bridge .who-bg-image {
+  left: 50%;
+  right: auto;
+  width: 114%;
+  max-width: none;
+  object-position: 45.2% 35%;
+  transform: translateX(-45.2%);
+}
+
 /* Bottom-only fade: image is fully visible at top; only the final ~30% blends
    into the section background below. No white wash across the photo. */
 .who-bg-overlay {
