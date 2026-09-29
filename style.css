@@ -3955,7 +3955,8 @@ p {
 /* Cards sit on cream — light, calm, with the two poles alternating on top */
 
 /* ===== TESTIMONIALS ===== */
-.testimonials {
+.testimonials,
+.endorsements-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.25rem;
@@ -3963,24 +3964,8 @@ p {
   margin: 0 auto;
 }
 
-/* Endorsements use wide panels, one per row. */
-#endorsementsList {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 2.25rem;
-  margin: 0 auto;
-  max-width: none;
-}
-
 #endorsementsList .testimonial-card blockquote {
   white-space: pre-line;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-#endorsementsList .testimonial-card .author {
-  text-align: left;
 }
 
 .testimonial-card {
@@ -5721,7 +5706,8 @@ footer h4::after {
     display: none;
   }
 
-  .testimonials {
+  .testimonials,
+  .endorsements-list {
     grid-template-columns: 1fr;
   }
 
