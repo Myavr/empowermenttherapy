@@ -2,5 +2,10 @@
   "title": "Book Endorsements",
   "intro": "Words about the Empowerment Therapy book.",
   "empty_message": "Book endorsements will be added soon.",
-  "items": []
+  "items": [
+    {
+      "quote": "I wish I had had this wonderful book earlier in my career, first as a practicing psychotherapist working with children and families, and later as the director of the Psychological Services Center at the University of Illinois, Urbana-Champaign, where we trained future generations of therapists and community practitioners. It is written with Myra’s signature clarity, wisdom, humor, humility and authenticity – and will be a valuable addition to the learning libraries of both beginner and seasoned practitioners. \nWithout Myra’s wonderful and elucidating book, I did my best to inject principles of Nonviolent Communication into our training and work with clients at the Psychological Services Center. In my observations, clinicians found the needs-based framework to be helpful in bringing clarity, depth, and connection to their therapeutic work. Regardless of the approach they were using, shifting the focus of interventions to the “needs” level increased effectiveness and inspired more creative solutions in response to client concerns. In addition, “needs-based empathy” allowed therapists to uncover additional layers of meaning and depth with greater ease and speed. Finally, through its emphasis on connection, the needs-based approach improved the therapeutic alliance and inspired clients to create something better in partnership with their clinicians. \nThis book also has much of value for anyone working in the helping professions in roles that include advocacy, guiding, coaching, or mentoring. Along with the needs-based framework, the emphasis on both self-connection (which I find crucial in my own work), and on connection and partnership with the client, is an important contribution to the field.\n",
+      "author": "Elaine Shpungin, Ph.D., founder and Director of Conflict 180 (leadership, conflict and communication coaching) and former Director of the Psychological Services Center at the University of Illinois, Urbana-Champaign"
+    }
+  ]
 }
