@@ -3970,6 +3970,7 @@ p {
 }
 
 #endorsementsList .testimonial-card blockquote {
+  white-space: pre-line;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
