@@ -5111,6 +5111,7 @@ footer h4::after {
 }
 
 .footer-book:hover,
+.footer-book-link:hover,
 .footer-paypal:hover {
   color: var(--teal);
 }
@@ -5138,12 +5139,14 @@ footer h4::after {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
 }
 
-.footer-book span {
+.footer-book-endorsements {
+  margin-top: 0.5rem;
   font-weight: 600;
   font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.footer-book-endorsements {
+.footer-book-link {
   font-size: 0.92rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
