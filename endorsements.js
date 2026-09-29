@@ -24,6 +24,14 @@
       items.forEach(function (item) {
         var card = document.createElement('article');
         card.className = 'testimonial-card';
+        if (typeof item.image === 'string' && item.image.trim()) {
+          var picture = document.createElement('img');
+          picture.src = item.image.trim();
+          picture.alt = typeof item.image_alt === 'string' ? item.image_alt : '';
+          picture.loading = 'lazy';
+          picture.decoding = 'async';
+          card.appendChild(picture);
+        }
         var quote = document.createElement('blockquote');
         quote.textContent = item.quote;
         card.appendChild(quote);

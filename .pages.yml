@@ -35,6 +35,15 @@ content:
         list: true
         required: false
         fields:
+          - name: image
+            label: Picture (optional)
+            description: Displayed above the endorsement.
+            type: image
+            required: false
+          - name: image_alt
+            label: Picture description (for accessibility)
+            type: string
+            required: false
           - name: quote
             label: Endorsement
             type: text
