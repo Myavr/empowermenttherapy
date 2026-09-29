@@ -4500,6 +4500,10 @@ p {
 }
 
 /* ===== RESOURCES ===== */
+#resources .resource-grid {
+  padding-block: clamp(1rem, 2vw, 2rem);
+}
+
 .resource-hero-image {
   max-width: 420px;
   margin: 0 auto 2rem;
