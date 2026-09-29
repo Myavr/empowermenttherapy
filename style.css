@@ -4512,7 +4512,7 @@ p {
 .resource-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 2.5rem;
   max-width: 850px;
   margin: 0 auto;
   /* two independent columns — opening a card only grows its own column,
@@ -4523,7 +4523,7 @@ p {
 .resource-col {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 2.5rem;
   min-width: 0;
 }
 
