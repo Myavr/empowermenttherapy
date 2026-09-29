@@ -3963,6 +3963,22 @@ p {
   margin: 0 auto;
 }
 
+/* Endorsements use wide panels, one per row. */
+#endorsementsList {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: none;
+}
+
+#endorsementsList .testimonial-card blockquote {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#endorsementsList .testimonial-card .author {
+  text-align: left;
+}
+
 .testimonial-card {
   position: relative;
   display: flex;
