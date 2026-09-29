@@ -3965,7 +3965,10 @@ p {
 
 /* Endorsements use wide panels, one per row. */
 #endorsementsList {
+  display: grid;
   grid-template-columns: minmax(0, 1fr);
+  gap: 2.25rem;
+  margin: 0 auto;
   max-width: none;
 }
 

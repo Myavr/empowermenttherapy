@@ -757,7 +757,7 @@ function etInline(s) {
 
 /* ===== Testimonials (data/testimonials.json) ===== */
 (function () {
-  var wrap = document.querySelector('.testimonials');
+  var wrap = document.querySelector('#testimonialsSection .testimonials');
   if (!wrap) return;
   fetch('data/testimonials.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : null; })
