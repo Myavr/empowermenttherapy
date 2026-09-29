@@ -3968,6 +3968,11 @@ p {
   white-space: pre-line;
 }
 
+/* Keep Robert's forehead visible within the circular portrait crop. */
+#endorsementsList img[src$="/Robert_Krinik.jpg"] {
+  object-position: center top;
+}
+
 .testimonial-card {
   position: relative;
   display: flex;
