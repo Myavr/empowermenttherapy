@@ -13,6 +13,36 @@ media:
   output: images
 
 content:
+  - name: endorsements
+    label: Book endorsements
+    description: Edit the endorsements page heading, introduction, and quotes. Leave the list empty until endorsements are ready.
+    type: file
+    path: data/endorsements.json
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: intro
+        label: Introduction
+        type: text
+        required: false
+      - name: empty_message
+        label: Message when no endorsements are listed
+        type: text
+      - name: items
+        label: Endorsements
+        type: object
+        list: true
+        required: false
+        fields:
+          - name: quote
+            label: Endorsement
+            type: text
+          - name: author
+            label: Name and credentials
+            type: string
+            required: false
+
   - name: countries
     label: Practitioners worldwide
     description: The countries shown in the "Practitioners Worldwide" bar on the home page.

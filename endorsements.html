@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Values | Empowerment Therapy Institute</title>
+  <title>Book Endorsements | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=232">
 </head>
@@ -61,79 +61,14 @@
   <div class="main-content-wrapper">
 
   <section class="subpage-hero">
-    <h1>Our Values</h1>
-    <p>The beliefs and commitments that shape how we teach, practice,<br>and walk alongside one another.</p>
+    <h1 id="endorsementsTitle">Book Endorsements</h1>
+    <p id="endorsementsIntro">Words about the Empowerment Therapy book.</p>
   </section>
 
-  <div class="who-title-slice">
-    <img class="who-bg-image" src="images/forest2.jpg" alt="Sunlit evergreen forest">
-    <div class="who-bg-overlay" aria-hidden="true"></div>
-  </div>
-
-  <section class="timeline-section fade-in" id="values">
+  <section aria-labelledby="endorsementsTitle">
     <div class="container">
-      <div class="timeline">
-
-        <div class="timeline-entry timeline-entry--right timeline-entry--with-image fade-in">
-          <div class="timeline-card-label">Vision</div>
-          <img class="timeline-entry-image" src="images/tree01.avif" alt="Tree">
-          <div class="timeline-card">
-            <h2 class="timeline-card-title">Wholeness</h2>
-            <p class="timeline-card-summary">Empowered lives rooted in awareness, authenticity, and compassion.</p>
-            <div class="timeline-card-detail">
-              <p>We want people to live empowered lives &mdash; rooted in awareness of their needs, grounded in authenticity, and growing in compassion for one another.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--left slide-left">
-          <div class="timeline-card-label">Mission</div>
-          <div class="timeline-card">
-            <h2 class="timeline-card-title">Nurture &amp; Grow</h2>
-            <p class="timeline-card-summary">Sharing Empowerment Therapy so practitioners and clients can thrive.</p>
-            <div class="timeline-card-detail">
-              <p>Our mission is to share Empowerment Therapy with practitioners and nurture their growth, so they can create the conditions for their clients to thrive.</p>
-              <p>We also equip managers with empowerment skills to foster workplaces rooted in safety, trust, and collaboration &mdash; where people can contribute their creativity and care in service of a shared purpose.</p>
-              <p>We do this in ways that are joyful, sustainable, and growthful &mdash; for those we serve, and for ourselves.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--right slide-right">
-          <div class="timeline-card-label">Connection</div>
-          <div class="timeline-card">
-            <h2 class="timeline-card-title">Beyond Roles</h2>
-            <p class="timeline-card-summary">Self-connection as the ground from which all meaningful work grows.</p>
-            <div class="timeline-card-detail">
-              <p>Self-Connection &mdash; being in contact with our feelings, needs and natural compassion &mdash; is the ground from which we work. In that space, we endeavor to connect with others beyond roles. Our emphasis on connection is captured in the logo.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-entry timeline-entry--left fade-in">
-          <div class="timeline-card-label">Values</div>
-          <div class="timeline-card">
-            <h2 class="timeline-card-title">Only Connect</h2>
-            <p class="timeline-card-summary">The prose and the passion, exalted together.</p>
-            <div class="timeline-card-detail">
-              <blockquote>
-                &ldquo;Only connect. That was the whole of her sermon. Only connect the prose and the passion and both will be exalted, and human love will be seen at its height. Live in fragments no longer. Only connect&hellip;&rdquo;
-                <cite>&mdash; E. M. Forster</cite>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Closing invitation -->
-  <section class="cta-band">
-    <h2>Begin your journey</h2>
-    <p>Join a 45-minute orientation session and discover whether<br>Empowerment Therapy is the right fit for you.</p>
-    <div class="cta-actions">
-      <a href="#" onclick="openRegModal(event)" class="btn btn--gold">Register for Orientation</a>
-      <a href="contact.html" class="btn btn--ghost-light">Contact Us</a>
+      <p class="text-center" id="endorsementsEmpty">Book endorsements will be added soon.</p>
+      <div class="testimonials" id="endorsementsList"></div>
     </div>
   </section>
 
@@ -194,13 +129,14 @@
     </div>
   </footer>
 
-  </div>
+  </div><!-- /.main-content-wrapper -->
 
   <div class="reg-modal-overlay" id="regModal">
     <div class="reg-modal">
       <button class="reg-modal-close" id="regModalClose" aria-label="Close">&times;</button>
       <h2>Register for an Orientation Session</h2>
       <p class="reg-modal-subtitle">Complete the form below to request a 45-minute orientation meeting. This session helps both you and our team determine if the program is a good fit.</p>
+
       <form id="regForm" class="reg-form">
         <div class="reg-form-row">
           <div class="reg-form-field">
@@ -262,8 +198,8 @@
     </div>
   </div>
 
-  <script src="shared.js?v=46"></script>
-
+  <script src="shared.js?v=41"></script>
+  <script src="endorsements.js?v=1"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ARczfiMIlPs4K4yBEANDnsoEPjJANdujpFC-ayDRJv4XKvJNRwFN5UAgk5hiTXJio_ytU1s3Lb76p44M&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
   <script src="paypal-subscribe.js?v=1"></script>
 

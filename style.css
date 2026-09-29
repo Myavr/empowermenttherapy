@@ -5111,6 +5111,7 @@ footer h4::after {
 }
 
 .footer-book:hover,
+.footer-book-endorsements:hover,
 .footer-book-link:hover,
 .footer-paypal:hover {
   color: var(--teal);
