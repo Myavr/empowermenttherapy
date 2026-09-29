@@ -4979,7 +4979,7 @@ footer h4::after {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.5rem;
   max-width: 240px;
 }
 
@@ -5128,12 +5128,12 @@ footer h4::after {
 .footer-brand .footer-book {
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-top: 0.9rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .footer-book img {
-  height: 140px;
+  height: 166px;
   opacity: 1;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
 }
@@ -5141,6 +5141,13 @@ footer h4::after {
 .footer-book span {
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+.footer-book-endorsements {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.15rem 0;
 }
 
 .footer-subscribe {
@@ -5757,6 +5764,10 @@ footer h4::after {
 
   .footer-brand {
     text-align: center;
+  }
+
+  .footer-brand .footer-book {
+    align-items: center;
   }
 
   /* Navigate links become a centered two-column grid on phones */
