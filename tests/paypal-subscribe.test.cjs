@@ -60,14 +60,13 @@ test('subscription uses the existing plan and approval shows its reference', asy
   assert.equal(status.hidden, false);
 });
 
-test('all subscription pages provide a static same-tab link even without JavaScript', () => {
+test('all published footers lead to the contribution choices instead of a single subscription', () => {
   const footer = renderFooter(JSON.parse(readFileSync(join(__dirname, '..', 'data/footer.json'), 'utf8')));
-  for (const page of ['index', 'contact', 'events', 'programs', 'resources', 'team', 'testimonials', 'values', 'endorsements']) {
+  for (const page of ['index', 'contact', 'events', 'programs', 'resources', 'team', 'testimonials', 'values', 'endorsements', 'contributions']) {
     const html = renderPage(readFileSync(join(__dirname, '..', page + '.html'), 'utf8'), footer);
     const link = html.match(/<a class="footer-subscribe-direct"[^>]*>/)[0];
-    assert.match(link, /https:\/\/www.paypal.com\/webapps\/billing\/plans\/subscribe\?plan_id=P-8CS01676DE0612907NHPQXBQ/);
+    assert.match(link, /href="contributions.html"/);
     assert.doesNotMatch(link, /target=|onclick=/);
-    assert.equal((html.match(/src="paypal-subscribe.js\?v=2"/g) || []).length, 1);
-    assert.ok(html.indexOf('paypal.com/sdk/js') < html.indexOf('src="paypal-subscribe.js'));
+    assert.doesNotMatch(html, /paypal-button-container|paypal.com\/sdk\/js|src="paypal-subscribe.js/);
   }
 });

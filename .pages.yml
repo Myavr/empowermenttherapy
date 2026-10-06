@@ -13,6 +13,106 @@ media:
   output: images
 
 content:
+  - name: contributions
+    label: Contributions
+    description: The monthly contribution page. Edit the text and the three options here. PayPal controls the actual charge; confirm that every displayed amount and currency matches its PayPal plan. Paste only the plan ID, not the entire button code.
+    type: file
+    path: data/contributions.json
+    fields:
+      - name: page_title
+        label: Browser page title
+        type: string
+        required: true
+      - name: eyebrow
+        label: Small heading above the title
+        type: string
+      - name: title
+        label: Main heading
+        type: text
+        required: true
+      - name: intro
+        label: Introduction
+        type: text
+      - name: tiers_heading
+        label: Contribution options heading
+        type: string
+      - name: tiers_intro
+        label: Contribution options introduction
+        type: text
+      - name: currency
+        label: Currency
+        description: Three-letter currency code, such as USD. Must match the PayPal plans.
+        type: string
+        required: true
+      - name: checkout_label
+        label: Subscription button text
+        type: string
+        required: true
+      - name: unavailable_label
+        label: Contact button text for an option without a PayPal plan
+        description: An option without a plan links to Contact instead of starting a subscription.
+        type: string
+        required: true
+      - name: billing_note
+        label: Monthly billing explanation
+        description: Clearly explain that these payments recur monthly until cancelled.
+        type: text
+        required: true
+      - name: tiers
+        label: Monthly contribution options
+        type: object
+        list: true
+        required: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: amount
+            label: Monthly amount
+            description: Displayed on the website only. Changing this does not change the PayPal plan's charge.
+            type: number
+            required: true
+          - name: description
+            label: What this contribution supports
+            type: text
+          - name: color
+            label: Card colour
+            type: select
+            options:
+              values:
+                - green
+                - gold
+                - blue
+            default: green
+          - name: paypal_plan_id
+            label: PayPal monthly subscription plan ID
+            description: Copy the P-... value from plan_id in the PayPal button code. Leave blank to show a contact link. Check the plan amount and currency in PayPal before saving.
+            type: string
+            required: false
+      - name: help
+        label: Other arrangements and financial support
+        type: object
+        fields:
+          - name: eyebrow
+            label: Small heading
+            type: string
+          - name: title
+            label: Heading
+            type: string
+          - name: text
+            label: Message
+            type: text
+          - name: link_label
+            label: Contact button text
+            type: string
+      - name: enrollment_note
+        label: Note for new participants
+        type: text
+      - name: enrollment_link_label
+        label: Programs link text
+        type: string
+
   - name: footer
     label: Site footer
     description: Edit the footer once for every page. Changes appear across the website after publishing finishes. You can add, remove, and reorder navigation links and people.
@@ -135,11 +235,11 @@ content:
             label: Payment link text
             type: string
           - name: subscribe_label
-            label: Subscription heading
+            label: Monthly contributions heading
             type: string
           - name: subscribe_link_label
-            label: Direct subscription link text
-            description: The PayPal subscription plan remains managed in the website's payment setup.
+            label: Contributions page link text
+            description: Links to the Contributions page. Edit its payment options in the Contributions CMS entry.
             type: string
       - name: copyright
         label: Copyright line

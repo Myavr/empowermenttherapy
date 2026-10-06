@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team | Empowerment Therapy Institute</title>
+  <title>Contributions | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=232">
+  <link rel="stylesheet" href="style.css?v=242">
+  <link rel="stylesheet" href="contributions.css?v=2">
+  <noscript><style>.page-loader { display: none; }</style></noscript>
 </head>
 <body class="subpage">
 
@@ -60,65 +62,29 @@
 
   <div class="main-content-wrapper">
 
-  <section class="subpage-hero">
-    <h1>Our Team</h1>
-    <p>The people behind The Empowerment Institute &mdash; carrying this work into classrooms, communities, and therapy rooms around the world.</p>
-  </section>
-
-  <div class="who-title-slice">
-    <img class="who-bg-image" src="images/spring-pastel-ornamental-petal-leaf.jpg" alt="Pastel spring petals and leaves">
-    <div class="who-bg-overlay" aria-hidden="true"></div>
-  </div>
-
-  <section id="team">
-    <div class="container fade-in-group">
-
-      <div class="team-member">
-        <img src="images/team-myra.jpg" alt="Myra Walden">
-        <div>
-          <h3>Myra Walden</h3>
-          <p class="role">Creator of Empowerment Therapy</p>
-          <p>Originally from Mexico, Myra Walden holds a bachelor's degree in psychology from the University of Illinois at Chicago and a master's degree in clinical psychology from the Illinois School of Professional Psychology.</p>
-          <p>She has practiced psychotherapy since 1991 and has offered workshops for mental health professionals since 1997.</p>
-          <p>In 2000, Myra became a certified trainer with the Center for Nonviolent Communication. She worked alongside Marshall Rosenberg, the developer of Nonviolent Communication, in multiple International Intensive Trainings.</p>
-          <p>Myra co-founded The Empowerment Institute and wrote Empowerment Therapy. She lives in West Chicago, Illinois, where she enjoys people and nature.</p>
-        </div>
+  <main id="contributions-content">
+    <!-- contributions:start -->
+    <section class="contribution-hero">
+      <div class="container">
+        <h1>Contributions</h1>
+        <p id="contributions-status" role="status">Loading monthly contribution options...</p>
+        <noscript><p>Enable JavaScript for this local preview, or view the published website.</p></noscript>
+        <a href="contact.html">Contact our team</a>
       </div>
-
-      <div class="team-member">
-        <img src="images/team-priti.jpg" alt="Priti Sureka">
-        <div>
-          <h3>Priti Sureka</h3>
-          <p class="role">Empowerment Coach</p>
-          <p>Priti is an Empowerment Coach, Nonviolent Communication (NVC) Certification Candidate, and HR leader with over 25 years of experience.</p>
-          <p>Drawing on her leadership background and coaching skills, she supports clients in moving beyond survival to create lives that feel aligned, purposeful, and authentic.</p>
-          <p>She integrates Ontological Coaching and NVC to help individuals reconnect with core values, identify deeper needs, and take meaningful, true-to-self action.</p>
-          <p>With an MBA and training in Empowerment Practice under psychotherapist Myra Walden, Priti brings a compassionate, grounded presence. As a mother of two, she understands the complexities of balancing work, family, and self-care.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Closing invitation -->
-  <section class="cta-band">
-    <h2>Begin your journey</h2>
-    <p>Join a 45-minute orientation session and discover whether<br>Empowerment Therapy is the right fit for you.</p>
-    <div class="cta-actions">
-      <a href="#" onclick="openRegModal(event)" class="btn btn--gold">Register for Orientation</a>
-      <a href="contact.html" class="btn btn--ghost-light">Contact Us</a>
-    </div>
-  </section>
+    </section>
+    <!-- contributions:end -->
+  </main>
 
   <div id="site-footer"></div>
 
-  </div>
+  </div><!-- /.main-content-wrapper -->
 
   <div class="reg-modal-overlay" id="regModal">
     <div class="reg-modal">
       <button class="reg-modal-close" id="regModalClose" aria-label="Close">&times;</button>
       <h2>Register for an Orientation Session</h2>
       <p class="reg-modal-subtitle">Complete the form below to request a 45-minute orientation meeting. This session helps both you and our team determine if the program is a good fit.</p>
+
       <form id="regForm" class="reg-form">
         <div class="reg-form-row">
           <div class="reg-form-field">
@@ -183,6 +149,8 @@
   <script src="footer-render.js?v=2"></script>
   <script src="footer-preview.js?v=1"></script>
   <script src="shared.js?v=47"></script>
+  <script src="contributions-render.js?v=1"></script>
+  <script src="contributions.js?v=1"></script>
 
 </body>
 </html>

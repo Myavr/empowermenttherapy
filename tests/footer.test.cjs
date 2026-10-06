@@ -73,6 +73,10 @@ test('publishing builds all pages and assets with the shared contact email', () 
     assert.doesNotMatch(html, /id="site-footer"|{{\w+}}/);
   }
   const contact = JSON.parse(readFileSync(join(output, 'data/pages.json'), 'utf8')).contact;
+  const contributions = readFileSync(join(output, 'contributions.html'), 'utf8');
+  assert.match(contributions, /class="contribution-grid"/);
+  assert.match(contributions, /plan_id=P-5LD29664S0650621GNK4OZVQ/);
+  assert.doesNotMatch(contributions, /Loading monthly|contributions:start/);
   assert.equal(contact.email, data().contact.email);
   assert.equal(contact.phone, JSON.parse(read('data/pages.json')).contact.phone);
   assert.equal(readFileSync(join(output, 'our-values.html'), 'utf8'), read('our-values.html'));

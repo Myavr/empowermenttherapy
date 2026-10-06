@@ -1,0 +1,108 @@
+.contribution-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(115deg, #faf8f0 45%, #eaf0e5);
+  border-bottom: 1px solid #dfe5d8;
+}
+.contribution-hero .container { position: relative; z-index: 1; }
+.contribution-eyebrow {
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 1.1rem;
+}
+.contribution-hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  letter-spacing: -.035em;
+  line-height: 1.12;
+  white-space: pre-line;
+  max-width: 880px;
+  margin-bottom: 1.5rem;
+}
+.contribution-intro { max-width: 650px; font-size: 1.1rem; line-height: 1.8; color: #505b53; }
+.contribution-hero-leaf {
+  position: absolute;
+  width: clamp(220px, 30vw, 430px);
+  right: 2%; bottom: -80px;
+  color: #6d8952;
+  opacity: .13;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+.contribution-options { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.contribution-section-intro { margin-bottom: 2rem; }
+.contribution-section-intro h2, .contribution-help h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: .6rem;
+}
+.contribution-section-intro p { color: #5b635d; }
+.contribution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.contribution-card {
+  --tier-color: #446440;
+  --tier-background: #f0f5ec;
+  --tier-border: #c8d8bf;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--tier-border);
+  border-top: 4px solid var(--tier-color);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 2.5vw, 2.4rem);
+  background: linear-gradient(155deg, var(--tier-background), #fffefa 85%);
+}
+.contribution-card--gold { --tier-color: #80631b; --tier-background: #faf2db; --tier-border: #e2d4ae; }
+.contribution-card--blue { --tier-color: #435c9e; --tier-background: #eef1f9; --tier-border: #cdd5e8; }
+.contribution-leaf { display: block; width: 58px; height: 58px; color: var(--tier-color); margin-bottom: 1rem; }
+.contribution-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--tier-color); margin-bottom: .8rem; }
+.contribution-price { display: flex; align-items: center; gap: .75rem; color: var(--ink); margin-bottom: 1.2rem; }
+.contribution-price strong { font-family: var(--font-heading); font-size: 4.2rem; line-height: 1; font-weight: 400; }
+.contribution-price span { font-size: .8rem; line-height: 1.6; color: #59615b; }
+.contribution-description { flex: 1; line-height: 1.75; margin-bottom: 1.8rem; color: #48524b; }
+.contribution-checkout.btn {
+  padding: .9rem .75rem;
+  gap: .65rem;
+  border: 1px solid var(--tier-color);
+  background: var(--tier-color);
+  color: white;
+  font-size: .86rem;
+  letter-spacing: 0;
+  border-radius: 5px;
+}
+.contribution-checkout.btn:hover { background: var(--ink); border-color: var(--ink); }
+.contribution-billing-note { max-width: 810px; margin: 1.5rem auto 0; color: #61685f; font-size: .85rem; line-height: 1.8; text-align: center; }
+.contribution-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid #d7dece;
+  border-bottom: 1px solid #d7dece;
+  padding: 2.5rem 0;
+}
+.contribution-help .contribution-eyebrow { margin-bottom: .8rem; }
+.contribution-help p:not(.contribution-eyebrow) { max-width: 700px; line-height: 1.8; color: #505b53; }
+.contribution-help .btn { flex-shrink: 0; }
+.contribution-enrollment { margin: 1.7rem 0 0; font-size: .85rem; color: #61685f; line-height: 1.9; }
+.contribution-enrollment a { color: var(--blue-deep); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 850px) {
+  .contribution-grid { gap: 1rem; }
+  .contribution-card { padding: 1.4rem; }
+  .contribution-checkout.btn { font-size: .8rem; }
+  .contribution-help { align-items: flex-start; flex-direction: column; gap: 1.25rem; }
+}
+@media (max-width: 680px) {
+  .contribution-grid { grid-template-columns: 1fr; }
+  .contribution-card { padding: 1.8rem; }
+  .contribution-checkout.btn { font-size: .95rem; }
+  .contribution-hero-leaf { right: -65px; opacity: .08; }
+  .contribution-billing-note { text-align: left; }
+}

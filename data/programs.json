@@ -64,7 +64,8 @@
           "heading": "Investment",
           "body": [
             { "type": "p", "text": "**$30–$50 USD/month** (sliding scale)" },
-            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." }
+            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." },
+            { "type": "p", "text": "[View monthly contribution options](contributions.html)" }
           ]
         }
       ],
@@ -119,7 +120,8 @@
           "heading": "Investment",
           "body": [
             { "type": "p", "text": "**$30–$50 USD/month** (sliding scale)" },
-            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." }
+            { "type": "p", "text": "Fees remain low to help develop practitioners who will bring this work to people without access to support services." },
+            { "type": "p", "text": "[View monthly contribution options](contributions.html)" }
           ]
         }
       ]

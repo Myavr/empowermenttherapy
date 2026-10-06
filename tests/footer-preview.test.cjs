@@ -45,16 +45,17 @@ function preview({ published = false, failed = false } = {}) {
     finish: resolveFetch, renders: () => renders };
 }
 
-test('all source pages load the footer scripts before the PayPal initializer', () => {
+test('all source pages load the shared footer without a payment SDK', () => {
   for (const page of readdirSync(root).filter(name => name.endsWith('.html') && name !== 'our-values.html')) {
     const html = read(page);
     assert.match(html, /<div id="site-footer"><\/div>/, page);
     const scripts = [...html.matchAll(/<script[^>]*src="([^"]+)"/g)].map(match => match[1].split('?')[0]);
-    for (const name of ['footer-render.js', 'footer-preview.js', 'paypal-subscribe.js']) {
+    for (const name of ['footer-render.js', 'footer-preview.js']) {
       assert.equal(scripts.filter(script => script === name).length, 1, page + ': ' + name);
     }
     assert.ok(scripts.indexOf('footer-render.js') < scripts.indexOf('footer-preview.js'));
-    assert.ok(scripts.indexOf('footer-preview.js') < scripts.indexOf('paypal-subscribe.js'));
+    assert.ok(!scripts.includes('paypal-subscribe.js'));
+    assert.ok(!scripts.some(script => script.includes('paypal.com/sdk')));
   }
 });
 

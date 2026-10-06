@@ -38,8 +38,8 @@
     "payment_image": "images/paypal-qr.png",
     "payment_image_alt": "PayPal QR Code",
     "payment_label": "Make a Payment",
-    "subscribe_label": "Subscribe & Support",
-    "subscribe_link_label": "Subscribe directly on PayPal"
+    "subscribe_label": "Monthly contributions",
+    "subscribe_link_label": "Choose your contribution"
   },
   "copyright": "© 2026 Empowerment Therapy Institute. All rights reserved."
 }

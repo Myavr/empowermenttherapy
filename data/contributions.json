@@ -1,0 +1,43 @@
+{
+  "page_title": "Contributions",
+  "eyebrow": "Support our community",
+  "title": "Different contributions.\nA shared community.",
+  "intro": "Help sustain a community that learns, grows, and creates change together. Choose a monthly contribution that fits your circumstances.",
+  "tiers_heading": "Choose your monthly contribution",
+  "tiers_intro": "Each contribution helps keep Empowerment Therapy growing.",
+  "currency": "USD",
+  "checkout_label": "Subscribe with PayPal",
+  "unavailable_label": "Ask about this option",
+  "billing_note": "These are recurring monthly subscriptions. Review the amount and billing details on PayPal before confirming. Your contribution repeats each month until you cancel.",
+  "tiers": [
+    {
+      "name": "Sustain",
+      "amount": 30,
+      "description": "Help us cover expenses and remain resilient.",
+      "color": "green",
+      "paypal_plan_id": "P-8CS01676DE0612907NHPQXBQ"
+    },
+    {
+      "name": "Support",
+      "amount": 40,
+      "description": "Help us develop additional programs.",
+      "color": "gold",
+      "paypal_plan_id": ""
+    },
+    {
+      "name": "Empower",
+      "amount": 50,
+      "description": "Help us fulfill the vision and thrive.",
+      "color": "blue",
+      "paypal_plan_id": "P-5LD29664S0650621GNK4OZVQ"
+    }
+  ],
+  "help": {
+    "eyebrow": "Room for a conversation",
+    "title": "Need another arrangement?",
+    "text": "Need to pause, explore a different payment arrangement, or ask about financial support? We would rather have a conversation than have money become a barrier to participation.",
+    "link_label": "Talk to us"
+  },
+  "enrollment_note": "New to Empowerment Therapy? Please arrange an orientation with our team before subscribing for a program.",
+  "enrollment_link_label": "Explore the programs"
+}

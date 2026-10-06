@@ -5,6 +5,7 @@ const root = join(__dirname, '..');
 const footerMarker = '<div id="site-footer"></div>';
 
 const render = require('../footer-render.js');
+const { renderContributions } = require('../contributions-render.js');
 
 function renderFooter(data) {
   return render(data, readFileSync(join(root, 'templates', 'footer.html'), 'utf8'));
@@ -22,10 +23,19 @@ function renderPage(html, footer) {
 function buildSite(output = join(root, '_site')) {
   const data = JSON.parse(readFileSync(join(root, 'data', 'footer.json'), 'utf8'));
   const footer = renderFooter(data);
+  const contributions = JSON.parse(readFileSync(join(root, 'data', 'contributions.json'), 'utf8'));
   mkdirSync(output, { recursive: true });
   for (const entry of readdirSync(root, { withFileTypes: true })) {
     if (entry.isFile() && /\.(html|css|js)$/.test(entry.name)) {
-      const source = readFileSync(join(root, entry.name), 'utf8');
+      let source = readFileSync(join(root, entry.name), 'utf8');
+      if (entry.name === 'contributions.html') {
+        source = source.replace(/<!-- contributions:start -->[\s\S]*?<!-- contributions:end -->/,
+          () => renderContributions(contributions));
+        const title = String(contributions.page_title).replace(/[&<>"']/g, c => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[c]);
+        source = source.replace(/<title>[^<]*<\/title>/, () => '<title>' + title + ' | Empowerment Therapy Institute</title>');
+      }
       writeFileSync(join(output, entry.name), entry.name.endsWith('.html') ? renderPage(source, footer) : source);
     }
   }
