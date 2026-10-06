@@ -50,40 +50,52 @@
   line-height: 1.25;
   margin-bottom: .6rem;
 }
-.contribution-section-intro p { color: #5b635d; }
+.contribution-section-intro p { color: #5b635d; text-align: center; }
 .contribution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .contribution-card {
-  --tier-color: #446440;
-  --tier-background: #f0f5ec;
-  --tier-border: #c8d8bf;
+  --tier-color: var(--green-deep);
+  --tier-accent: var(--green);
+  --tier-background: var(--green-light);
+  --tier-button-background: var(--tier-color);
+  --tier-button-text: var(--white);
   display: flex;
   flex-direction: column;
   min-width: 0;
-  border: 1px solid var(--tier-border);
-  border-top: 4px solid var(--tier-color);
+  border: 1px solid rgba(156, 192, 192, 0.5);
+  border-top: 4px solid var(--tier-accent);
   border-radius: 12px;
   padding: clamp(1.5rem, 2.5vw, 2.4rem);
-  background: linear-gradient(155deg, var(--tier-background), #fffefa 85%);
+  background: linear-gradient(155deg, var(--tier-background), var(--white) 85%);
 }
-.contribution-card--gold { --tier-color: #80631b; --tier-background: #faf2db; --tier-border: #e2d4ae; }
-.contribution-card--blue { --tier-color: #435c9e; --tier-background: #eef1f9; --tier-border: #cdd5e8; }
-.contribution-leaf { display: block; width: 58px; height: 58px; color: var(--tier-color); margin-bottom: 1rem; }
+.contribution-card--gold {
+  --tier-color: var(--gold-deep);
+  --tier-accent: var(--gold);
+  --tier-background: rgba(228, 204, 120, 0.22);
+  --tier-button-background: var(--gold);
+  --tier-button-text: #3a3113;
+}
+.contribution-card--blue {
+  --tier-color: var(--blue-deep);
+  --tier-accent: var(--blue);
+  --tier-background: var(--blue-light);
+}
+.contribution-leaf { display: block; width: 58px; height: 58px; color: var(--tier-accent); margin-bottom: 1rem; }
 .contribution-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--tier-color); margin-bottom: .8rem; }
 .contribution-price { display: flex; align-items: center; gap: .75rem; color: var(--ink); margin-bottom: 1.2rem; }
 .contribution-price strong { font-family: var(--font-heading); font-size: 4.2rem; line-height: 1; font-weight: 400; }
-.contribution-price span { font-size: .8rem; line-height: 1.6; color: #59615b; }
-.contribution-description { flex: 1; line-height: 1.75; margin-bottom: 1.8rem; color: #48524b; }
+.contribution-price span { font-size: .8rem; line-height: 1.6; color: var(--text-muted); }
+.contribution-description { flex: 1; line-height: 1.75; margin-bottom: 1.8rem; color: var(--text-dark); }
 .contribution-checkout.btn {
   padding: .9rem .75rem;
   gap: .65rem;
-  border: 1px solid var(--tier-color);
-  background: var(--tier-color);
-  color: white;
+  border: 1px solid var(--tier-button-background);
+  background: var(--tier-button-background);
+  color: var(--tier-button-text);
   font-size: .86rem;
   letter-spacing: 0;
   border-radius: 5px;
 }
-.contribution-checkout.btn:hover { background: var(--ink); border-color: var(--ink); }
+.contribution-checkout.btn:hover { background: var(--ink); border-color: var(--ink); color: var(--white); }
 .contribution-billing-note { max-width: 810px; margin: 1.5rem auto 0; color: #61685f; font-size: .85rem; line-height: 1.8; text-align: center; }
 .contribution-help {
   display: flex;

@@ -23,6 +23,8 @@
       const amount = Number(tier.amount);
       if (!Number.isFinite(amount) || amount <= 0) throw new Error('Contribution amounts must be positive');
       const amountText = amount.toLocaleString('en-US', { maximumFractionDigits: 2 });
+      const priceText = data.currency === 'USD' ? '$' + amountText : amountText;
+      const currencyLabel = data.currency === 'USD' ? 'US' : data.currency;
       const color = ['green', 'gold', 'blue'].includes(tier.color) ? tier.color : 'green';
       const url = checkoutURL(tier.paypal_plan_id);
       if (url && plans.has(url)) throw new Error('Each contribution tier needs its own PayPal plan');
@@ -34,7 +36,7 @@
       return `<article class="contribution-card contribution-card--${color}" aria-labelledby="tier-${index}">
         <span class="contribution-leaf">${leaf}</span>
         <h3 id="tier-${index}">${esc(tier.name)}</h3>
-        <p class="contribution-price"><strong>${esc(amountText)}</strong><span>${esc(data.currency)}<br>per month</span></p>
+        <p class="contribution-price"><strong>${esc(priceText)}</strong><span>${esc(currencyLabel)}<br>per month</span></p>
         <p class="contribution-description">${esc(tier.description)}</p>
         <a class="btn contribution-checkout" href="${esc(url || 'contact.html')}" aria-label="${esc(accessibleLabel)}">${esc(label)}<span aria-hidden="true">&rarr;</span></a>
       </article>`;
