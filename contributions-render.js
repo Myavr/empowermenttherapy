@@ -48,6 +48,10 @@
       </div>
       <div class="contribution-hero-leaf" aria-hidden="true">${leaf}</div>
     </section>
+    <div class="who-title-slice">
+      <img class="who-bg-image" src="images/communicacionplena.avif" alt="" width="1275" height="663" decoding="async">
+      <div class="who-bg-overlay" aria-hidden="true"></div>
+    </div>
     <section class="contribution-options" aria-labelledby="contributions-options-title">
       <div class="container">
         <div class="contribution-section-intro">

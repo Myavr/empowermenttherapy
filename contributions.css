@@ -1,3 +1,9 @@
+.who-title-slice {
+  border-top: none;
+  min-height: clamp(360px, 48vw, 720px);
+}
+.who-title-slice .who-bg-image { object-position: right bottom; }
+
 .contribution-hero {
   position: relative;
   overflow: hidden;
@@ -25,7 +31,7 @@
   margin-inline: auto;
   margin-bottom: 1.5rem;
 }
-.contribution-intro { max-width: 650px; margin-inline: auto; font-size: 1.3rem; line-height: 1.8; color: #505b53; }
+.contribution-intro { max-width: 650px; margin-inline: auto; font-size: 1.4rem; line-height: 1.8; color: #505b53; }
 .contribution-hero-leaf {
   position: absolute;
   width: clamp(220px, 30vw, 430px);
