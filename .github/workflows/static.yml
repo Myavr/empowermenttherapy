@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Build the shared CMS footer, then deploy static content to GitHub Pages.
 name: Deploy static content to Pages
 
 on:
@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Assemble every page from the same footer before publishing.
   deploy:
     environment:
       name: github-pages
@@ -31,13 +31,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test site
+        run: node --test
+      - name: Build site
+        run: node scripts/build-site.cjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

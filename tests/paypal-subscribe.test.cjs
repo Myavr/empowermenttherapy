@@ -3,6 +3,7 @@ const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
+const { renderFooter, renderPage } = require('../scripts/build-site.cjs');
 const source = readFileSync(join(__dirname, '..', 'paypal-subscribe.js'), 'utf8');
 
 function load({ missingSDK = false, renderFailure = false, throwOnSetup = false } = {}) {
@@ -60,12 +61,13 @@ test('subscription uses the existing plan and approval shows its reference', asy
 });
 
 test('all subscription pages provide a static same-tab link even without JavaScript', () => {
-  for (const page of ['index', 'contact', 'events', 'programs', 'resources', 'team', 'testimonials', 'values']) {
-    const html = readFileSync(join(__dirname, '..', page + '.html'), 'utf8');
+  const footer = renderFooter(JSON.parse(readFileSync(join(__dirname, '..', 'data/footer.json'), 'utf8')));
+  for (const page of ['index', 'contact', 'events', 'programs', 'resources', 'team', 'testimonials', 'values', 'endorsements']) {
+    const html = renderPage(readFileSync(join(__dirname, '..', page + '.html'), 'utf8'), footer);
     const link = html.match(/<a class="footer-subscribe-direct"[^>]*>/)[0];
     assert.match(link, /https:\/\/www.paypal.com\/webapps\/billing\/plans\/subscribe\?plan_id=P-8CS01676DE0612907NHPQXBQ/);
     assert.doesNotMatch(link, /target=|onclick=/);
-    assert.equal((html.match(/src="paypal-subscribe.js\?v=1"/g) || []).length, 1);
+    assert.equal((html.match(/src="paypal-subscribe.js\?v=2"/g) || []).length, 1);
     assert.ok(html.indexOf('paypal.com/sdk/js') < html.indexOf('src="paypal-subscribe.js'));
   }
 });

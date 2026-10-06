@@ -1,5 +1,5 @@
 /* Keep the hosted checkout link usable even if the PayPal SDK is blocked. */
-(function () {
+function initPayPalSubscription() {
   var container = document.getElementById('paypal-button-container-P-8CS01676DE0612907NHPQXBQ');
   var status = document.getElementById('paypal-subscribe-status');
   if (!container || !status) return;
@@ -40,4 +40,11 @@
   } catch (error) {
     checkoutError(error);
   }
-})();
+}
+
+// Source previews load the shared footer asynchronously; published pages already have it.
+if (window.siteFooterReady) {
+  window.siteFooterReady.then(initPayPalSubscription);
+} else {
+  initPayPalSubscription();
+}

@@ -13,6 +13,138 @@ media:
   output: images
 
 content:
+  - name: footer
+    label: Site footer
+    description: Edit the footer once for every page. Changes appear across the website after publishing finishes. You can add, remove, and reorder navigation links and people.
+    type: file
+    path: data/footer.json
+    fields:
+      - name: social
+        label: Social media
+        type: object
+        fields:
+          - name: instagram_url
+            label: Instagram URL
+            description: Leave blank to hide this icon.
+            type: string
+            required: false
+          - name: facebook_url
+            label: Facebook URL
+            description: Leave blank to hide this icon.
+            type: string
+            required: false
+      - name: book
+        label: Book
+        type: object
+        fields:
+          - name: image
+            label: Book cover
+            type: image
+            required: false
+          - name: image_alt
+            label: Cover description (for accessibility)
+            type: string
+            required: false
+          - name: url
+            label: Book purchase URL
+            description: Leave blank to hide the cover and purchase link.
+            type: string
+            required: false
+          - name: label
+            label: Purchase link text
+            type: string
+          - name: endorsements_url
+            label: Endorsements URL
+            description: Use endorsements.html for this website's endorsements page. Leave blank to hide the link.
+            type: string
+            required: false
+          - name: endorsements_label
+            label: Endorsements link text
+            type: string
+      - name: navigation
+        label: Navigation
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: links
+            label: Links
+            type: object
+            list: true
+            required: false
+            fields:
+              - name: label
+                label: Link text
+                type: string
+              - name: url
+                label: Link URL
+                description: Use a page name such as contact.html or a full https URL.
+                type: string
+      - name: contact
+        label: Contact and people
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: email
+            label: Email address
+            description: Updates the email link in every footer and on the Contact page. Contact form delivery is managed separately.
+            type: string
+            required: true
+          - name: people
+            label: People
+            type: object
+            list: true
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+              - name: image
+                label: Photo
+                type: image
+              - name: image_alt
+                label: Photo description (for accessibility)
+                description: Uses the person's name if left blank.
+                type: string
+                required: false
+      - name: support
+        label: Support and subscriptions
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: payment_url
+            label: Payment URL
+            description: Leave blank to hide the payment link and QR image.
+            type: string
+            required: false
+          - name: payment_image
+            label: Payment QR image
+            description: If the payment URL changes, upload a matching QR code.
+            type: image
+            required: false
+          - name: payment_image_alt
+            label: Payment image description (for accessibility)
+            type: string
+            required: false
+          - name: payment_label
+            label: Payment link text
+            type: string
+          - name: subscribe_label
+            label: Subscription heading
+            type: string
+          - name: subscribe_link_label
+            label: Direct subscription link text
+            description: The PayPal subscription plan remains managed in the website's payment setup.
+            type: string
+      - name: copyright
+        label: Copyright line
+        type: string
+
   - name: endorsements
     label: Book endorsements
     description: Edit the endorsements page heading, introduction, and quotes. Leave the list empty until endorsements are ready.
@@ -454,7 +586,7 @@ content:
 
   - name: pages
     label: Page intros & contact
-    description: The title and subtitle at the top of each inner page, plus the contact email and phone shown on the Contact page and in the footer.
+    description: The title and subtitle at the top of each inner page, plus the Contact page phone number. Edit the shared email address under Site footer.
     type: file
     path: data/pages.json
     fields:
@@ -508,9 +640,6 @@ content:
           - name: hero_subtitle
             label: Subtitle
             type: text
-          - name: email
-            label: Email address
-            type: string
           - name: phone
             label: Phone number
             type: string

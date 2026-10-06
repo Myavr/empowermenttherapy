@@ -1,0 +1,45 @@
+{
+  "social": {
+    "instagram_url": "https://www.instagram.com/empowerment.therapy/",
+    "facebook_url": "https://www.facebook.com/IEC.EmpoweringCommunication/"
+  },
+  "book": {
+    "image": "images/book-cover.png",
+    "image_alt": "Empowerment Therapy Book",
+    "url": "https://www.amazon.com/Empowerment-Therapy-Helping-Clients-Fulfilling/dp/1737588420",
+    "label": "Get the book",
+    "endorsements_url": "endorsements.html",
+    "endorsements_label": "Book endorsements"
+  },
+  "navigation": {
+    "heading": "Navigate",
+    "links": [
+      { "label": "Home", "url": "index.html" },
+      { "label": "Programs", "url": "programs.html" },
+      { "label": "Events", "url": "events.html" },
+      { "label": "Team", "url": "team.html" },
+      { "label": "Values", "url": "values.html" },
+      { "label": "Resources", "url": "resources.html" },
+      { "label": "Contact", "url": "contact.html" }
+    ]
+  },
+  "contact": {
+    "heading": "Get in Touch",
+    "email": "empowermenttherapyinstitute@gmail.com",
+    "people": [
+      { "name": "Aparna", "image": "images/aparna-kher-portrait-1.jpg", "image_alt": "Aparna" },
+      { "name": "Myra", "image": "images/footer-myra.jpg", "image_alt": "Myra" },
+      { "name": "Priti", "image": "images/footer-priti.jpg", "image_alt": "Priti" }
+    ]
+  },
+  "support": {
+    "heading": "Support",
+    "payment_url": "https://www.paypal.com/ncp/payment/JT9X4BBKNB9ZE",
+    "payment_image": "images/paypal-qr.png",
+    "payment_image_alt": "PayPal QR Code",
+    "payment_label": "Make a Payment",
+    "subscribe_label": "Subscribe & Support",
+    "subscribe_link_label": "Subscribe directly on PayPal"
+  },
+  "copyright": "© 2026 Empowerment Therapy Institute. All rights reserved."
+}
