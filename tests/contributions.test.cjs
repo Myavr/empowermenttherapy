@@ -14,8 +14,10 @@ test('monthly options use the supplied plans and never substitute a plan for a m
   const html = renderContributions(config);
   assert.equal((html.match(/<article /g) || []).length, 3);
   const thirty = config.tiers.find(tier => tier.amount === 30);
+  const forty = config.tiers.find(tier => tier.amount === 40);
   const fifty = config.tiers.find(tier => tier.amount === 50);
   assert.equal(thirty.paypal_plan_id, 'P-8CS01676DE0612907NHPQXBQ');
+  assert.equal(forty.paypal_plan_id, 'P-7P229661XP097321UNK4OZAI');
   assert.equal(fifty.paypal_plan_id, 'P-5LD29664S0650621GNK4OZVQ');
   for (const tier of config.tiers) {
     const card = html.match(new RegExp('<article[^>]*>[\\s\\S]*?<h3[^>]*>' + tier.name + '<\\/h3>[\\s\\S]*?<\\/article>'));
@@ -31,6 +33,10 @@ test('monthly options use the supplied plans and never substitute a plan for a m
   }
   assert.match(html, /recurring monthly subscriptions/);
   assert.doesNotMatch(html, /Annual subscription|friend credit|Pay one month|onclick=|target=/);
+  forty.paypal_plan_id = '';
+  const missingPlanCard = renderContributions(config).match(/<article class="contribution-card contribution-card--gold"[\s\S]*?<\/article>/)[0];
+  assert.match(missingPlanCard, /href="contact.html"/);
+  assert.doesNotMatch(missingPlanCard, /paypal.com/);
 });
 
 test('CMS edits, adding a plan and reordering tiers are reflected without editing HTML', () => {

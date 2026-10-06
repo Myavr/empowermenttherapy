@@ -5106,11 +5106,11 @@ footer h4::after {
   color: var(--teal);
 }
 
-/* === Support column (Book + PayPal QR + Subscribe button stacked) === */
+/* === Support column === */
 .footer-support {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  align-items: flex-start;
   justify-self: end;
 }
 
@@ -5168,48 +5168,32 @@ footer h4::after {
   padding: 0.15rem 0;
 }
 
-.footer-subscribe {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.35rem;
-  margin-top: 0.65rem;
-  padding-top: 0.65rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-subscribe-label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 500;
-}
-
-.footer-subscribe #paypal-button-container-P-8CS01676DE0612907NHPQXBQ {
-  width: 100%;
-  max-width: 200px;
-}
-
 .footer-subscribe-direct {
-  color: #f4d58d;
-  font-size: 0.8rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  padding: 0.4rem 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.85rem 1.35rem;
+  border: 1px solid #f4d58d;
+  border-radius: var(--radius-sm);
+  background: #f4d58d;
+  color: #1a2340;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.footer-subscribe-direct:hover {
+  background: #ffe6ad;
+  border-color: #ffe6ad;
 }
 
 .footer-subscribe-direct:focus-visible {
   outline: 2px solid #f4d58d;
   outline-offset: 3px;
-}
-
-.footer-subscribe-status {
-  max-width: 240px;
-  margin: 0;
-  color: #fff;
-  font-size: 0.8rem;
-  line-height: 1.5;
 }
 
 /* every page signs off with the logo mark in miniature */
@@ -5822,14 +5806,12 @@ footer h4::after {
     align-self: center;
   }
 
-  .footer-subscribe {
-    align-items: center;
-    width: 100%;
+  .footer-support {
+    justify-self: center;
   }
 
-  .footer-subscribe #paypal-button-container-P-8CS01676DE0612907NHPQXBQ {
-    max-width: 220px;
-    margin: 0 auto;
+  .footer-support h4::after {
+    margin-inline: auto;
   }
 }
 

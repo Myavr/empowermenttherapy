@@ -34,12 +34,7 @@
   },
   "support": {
     "heading": "Support",
-    "payment_url": "https://www.paypal.com/ncp/payment/JT9X4BBKNB9ZE",
-    "payment_image": "images/paypal-qr.png",
-    "payment_image_alt": "PayPal QR Code",
-    "payment_label": "Make a Payment",
-    "subscribe_label": "Monthly contributions",
-    "subscribe_link_label": "Choose your contribution"
+    "subscribe_link_label": "View payment plans"
   },
   "copyright": "© 2026 Empowerment Therapy Institute. All rights reserved."
 }

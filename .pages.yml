@@ -211,34 +211,14 @@ content:
                 type: string
                 required: false
       - name: support
-        label: Support and subscriptions
+        label: Support
         type: object
         fields:
           - name: heading
             label: Heading
             type: string
-          - name: payment_url
-            label: Payment URL
-            description: Leave blank to hide the payment link and QR image.
-            type: string
-            required: false
-          - name: payment_image
-            label: Payment QR image
-            description: If the payment URL changes, upload a matching QR code.
-            type: image
-            required: false
-          - name: payment_image_alt
-            label: Payment image description (for accessibility)
-            type: string
-            required: false
-          - name: payment_label
-            label: Payment link text
-            type: string
-          - name: subscribe_label
-            label: Monthly contributions heading
-            type: string
           - name: subscribe_link_label
-            label: Contributions page link text
+            label: Payment plans button text
             description: Links to the Contributions page. Edit its payment options in the Contributions CMS entry.
             type: string
       - name: copyright

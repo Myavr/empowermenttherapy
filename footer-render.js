@@ -33,8 +33,6 @@ function renderFooter(data, template) {
     people: (contact.people || []).map(person => `<figure>${image(person.image, person.image_alt || person.name)}<figcaption>${escapeHTML(person.name)}</figcaption></figure>`).join('\n'),
     email: escapeHTML(contact.email),
     support_heading: escapeHTML(support.heading),
-    payment: support.payment_url ? `<a href="${safeURL(support.payment_url)}" target="_blank" rel="noopener" class="footer-paypal">${image(support.payment_image, support.payment_image_alt)}<span>${escapeHTML(support.payment_label)}</span></a>` : '',
-    subscribe_label: escapeHTML(support.subscribe_label),
     subscribe_link_label: escapeHTML(support.subscribe_link_label),
     copyright: escapeHTML(data.copyright)
   };

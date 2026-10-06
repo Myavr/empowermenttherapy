@@ -17,7 +17,7 @@ test('one CMS edit updates every page, including additions, removals and reorder
   edited.navigation.links = [{ label: 'New resource', url: 'resources.html#new' }];
   edited.social.instagram_url = '';
   edited.book.label = 'Read our book';
-  edited.support.payment_label = 'Contribute';
+  edited.support.subscribe_link_label = 'Contribute';
   edited.copyright = 'Updated copyright';
   const footer = renderFooter(edited);
   for (const page of pages) {
@@ -58,7 +58,6 @@ test('optional empty lists and links do not leave broken images or empty destina
   edited.contact.people = null;
   edited.book.url = '';
   edited.book.endorsements_url = '';
-  edited.support.payment_url = '';
   const html = renderFooter(edited);
   assert.doesNotMatch(html, /href=""|src=""|<figure>|class="footer-book"|class="footer-paypal"|{{\w+}}/);
   assert.match(html, /class="footer-subscribe-direct"/);

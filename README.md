@@ -2,7 +2,7 @@
 
 Edit shared footer content in Pages CMS under **Site footer**. This includes social
 links, book links and cover, navigation, team photos and names, the contact email,
-support labels and payment link/QR image, and the copyright line. Add, remove, or
+the Support heading and payment plans button text, and the copyright line. Add, remove, or
 reorder navigation links and people there. The email also updates the Contact page;
 form submission delivery remains in its existing code configuration. The footer
 links to the Contributions page for monthly subscriptions.
@@ -13,8 +13,8 @@ Copy only the `P-...` value from the PayPal button code. The checkout links open
 PayPal directly; visitors confirm the subscription there. Amounts in the CMS are
 display text: they do not change PayPal billing. Always check that each plan's
 amount, currency, and monthly billing match the website. A tier without a plan ID
-shows a Contact link. The $40 plan is currently awaiting its correct ID; the $30
-and $50 plans have been supplied. No annual payments or referral discounts are
+shows a Contact link. The $30, $40, and $50 plans have been supplied.
+No annual payments or referral discounts are
 advertised or automated.
 
 Saving to `main` triggers the GitHub Pages workflow. After deployment completes,
