@@ -14,26 +14,59 @@
   "navigation": {
     "heading": "Navigate",
     "links": [
-      { "label": "Home", "url": "index.html" },
-      { "label": "Programs", "url": "programs.html" },
-      { "label": "Events", "url": "events.html" },
-      { "label": "Team", "url": "team.html" },
-      { "label": "Values", "url": "values.html" },
-      { "label": "Resources", "url": "resources.html" },
-      { "label": "Contact", "url": "contact.html" }
+      {
+        "label": "Home",
+        "url": "index.html"
+      },
+      {
+        "label": "Programs",
+        "url": "programs.html"
+      },
+      {
+        "label": "Events",
+        "url": "events.html"
+      },
+      {
+        "label": "Team",
+        "url": "team.html"
+      },
+      {
+        "label": "Values",
+        "url": "values.html"
+      },
+      {
+        "label": "Resources",
+        "url": "resources.html"
+      },
+      {
+        "label": "Contact",
+        "url": "contact.html"
+      }
     ]
   },
   "contact": {
     "heading": "Get in Touch",
     "email": "empowermenttherapyinstitute@gmail.com",
     "people": [
-      { "name": "Aparna", "image": "images/aparna-kher-portrait-1.jpg", "image_alt": "Aparna" },
-      { "name": "Myra", "image": "images/footer-myra.jpg", "image_alt": "Myra" },
-      { "name": "Priti", "image": "images/footer-priti.jpg", "image_alt": "Priti" }
+      {
+        "name": "Aparna",
+        "image": "images/aparna-kher-portrait-1.jpg",
+        "image_alt": "Aparna"
+      },
+      {
+        "name": "Myra",
+        "image": "images/footer-myra.jpg",
+        "image_alt": "Myra"
+      },
+      {
+        "name": "Priti",
+        "image": "images/footer-priti.jpg",
+        "image_alt": "Priti"
+      }
     ]
   },
   "support": {
-    "heading": "Support",
+    "heading": "Support our community",
     "subscribe_link_label": "View payment plans"
   },
   "copyright": "© 2026 Empowerment Therapy Institute. All rights reserved."
