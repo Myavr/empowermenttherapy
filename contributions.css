@@ -50,7 +50,7 @@
   line-height: 1.25;
   margin-bottom: .6rem;
 }
-.contribution-section-intro p { color: #5b635d; text-align: center; }
+.contribution-section-intro p { color: #5b635d; text-align: center; font-size: 1.3rem; line-height: 1.8; }
 .contribution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .contribution-card {
   --tier-color: var(--green-deep);
