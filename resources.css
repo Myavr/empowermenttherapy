@@ -2,6 +2,8 @@
 #resources .resources-layout .resource-grid {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 37.333rem;
   gap: 0;
   padding: 0;
   margin-block: clamp(1rem, 2vw, 2rem);
@@ -13,6 +15,12 @@
 
 .resources-layout .resource-col {
   display: contents;
+}
+
+.resources-layout .resource-card {
+  align-self: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .resource-card {
@@ -34,10 +42,19 @@
 }
 
 .resources-layout .resource-card-header {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 1.5rem;
   min-height: 0;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1rem 1.25rem 1.5rem;
   cursor: pointer;
   transition: background 0.2s ease;
+}
+
+.resource-card-toggle {
+  margin-left: 0;
+  width: 1.5rem;
+  justify-self: end;
+  text-align: center;
 }
 
 .resource-card-header:hover,
@@ -65,5 +82,12 @@
 
   .resource-card-body {
     padding-inline: 1rem;
+  }
+}
+
+/* Align the panel with the book image on desktop. */
+@media (min-width: 1001px) {
+  #resources .resources-layout .resource-grid {
+    margin-top: calc(clamp(1rem, 2vw, 2rem) + 2rem);
   }
 }
