@@ -4510,6 +4510,16 @@ p {
 }
 
 /* ===== RESOURCES ===== */
+#resources {
+  overflow: visible;
+  z-index: 2;
+}
+
+/* Keep the decorative circles inside the section while its dropdown can extend beyond it. */
+#resources::before {
+  clip-path: inset(140px 160px 0 0);
+}
+
 #resources .resource-grid {
   padding-block: clamp(1rem, 2vw, 2rem);
 }
