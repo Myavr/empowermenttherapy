@@ -2,11 +2,15 @@
   "label": "Chapter samples",
   "chapters": [
     {
-      "title": "Chapter 4",
+      "title": "Capítulo 7 - La relación con los clientes",
       "pdf": "pdfs/ETbooksample1.pdf"
     },
     {
-      "title": "Chapter 7",
+      "title": "Chapter 4 - Needs",
+      "pdf": "pdfs/ETbooksample1.pdf"
+    },
+    {
+      "title": "Chapter 7 - Relating to Clients: Interpersonal Attitudes",
       "pdf": "pdfs/Chapter7.pdf"
     }
   ]
