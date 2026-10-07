@@ -7,9 +7,16 @@
   }
 
   function pdfURL(value) {
-    const path = String(value || '').trim().replace(/^\//, '');
-    if (!/^pdfs\/.+\.pdf$/i.test(path) || /[\\\x00-\x1f\x7f]/.test(path) ||
-        path.split('/').some(part => part === '..' || part === '.')) {
+    const path = typeof value === 'string' ? value.trim() : '';
+    let decoded;
+    try {
+      decoded = decodeURIComponent(path);
+    } catch (_) {
+      throw new Error('Chapter samples must link to a PDF in pdfs/');
+    }
+    if (!/^pdfs\/.+\.pdf$/i.test(path) || !/^pdfs\/.+\.pdf$/i.test(decoded) ||
+        /[\\\x00-\x1f\x7f?#]/.test(decoded) ||
+        decoded.split('/').some(part => !part || part === '..' || part === '.')) {
       throw new Error('Chapter samples must link to a PDF in pdfs/');
     }
     return esc(path);

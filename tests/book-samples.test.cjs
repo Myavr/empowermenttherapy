@@ -10,8 +10,10 @@ const read = file => readFileSync(join(root, file), 'utf8');
 const data = () => JSON.parse(read('data/book-samples.json'));
 
 test('chapter samples use their CMS labels and PDFs in order, opening in new tabs', () => {
-  const edited = data();
-  edited.chapters = [{ title: 'Chapter 2', pdf: 'pdfs/chapter 2.pdf' }, edited.chapters[0]];
+  const edited = { chapters: [
+    { title: 'Chapter 2', pdf: 'pdfs/chapter 2.pdf' },
+    { title: 'Sample 1', pdf: 'pdfs/ETbooksample1.pdf' }
+  ] };
   const html = renderBookSamples(edited);
   assert.ok(html.indexOf('Chapter 2') < html.indexOf('Sample 1'));
   assert.equal((html.match(/target="_blank" rel="noopener"/g) || []).length, 2);
