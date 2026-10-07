@@ -3031,6 +3031,11 @@ p {
   border-top: 3px solid var(--blue);
 }
 
+/* Image banners directly below page headings have no separating line. */
+.subpage-hero + .who-title-slice {
+  border-top: 0;
+}
+
 .who-bg-image {
   position: absolute;
   inset: 0;
