@@ -1,0 +1,69 @@
+/* Resources accordion: one panel with CMS-driven sections. */
+#resources .resources-layout .resource-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin-block: clamp(1rem, 2vw, 2rem);
+  background: var(--white);
+  border: 1px solid rgba(156, 192, 192, 0.6);
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.resources-layout .resource-col {
+  display: contents;
+}
+
+.resource-card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(156, 192, 192, 0.45);
+  border-radius: 0;
+  box-shadow: none;
+  cursor: default;
+}
+
+.resource-col:first-child .resource-card:first-child {
+  border-top: 0;
+}
+
+.resource-card:hover {
+  border-color: rgba(156, 192, 192, 0.45);
+  box-shadow: none;
+}
+
+.resources-layout .resource-card-header {
+  min-height: 0;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.resource-card-header:hover,
+.resource-card.is-open .resource-card-header {
+  background: rgba(84, 108, 192, 0.05);
+}
+
+.resource-card-header:focus-visible {
+  outline-offset: -4px;
+  border-radius: 0;
+}
+
+.resource-card-body {
+  padding-inline: 1.5rem;
+}
+
+.resource-card.is-open .resource-card-body {
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .resources-layout .resource-card-header {
+    padding: 1rem;
+  }
+
+  .resource-card-body {
+    padding-inline: 1rem;
+  }
+}
