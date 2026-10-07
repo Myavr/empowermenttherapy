@@ -42,13 +42,12 @@
       </article>`;
     }).join('\n');
 
-    return `<section class="contribution-hero" aria-labelledby="contributions-title">
+    return `<section class="subpage-hero contribution-hero" aria-labelledby="contributions-title">
       <div class="container">
         <p class="contribution-eyebrow">${esc(data.eyebrow)}</p>
         <h1 id="contributions-title">${esc(data.title)}</h1>
         <p class="contribution-intro">${esc(data.intro)}</p>
       </div>
-      <div class="contribution-hero-leaf" aria-hidden="true">${leaf}</div>
     </section>
     <div class="who-title-slice">
       <img class="who-bg-image" src="images/communicacionplena.avif" alt="" width="1275" height="663" decoding="async">

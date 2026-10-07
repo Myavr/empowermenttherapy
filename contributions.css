@@ -1,16 +1,10 @@
 .who-title-slice {
   border-top: none;
-  min-height: clamp(360px, 48vw, 720px);
+  min-height: 0;
+  height: clamp(220px, 42vw, 630px);
 }
 .who-title-slice .who-bg-image { object-position: right bottom; }
 
-.contribution-hero {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
-  background: linear-gradient(115deg, #faf8f0 45%, #eaf0e5);
-  border-bottom: 1px solid #dfe5d8;
-}
 .contribution-hero .container { position: relative; z-index: 1; text-align: center; }
 .contribution-eyebrow {
   font-size: .73rem;
@@ -20,27 +14,9 @@
   color: var(--green-deep);
   margin-bottom: 1.1rem;
 }
-.contribution-hero h1 {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-  letter-spacing: -.035em;
-  line-height: 1.12;
-  white-space: pre-line;
-  max-width: 880px;
-  margin-inline: auto;
-  margin-bottom: 1.5rem;
-}
-.contribution-intro { max-width: 650px; margin-inline: auto; font-size: 1.4rem; line-height: 1.8; color: #505b53; }
-.contribution-hero-leaf {
-  position: absolute;
-  width: clamp(220px, 30vw, 430px);
-  right: 2%; bottom: -80px;
-  color: #6d8952;
-  opacity: .13;
-  transform: rotate(15deg);
-  pointer-events: none;
-}
+.contribution-hero h1 { white-space: pre-line; }
+.contribution-intro { line-height: 1.8; }
+.contribution-hero .contribution-eyebrow { color: var(--gold); font-size: .73rem; margin-bottom: 1.1rem; }
 .contribution-options { padding: clamp(2.5rem, 5vw, 4rem) 0; }
 .contribution-section-intro { margin-bottom: 2rem; }
 .contribution-section-intro h2, .contribution-help h2 {
@@ -122,6 +98,5 @@
   .contribution-grid { grid-template-columns: 1fr; }
   .contribution-card { padding: 1.8rem; }
   .contribution-checkout.btn { font-size: .95rem; }
-  .contribution-hero-leaf { right: -65px; opacity: .08; }
   .contribution-billing-note { text-align: left; }
 }
