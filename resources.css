@@ -38,18 +38,34 @@
 .resource-card {
   background: transparent;
   border: 0;
-  border-top: 1px solid rgba(156, 192, 192, 0.45);
+  border-top: 3px solid var(--resource-accent, var(--blue));
   border-radius: 0;
   box-shadow: none;
   cursor: default;
 }
 
-.resource-col:first-child .resource-card:first-child {
-  border-top: 0;
+.resource-card--blue {
+  --resource-accent: var(--blue);
+  --resource-highlight: var(--blue-light);
+}
+
+.resource-card--seafoam {
+  --resource-accent: var(--seafoam);
+  --resource-highlight: var(--seafoam-light);
+}
+
+.resource-card--gold {
+  --resource-accent: var(--gold);
+  --resource-highlight: rgba(228, 204, 120, 0.14);
+}
+
+.resource-card--green {
+  --resource-accent: var(--green);
+  --resource-highlight: var(--green-light);
 }
 
 .resource-card:hover {
-  border-color: rgba(156, 192, 192, 0.45);
+  border-color: var(--resource-accent, var(--blue));
   box-shadow: none;
 }
 
@@ -71,7 +87,7 @@
 
 .resource-card-header:hover,
 .resource-card.is-open .resource-card-header {
-  background: rgba(84, 108, 192, 0.05);
+  background: var(--resource-highlight, var(--blue-light));
 }
 
 .resource-card-header:focus-visible {

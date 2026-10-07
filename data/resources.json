@@ -39,7 +39,7 @@
     },
     {
       "title": "Internal Processes",
-      "color": "green",
+      "color": "seafoam",
       "icon": "❋",
       "links": [
         {
@@ -88,7 +88,7 @@
     },
     {
       "title": "Interpersonal Processes",
-      "color": "seafoam",
+      "color": "green",
       "icon": "❤",
       "links": [
         {
