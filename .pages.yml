@@ -9,10 +9,47 @@
 # matching the relative paths the rest of the site already uses (works whether the
 # site is served from the domain root or a project subpath).
 media:
-  input: images
-  output: images
+  - name: images
+    label: Images
+    input: images
+    output: images
+  - name: pdfs
+    label: PDFs
+    input: pdfs
+    output: pdfs
+    extensions: [pdf]
 
 content:
+  - name: book_samples
+    label: Book chapter samples
+    description: The Chapter samples dropdown beside the book on the Resources page. Add, remove, and reorder chapters here. Each PDF opens in a new tab.
+    type: file
+    path: data/book-samples.json
+    fields:
+      - name: label
+        label: Dropdown button text
+        type: string
+        required: true
+      - name: chapters
+        label: Chapter samples
+        type: object
+        list: true
+        required: false
+        fields:
+          - name: title
+            label: Chapter title
+            type: string
+            required: true
+          - name: pdf
+            label: Sample PDF
+            description: Select an existing PDF or upload a new one to the PDFs library.
+            type: file
+            required: true
+            options:
+              media: pdfs
+              extensions: [pdf]
+
+
   - name: contributions
     label: Contributions
     description: The monthly contribution page. Edit the text and the three options here. PayPal controls the actual charge; confirm that every displayed amount and currency matches its PayPal plan. Paste only the plan ID, not the entire button code.

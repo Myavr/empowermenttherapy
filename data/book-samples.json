@@ -1,0 +1,9 @@
+{
+  "label": "Chapter samples",
+  "chapters": [
+    {
+      "title": "Sample 1",
+      "pdf": "pdfs/ETbooksample1.pdf"
+    }
+  ]
+}

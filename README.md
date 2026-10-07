@@ -7,6 +7,11 @@ reorder navigation links and people there. The email also updates the Contact pa
 form submission delivery remains in its existing code configuration. The footer
 links to the Contributions page for monthly subscriptions.
 
+Edit **Book chapter samples** in Pages CMS to change the Resources book dropdown.
+Add a chapter title and select or upload its PDF in the **PDFs** media library.
+Drag chapters to reorder them; remove all chapters to hide the dropdown.
+Published pages and local previews use the same content and renderer.
+
 Edit **Contributions** in Pages CMS to change the page headings, descriptions,
 monthly amounts, currency, card colours, help text, and each tier's PayPal plan ID.
 Copy only the `P-...` value from the PayPal button code. The checkout links open

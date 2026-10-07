@@ -6,6 +6,7 @@ const footerMarker = '<div id="site-footer"></div>';
 
 const render = require('../footer-render.js');
 const { renderContributions } = require('../contributions-render.js');
+const { renderBookSamples } = require('../book-samples-render.js');
 
 function renderFooter(data) {
   return render(data, readFileSync(join(root, 'templates', 'footer.html'), 'utf8'));
@@ -24,10 +25,15 @@ function buildSite(output = join(root, '_site')) {
   const data = JSON.parse(readFileSync(join(root, 'data', 'footer.json'), 'utf8'));
   const footer = renderFooter(data);
   const contributions = JSON.parse(readFileSync(join(root, 'data', 'contributions.json'), 'utf8'));
+  const bookSamples = JSON.parse(readFileSync(join(root, 'data', 'book-samples.json'), 'utf8'));
   mkdirSync(output, { recursive: true });
   for (const entry of readdirSync(root, { withFileTypes: true })) {
     if (entry.isFile() && /\.(html|css|js)$/.test(entry.name)) {
       let source = readFileSync(join(root, entry.name), 'utf8');
+      if (entry.name === 'resources.html') {
+        source = source.replace(/<!-- book-samples:start -->[\s\S]*?<!-- book-samples:end -->/,
+          () => '<div id="book-chapter-samples" data-published="true">' + renderBookSamples(bookSamples) + '</div>');
+      }
       if (entry.name === 'contributions.html') {
         source = source.replace(/<!-- contributions:start -->[\s\S]*?<!-- contributions:end -->/,
           () => renderContributions(contributions));
