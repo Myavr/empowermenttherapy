@@ -4519,6 +4519,92 @@ p {
   margin: 0 auto 2rem;
 }
 
+.resources-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.resource-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: clamp(1rem, 2vw, 2rem);
+}
+
+.resource-book-cover {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+}
+
+.resource-book-cover img {
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.resource-book .btn {
+  font-size: 1.2rem;
+  border-radius: 0;
+  background: rgba(84, 108, 192, 0.85);
+  border-color: transparent;
+}
+
+.resource-book .btn:hover {
+  background: rgba(60, 81, 159, 0.9);
+  border-color: transparent;
+}
+
+.resource-book-endorsements {
+  font-size: 1.2rem;
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.resources-layout .resource-grid {
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.resources-layout .resource-col {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.resources-layout .resource-card {
+  align-self: start;
+}
+
+.resources-layout .resource-card-header {
+  min-height: 7rem;
+}
+
+@media (max-width: 768px) {
+  .resources-layout .resource-col {
+    grid-template-rows: none;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .resources-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .resource-book {
+    padding-block: 0;
+  }
+}
+
 .resource-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
