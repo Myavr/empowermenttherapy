@@ -2,8 +2,12 @@
   "label": "Chapter samples",
   "chapters": [
     {
-      "title": "Sample 1",
+      "title": "Chapter 4",
       "pdf": "pdfs/ETbooksample1.pdf"
+    },
+    {
+      "title": "Chapter 7",
+      "pdf": "pdfs/Chapter7.pdf"
     }
   ]
 }
