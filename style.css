@@ -2568,7 +2568,12 @@ p {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center top;
   display: block;
+}
+
+.venn-side-right .venn-photo img {
+  object-position: center 10%;
 }
 
 .venn-side h4 {
