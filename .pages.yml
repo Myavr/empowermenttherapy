@@ -140,6 +140,11 @@ content:
           - name: text
             label: Message
             type: text
+          - name: additional_text
+            label: Additional paragraph
+            description: Appears immediately after the main message. Leave blank to hide.
+            type: text
+            required: false
           - name: link_label
             label: Contact button text
             type: string
