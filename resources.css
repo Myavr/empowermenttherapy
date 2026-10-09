@@ -71,7 +71,7 @@
 
 .resources-layout .resource-card-header {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr) 1.5rem;
+  grid-template-columns: 60px minmax(0, 1fr) 1.5rem;
   min-height: 0;
   padding: 1.25rem 1rem 1.25rem 1.5rem;
   cursor: pointer;
@@ -121,8 +121,14 @@
 }
 
 /* Uploaded icons match the emoji size and preserve their proportions. */
+.resources-layout .resource-card-icon {
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+}
+
 .resources-layout .resource-card-icon img {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   object-fit: contain;
 }
