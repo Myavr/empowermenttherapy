@@ -18,64 +18,106 @@
         "title": "Global Reach & Community",
         "image": "images/accordion-flowers.webp",
         "body": [
-          { "type": "paragraph", "text": "We are training Empowerment Practitioners in {{countryCount}} countries and three continents, thus far." },
-          { "type": "paragraph", "text": "Our students have forged a close-knit, global community:" },
-          { "type": "list", "items": [
-            "They support one another in difficult times.",
-            "We host an Empathy Cafe — a weekly group where students listen to one another empathically, building resilience."
-          ] }
+          {
+            "type": "paragraph",
+            "text": "We are training Empowerment Practitioners in {{countryCount}} countries and three continents, thus far."
+          },
+          {
+            "type": "paragraph",
+            "text": "Our students have forged a close-knit, global community:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "They support one another in difficult times.",
+              "We host an Empathy Cafe — a weekly group where students listen to one another empathically, building resilience."
+            ]
+          }
         ]
       },
       {
         "title": "Affordable Access",
         "image": "images/accordion-pond.webp",
         "body": [
-          { "type": "paragraph", "text": "We keep Empowerment Therapy training within reach for anyone called to it:" },
-          { "type": "list", "items": [
-            "Fees are comparatively low — $30–$50 USD per month, based on ability to pay.",
-            "Partial scholarships are available, so cost is never a barrier.",
-            "No one is turned away for lack of financial resources."
-          ] }
+          {
+            "type": "paragraph",
+            "text": "We keep Empowerment Therapy training within reach for anyone called to it:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Fees are comparatively low — $30–$50 USD per month, based on ability to pay.",
+              "Partial scholarships are available, so cost is never a barrier.",
+              "No one is turned away for lack of financial resources."
+            ]
+          }
         ]
       },
       {
         "title": "Online and In-Person Training",
         "image": "images/accordion-canopy.webp",
         "body": [
-          { "type": "paragraph", "text": "We offer training in two complementary formats:" },
-          { "type": "list", "items": [
-            "Weekly online sessions, greatly expanding access.",
-            "In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited."
-          ] }
+          {
+            "type": "paragraph",
+            "text": "We offer training in two complementary formats:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Weekly online sessions, greatly expanding access.",
+              "In-person, 4-day, immersive workshops in Mexico, India, and anywhere we are invited."
+            ]
+          }
         ]
       },
       {
         "title": "Curriculum Content",
         "image": "images/accordion-mountains.webp",
         "body": [
-          { "type": "paragraph", "text": "Structured, evidence-informed curriculum integrating Nonviolent Communication and Client-Centered Therapy." },
-          { "type": "paragraph", "text": "The model incorporates 30 years of practical experience in community mental health settings." },
-          { "type": "paragraph", "text": "It includes such topics as:" },
-          { "type": "list", "items": [
-            "Step-by-step processes to transform anger, guilt, shame, fear, and conflict in relationships.",
-            "Liberating Role Plays, a highly effective, healing and empowering process to be used with groups, thus increasing access significantly.",
-            "Skills to foster clients' autonomy, resilience and agency."
-          ] },
-          { "type": "paragraph", "text": "It combines conceptual and experiential learning within a collaborative paradigm." }
+          {
+            "type": "paragraph",
+            "text": "Structured, evidence-informed curriculum integrating Nonviolent Communication and Client-Centered Therapy."
+          },
+          {
+            "type": "paragraph",
+            "text": "The model incorporates 30 years of practical experience in community mental health settings."
+          },
+          {
+            "type": "paragraph",
+            "text": "It includes such topics as:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Step-by-step processes to transform anger, guilt, shame, fear, and conflict in relationships.",
+              "Liberating Role Plays, a highly effective, healing and empowering process to be used with groups, thus increasing access significantly.",
+              "Skills to foster clients' autonomy, resilience and agency."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "It combines conceptual and experiential learning within a collaborative paradigm."
+          }
         ]
       },
       {
         "title": "Our Vision",
         "image": "images/accordion-sunrise.webp",
         "body": [
-          { "type": "paragraph", "text": "Our goal is to establish sustainable partnerships with local communities in underserved regions, systematically expanding access to care by:" },
-          { "type": "list", "items": [
-            "Building relationships of trust with community leaders.",
-            "Assessing needs and co-designing programs with local residents.",
-            "Training local practitioners to provide empowerment services within their communities to ensure language and cultural competence.",
-            "Emphasizing group (v. individual) work for expanded access, reduced cost, and community building.",
-            "Training program participants to teach empowerment skills to their children to increase impact for generations to come."
-          ] }
+          {
+            "type": "paragraph",
+            "text": "Our goal is to establish sustainable partnerships with local communities in underserved regions, systematically expanding access to care by:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Building relationships of trust with community leaders.",
+              "Assessing needs and co-designing programs with local residents.",
+              "Training local practitioners to provide empowerment services within their communities to ensure language and cultural competence.",
+              "Emphasizing group (v. individual) work for expanded access, reduced cost, and community building.",
+              "Training program participants to teach empowerment skills to their children to increase impact for generations to come."
+            ]
+          }
         ]
       }
     ]
@@ -97,7 +139,7 @@
       "“I’m unhappy at my job.”"
     ],
     "details_body": "Even when they can transform cognitive distortions, they are not necessarily able to identify their needs and ask for what they want. The reason for this has to do with **early disconnection from needs** compounded with **self-judgment** and what Carl Rogers calls “**conditions of worth**” — internalized rules that dictate how a person must behave to receive love and acceptance. These conditions connect self-worth to external validation rather than intrinsic value, leading to low self-esteem, pleasing others at one’s own expense, and lack of authentic connection to self and others. **Trauma and domination systems** further limit their ability to build fulfilling lives.",
-    "additional_paragraph": "",
+    "additional_paragraph": "In addition to Nonviolent Communication and Client Centered Therapy principles, Myra draws upon insights cultivated over more than three decades of psychotherapeutic practice. It encompasses processes designed to transform disempowering, non-social, emotional states and debilitating patterns of thought into calmer, and socially engaged affective states. The model also incorporates a systematic approach to illuminating and examining the dynamics and impact of life-alienating systems.",
     "aims": "Thus, our work has three aims: **healing, liberation and empowerment.** Beyond symptom reduction, we help people to be happy and thrive."
   },
   "who": {
