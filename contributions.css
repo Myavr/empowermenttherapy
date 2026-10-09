@@ -18,10 +18,11 @@
 .contribution-intro { line-height: 1.8; }
 .contribution-hero .contribution-eyebrow { color: var(--gold); font-size: .73rem; margin-bottom: 1.1rem; }
 .contribution-options {
+  --contribution-intro-gap: calc(clamp(2.5rem, 5vw, 4rem) + 4rem);
   padding: clamp(2.5rem, 5vw, 4rem) 0;
-  padding-top: calc(clamp(2.5rem, 5vw, 4rem) + 4rem);
+  padding-top: var(--contribution-intro-gap);
 }
-.contribution-section-intro { margin-bottom: 6rem; }
+.contribution-section-intro { margin-bottom: var(--contribution-intro-gap); }
 .contribution-section-intro h2, .contribution-help h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3vw, 2.3rem);
@@ -29,7 +30,7 @@
   line-height: 1.25;
   margin-bottom: .6rem;
 }
-.contribution-section-intro p { color: #5b635d; text-align: center; font-size: clamp(1.5rem, 2.2vw, 1.75rem); line-height: 1.8; }
+.contribution-section-intro p { margin-bottom: 0; color: #5b635d; text-align: center; font-size: clamp(1.5rem, 2.2vw, 1.75rem); line-height: 1.8; }
 .contribution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .contribution-card {
   --tier-color: var(--green-deep);
