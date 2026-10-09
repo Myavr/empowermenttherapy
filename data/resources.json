@@ -4,7 +4,6 @@
       "title": "Articles",
       "color": "blue",
       "icon": "✍️",
-      "icon_image": "",
       "links": [
         {
           "title": "Nonviolent Communication and Trauma",
@@ -42,7 +41,6 @@
       "title": "Internal Processes",
       "color": "seafoam",
       "icon": "💚",
-      "icon_image": "",
       "links": [
         {
           "title": "De la culpa y la vergüenza a la compasión",
@@ -75,7 +73,6 @@
       "title": "Certification Candidates Kit",
       "color": "gold",
       "icon": "🎓",
-      "icon_image": "",
       "links": [
         {
           "title": "Empowerment Journal Form",
@@ -92,8 +89,7 @@
     {
       "title": "Interpersonal Processes",
       "color": "green",
-      "icon": "🫂",
-      "icon_image": "",
+      "icon_image": "images/intercirclesicon-1.png",
       "links": [
         {
           "title": "Connection Superhighway",
