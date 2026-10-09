@@ -79,6 +79,7 @@
 }
 
 .resource-card-toggle {
+  font-size: 1.7rem;
   margin-left: 0;
   width: 1.5rem;
   justify-self: end;
