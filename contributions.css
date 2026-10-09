@@ -17,8 +17,11 @@
 .contribution-hero h1 { white-space: pre-line; }
 .contribution-intro { line-height: 1.8; }
 .contribution-hero .contribution-eyebrow { color: var(--gold); font-size: .73rem; margin-bottom: 1.1rem; }
-.contribution-options { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-.contribution-section-intro { margin-bottom: 2rem; }
+.contribution-options {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  padding-top: calc(clamp(2.5rem, 5vw, 4rem) + 4rem);
+}
+.contribution-section-intro { margin-bottom: 4rem; }
 .contribution-section-intro h2, .contribution-help h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3vw, 2.3rem);
