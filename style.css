@@ -3032,6 +3032,13 @@ p {
   border-top: 3px solid var(--blue);
 }
 
+/* Home page image banners have no colored separator above them. */
+#programDetailsSection .who-title-slice,
+#testimonialsSection .testimonials-title-slice,
+body:not(.subpage) .faq-title-slice {
+  border-top: 0;
+}
+
 /* Image banners directly below page headings have no separating line. */
 .subpage-hero + .who-title-slice {
   border-top: 0;
