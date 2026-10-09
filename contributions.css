@@ -21,7 +21,7 @@
   padding: clamp(2.5rem, 5vw, 4rem) 0;
   padding-top: calc(clamp(2.5rem, 5vw, 4rem) + 4rem);
 }
-.contribution-section-intro { margin-bottom: 4rem; }
+.contribution-section-intro { margin-bottom: 6rem; }
 .contribution-section-intro h2, .contribution-help h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3vw, 2.3rem);
@@ -58,7 +58,7 @@
   --tier-accent: var(--blue);
   --tier-background: var(--blue-light);
 }
-.contribution-leaf { display: block; width: 58px; height: 58px; color: var(--tier-accent); margin-bottom: 1rem; }
+.contribution-leaf { display: block; align-self: flex-end; width: 58px; height: 58px; color: var(--tier-accent); margin-bottom: 1rem; }
 .contribution-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--tier-color); margin-bottom: .8rem; }
 .contribution-price { display: flex; align-items: center; gap: .75rem; color: var(--ink); margin-bottom: 1.2rem; }
 .contribution-price strong { font-family: var(--font-heading); font-size: 4.2rem; line-height: 1; font-weight: 400; }
