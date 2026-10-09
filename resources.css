@@ -1,4 +1,4 @@
-/* Resources accordion: one panel with CMS-driven sections. */
+/* Resources accordion: separate panels with CMS-driven sections. */
 #resources .resources-layout {
   width: 100%;
   max-width: calc(320px + 37.333rem + clamp(2rem, 4vw, 4rem));
@@ -16,13 +16,13 @@
   flex-direction: column;
   width: 100%;
   max-width: 37.333rem;
-  gap: 0;
+  gap: 1.5rem;
   padding: 0;
   margin-block: clamp(1rem, 2vw, 2rem);
-  background: var(--white);
-  border: 1px solid rgba(156, 192, 192, 0.6);
+  background: transparent;
+  border: 0;
   border-radius: 0;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .resources-layout .resource-col {
@@ -36,11 +36,11 @@
 }
 
 .resource-card {
-  background: transparent;
-  border: 0;
+  background: var(--white);
+  border: 1px solid rgba(156, 192, 192, 0.6);
   border-top: 3px solid var(--resource-accent, var(--blue));
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
   cursor: default;
 }
 
