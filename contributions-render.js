@@ -66,6 +66,7 @@
             <p class="contribution-eyebrow">${esc(help.eyebrow)}</p>
             <h2 id="contributions-help-title">${esc(help.title)}</h2>
             <p>${esc(help.text)}</p>
+            ${String(help.additional_title || '').trim() ? `<h2 class="contribution-help-additional-title">${esc(help.additional_title)}</h2>` : ''}
             ${String(help.additional_text || '').trim() ? `<p class="contribution-help-additional">${esc(help.additional_text)}</p>` : ''}
           </div>
           <a class="btn" href="contact.html">${esc(help.link_label)}<span aria-hidden="true">&rarr;</span></a>

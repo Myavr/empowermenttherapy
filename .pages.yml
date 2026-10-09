@@ -140,6 +140,11 @@ content:
           - name: text
             label: Message
             type: text
+          - name: additional_title
+            label: Additional subtitle
+            description: Appears above the additional paragraph, styled like the main heading. Leave blank to hide.
+            type: string
+            required: false
           - name: additional_text
             label: Additional paragraph
             description: Appears immediately after the main message. Leave blank to hide.
