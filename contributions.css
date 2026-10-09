@@ -89,7 +89,7 @@
 .contribution-help h2 { text-align: left; }
 .contribution-help .contribution-eyebrow { margin-bottom: .8rem; }
 .contribution-help p:not(.contribution-eyebrow) { max-width: 700px; line-height: 1.8; color: #505b53; }
-.contribution-help .contribution-help-additional-title { margin-top: 1.5rem; }
+.contribution-help .contribution-help-additional-title { margin-top: 3rem; }
 .contribution-help .contribution-help-additional-title + .contribution-help-additional { margin-top: 0; }
 .contribution-help .contribution-help-additional { margin-top: 1rem; }
 .contribution-help .btn { flex-shrink: 0; }
