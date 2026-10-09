@@ -80,6 +80,26 @@
       }
     ]
   },
+  "what_is_et": {
+    "title": "What is Empowerment Therapy?",
+    "rosenberg_name": "Marshall Rosenberg",
+    "rosenberg_subtitle": "Nonviolent Communication",
+    "rogers_name": "Carl Rogers",
+    "rogers_subtitle": "Client Centered Therapy",
+    "diagram_title": "Empowerment Therapy",
+    "tagline": "Healing · Liberation · Empowerment",
+    "lead": "Grounded in the work of Marshall Rosenberg and Carl Rogers, Empowerment Therapy is founded on the fulfillment of **universal human needs**. The underlying principle is that *when our needs are met, we feel and do well.*",
+    "details_title": "Why this is harder than it looks",
+    "details_intro": "Most people seek help because they have unmet needs that they struggle to identify and express. They may experience malaise, but can only account for it in general terms.",
+    "examples": [
+      "“My teenage son doesn’t listen.”",
+      "“My partner is distant.”",
+      "“I’m unhappy at my job.”"
+    ],
+    "details_body": "Even when they can transform cognitive distortions, they are not necessarily able to identify their needs and ask for what they want. The reason for this has to do with **early disconnection from needs** compounded with **self-judgment** and what Carl Rogers calls “**conditions of worth**” — internalized rules that dictate how a person must behave to receive love and acceptance. These conditions connect self-worth to external validation rather than intrinsic value, leading to low self-esteem, pleasing others at one’s own expense, and lack of authentic connection to self and others. **Trauma and domination systems** further limit their ability to build fulfilling lives.",
+    "additional_paragraph": "",
+    "aims": "Thus, our work has three aims: **healing, liberation and empowerment.** Beyond symptom reduction, we help people to be happy and thrive."
+  },
   "who": {
     "eyebrow": "Who is this for?",
     "blocks": [

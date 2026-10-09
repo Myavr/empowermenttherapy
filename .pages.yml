@@ -621,7 +621,7 @@ content:
 
   - name: home
     label: Home page text
-    description: One-off text on the home page — the Problem section, the "What We Are Doing" strips, and the "Who Is This For?" blocks. Use **double asterisks** for bold and *single asterisks* for italic.
+    description: One-off text on the home page — the Problem section, the "What We Are Doing" strips, "What is Empowerment Therapy?", and the "Who Is This For?" blocks. Use **double asterisks** for bold and *single asterisks* for italic.
     type: file
     path: data/home.json
     fields:
@@ -688,6 +688,68 @@ content:
                     type: text
                     list: true
                     required: false
+      - name: what_is_et
+        label: What is Empowerment Therapy?
+        type: object
+        fields:
+          - name: title
+            label: Section heading
+            type: string
+            required: false
+          - name: rosenberg_name
+            label: Left diagram name
+            type: string
+            required: false
+          - name: rosenberg_subtitle
+            label: Left diagram subtitle
+            type: string
+            required: false
+          - name: rogers_name
+            label: Right diagram name
+            type: string
+            required: false
+          - name: rogers_subtitle
+            label: Right diagram subtitle
+            type: string
+            required: false
+          - name: diagram_title
+            label: Center diagram label
+            type: string
+            required: false
+          - name: tagline
+            label: Diagram tagline
+            type: string
+            required: false
+          - name: lead
+            label: Opening paragraph
+            type: text
+            required: false
+          - name: details_title
+            label: Expandable explanation heading
+            type: string
+            required: false
+          - name: details_intro
+            label: Expandable explanation opening paragraph
+            type: text
+            required: false
+          - name: examples
+            label: Example statements
+            type: text
+            list: true
+            required: false
+          - name: details_body
+            label: Expandable explanation main paragraph
+            type: text
+            required: false
+          - name: additional_paragraph
+            label: Paragraph before the three aims
+            description: Appears directly above the paragraph beginning Thus, our work has three aims. Leave blank to hide.
+            type: text
+            required: false
+          - name: aims
+            label: Three aims paragraph
+            type: text
+            required: false
       - name: who
         label: Who Is This For?
         type: object

@@ -1067,6 +1067,47 @@ function etInline(s) {
         }
       }
 
+      /* ----- What is Empowerment Therapy? ----- */
+      var whatIsEt = data.what_is_et;
+      if (whatIsEt) {
+        [
+          ['title', '#whatIsEtSection .venn-cloud-heading'],
+          ['rosenberg_name', '#whatIsEtSection .venn-side-left h4'],
+          ['rosenberg_subtitle', '#whatIsEtSection .venn-side-left .venn-subtitle'],
+          ['rogers_name', '#whatIsEtSection .venn-side-right h4'],
+          ['rogers_subtitle', '#whatIsEtSection .venn-side-right .venn-subtitle'],
+          ['diagram_title', '#whatIsEtSection .venn-et-title'],
+          ['tagline', '#whatIsEtSection .venn-et-tagline'],
+          ['details_title', '#etDescriptionSection .et-deeper-label']
+        ].forEach(function (field) {
+          var el = document.querySelector(field[1]);
+          if (el && typeof whatIsEt[field[0]] === 'string') el.textContent = whatIsEt[field[0]];
+        });
+        [
+          ['lead', '#etDescriptionSection .et-description-lead'],
+          ['aims', '#etDescriptionSection .et-description-aims']
+        ].forEach(function (field) {
+          var el = document.querySelector(field[1]);
+          if (el && typeof whatIsEt[field[0]] === 'string') el.innerHTML = etInline(whatIsEt[field[0]]);
+        });
+        var deeperBody = document.querySelector('#etDescriptionSection .et-deeper-body');
+        if (deeperBody) {
+          deeperBody.innerHTML =
+            (whatIsEt.details_intro ? '<p>' + etInline(whatIsEt.details_intro) + '</p>' : '') +
+            (Array.isArray(whatIsEt.examples) && whatIsEt.examples.length ?
+              '<div class="et-examples">' + whatIsEt.examples.map(function (example) {
+                return '<span>' + etInline(example) + '</span>';
+              }).join('') + '</div>' : '') +
+            (whatIsEt.details_body ? '<p>' + etInline(whatIsEt.details_body) + '</p>' : '');
+        }
+        var additionalParagraph = document.querySelector('#etDescriptionSection .et-description-additional');
+        if (additionalParagraph) {
+          var additionalText = String(whatIsEt.additional_paragraph || '').trim();
+          additionalParagraph.innerHTML = etInline(additionalText);
+          additionalParagraph.hidden = !additionalText;
+        }
+      }
+
       /* ----- Who Is This For? (text of the three fixed audience blocks) ----- */
       var who = data.who;
       if (who) {
