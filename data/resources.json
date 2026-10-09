@@ -38,8 +38,25 @@
       ]
     },
     {
-      "title": "Internal Processes",
+      "title": "Certification Candidates Kit",
       "color": "seafoam",
+      "icon": "🎓",
+      "links": [
+        {
+          "title": "Empowerment Journal Form",
+          "url": "pdfs/EmpowermentJournalPDF.pdf",
+          "description": "Tool for practitioners to increase self-awareness and embody therapeutic traits"
+        },
+        {
+          "title": "Self-Evaluation Form",
+          "url": "pdfs/Self-EvaluaitonsPDF.pdf",
+          "description": "Tool for practitioners to increase self-awareness and improve client work"
+        }
+      ]
+    },
+    {
+      "title": "Internal Processes",
+      "color": "gold",
       "icon": "💚",
       "links": [
         {
@@ -66,23 +83,6 @@
           "title": "Self-Empathy & Empowerment (SEE)",
           "url": "pdfs/S-EmpathyS-Empowerment3PDF.pdf",
           "description": "Process for understanding difficult experiences, fostering healing, identifying heart's longings, gaining clarity on meeting needs"
-        }
-      ]
-    },
-    {
-      "title": "Certification Candidates Kit",
-      "color": "gold",
-      "icon": "🎓",
-      "links": [
-        {
-          "title": "Empowerment Journal Form",
-          "url": "pdfs/EmpowermentJournalPDF.pdf",
-          "description": "Tool for practitioners to increase self-awareness and embody therapeutic traits"
-        },
-        {
-          "title": "Self-Evaluation Form",
-          "url": "pdfs/Self-EvaluaitonsPDF.pdf",
-          "description": "Tool for practitioners to increase self-awareness and improve client work"
         }
       ]
     },
