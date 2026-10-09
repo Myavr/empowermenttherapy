@@ -119,3 +119,10 @@
     margin-top: calc(clamp(1rem, 2vw, 2rem) + 2rem);
   }
 }
+
+/* Uploaded icons match the emoji size and preserve their proportions. */
+.resources-layout .resource-card-icon img {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}

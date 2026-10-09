@@ -557,6 +557,11 @@ content:
             label: Icon (a single emoji or symbol)
             type: string
             required: false
+          - name: icon_image
+            label: Icon image
+            description: Upload or select a picture to use instead of the emoji. Leave blank to use the emoji.
+            type: image
+            required: false
           - name: links
             label: Links
             type: object

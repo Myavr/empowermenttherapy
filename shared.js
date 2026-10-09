@@ -918,7 +918,9 @@ function etInline(s) {
           card.setAttribute('tabindex', '0');
           card.innerHTML =
             '<div class="resource-card-header">' +
-              '<span class="resource-card-icon">' + etEsc(cat.icon || '') + '</span>' +
+              '<span class="resource-card-icon" aria-hidden="true">' +
+                (cat.icon_image ? '<img src="' + etEsc(cat.icon_image) + '" alt="" decoding="async">' : etEsc(cat.icon || '')) +
+              '</span>' +
               '<div><h3 class="resource-card-title">' + etEsc(cat.title || '') + '</h3></div>' +
               '<span class="resource-card-toggle">+</span>' +
             '</div>' +
