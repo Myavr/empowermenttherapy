@@ -62,7 +62,7 @@
 .contribution-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--tier-color); margin-bottom: .8rem; }
 .contribution-price { display: flex; align-items: center; gap: .75rem; color: var(--ink); margin-bottom: 1.2rem; }
 .contribution-price strong { font-family: var(--font-heading); font-size: 4.2rem; line-height: 1; font-weight: 400; }
-.contribution-price span { font-size: .8rem; line-height: 1.6; color: var(--text-muted); }
+.contribution-price span { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
 .contribution-description { flex: 1; line-height: 1.75; margin-bottom: 1.8rem; color: var(--text-dark); }
 .contribution-checkout.btn {
   padding: .9rem .75rem;
