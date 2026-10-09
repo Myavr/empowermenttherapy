@@ -86,6 +86,7 @@
   border-bottom: 1px solid #d7dece;
   padding: 2.5rem 0;
 }
+.contribution-help h2 { text-align: left; }
 .contribution-help .contribution-eyebrow { margin-bottom: .8rem; }
 .contribution-help p:not(.contribution-eyebrow) { max-width: 700px; line-height: 1.8; color: #505b53; }
 .contribution-help .btn { flex-shrink: 0; }
