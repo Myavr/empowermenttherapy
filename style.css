@@ -3711,6 +3711,75 @@ body:not(.subpage) .faq-title-slice {
   margin-bottom: 0.75rem;
 }
 
+.foundation-schedule {
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 0.9rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(132, 180, 84, 0.12);
+  border-left: 3px solid var(--green);
+  border-radius: 0 6px 6px 0;
+  cursor: default;
+}
+
+.foundation-schedule-time {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.foundation-timezone {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.65rem;
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.foundation-timezone button {
+  border: 0;
+  padding: 0.2rem 0;
+  background: transparent;
+  color: var(--seafoam-deep);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.foundation-timezone-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.foundation-timezone-picker select {
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  background: var(--white, #fff);
+  color: var(--text-dark);
+  font: inherit;
+}
+
+.foundation-schedule [hidden] {
+  display: none;
+}
+
+.foundation-schedule :is(button, select):focus-visible {
+  outline: 2px solid var(--seafoam-deep);
+  outline-offset: 3px;
+}
+
 .level-schedule-list .level-schedule {
   display: block;
   width: fit-content;
