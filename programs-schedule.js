@@ -36,15 +36,15 @@
     return day + ' \u00b7 ' + range + ' ' + zone;
   }
 
-  // Major cities also provide a useful worldwide fallback for older browsers.
+  // Representative places cover worldwide offsets, including fractional ones.
   var cityZones = [
-    ['Etc/GMT+12', 'Baker / Howland Islands'],
+    ['Etc/GMT+12', 'Baker Island'],
     ['Pacific/Pago_Pago', 'Pago Pago'],
     ['Pacific/Honolulu', 'Honolulu'],
     ['Pacific/Marquesas', 'Taiohae, Marquesas Islands'],
     ['America/Anchorage', 'Anchorage'],
     ['Pacific/Gambier', 'Rikitea, Gambier Islands'],
-    ['America/Los_Angeles', 'Los Angeles / San Francisco'],
+    ['America/Los_Angeles', 'Los Angeles'],
     ['America/Vancouver', 'Vancouver'],
     ['Pacific/Pitcairn', 'Adamstown, Pitcairn Islands'],
     ['America/Denver', 'Denver'],
@@ -82,19 +82,19 @@
     ['Europe/Moscow', 'Moscow'],
     ['Asia/Riyadh', 'Riyadh'],
     ['Africa/Nairobi', 'Nairobi'],
-    ['Africa/Dar_es_Salaam', 'Dar es Salaam / Dodoma'],
+    ['Africa/Dar_es_Salaam', 'Dar es Salaam'],
     ['Asia/Tehran', 'Tehran'],
     ['Asia/Dubai', 'Dubai'],
     ['Asia/Kabul', 'Kabul'],
     ['Asia/Karachi', 'Karachi'],
     ['Asia/Tashkent', 'Tashkent'],
-    ['Asia/Kolkata', 'Mumbai / New Delhi'],
+    ['Asia/Kolkata', 'New Delhi'],
     ['Asia/Kathmandu', 'Kathmandu'],
     ['Asia/Dhaka', 'Dhaka'],
     ['Asia/Yangon', 'Yangon'],
     ['Asia/Bangkok', 'Bangkok'],
     ['Asia/Jakarta', 'Jakarta'],
-    ['Asia/Shanghai', 'Shanghai / Beijing'],
+    ['Asia/Shanghai', 'Shanghai'],
     ['Asia/Hong_Kong', 'Hong Kong'],
     ['Asia/Singapore', 'Singapore'],
     ['Asia/Manila', 'Manila'],
@@ -119,6 +119,15 @@
     ['Pacific/Kiritimati', 'London, Kiritimati']
   ];
 
+  // Prefer recognizable major cities when several places share an offset.
+  var representativeCities = [
+    'Tokyo', 'New Delhi', 'Shanghai', 'Jakarta', 'Dhaka', 'Cairo', 'Mexico City',
+    'S\u00e3o Paulo', 'New York', 'Karachi', 'Lagos', 'Istanbul', 'Moscow',
+    'Buenos Aires', 'Los Angeles', 'Paris', 'Lima', 'Tehran', 'London',
+    'Bangkok', 'Bogot\u00e1', 'Dar es Salaam', 'Johannesburg', 'Santiago',
+    'Sydney', 'Melbourne', 'Dubai', 'Toronto', 'Abidjan', 'Auckland', 'Praia, Cape Verde'
+  ];
+
   function utcOffset(date, timeZone) {
     var offset = new Intl.DateTimeFormat('en-US', { timeZone: timeZone, timeZoneName: 'longOffset' })
       .formatToParts(date).find(function (p) { return p.type === 'timeZoneName'; }).value;
@@ -141,18 +150,27 @@
         }
       } catch (error) { /* Ignore zones not supported by this browser's timezone database. */ }
     }
-    if (typeof Intl.supportedValuesOf === 'function') {
-      Intl.supportedValuesOf('timeZone').forEach(function (zone) { add(zone); });
-    }
     cityZones.forEach(function (entry) { add(entry[0], entry[1]); });
     add(localZone);
     var canonicalLocal = new Intl.DateTimeFormat('en-US', { timeZone: localZone }).resolvedOptions().timeZone;
-    return Array.from(zones, function (entry) {
+    var choices = Array.from(zones, function (entry) {
       var offset = utcOffset(start, entry[0]);
       var isLocal = entry[0] === canonicalLocal;
       return { value: entry[0], city: entry[1], minutes: offset.minutes, isLocal: isLocal,
         label: offset.label + ' \u2014 ' + entry[1] + (isLocal ? ' (your timezone)' : '') };
-    }).sort(function (a, b) {
+    });
+    var byOffset = new Map();
+    function priority(city) {
+      var rank = representativeCities.indexOf(city);
+      return rank < 0 ? representativeCities.length : rank;
+    }
+    choices.forEach(function (choice) {
+      var previous = byOffset.get(choice.minutes);
+      if (!previous || choice.isLocal || (!previous.isLocal && priority(choice.city) < priority(previous.city))) {
+        byOffset.set(choice.minutes, choice);
+      }
+    });
+    return Array.from(byOffset.values()).sort(function (a, b) {
       return Number(b.isLocal) - Number(a.isLocal) || a.minutes - b.minutes || a.city.localeCompare(b.city);
     });
   }

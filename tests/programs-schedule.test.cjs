@@ -29,16 +29,16 @@ test('a session crossing local midnight shows both weekdays', () => {
   assert.match(text, /^Tuesdays.*11:00.*PM.*Wednesdays.*12:30.*AM/);
 });
 
-test('worldwide choices include all browser zones, UTC offsets, and a unique local choice first', () => {
+test('worldwide choices have one city per UTC offset, with the local choice first', () => {
   const choices = foundationTimezones(new Date('2026-10-14T01:00:00Z'), 'America/Toronto');
   assert.equal(choices[0].value, 'America/Toronto');
   assert.match(choices[0].label, /^UTC-04:00 \u2014 Toronto \(your timezone\)$/);
   assert.equal(new Set(choices.map(zone => zone.value)).size, choices.length);
   assert.equal(choices.filter(zone => zone.isLocal).length, 1);
-  for (const zone of Intl.supportedValuesOf('timeZone')) {
-    const canonical = new Intl.DateTimeFormat('en-US', { timeZone: zone }).resolvedOptions().timeZone;
-    assert.ok(choices.some(choice => choice.value === canonical), zone);
-  }
+  assert.equal(new Set(choices.map(zone => zone.minutes)).size, choices.length);
+  assert.ok(choices.length < 40);
+  assert.equal(choices.filter(zone => zone.minutes === -240).length, 1);
+  assert.ok(choices.every(zone => !zone.city.includes(' / ')));
   for (const choice of choices) assert.match(choice.label, /^UTC[+-]\d{2}:\d{2} \u2014 .+/);
   const sorted = choices.slice(1).map(zone => zone.minutes);
   assert.deepEqual(sorted, [...sorted].sort((a, b) => a - b));
@@ -49,26 +49,22 @@ test('worldwide choices include all browser zones, UTC offsets, and a unique loc
 test('fractional offsets and city daylight saving changes use the session date', () => {
   const summer = foundationTimezones(new Date('2026-07-08T01:00:00Z'), 'America/Toronto');
   const winter = foundationTimezones(new Date('2026-01-07T02:00:00Z'), 'America/Toronto');
-  assert.match(summer.find(zone => zone.city === 'Mumbai / New Delhi').label, /^UTC\+05:30/);
+  assert.match(summer.find(zone => zone.city === 'New Delhi').label, /^UTC\+05:30/);
   assert.match(summer.find(zone => zone.city === 'Kathmandu').label, /^UTC\+05:45/);
   assert.match(summer.find(zone => zone.city === 'Eucla').label, /^UTC\+08:45/);
   assert.match(summer.find(zone => zone.city === 'Waitangi, Chatham Islands').label, /^UTC\+12:45/);
   assert.match(winter.find(zone => zone.city === 'Waitangi, Chatham Islands').label, /^UTC\+13:45/);
-  assert.match(summer.find(zone => zone.city === 'London').label, /^UTC\+01:00/);
+  assert.match(summer.find(zone => zone.city === 'Lagos').label, /^UTC\+01:00/);
   assert.match(winter.find(zone => zone.city === 'London').label, /^UTC\+00:00/);
 });
 
-test('older browsers retain worldwide major-city choices and their detected timezone', () => {
-  const supportedValuesOf = Intl.supportedValuesOf;
-  try {
-    Intl.supportedValuesOf = undefined;
-    const choices = foundationTimezones(new Date('2026-10-14T01:00:00Z'), 'Pacific/Majuro');
-    assert.equal(choices[0].value, 'Pacific/Majuro');
-    assert.ok(choices.length > 70);
-    assert.ok(choices.some(zone => zone.city === 'Mumbai / New Delhi'));
-    assert.ok(choices.some(zone => zone.minutes === -720));
-    assert.ok(choices.some(zone => zone.minutes === 840));
-  } finally {
-    Intl.supportedValuesOf = supportedValuesOf;
-  }
+test('detected cities outside the representative list replace their offset choice', () => {
+  const choices = foundationTimezones(new Date('2026-10-14T01:00:00Z'), 'Pacific/Majuro');
+  assert.equal(choices[0].value, 'Pacific/Majuro');
+  assert.equal(choices.filter(zone => zone.minutes === 720).length, 1);
+  assert.ok(choices.length < 40);
+  assert.equal(new Set(choices.map(zone => zone.minutes)).size, choices.length);
+  assert.ok(choices.some(zone => zone.city === 'New Delhi'));
+  assert.ok(choices.some(zone => zone.minutes === -720));
+  assert.ok(choices.some(zone => zone.minutes === 840));
 });
