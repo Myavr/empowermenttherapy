@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ET Program | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=233">
+  <link rel="stylesheet" href="style.css?v=235">
 </head>
 <body class="subpage">
 
@@ -110,13 +110,13 @@
               <svg class="lvl-bloom"><use href="#et-flower"/></svg>
             </div>
             <h3>Level 1: Foundation</h3>
-            <div class="foundation-schedule" aria-label="Foundation schedule">
-              <p class="foundation-schedule-time" id="foundation-time" aria-live="polite">Tuesdays &middot; 8:00&ndash;9:30 PM Chicago</p>
-              <div class="foundation-timezone" id="foundation-timezone-controls" hidden>
+            <div class="program-schedule" data-program-level="1" aria-label="Foundation schedule">
+              <p class="program-schedule-time" id="foundation-time" aria-live="polite">Tuesdays &middot; 8:00&ndash;9:30 PM Chicago</p>
+              <div class="program-timezone" id="foundation-timezone-controls" hidden>
                 <span id="foundation-timezone-label">Timezone: Chicago</span>
                 <button type="button" id="foundation-timezone-change" aria-expanded="false" aria-controls="foundation-timezone-picker">Change</button>
               </div>
-              <div class="foundation-timezone-picker" id="foundation-timezone-picker" hidden>
+              <div class="program-timezone-picker" id="foundation-timezone-picker" hidden>
                 <label for="foundation-timezone-select">Show times in</label>
                 <select id="foundation-timezone-select">
                   <option value="America/Chicago">Chicago</option>
@@ -207,11 +207,18 @@
               <svg class="lvl-bloom"><use href="#et-flower"/></svg>
             </div>
             <h3>Level 2: Empowerment Processes</h3>
-            <div class="level-schedule-list" aria-label="Level 2 schedule by city">
-              <p class="level-schedule">Thursdays 9:00&ndash;10:30 AM Chicago</p>
-              <p class="level-schedule">Thursdays 4:00&ndash;5:30 PM Amsterdam</p>
-              <p class="level-schedule">Thursdays 5:00&ndash;6:30 PM Dodoma</p>
-              <p class="level-schedule">Thursdays 7:30&ndash;9:00 PM Mumbai</p>
+            <div class="program-schedule" data-program-level="2" aria-label="Level 2 schedule">
+              <p class="program-schedule-time" id="level2-time" aria-live="polite">Thursdays &middot; 9:00&ndash;10:30 AM Chicago</p>
+              <div class="program-timezone" id="level2-timezone-controls" hidden>
+                <span id="level2-timezone-label">Timezone: Chicago</span>
+                <button type="button" id="level2-timezone-change" aria-expanded="false" aria-controls="level2-timezone-picker">Change</button>
+              </div>
+              <div class="program-timezone-picker" id="level2-timezone-picker" hidden>
+                <label for="level2-timezone-select">Show times in</label>
+                <select id="level2-timezone-select">
+                  <option value="America/Chicago">Chicago</option>
+                </select>
+              </div>
             </div>
             <p>Learning and application of Empowering Thoughts and Language &mdash; these are therapeutic processes that the practitioner can share with clients when pertinent, relevant and timely.</p>
             <p class="level-step-note">*By studying some key concepts, people can take Level 2 before Level 1.</p>
@@ -274,10 +281,18 @@
               <svg class="lvl-bloom"><use href="#et-flower"/></svg>
             </div>
             <h3>Level 3: Certification</h3>
-            <div class="level-schedule-list" aria-label="Level 3 schedule by city">
-              <p class="level-schedule">Fridays 9:30&ndash;11:00 AM Chicago and Bogota</p>
-              <p class="level-schedule">Fridays 4:30&ndash;6:00 PM Madrid</p>
-              <p class="level-schedule">Fridays 8:00&ndash;9:30 PM Mumbai</p>
+            <div class="program-schedule" data-program-level="3" aria-label="Level 3 schedule">
+              <p class="program-schedule-time" id="level3-time" aria-live="polite">Fridays &middot; 9:30&ndash;11:00 AM Chicago</p>
+              <div class="program-timezone" id="level3-timezone-controls" hidden>
+                <span id="level3-timezone-label">Timezone: Chicago</span>
+                <button type="button" id="level3-timezone-change" aria-expanded="false" aria-controls="level3-timezone-picker">Change</button>
+              </div>
+              <div class="program-timezone-picker" id="level3-timezone-picker" hidden>
+                <label for="level3-timezone-select">Show times in</label>
+                <select id="level3-timezone-select">
+                  <option value="America/Chicago">Chicago</option>
+                </select>
+              </div>
             </div>
             <p>A year-long study to prepare for certification as a practitioner and, in some cases, as a trainer.</p>
             <span class="level-step-expand-hint">Learn more</span>
@@ -442,13 +457,13 @@
   <script src="footer-preview.js?v=1"></script>
   <script src="shared.js?v=47"></script>
 
-  <script src="programs-schedule.js?v=3"></script>
+  <script src="programs-schedule.js?v=4"></script>
 
   <!-- Level card click-to-toggle -->
   <script>
     document.querySelectorAll('.level-step').forEach(step => {
       step.addEventListener('click', function(e) {
-        if (e.target.closest('a, button, select, label, .foundation-schedule')) return;
+        if (e.target.closest('a, button, select, label, .program-schedule')) return;
         document.querySelectorAll('.level-step.is-open').forEach(s => {
           if (s !== step) s.classList.remove('is-open');
         });

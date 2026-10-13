@@ -1,25 +1,33 @@
 (function () {
   'use strict';
 
-  // Foundation meets Tuesdays at 8 PM in Chicago, through daylight saving changes.
-  function nextFoundationSession(now) {
+  // All weekly schedules follow Chicago time through daylight saving changes.
+  var programSchedules = {
+    1: { weekday: 'Tue', hour: 20, minute: 0 },
+    2: { weekday: 'Thu', hour: 9, minute: 0 },
+    3: { weekday: 'Fri', hour: 9, minute: 30 }
+  };
+
+  function nextProgramSession(now, level) {
+    var session = programSchedules[level];
+    if (!session) throw new Error('Unknown program level');
     var chicago = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Chicago', weekday: 'short', hour: 'numeric', hourCycle: 'h23'
     });
-    // Chicago's Tuesday evening can fall on Wednesday in UTC.
+    // An evening in Chicago can fall on the following day in UTC.
     for (var day = -1; day <= 7; day++) {
-      var candidate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + day, 20));
+      var candidate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + day, session.hour, session.minute));
       var parts = chicago.formatToParts(candidate);
       var weekday = parts.find(function (p) { return p.type === 'weekday'; }).value;
-      if (weekday !== 'Tue') continue;
+      if (weekday !== session.weekday) continue;
       var hour = Number(parts.find(function (p) { return p.type === 'hour'; }).value);
-      candidate.setUTCHours(candidate.getUTCHours() + 20 - hour);
+      candidate.setUTCHours(candidate.getUTCHours() + session.hour - hour);
       if (candidate >= now) return candidate;
     }
-    throw new Error('No upcoming Foundation session');
+    throw new Error('No upcoming program session');
   }
 
-  function formatFoundationSession(start, timeZone) {
+  function formatProgramSession(start, timeZone) {
     var end = new Date(start.getTime() + 90 * 60 * 1000);
     var time = new Intl.DateTimeFormat('en-US', {
       timeZone: timeZone, hour: 'numeric', minute: '2-digit', hour12: true
@@ -140,7 +148,7 @@
     };
   }
 
-  function foundationTimezones(start, localZone) {
+  function programTimezones(start, localZone) {
     var zones = new Map();
     function add(zone, city) {
       try {
@@ -176,66 +184,70 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { nextFoundationSession: nextFoundationSession, formatFoundationSession: formatFoundationSession,
-      foundationTimezones: foundationTimezones };
+    module.exports = { nextProgramSession: nextProgramSession, formatProgramSession: formatProgramSession,
+      programTimezones: programTimezones };
   }
   if (typeof document === 'undefined') return;
 
-  var schedule = document.getElementById('foundation-time');
-  if (!schedule) return;
-  try {
-    var localZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Chicago';
-    var select = document.getElementById('foundation-timezone-select');
-    var change = document.getElementById('foundation-timezone-change');
-    var picker = document.getElementById('foundation-timezone-picker');
-    var label = document.getElementById('foundation-timezone-label');
-    localZone = new Intl.DateTimeFormat('en-US', { timeZone: localZone }).resolvedOptions().timeZone;
-    var start = nextFoundationSession(new Date());
-    select.replaceChildren();
-    foundationTimezones(start, localZone).forEach(function (zone) {
-      var option = document.createElement('option');
-      option.value = zone.value;
-      option.textContent = zone.label;
-      option.dataset.city = zone.city;
-      select.appendChild(option);
-    });
-    select.value = localZone;
+  function initializeSchedule(root) {
+    var schedule = root.querySelector('.program-schedule-time');
+    if (!schedule) return;
+    try {
+      var localZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Chicago';
+      var select = root.querySelector('select');
+      var controls = root.querySelector('.program-timezone');
+      var change = controls.querySelector('button');
+      var picker = root.querySelector('.program-timezone-picker');
+      var label = controls.querySelector('span');
+      localZone = new Intl.DateTimeFormat('en-US', { timeZone: localZone }).resolvedOptions().timeZone;
+      var start = nextProgramSession(new Date(), root.dataset.programLevel);
+      select.replaceChildren();
+      programTimezones(start, localZone).forEach(function (zone) {
+        var option = document.createElement('option');
+        option.value = zone.value;
+        option.textContent = zone.label;
+        option.dataset.city = zone.city;
+        select.appendChild(option);
+      });
+      select.value = localZone;
 
-    function update() {
-      var text = formatFoundationSession(start, select.value);
-      schedule.textContent = text;
-      var city = select.selectedOptions[0].dataset.city;
-      label.textContent = (select.value === localZone ? 'Your timezone: ' : 'Timezone: ') + city;
-      var detail = document.getElementById('level1-meeting-time');
-      if (detail) {
-        detail.replaceChildren();
-        var strong = document.createElement('strong');
-        strong.textContent = 'When: ';
-        detail.append(strong, document.createTextNode(text));
+      function update() {
+        var text = formatProgramSession(start, select.value);
+        schedule.textContent = text;
+        var city = select.selectedOptions[0].dataset.city;
+        label.textContent = (select.value === localZone ? 'Your timezone: ' : 'Timezone: ') + city;
+        var detail = root.closest('.level-step-card').querySelector('#level1-meeting-time');
+        if (detail) {
+          detail.replaceChildren();
+          var strong = document.createElement('strong');
+          strong.textContent = 'When: ';
+          detail.append(strong, document.createTextNode(text));
+        }
       }
-    }
 
-    update();
-    document.getElementById('foundation-timezone-controls').hidden = false;
-    change.addEventListener('click', function () {
-      picker.hidden = !picker.hidden;
-      change.setAttribute('aria-expanded', String(!picker.hidden));
-      if (!picker.hidden) select.focus();
-    });
-    select.addEventListener('change', function () {
       update();
-      picker.hidden = true;
-      change.setAttribute('aria-expanded', 'false');
-      change.focus();
-    });
-    select.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
+      controls.hidden = false;
+      change.addEventListener('click', function () {
+        picker.hidden = !picker.hidden;
+        change.setAttribute('aria-expanded', String(!picker.hidden));
+        if (!picker.hidden) select.focus();
+      });
+      select.addEventListener('change', function () {
+        update();
         picker.hidden = true;
         change.setAttribute('aria-expanded', 'false');
         change.focus();
-      }
-    });
-  } catch (error) {
-    // Keep the Chicago schedule readable when timezone conversion is unavailable.
+      });
+      select.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          picker.hidden = true;
+          change.setAttribute('aria-expanded', 'false');
+          change.focus();
+        }
+      });
+    } catch (error) {
+      // Keep the Chicago schedule readable when timezone conversion is unavailable.
+    }
   }
+  document.querySelectorAll('.program-schedule[data-program-level]').forEach(initializeSchedule);
 }());
