@@ -148,6 +148,14 @@
     };
   }
 
+  // Time and Date map legend supplied by the user: the six colors repeat by hour.
+  var mapColors = ['#fc8d58', '#fde092', '#a8d696', '#7cbdd1', '#ab8ac1', '#ee6464'];
+  function timezoneColors(minutes) {
+    var hours = minutes / 60;
+    function color(hour) { return mapColors[((hour % 6) + 6) % 6]; }
+    return { lower: color(Math.floor(hours)), upper: color(Math.ceil(hours)) };
+  }
+
   function programTimezones(start, localZone) {
     var zones = new Map();
     function add(zone, city) {
@@ -165,6 +173,7 @@
       var offset = utcOffset(start, entry[0]);
       var isLocal = entry[0] === canonicalLocal;
       return { value: entry[0], city: entry[1], minutes: offset.minutes, isLocal: isLocal,
+        offset: offset.label,
         label: offset.label + ' \u2014 ' + entry[1] + (isLocal ? ' (your timezone)' : '') };
     });
     var byOffset = new Map();
@@ -185,9 +194,133 @@
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = { nextProgramSession: nextProgramSession, formatProgramSession: formatProgramSession,
-      programTimezones: programTimezones };
+      programTimezones: programTimezones, timezoneColors: timezoneColors };
   }
   if (typeof document === 'undefined') return;
+
+  function renderTimezone(element, zone) {
+    element.replaceChildren();
+    var prefix = document.createElement('span');
+    prefix.className = 'program-utc-prefix';
+    prefix.textContent = 'UTC';
+    var badge = document.createElement('span');
+    badge.className = 'program-utc-badge';
+    var number = document.createElement('span');
+    number.className = 'program-utc-number';
+    number.textContent = zone.offset.slice(3);
+    var colors = timezoneColors(zone.minutes);
+    number.style.color = colors.lower;
+    if (colors.lower !== colors.upper) {
+      number.className += ' program-utc-number--fractional';
+      number.style.backgroundImage = 'repeating-linear-gradient(135deg, ' + colors.lower + ' 0 2px, ' + colors.upper + ' 2px 4px)';
+    }
+    badge.appendChild(number);
+    var city = document.createElement('span');
+    city.className = 'program-timezone-city';
+    city.textContent = '\u2014 ' + zone.city + (zone.isLocal ? ' (your timezone)' : '');
+    element.append(prefix, badge, city);
+  }
+
+  function createTimezoneDropdown(select, picker, zones, onPick) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'program-timezone-dropdown';
+    var trigger = document.createElement('button');
+    trigger.className = 'program-timezone-trigger';
+    trigger.type = 'button';
+    trigger.id = select.id + '-button';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+    var menu = document.createElement('div');
+    menu.className = 'program-timezone-menu';
+    menu.id = select.id + '-menu';
+    menu.hidden = true;
+    menu.tabIndex = -1;
+    menu.setAttribute('role', 'listbox');
+    menu.setAttribute('aria-label', 'Choose timezone');
+    trigger.setAttribute('aria-controls', menu.id);
+    var pickerLabel = picker.querySelector('label');
+    if (pickerLabel) pickerLabel.htmlFor = trigger.id;
+    var active = 0;
+    var options = zones.map(function (zone, index) {
+      var option = document.createElement('button');
+      option.type = 'button';
+      option.className = 'program-timezone-option';
+      option.id = select.id + '-option-' + index;
+      option.tabIndex = -1;
+      option.setAttribute('role', 'option');
+      option.setAttribute('aria-label', zone.label);
+      renderTimezone(option, zone);
+      option.addEventListener('click', function () { pick(index); });
+      menu.appendChild(option);
+      return option;
+    });
+    wrapper.append(trigger, menu);
+    picker.appendChild(wrapper);
+    select.hidden = true;
+
+    function refresh() {
+      var index = zones.findIndex(function (zone) { return zone.value === select.value; });
+      renderTimezone(trigger, zones[index]);
+      trigger.setAttribute('aria-label', 'Show times in ' + zones[index].label);
+      options.forEach(function (option, i) { option.setAttribute('aria-selected', String(i === index)); });
+    }
+    function setActive(index) {
+      active = Math.max(0, Math.min(zones.length - 1, index));
+      options.forEach(function (option, i) { option.classList.toggle('is-active', i === active); });
+      menu.setAttribute('aria-activedescendant', options[active].id);
+      options[active].scrollIntoView({ block: 'nearest' });
+    }
+    function open() {
+      menu.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+      setActive(zones.findIndex(function (zone) { return zone.value === select.value; }));
+      menu.focus({ preventScroll: true });
+    }
+    function close(restoreFocus) {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) trigger.focus();
+    }
+    function pick(index) {
+      select.value = zones[index].value;
+      refresh();
+      close(false);
+      onPick();
+    }
+    trigger.addEventListener('click', function () { if (menu.hidden) open(); else close(true); });
+    trigger.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); open(); }
+    });
+    var search = '', lastSearch = 0;
+    menu.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        setActive(active + (event.key === 'ArrowDown' ? 1 : -1));
+      } else if (event.key === 'Home' || event.key === 'End') {
+        event.preventDefault();
+        setActive(event.key === 'Home' ? 0 : zones.length - 1);
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault(); pick(active);
+      } else if (event.key === 'Escape') {
+        event.preventDefault(); event.stopPropagation(); close(true);
+      } else if (event.key === 'Tab') {
+        close(true);
+      } else if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        event.preventDefault();
+        var now = Date.now();
+        search = (now - lastSearch > 700 ? '' : search) + event.key.toLowerCase();
+        lastSearch = now;
+        var index = zones.findIndex(function (zone) {
+          return zone.city.toLowerCase().startsWith(search) || zone.offset.toLowerCase().startsWith(search) || zone.offset.slice(3).startsWith(search);
+        });
+        if (index >= 0) setActive(index);
+      }
+    });
+    document.addEventListener('pointerdown', function (event) { if (!wrapper.contains(event.target)) close(false); });
+    wrapper.addEventListener('focusout', function (event) { if (!wrapper.contains(event.relatedTarget)) close(false); });
+    refresh();
+    return { trigger: trigger, close: close, refresh: refresh };
+  }
 
   function initializeSchedule(root) {
     var schedule = root.querySelector('.program-schedule-time');
@@ -202,7 +335,8 @@
       localZone = new Intl.DateTimeFormat('en-US', { timeZone: localZone }).resolvedOptions().timeZone;
       var start = nextProgramSession(new Date(), root.dataset.programLevel);
       select.replaceChildren();
-      programTimezones(start, localZone).forEach(function (zone) {
+      var zones = programTimezones(start, localZone);
+      zones.forEach(function (zone) {
         var option = document.createElement('option');
         option.value = zone.value;
         option.textContent = zone.label;
@@ -210,6 +344,14 @@
         select.appendChild(option);
       });
       select.value = localZone;
+
+      function finishChoice() {
+        update();
+        picker.hidden = true;
+        change.setAttribute('aria-expanded', 'false');
+        change.focus();
+      }
+      var dropdown = createTimezoneDropdown(select, picker, zones, finishChoice);
 
       function update() {
         var text = formatProgramSession(start, select.value);
@@ -230,16 +372,17 @@
       change.addEventListener('click', function () {
         picker.hidden = !picker.hidden;
         change.setAttribute('aria-expanded', String(!picker.hidden));
-        if (!picker.hidden) select.focus();
+        if (!picker.hidden) dropdown.trigger.focus();
+        else dropdown.close(false);
       });
       select.addEventListener('change', function () {
-        update();
-        picker.hidden = true;
-        change.setAttribute('aria-expanded', 'false');
-        change.focus();
+        dropdown.refresh();
+        finishChoice();
       });
-      select.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
+      picker.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !event.defaultPrevented) {
+          event.preventDefault();
+          dropdown.close(false);
           picker.hidden = true;
           change.setAttribute('aria-expanded', 'false');
           change.focus();

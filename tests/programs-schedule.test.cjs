@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
 const vm = require('node:vm');
-const { nextProgramSession, formatProgramSession, programTimezones } = require('../programs-schedule.js');
+const { nextProgramSession, formatProgramSession, programTimezones, timezoneColors } = require('../programs-schedule.js');
 
 test('Foundation follows Chicago daylight saving for upcoming sessions', () => {
   for (const [now, expected] of [
@@ -90,25 +90,37 @@ test('Levels 2 and 3 keep their Chicago schedules across daylight saving and wee
 
 test('all three selectors initialize independently and preserve the Foundation CMS meeting node', () => {
   class Element {
-    constructor() { this.children = []; this.dataset = {}; this.listeners = {}; this.textContent = ''; this.hidden = true; }
-    replaceChildren() { this.children = []; }
+    constructor() {
+      this.children = []; this.dataset = {}; this.listeners = {}; this.style = {}; this.hidden = true;
+      this.classes = new Set();
+      this.classList = { toggle: (name, on) => on ? this.classes.add(name) : this.classes.delete(name) };
+    }
+    get textContent() { return this.children.length ? this.children.map(child => child.textContent).join('') : this.text || ''; }
+    set textContent(text) { this.text = text; this.children = []; }
+    replaceChildren() { this.children = []; this.text = ''; }
     appendChild(child) { this.children.push(child); }
     append(...children) { this.children.push(...children); }
     get selectedOptions() { return this.children.filter(child => child.value === this.value); }
     setAttribute(name, value) { this[name] = value; }
     addEventListener(name, handler) { this.listeners[name] = handler; }
     focus() { this.focused = true; }
+    scrollIntoView() {}
+    contains(node) { return this === node || this.children.some(child => child.contains && child.contains(node)); }
   }
   const roots = [1, 2, 3].map(level => {
     const time = new Element(), select = new Element(), button = new Element();
     const label = new Element(), controls = new Element(), picker = new Element();
     const detail = level === 1 ? new Element() : null;
+    select.id = 'level' + level + '-timezone-select';
+    picker.querySelector = () => new Element();
     controls.querySelector = selector => selector === 'button' ? button : label;
     return { dataset: { programLevel: String(level) }, time, select, button, label, controls, picker, detail,
       querySelector: selector => ({ '.program-schedule-time': time, select, '.program-timezone': controls, '.program-timezone-picker': picker })[selector],
       closest: () => ({ querySelector: () => detail }) };
   });
   const document = {
+    listeners: {},
+    addEventListener(name, listener) { (this.listeners[name] ||= []).push(listener); },
     querySelectorAll: () => roots,
     createElement: () => new Element(),
     createTextNode: textContent => ({ textContent })
@@ -124,6 +136,17 @@ test('all three selectors initialize independently and preserve the Foundation C
     assert.equal(root.controls.hidden, false);
     assert.ok(root.select.children.length < 40);
     assert.equal(new Set(root.select.children.map(option => option.textContent.slice(0, 9))).size, root.select.children.length);
+    assert.equal(root.select.hidden, true);
+    const menu = root.picker.children[0].children[1];
+    assert.equal(menu.children.length, root.select.children.length);
+    for (const option of menu.children) {
+      const [prefix, badge, city] = option.children;
+      assert.equal(prefix.textContent, 'UTC');
+      assert.match(badge.children[0].textContent, /^[+-]\d{2}:\d{2}$/);
+      assert.match(badge.children[0].style.color, /^#[0-9a-f]{6}$/);
+      assert.equal(prefix.style.color, undefined);
+      assert.equal(city.style.color, undefined);
+    }
   }
   assert.match(roots[0].time.textContent, /^Tuesdays/);
   assert.match(roots[1].time.textContent, /^Thursdays/);
@@ -133,13 +156,52 @@ test('all three selectors initialize independently and preserve the Foundation C
   roots[1].button.listeners.click();
   assert.equal(roots[1].picker.hidden, false);
   assert.equal(roots[1].button['aria-expanded'], 'true');
-  roots[1].select.value = roots[1].select.children.find(option => option.dataset.city === 'New Delhi').value;
-  roots[1].select.listeners.change();
+  const [trigger, menu] = roots[1].picker.children[0].children;
+  trigger.listeners.click();
+  assert.equal(menu.hidden, false);
+  assert.equal(trigger['aria-expanded'], 'true');
+  menu.children.find(option => option['aria-label'].includes('New Delhi')).listeners.click();
   assert.match(roots[1].time.textContent, /^Thursdays.*7:30.*9:00.*PM/);
   assert.equal(roots[1].picker.hidden, true);
   assert.equal(roots[1].button['aria-expanded'], 'false');
+  assert.equal(menu.hidden, true);
+  assert.equal(trigger['aria-expanded'], 'false');
   assert.equal(roots[0].time.textContent, before[0]);
   assert.equal(roots[2].time.textContent, before[2]);
   assert.equal(roots[0].detail, foundationDetail);
   assert.equal(foundationDetail.children[1].textContent, before[0]);
+
+  function key(target, value) {
+    const event = { key: value, preventDefault() { this.defaultPrevented = true; }, stopPropagation() {} };
+    target.listeners.keydown(event);
+  }
+  roots[2].button.listeners.click();
+  const [thirdTrigger, thirdMenu] = roots[2].picker.children[0].children;
+  key(thirdTrigger, 'ArrowDown');
+  assert.equal(thirdMenu.hidden, false);
+  key(thirdMenu, 'End');
+  key(thirdMenu, 'Enter');
+  assert.match(roots[2].time.textContent, /^Saturdays.*4:30.*6:00.*AM/);
+  assert.equal(thirdMenu.hidden, true);
+  assert.equal(roots[2].button.focused, true);
+  roots[2].button.listeners.click();
+  thirdTrigger.listeners.click();
+  key(thirdMenu, 'Escape');
+  assert.equal(thirdMenu.hidden, true);
+  assert.equal(thirdTrigger.focused, true);
+  thirdTrigger.listeners.click();
+  document.listeners.pointerdown.forEach(listener => listener({ target: new Element() }));
+  assert.equal(thirdMenu.hidden, true);
+});
+
+test('UTC colors follow the supplied map legend and fractional offsets use adjacent colors', () => {
+  assert.equal(timezoneColors(0).lower, '#fc8d58');
+  assert.equal(timezoneColors(-300).lower, '#fde092');
+  assert.equal(timezoneColors(-240).lower, '#a8d696');
+  assert.equal(timezoneColors(180).lower, '#7cbdd1');
+  assert.equal(timezoneColors(240).lower, '#ab8ac1');
+  assert.equal(timezoneColors(300).lower, '#ee6464');
+  assert.deepEqual(timezoneColors(480), timezoneColors(-240));
+  assert.deepEqual(timezoneColors(330), { lower: '#ee6464', upper: '#fc8d58' });
+  assert.deepEqual(timezoneColors(-210), { lower: '#a8d696', upper: '#7cbdd1' });
 });
