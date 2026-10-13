@@ -3713,6 +3713,8 @@ body:not(.subpage) .faq-title-slice {
 
 .program-schedule {
   --program-control-color: var(--green-deep);
+  --program-control-border: var(--green);
+  --program-control-surface: var(--green-light);
   width: fit-content;
   max-width: 100%;
   margin-bottom: 0.9rem;
@@ -3725,12 +3727,16 @@ body:not(.subpage) .faq-title-slice {
 
 .level-step--2 .program-schedule {
   --program-control-color: var(--blue-deep);
+  --program-control-border: var(--blue);
+  --program-control-surface: var(--blue-light);
   background: rgba(84, 108, 192, 0.12);
   border-left-color: var(--blue);
 }
 
 .level-step--3 .program-schedule {
   --program-control-color: var(--seafoam-deep);
+  --program-control-border: var(--seafoam);
+  --program-control-surface: var(--seafoam-light);
   background: rgba(132, 204, 168, 0.12);
   border-left-color: var(--seafoam);
 }
@@ -3774,14 +3780,44 @@ body:not(.subpage) .faq-title-slice {
 }
 
 .program-timezone-picker select {
+  appearance: none;
+  -webkit-appearance: none;
   max-width: 100%;
   min-width: 0;
-  padding: 0.35rem 0.5rem;
-  border: 1px solid var(--green);
-  border-radius: 4px;
-  background: var(--white, #fff);
-  color: var(--text-dark);
+  padding: 0.55rem 2.2rem 0.55rem 0.7rem;
+  border: 1px solid var(--program-control-border);
+  border-radius: 8px;
+  background-color: var(--program-control-surface);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--program-control-color) 50%),
+    linear-gradient(135deg, var(--program-control-color) 50%, transparent 50%);
+  background-position: calc(100% - 1.1rem) center, calc(100% - 0.75rem) center;
+  background-size: 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+  color: var(--program-control-color);
   font: inherit;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(26, 35, 64, 0.06);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.program-timezone-picker select:hover {
+  border-color: var(--program-control-color);
+  box-shadow: 0 2px 5px rgba(26, 35, 64, 0.1);
+}
+
+.program-timezone-picker select option {
+  background-color: var(--program-control-surface);
+  color: var(--program-control-color);
+}
+
+@media (forced-colors: active) {
+  .program-timezone-picker select {
+    appearance: auto;
+    -webkit-appearance: auto;
+    background-image: none;
+  }
 }
 
 .program-schedule [hidden] {
