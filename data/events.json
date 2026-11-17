@@ -10,6 +10,7 @@
         "5:00–7:00 PM Amsterdam",
         "7:30–9:30 PM India"
       ],
+      "location": "Online",
       "image": "images/gift.webp",
       "image_alt": "Gift box tied with a blue ribbon",
       "prices": [
@@ -45,7 +46,8 @@
         "body": [
           {
             "type": "p",
-            "text": "Immersive Training"
+            "text": "Immersive Training",
+            "columns": false
           }
         ]
       },
@@ -66,10 +68,12 @@
         "body": [
           {
             "type": "p",
-            "text": "Based on Empowerment Therapy learn a process to empower yourself when you are confused and distressed, and share it with your clients. It will help you to:"
+            "text": "Based on Empowerment Therapy learn a process to empower yourself when you are confused and distressed, and share it with your clients. It will help you to:",
+            "columns": false
           },
           {
             "type": "ul",
+            "columns": false,
             "items": [
               "Foster self-connection to enhance your physical and emotional well-being.",
               "Regain emotional equilibrium by allowing yourself to acknowledge and process distress.",
@@ -84,7 +88,8 @@
           },
           {
             "type": "p",
-            "text": "."
+            "text": ".",
+            "columns": false
           }
         ]
       },
