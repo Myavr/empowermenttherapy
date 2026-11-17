@@ -1700,6 +1700,22 @@ body.subpage .subpage-spacer {
   margin-bottom: 0 !important;
 }
 
+@media (min-width: 721px) {
+  .problem-grid-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .problem-grid-body > p {
+    margin-bottom: 0;
+  }
+
+  .problem-grid-body > .problem-thesis {
+    margin-top: 0;
+  }
+}
+
 .problem-divider {
   border: none;
   height: 2px;
