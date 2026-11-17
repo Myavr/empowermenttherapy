@@ -1588,9 +1588,9 @@ body.subpage .subpage-spacer {
   .problem-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
+      "aside"
       "title"
       "body"
-      "aside"
       "footer";
   }
 
