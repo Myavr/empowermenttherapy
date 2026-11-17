@@ -36,6 +36,7 @@
 }
 
 .resource-card {
+  --resource-tint: color-mix(in srgb, var(--resource-accent, var(--blue)) 30%, transparent);
   background: var(--white);
   border: 1px solid rgba(156, 192, 192, 0.6);
   border-top: 3px solid var(--resource-accent, var(--blue));
@@ -86,9 +87,12 @@
   text-align: center;
 }
 
-.resource-card-header:hover,
-.resource-card.is-open .resource-card-header {
+.resource-card-header:hover {
   background: var(--resource-highlight, var(--blue-light));
+}
+
+.resource-card.is-open .resource-card-header {
+  background: var(--resource-tint);
 }
 
 .resource-card-header:focus-visible {
@@ -126,6 +130,11 @@
   width: 60px;
   height: 60px;
   font-size: 1.8rem;
+  background: var(--resource-tint);
+}
+
+.resources-layout .resource-card.is-open .resource-card-icon {
+  background: transparent;
 }
 
 .resources-layout .resource-card-icon img {
