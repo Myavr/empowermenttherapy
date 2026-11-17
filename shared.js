@@ -585,6 +585,44 @@
     return /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener"' : '';
   }
 
+  function descriptionInline(text) {
+    return esc(text).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (match, label, url) {
+      var href = safeUrl(url);
+      // Text and URL are already HTML-escaped above.
+      return href ? '<a href="' + href + '"' + externalLinkAttrs(href) + '>' + label + '</a>' : label;
+    }).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>').replace(/\n/g, '<br>');
+  }
+
+  function renderDescription(description) {
+    var body = '';
+    if (typeof description === 'string') {
+      // Keep older CMS content readable while the new block format rolls out.
+      if (description.trim()) body = '<p>' + escLines(description) + '</p>';
+    } else if (description && Array.isArray(description.body)) {
+      body = description.body.map(function (block) {
+        block = block || {};
+        if (block.type === 'ul' || block.type === 'ol') {
+          var items = (Array.isArray(block.items) ? block.items : []).filter(function (item) {
+            return item != null && String(item).trim();
+          });
+          if (!items.length) return '';
+          var tag = block.type;
+          var columns = tag === 'ul' && block.columns ? ' class="level-detail-columns"' : '';
+          return '<' + tag + columns + '>' + items.map(function (item) {
+            return '<li>' + descriptionInline(item) + '</li>';
+          }).join('') + '</' + tag + '>';
+        }
+        if (!block.text || !String(block.text).trim()) return '';
+        return '<p' + (block.type === 'note' ? ' class="level-step-note"' : '') + '>' +
+          descriptionInline(block.text) + '</p>';
+      }).join('');
+    }
+    return body ? '<details class="event-description">' +
+      '<summary class="level-step-expand-hint">Description</summary>' +
+      '<div class="level-detail-block event-description-body">' + body + '</div></details>' : '';
+  }
+
   function renderNews(items) {
     if (!section) return 0;
     var col = document.getElementById('newsCol');
@@ -633,7 +671,7 @@
       }
       html += '<h4 class="ne-item-title">' + esc(it.title) + '</h4>';
       if (times.length) html += '<p class="ne-item-meta">' + times.map(esc).join('<br>') + '</p>';
-      if (it.description) html += '<p class="ne-item-body">' + escLines(it.description) + '</p>';
+      html += renderDescription(it.description);
       if (it.location) html += '<p class="ne-item-meta">' + esc(it.location) + '</p>';
       var url = safeUrl(it.link);
       if (url) html += '<a class="ne-item-link" href="' + esc(url) + '"' + externalLinkAttrs(url) + '>' + esc(it.link_label || 'Learn more') + '</a>';
@@ -667,7 +705,7 @@
             return '<p class="level-schedule">' + esc(time) + '</p>';
           }).join('') + '</div>'
         : '';
-      var descriptionHtml = it.description ? '<p class="event-description">' + escLines(it.description) + '</p>' : '';
+      var descriptionHtml = renderDescription(it.description);
       var locationHtml = it.location ? '<p class="event-location">' + esc(it.location) + '</p>' : '';
       var imageHtml = imageUrl
         ? '<img class="event-card-image" src="' + esc(imageUrl) + '" alt="' + esc(it.image_alt || '') + '">'
@@ -702,11 +740,11 @@
             '<div class="event-card-copy">' +
               '<span class="level-step-badge">' + esc(badge) + '</span>' +
               '<h3>' + esc(it.title) + '</h3>' +
-              timesHtml + descriptionHtml + locationHtml +
+              timesHtml + locationHtml +
             '</div>' +
             imageHtml +
           '</div>' +
-          detailsHtml + registerHtml +
+          descriptionHtml + detailsHtml + registerHtml +
         '</div>';
       progression.appendChild(article);
     });

@@ -400,9 +400,41 @@ content:
             type: string
             required: false
           - name: description
-            label: Description (optional)
-            type: text
+            label: Description
+            description: Opens behind the Description button on the website. Add and reorder content blocks just like Program levels. Use **double asterisks** for bold, *single asterisks* for italic, and [text](https://link) for links. Leave Content empty to hide the button.
+            type: object
             required: false
+            fields:
+              - name: body
+                label: Content
+                type: object
+                list: true
+                required: false
+                fields:
+                  - name: type
+                    label: Block type
+                    description: "paragraph = a line of text; bullets = a bulleted list; numbered = a numbered list; note = a small footnote line. (Internally: p / ul / ol / note.)"
+                    type: select
+                    options:
+                      values:
+                        - p
+                        - ul
+                        - ol
+                        - note
+                    default: p
+                  - name: text
+                    label: Text (for paragraph / note)
+                    type: text
+                    required: false
+                  - name: columns
+                    label: Show list in two columns (bulleted lists only)
+                    type: boolean
+                    default: false
+                  - name: items
+                    label: List items (for bullets / numbered)
+                    type: text
+                    list: true
+                    required: false
           - name: image
             label: Event image (optional)
             type: image

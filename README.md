@@ -1,5 +1,14 @@
 # Empowerment Therapy website
 
+Edit an event's **Description → Content** in Pages CMS to add and reorder
+paragraphs (`p`), bullet lists (`ul`), numbered lists (`ol`), and notes (`note`),
+using the same controls as Program levels. Lists use **List items**; paragraphs
+and notes use **Text**. Bullet lists can use two columns. Use `**bold**`,
+`*italic*`, and `[text](https://link)` within blocks. Descriptions start closed
+behind a **Description** button on the Events page and in home-page event entries.
+Leave Content empty to hide the button. Existing descriptions have been converted
+to blocks; older plain-text descriptions remain supported by the renderer.
+
 Edit shared footer content in Pages CMS under **Site footer**. This includes social
 links, book links and cover, navigation, team photos and names, the contact email,
 the Support heading and payment plans button text, and the copyright line. Add, remove, or

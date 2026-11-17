@@ -938,6 +938,42 @@ body.subpage .subpage-spacer {
   margin-top: 0.9rem;
 }
 
+.event-description > summary {
+  list-style: none;
+  margin-top: 0;
+  font-family: var(--font-body);
+}
+
+.event-description > summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-description[open] > summary::after {
+  content: '\00d7';
+}
+
+.event-description > summary:focus-visible {
+  outline: 2px solid var(--blue-deep);
+  outline-offset: 3px;
+}
+
+.event-description-body {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(156, 192, 192, 0.45);
+  overflow-wrap: anywhere;
+}
+
+.event-description-body > p,
+.event-description-body > ul,
+.event-description-body > ol {
+  margin-bottom: 1rem;
+}
+
+.event-description-body > :last-child {
+  margin-bottom: 0;
+}
+
 .event-location {
   color: var(--blue);
   font-weight: 600;

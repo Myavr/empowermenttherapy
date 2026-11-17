@@ -41,7 +41,14 @@
       "date": "2026-06-11",
       "end_date": "2026-06-14",
       "location": "Tepoztlan, Mexico",
-      "description": "Immersive Training",
+      "description": {
+        "body": [
+          {
+            "type": "p",
+            "text": "Immersive Training"
+          }
+        ]
+      },
       "image": "images/IMG-20260909-WA0000.jpg",
       "image_alt": "Participants with Myra Walden",
       "presenter": "Myra Walden"
@@ -55,7 +62,32 @@
         "8:30 - 10:30 CST"
       ],
       "location": "Online",
-      "description": "Based on Empowerment Therapy learn a process to empower yourself when you are confused and distressed, and share it with your clients. It will help you to:\n\n* Foster self-connection to enhance your physical and emotional well-being.\n* Regain emotional equilibrium by allowing yourself to acknowledge and process distress.\n* Gain clarity about your needs in challenging situations.\n* Access your intuition to discover insights into how best to meet those needs.\n* Cultivate an inner refuge by finding a place of safety and rest within yourself .\n* Build resilience by processing pain as it arises rather than allowing it to accumulate over time.\n* Develop the confidence to ask for what you want, grounded in the energy and power of your needs.\n* Transform conflict into mutual understanding and find solutions that meet everyone’s needs.\n* Recognize the systems that affect your well-being and gradually free yourself from harmful dynamics while preserving security, connection, and belonging with the people and groups that matter to you..\n.",
+      "description": {
+        "body": [
+          {
+            "type": "p",
+            "text": "Based on Empowerment Therapy learn a process to empower yourself when you are confused and distressed, and share it with your clients. It will help you to:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Foster self-connection to enhance your physical and emotional well-being.",
+              "Regain emotional equilibrium by allowing yourself to acknowledge and process distress.",
+              "Gain clarity about your needs in challenging situations.",
+              "Access your intuition to discover insights into how best to meet those needs.",
+              "Cultivate an inner refuge by finding a place of safety and rest within yourself .",
+              "Build resilience by processing pain as it arises rather than allowing it to accumulate over time.",
+              "Develop the confidence to ask for what you want, grounded in the energy and power of your needs.",
+              "Transform conflict into mutual understanding and find solutions that meet everyone’s needs.",
+              "Recognize the systems that affect your well-being and gradually free yourself from harmful dynamics while preserving security, connection, and belonging with the people and groups that matter to you.."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "."
+          }
+        ]
+      },
       "image": "images/z - woman mountain climbing.jpg",
       "image_alt": "mountain climber",
       "prices": [

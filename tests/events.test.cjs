@@ -80,6 +80,52 @@ test('event URLs still reject unsafe schemes and attribute markup', async () => 
   }
 });
 
+test('formatted descriptions start collapsed on upcoming, past, and home event cards', async () => {
+  const description = { body: [
+    { type: 'p', text: '**Learn** with *others*\n[Register](contact.html)' },
+    { type: 'ul', columns: true, items: ['First benefit', '**Second** benefit'] },
+    { type: 'ol', items: ['Step one', 'Step two'] },
+    { type: 'note', text: 'Bring a notebook.' }
+  ] };
+  const event = { title: 'Workshop', date: '2026-09-10', description };
+  const page = await loadEvents([event, { ...event, date: '2026-09-08' }]);
+  const home = await loadEvents([event], { home: true });
+  for (const container of [page.upcoming, page.past, home.ids.eventsList]) {
+    const html = container.children[0].innerHTML;
+    assert.match(html, /<details class="event-description"><summary class="level-step-expand-hint">Description<\/summary>/);
+    assert.doesNotMatch(html, /<details[^>]*\bopen\b/);
+    assert.match(html, /<p><strong>Learn<\/strong> with <em>others<\/em><br><a href="contact.html">Register<\/a><\/p>/);
+    assert.match(html, /<ul class="level-detail-columns"><li>First benefit<\/li><li><strong>Second<\/strong> benefit<\/li><\/ul>/);
+    assert.match(html, /<ol><li>Step one<\/li><li>Step two<\/li><\/ol>/);
+    assert.match(html, /<p class="level-step-note">Bring a notebook\.<\/p>/);
+    assert.doesNotMatch(html, /\[object Object\]/);
+  }
+});
+
+test('empty descriptions hide the control and old text remains readable', async () => {
+  for (const description of [undefined, '', '  ', {}, { body: [] },
+    { body: [null, { type: 'p', text: '  ' }, { type: 'ul', items: ['', null] }] }]) {
+    const page = await loadEvents([{ title: 'Workshop', description }]);
+    assert.doesNotMatch(page.upcoming.children[0].innerHTML, /<details|<summary/);
+  }
+  const page = await loadEvents([{ title: 'Old workshop', description: 'First line\nSecond line' }]);
+  assert.match(page.upcoming.children[0].innerHTML, /<p>First line<br>Second line<\/p>/);
+});
+
+test('description formatting escapes HTML and rejects executable link destinations', async () => {
+  const page = await loadEvents([{ title: 'Workshop', description: { body: [
+    { type: 'p', text: '<img src=x onerror=alert(1)> [Bad](javascript:alert) [Data](data:text/html,bad)' },
+    { type: 'ul', items: ['<script>alert(1)</script>', '[Email](mailto:hello@example.com)'] },
+    { type: 'note', text: '[More](https://example.com/?a=1&b=2)' }
+  ] } }]);
+  const html = page.upcoming.children[0].innerHTML;
+  assert.match(html, /&lt;img/);
+  assert.match(html, /&lt;script&gt;/);
+  assert.doesNotMatch(html, /<img|<script|href="(?:javascript|data):/);
+  assert.match(html, /href="mailto:hello@example.com"/);
+  assert.match(html, /href="https:\/\/example.com\/\?a=1&amp;b=2" target="_blank" rel="noopener"/);
+});
+
 test('multi-day events show both dates and stay upcoming through the final day', async () => {
   const items = [{ title: 'Three-day workshop', date: '2026-09-08', end_date: '2026-09-10' }];
   const page = await loadEvents(items);
