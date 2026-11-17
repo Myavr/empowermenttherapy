@@ -514,9 +514,10 @@
     u = String(u == null ? '' : u).trim();
     if (!u || /^\/\//.test(u)) return '';
     if (/^(https?:\/\/|mailto:|\/(?!\/)|\.{1,2}\/|#)/i.test(u)) return u;
-    // Permit ordinary relative site paths such as "contact.html" or
-    // "images/event.webp", but reject all other URI schemes.
-    if (!/^[a-z][a-z0-9+.-]*:/i.test(u) && !/[\s<>"']/.test(u)) return u;
+    // CMS uploads can contain spaces; encode them before validating relative
+    // site paths, while continuing to reject other URI schemes and markup.
+    var relativeUrl = u.replace(/ /g, '%20');
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(u) && !/[\s<>"']/.test(relativeUrl)) return relativeUrl;
     return '';
   }
   function parseLocalDate(s) {

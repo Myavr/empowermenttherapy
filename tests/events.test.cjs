@@ -61,6 +61,25 @@ const fixtures = [
   { title: 'Weekly group', schedule_type: 'Recurring', date: '2026-01-01', recurrence: 'Every Tuesday' }
 ];
 
+test('CMS event images with spaces in their filenames are rendered', async () => {
+  const page = await loadEvents([{
+    title: 'Workshop', date: '2026-11-25',
+    image: 'images/z - woman mountain climbing.jpg'
+  }]);
+  const html = page.upcoming.children[0].innerHTML;
+  assert.ok(html.includes('src="images/z%20-%20woman%20mountain%20climbing.jpg"'));
+  assert.doesNotMatch(html, /event-card-main--no-image/);
+});
+
+test('event URLs still reject unsafe schemes and attribute markup', async () => {
+  for (const url of ['javascript:alert(1)', 'data:text/html,test', '//example.com/image.jpg',
+    'images/bad" onerror="alert(1).jpg', 'images/bad\nname.jpg']) {
+    const page = await loadEvents([{ title: 'Unsafe URL', image: url, link: url }]);
+    const html = page.upcoming.children[0].innerHTML;
+    assert.doesNotMatch(html, /<img |<a /);
+  }
+});
+
 test('multi-day events show both dates and stay upcoming through the final day', async () => {
   const items = [{ title: 'Three-day workshop', date: '2026-09-08', end_date: '2026-09-10' }];
   const page = await loadEvents(items);
