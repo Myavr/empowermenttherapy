@@ -1714,6 +1714,10 @@ body.subpage .subpage-spacer {
   .problem-grid-body > .problem-thesis {
     margin-top: 0;
   }
+
+  .problem-thesis .et-statement:not(:last-child) {
+    margin-bottom: 1.75rem !important;
+  }
 }
 
 .problem-divider {
