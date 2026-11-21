@@ -6,8 +6,14 @@
       "icon_image": "images/Glossy Black Rectangular Eyeglasses-1.png",
       "links": [
         {
+          "title": "Liberating Role Plays",
+          "pdf": "pdfs/Liberating Role Plays - CMS.pdf",
+          "author": "Myra Walden and Helen Adamson"
+        },
+        {
           "title": "Nonviolent Communication and Trauma",
           "url": "https://www.comunicacionplena.com/post/nonviolent-communication-and-trauma?lang=en",
+          "pdf": "pdfs/Reckoning with inheritance  Decolonising group analysis through Afrikan knowledge systems.pdf",
           "author": "Claudia Sánchez"
         },
         {
@@ -23,6 +29,7 @@
         {
           "title": "The Necessary and Sufficient Conditions of Therapeutic Personality Change",
           "url": "https://counselling-tutor.s3.eu-west-2.amazonaws.com/CSR+Documents/The+Necessary+and+Sufficient+Conditions+of+Therapeutic+Personality+Change.pdf",
+          "pdf": "pdfs/What-is-NVC-FINAL-PDF.pdf",
           "author": "Carl Rogers"
         },
         {
