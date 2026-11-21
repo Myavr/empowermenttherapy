@@ -946,10 +946,15 @@ function etInline(s) {
           cat = cat || {};
           var links = (Array.isArray(cat.links) ? cat.links : []).map(function (l) {
             l = l || {};
+            var href = String(l.url || '').trim();
+            if (typeof l.pdf === 'string' && /^pdfs\/.+\.pdf$/i.test(l.pdf)) {
+              href = l.pdf.split('/').map(encodeURIComponent).join('/');
+            }
+            if (!href) return '';
             var meta = '';
             if (l.author) meta = '<span class="resource-author">' + etEsc(l.author) + '</span>';
             else if (l.description) meta = '<span class="resource-description">' + etEsc(l.description) + '</span>';
-            return '<li><a href="' + etEsc(String(l.url || '')) + '" target="_blank" rel="noopener">' +
+            return '<li><a href="' + etEsc(href).replace(/"/g, '&quot;') + '" target="_blank" rel="noopener">' +
               etEsc(l.title || '') + meta + '</a></li>';
           }).join('');
           var card = document.createElement('div');

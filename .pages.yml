@@ -604,7 +604,17 @@ content:
                 type: string
               - name: url
                 label: Link URL
+                description: Paste a web address here, or choose a PDF below.
                 type: string
+                required: false
+              - name: pdf
+                label: Resource PDF
+                description: Upload a PDF or select one from the PDFs library. If both fields are filled, the PDF opens.
+                type: file
+                required: false
+                options:
+                  media: pdfs
+                  extensions: [pdf]
               - name: author
                 label: Author (optional)
                 type: string

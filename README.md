@@ -16,6 +16,11 @@ reorder navigation links and people there. The email also updates the Contact pa
 form submission delivery remains in its existing code configuration. The footer
 links to the Contributions page for monthly subscriptions.
 
+In Pages CMS, open **Resources**, choose a category such as **Articles**, and
+edit an entry under **Links**. Use **Resource PDF** to upload a PDF from your
+computer or select one from the library, then save the entry. For a website,
+use **Link URL**. If both fields are filled, the resource opens the PDF.
+
 Edit **Book chapter samples** in Pages CMS to change the Resources book dropdown.
 Add a chapter title and select or upload its PDF in the **PDFs** media library.
 Drag chapters to reorder them; remove all chapters to hide the dropdown.
