@@ -1123,11 +1123,11 @@ body.subpage .subpage-spacer {
   z-index: 3;
   display: grid;
   place-items: center;
-  width: 6rem;
-  height: 6rem;
+  width: 3rem;
+  height: 3rem;
   color: var(--white);
   background: rgba(26, 35, 64, 0.72);
-  border: 2px solid currentColor;
+  border: 1px solid currentColor;
   border-radius: 50%;
 }
 
