@@ -95,8 +95,11 @@
   }
 
   async function sendRegistration(data, request = fetch) {
+    // All registration fields are text. URL encoding gives an exact byte count
+    // for the browser's 64 KiB in-flight keepalive budget.
+    const body = new URLSearchParams(data);
     const response = await request('https://formsubmit.co/ajax/empowermenttherapyinstitute@gmail.com', {
-      method: 'POST', body: data
+      method: 'POST', body, keepalive: body.toString().length <= 65536
     });
     if (!response.ok) throw new Error('Request rejected');
     const result = await response.json();
@@ -123,7 +126,23 @@
   grid.after(mobile);
   const status = document.createElement('p');
   status.setAttribute('role', 'status');
-  mobile.after(status);
+  const submit = form.querySelector('.reg-submit');
+  submit.before(status);
+  const receipt = document.createElement('div');
+  receipt.className = 'reg-success';
+  receipt.hidden = true;
+  receipt.innerHTML = '<div role="status"><h3></h3><p></p></div><button class="reg-submit" type="button">Continue browsing</button>';
+  form.after(receipt);
+  receipt.querySelector('button').addEventListener('click', closeModal);
+  const notice = document.createElement('div');
+  notice.setAttribute('role', 'status');
+  notice.className = 'reg-delivery-notice';
+  const noticeButton = document.createElement('button');
+  noticeButton.type = 'button';
+  noticeButton.hidden = true;
+  notice.appendChild(noticeButton);
+  document.body.appendChild(notice);
+  noticeButton.onclick = event => window.openRegModal(event);
   const detected = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
   timezone.add(new Option(detected.replace(/_/g, ' ') + ' (your time zone)', detected, true, true));
   for (const [zone, label] of zones) {
@@ -133,7 +152,26 @@
 
   const selected = new Set();
   let trigger;
-  let submitted = false;
+  let delivery = 'idle';
+  let warmedConnection = false;
+
+  function updateNotice() {
+    const labels = {
+      pending: 'Sending registration…',
+      accepted: 'Registration submitted',
+      failed: 'Registration unconfirmed. Review and retry'
+    };
+    noticeButton.textContent = labels[delivery] || '';
+    noticeButton.hidden = !labels[delivery] || modal.classList.contains('active');
+  }
+
+  function showReceipt(title, message) {
+    form.hidden = true;
+    receipt.hidden = false;
+    receipt.querySelector('h3').textContent = title;
+    receipt.querySelector('p').textContent = message;
+    if (modal.classList.contains('active')) receipt.querySelector('button').focus();
+  }
 
   function synchronize(instant, pressed) {
     if (pressed) selected.add(instant);
@@ -257,15 +295,27 @@
   window.openRegModal = function (event) {
     if (event) event.preventDefault();
     trigger = document.activeElement;
-    if (!submitted) refresh();
+    if (!warmedConnection) {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = 'https://formsubmit.co';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+      warmedConnection = true;
+    }
+    if (!form.hidden) refresh();
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    (submitted ? document.getElementById('regModalClose') : nameField).focus();
+    updateNotice();
+    (form.hidden ? receipt.querySelector('button') : delivery === 'failed' ? submit : nameField).focus();
   };
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    if (trigger) trigger.focus();
+    if (delivery === 'accepted') noticeButton.hidden = true;
+    else updateNotice();
+    if (trigger && trigger.getClientRects().length) trigger.focus();
+    else if (!noticeButton.hidden) noticeButton.focus();
   }
   document.getElementById('regModalClose').addEventListener('click', closeModal);
   modal.addEventListener('click', event => {
@@ -292,8 +342,7 @@
   nameField.addEventListener('input', () => nameField.setCustomValidity(''));
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    const submit = form.querySelector('.reg-submit');
-    if (!submit || submit.disabled) return;
+    if (submit.disabled || form.hidden) return;
     const name = nameField.value.trim();
     if (!name) {
       nameField.setCustomValidity('Please enter your full name.');
@@ -302,7 +351,6 @@
     }
     if (!refresh(true)) return;
     submit.disabled = true;
-    submit.textContent = 'Submitting...';
     status.textContent = '';
     const data = new FormData();
     data.append('Name', name);
@@ -316,15 +364,23 @@
     data.append('_cc', 'pritimdi@gmail.com,empowermenttherapymw@gmail.com,info@comunicacionplena.com');
     data.append('_template', 'table');
     data.append('_captcha', 'false');
+    delivery = 'pending';
+    showReceipt('Sending your registration…', 'You can close this form while your request is being sent.');
+    updateNotice();
     try {
       await sendRegistration(data);
-      submitted = true;
-      form.innerHTML = '<div class="reg-success" role="status"><div class="reg-success-icon">✓</div><h3>Registration Submitted!</h3><p></p></div>';
-      form.querySelector('p').textContent = 'Thank you, ' + name + '. We\'ve received your registration and will be in touch to confirm your orientation session.';
+      delivery = 'accepted';
+      showReceipt('Registration submitted', 'Thank you, ' + name + '. We’ll be in touch to confirm your orientation session.');
+      form.reset();
+      selected.clear();
     } catch {
+      delivery = 'failed';
+      receipt.hidden = true;
+      form.hidden = false;
       submit.disabled = false;
-      submit.textContent = 'Submit Registration';
       status.textContent = 'We couldn’t confirm your submission. Please try again, or email empowermenttherapyinstitute@gmail.com.';
+      if (modal.classList.contains('active')) submit.focus();
     }
+    updateNotice();
   });
 })();

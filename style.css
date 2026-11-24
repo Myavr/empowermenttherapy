@@ -6725,6 +6725,29 @@ blockquote {
 }
 
 /* Success state */
+.reg-form[hidden],
+.reg-success[hidden] {
+  display: none;
+}
+
+.reg-delivery-notice {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+.reg-delivery-notice button {
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--blue-deep);
+  color: var(--white);
+  font: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+}
+
 .reg-success {
   text-align: center;
   padding: 2rem 0;

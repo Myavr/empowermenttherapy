@@ -55,3 +55,31 @@ test('confirmation requires HTTP success and an explicit positive service result
   }
   await assert.rejects(sendRegistration(new FormData(), response(false, true)));
 });
+
+test('ordinary registration posts survive navigation and wait for acknowledgment', async () => {
+  const data = new FormData();
+  data.append('Name', 'María & Alex');
+  let accept;
+  let confirmed = false;
+  const sending = sendRegistration(data, (url, options) => {
+    assert.equal(options.keepalive, true);
+    assert.equal(options.body.get('Name'), 'María & Alex');
+    return new Promise(resolve => { accept = resolve; });
+  }).then(() => { confirmed = true; });
+  await Promise.resolve();
+  assert.equal(confirmed, false);
+  accept({ ok: true, json: async () => ({ success: 'true' }) });
+  await sending;
+  assert.equal(confirmed, true);
+});
+
+test('large notes use an ordinary request beyond the keepalive byte limit', async () => {
+  const data = new FormData();
+  const notes = 'é'.repeat(12000);
+  data.append('Additional Notes', notes);
+  await sendRegistration(data, async (url, options) => {
+    assert.equal(options.keepalive, false);
+    assert.equal(options.body.get('Additional Notes'), notes);
+    return { ok: true, json: async () => ({ success: true }) };
+  });
+});
