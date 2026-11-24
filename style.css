@@ -1118,7 +1118,8 @@ body.subpage .subpage-spacer {
 
 .hero-scroll-link {
   position: absolute;
-  right: max(clamp(1rem, 3vw, 3rem), env(safe-area-inset-right));
+  left: 50%;
+  transform: translateX(-50%);
   bottom: max(clamp(1rem, 3vw, 2.25rem), env(safe-area-inset-bottom));
   z-index: 3;
   display: grid;
