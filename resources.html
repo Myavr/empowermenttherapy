@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resources | Empowerment Therapy Institute</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=257">
+  <link rel="stylesheet" href="style.css?v=258">
   <link rel="stylesheet" href="resources.css?v=16">
 </head>
 <body class="subpage">
@@ -227,25 +227,6 @@
             <label for="regTimezone">Your Timezone <span class="req">*</span></label>
             <select id="regTimezone" name="timezone" required>
               <option value="">Select your timezone</option>
-              <option value="UTC-8 (PST)">UTC-8 (Pacific)</option>
-              <option value="UTC-7 (MST)">UTC-7 (Mountain)</option>
-              <option value="UTC-6 (CST)">UTC-6 (Central US)</option>
-              <option value="UTC-5 (EST)">UTC-5 (Eastern)</option>
-              <option value="UTC-4 (AST)">UTC-4 (Atlantic)</option>
-              <option value="UTC-3 (ART)">UTC-3 (Argentina/Brazil)</option>
-              <option value="UTC-1 (CVT)">UTC-1 (Cape Verde)</option>
-              <option value="UTC+0 (GMT)">UTC+0 (GMT/UK)</option>
-              <option value="UTC+1 (CET)">UTC+1 (Central Europe)</option>
-              <option value="UTC+2 (EET)">UTC+2 (Eastern Europe)</option>
-              <option value="UTC+3 (EAT)">UTC+3 (East Africa)</option>
-              <option value="UTC+4 (GST)">UTC+4 (Gulf)</option>
-              <option value="UTC+5 (PKT)">UTC+5 (Pakistan)</option>
-              <option value="UTC+5:30 (IST)">UTC+5:30 (India)</option>
-              <option value="UTC+6 (BST)">UTC+6 (Bangladesh)</option>
-              <option value="UTC+8 (CST)">UTC+8 (China/Singapore)</option>
-              <option value="UTC+9 (JST)">UTC+9 (Japan/Korea)</option>
-              <option value="UTC+10 (AEST)">UTC+10 (Australia East)</option>
-              <option value="UTC+12 (NZST)">UTC+12 (New Zealand)</option>
             </select>
           </div>
           <div class="reg-form-field">
@@ -260,7 +241,7 @@
         </div>
         <div class="reg-form-field">
           <label>When are you available for your orientation session?</label>
-          <p class="reg-avail-note">All applicants meet with our team for a 45-minute orientation. Select any times that work for you below (shown in your local timezone). Once we receive your submission, we'll reach out to confirm a specific time. If none of these slots fit, leave this blank and we'll coordinate directly.</p>
+          <p class="reg-avail-note">All applicants meet with our team for a 45-minute orientation. Select any times that work for you below (shown in the selected time zone). Once we receive your submission, we'll reach out to confirm a specific time. If none of these slots fit, leave this blank and we'll coordinate directly.</p>
           <div class="reg-avail-grid" id="regAvailGrid"></div>
         </div>
         <div class="reg-form-field">
@@ -274,7 +255,8 @@
 
   <script src="footer-render.js?v=2"></script>
   <script src="footer-preview.js?v=1"></script>
-  <script src="shared.js?v=50"></script>
+  <script src="shared.js?v=51"></script>
+  <script src="registration.js?v=1"></script>
   <script src="book-samples-render.js?v=1"></script>
   <script src="book-samples.js?v=1"></script>
   <script src="resources.js?v=1"></script>
