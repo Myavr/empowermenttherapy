@@ -109,6 +109,7 @@
   var form = document.getElementById('regForm');
   var grid = document.getElementById('regAvailGrid');
 
+  var detectedTimezoneValue;
   // Auto-detect timezone
   (function(){
     try {
@@ -120,21 +121,13 @@
       var utcLabel = 'UTC' + sign + absH + (absM ? ':' + (absM < 10 ? '0' : '') + absM : '');
       var sel = document.getElementById('regTimezone');
       if (!sel) return;
-      var matched = false;
-      for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value.indexOf(utcLabel) === 0) {
-          sel.selectedIndex = i;
-          matched = true;
-          break;
-        }
-      }
-      if (!matched && tz) {
-        var opt = document.createElement('option');
-        opt.value = utcLabel + ' (' + tz + ')';
-        opt.textContent = utcLabel + ' (' + tz.replace(/_/g, ' ') + ')';
-        opt.selected = true;
-        sel.insertBefore(opt, sel.options[1]);
-      }
+      if (!tz) return;
+      var opt = document.createElement('option');
+      detectedTimezoneValue = utcLabel + ' (' + tz + ')';
+      opt.value = detectedTimezoneValue;
+      opt.textContent = utcLabel + ' (' + tz.replace(/_/g, ' ') + ')';
+      sel.insertBefore(opt, sel.options[1]);
+      sel.value = detectedTimezoneValue;
     } catch(e) {}
   })();
 
@@ -172,7 +165,7 @@
       for (var d2 = 0; d2 < orderedDays.length; d2++) {
         var date2 = orderedDays[d2];
         var dateKey = (date2.getMonth()+1) + '/' + date2.getDate();
-        var cellId = dateKey + ' ' + timeSlots[t];
+        var cellId = d2 + ':' + t;
         row.innerHTML += '<div class="reg-avail-cell" data-slot="' + cellId + '" tabindex="0" role="checkbox" aria-checked="false" aria-label="' + dayNames[date2.getDay()] + ' ' + dateKey + ' at ' + timeSlots[t] + '"></div>';
       }
       grid.appendChild(row);
@@ -202,7 +195,7 @@
         var pill = document.createElement('div');
         pill.className = 'reg-avail-time-pill';
         pill.textContent = timeSlots[mt];
-        pill.setAttribute('data-slot', mDateStr + ' ' + timeSlots[mt]);
+        pill.setAttribute('data-slot', md + ':' + mt);
         slots.appendChild(pill);
       }
       card.appendChild(slots);
@@ -334,6 +327,34 @@
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
 
+  function formatAvailability(instants, timeZone) {
+    if (!instants.length) return 'No specific times selected — please reach out to coordinate.';
+
+    var dateFormat = new Intl.DateTimeFormat('en-US', { timeZone: timeZone, month: 'numeric', day: 'numeric' });
+    var timeFormat = new Intl.DateTimeFormat('en-US', {
+      timeZone: timeZone, hour: 'numeric', minute: '2-digit', hour12: true
+    });
+    var days = new Map();
+    instants.forEach(function(instant) {
+      var date = dateFormat.format(instant);
+      if (!days.has(date)) days.set(date, []);
+      days.get(date).push(instant);
+    });
+
+    return Array.from(days, function(entry) {
+      var times = entry[1];
+      var ranges = [];
+      for (var i = 0; i < times.length; i++) {
+        var first = i;
+        while (i + 1 < times.length && times[i + 1] - times[i] === 3600000) i++;
+        var label = timeFormat.format(times[first]);
+        if (i > first) label += ' – ' + timeFormat.format(times[i]);
+        ranges.push(label);
+      }
+      return entry[0] + ': ' + ranges.join(', ');
+    }).join(' | ');
+  }
+
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -361,88 +382,29 @@
         if (!slotSet[s2]) { slotSet[s2] = true; slots.push(s2); }
       }
 
-      function localHourToCT(hour24, dateStr) {
-        var dateParts = dateStr.split('/');
-        var now = new Date();
-        var year = now.getFullYear();
-        var month = parseInt(dateParts[0]) - 1;
-        var day = parseInt(dateParts[1]);
-        var localDate = new Date(year, month, day, hour24, 0, 0);
-        var ctStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit'});
-        var ctHour = parseInt(ctStr.split(':')[0]);
-        var ctDateStr = localDate.toLocaleString('en-US', {timeZone: 'America/Chicago', month: 'numeric', day: 'numeric'});
-        var ctDateParts = ctDateStr.match(/(\d+)\/(\d+)/);
-        var ctDate = ctDateParts ? ctDateParts[1] + '/' + ctDateParts[2] : dateStr;
-        return {hour24: ctHour, dateStr: ctDate};
-      }
-
-      function hour24To12(h) {
-        if (h === 0) return '12:00 AM';
-        if (h < 12) return h + ':00 AM';
-        if (h === 12) return '12:00 PM';
-        return (h - 12) + ':00 PM';
-      }
-
-      function timeToHour(t) {
-        var match = t.match(/^(\d+):00\s*(AM|PM)$/i);
-        if (!match) return -1;
-        var h = parseInt(match[1]);
-        var ampm = match[2].toUpperCase();
-        if (ampm === 'AM' && h === 12) h = 0;
-        else if (ampm === 'PM' && h !== 12) h += 12;
-        return h;
-      }
-
-      function collapseRanges(times) {
-        times.sort(function(a, b) { return timeToHour(a) - timeToHour(b); });
-        var ranges = [];
-        var rangeStart = null;
-        var rangePrev = null;
-        for (var r = 0; r < times.length; r++) {
-          var hr = timeToHour(times[r]);
-          if (rangeStart === null) {
-            rangeStart = times[r]; rangePrev = hr;
-          } else if (hr === rangePrev + 1) {
-            rangePrev = hr;
-          } else {
-            if (rangePrev === timeToHour(rangeStart)) ranges.push(rangeStart);
-            else ranges.push(rangeStart + ' – ' + times[r - 1]);
-            rangeStart = times[r]; rangePrev = hr;
-          }
+      // All email rows describe the same instants. The detected zone follows
+      // the device's daylight-saving rules; manual options specify UTC offsets.
+      var offset = timezone.match(/^UTC([+-])(\d+)(?::(\d+))?/);
+      var instants = slots.map(function(slot) {
+        var parts = slot.split(':');
+        var day = orderedDays[Number(parts[0])];
+        var hour = Number(parts[1]);
+        if (timezone === detectedTimezoneValue || !offset) {
+          return new Date(day.getFullYear(), day.getMonth(), day.getDate(), hour);
         }
-        if (rangeStart !== null) {
-          if (rangePrev === timeToHour(rangeStart)) ranges.push(rangeStart);
-          else ranges.push(rangeStart + ' – ' + times[times.length - 1]);
-        }
-        return ranges.join(', ');
-      }
-
-      var availStr = 'No specific times selected — please reach out to coordinate.';
-      if (slots.length > 0) {
-        var byDateCT = {};
-        for (var j = 0; j < slots.length; j++) {
-          var parts = slots[j].split(' ');
-          var dateKey = parts[0];
-          var time = parts.slice(1).join(' ');
-          var localH = timeToHour(time);
-          var ct = localHourToCT(localH, dateKey);
-          var ctTime = hour24To12(ct.hour24);
-          if (!byDateCT[ct.dateStr]) byDateCT[ct.dateStr] = [];
-          byDateCT[ct.dateStr].push(ctTime);
-        }
-        var lines = [];
-        for (var dk in byDateCT) {
-          lines.push(dk + ': ' + collapseRanges(byDateCT[dk]));
-        }
-        availStr = lines.join(' | ');
-      }
+        var minutes = Number(offset[2]) * 60 + Number(offset[3] || 0);
+        var utc = Date.UTC(day.getFullYear(), day.getMonth(), day.getDate(), hour);
+        return new Date(utc - (offset[1] === '-' ? -minutes : minutes) * 60000);
+      }).sort(function(a, b) { return a - b; });
 
       var formData = new FormData();
       formData.append('Name', name);
       formData.append('Email', email);
       formData.append('Timezone', timezone);
       formData.append('Program Interest', program);
-      formData.append('Availability (Central Time)', availStr);
+      formData.append('Availability (Central Time, Chicago)', formatAvailability(instants, 'America/Chicago'));
+      formData.append('Availability (India Standard Time, IST)', formatAvailability(instants, 'Asia/Kolkata'));
+      formData.append('Availability (Colombia Time, COT)', formatAvailability(instants, 'America/Bogota'));
       if (message) formData.append('Additional Notes', message);
       formData.append('_subject', 'Registration Request: ' + name);
       formData.append('_cc', 'myra.walden@gmail.com,psureka4@gmail.com');
